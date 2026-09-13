@@ -84,7 +84,7 @@ export default function Navbar() {
                 KOLOSSAL
               </span>
               <span className="text-[8px] font-mono tracking-[0.3em] text-neutral-500 uppercase">
-                HEAVYWEIGHT ATELIER
+                HEAVYWEIGHT APPAREL
               </span>
             </Link>
           </div>

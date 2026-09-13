@@ -8,7 +8,7 @@ export default function BrandManifesto() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4">
             <span className="text-[11px] font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-3">
-              THE ATELIER MANIFESTO
+              THE BRAND MANIFESTO
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter uppercase leading-[0.95]">
               PROPORTION<br />OVER TRENDS.
@@ -16,7 +16,7 @@ export default function BrandManifesto() {
           </div>
           <div className="lg:col-span-8 space-y-6 text-neutral-400 font-light text-base sm:text-lg leading-relaxed">
             <p>
-              Kolossal is an independent architectural clothing atelier founded on the refusal of ephemeral fast-fashion cycles. We view garments as habitable structures—engineered with extreme GSM densities, brutalist silhouettes, and Japanese ripstop textiles designed to age gracefully over decades.
+              Kolossal is an independent architectural clothing label founded on the refusal of ephemeral fast-fashion cycles. We view garments as habitable structures—engineered with extreme GSM densities, brutalist silhouettes, and Japanese ripstop textiles designed to age gracefully over decades.
             </p>
             <p className="text-sm text-neutral-500 font-mono tracking-wide">
               Milled in limited small-batch runs. No seasonal markdowns. Every piece is numbered.
@@ -46,7 +46,7 @@ export default function BrandManifesto() {
             <span className="text-xs font-mono text-neutral-500">03 // PROVENANCE</span>
             <h3 className="text-lg font-bold uppercase tracking-wider text-white">Ethical Craftsmanship</h3>
             <p className="text-xs text-neutral-400 leading-relaxed font-light">
-              Produced in family-run ateliers between Okayama, Japan and Veneto, Italy with complete trace-to-farm supply chain verification.
+              Produced in family-run workshops between Okayama, Japan and Veneto, Italy with complete trace-to-farm supply chain verification.
             </p>
           </div>
         </div>

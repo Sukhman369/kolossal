@@ -72,7 +72,7 @@ export default function Footer() {
           {/* Links Column 2 */}
           <div className="md:col-span-2 space-y-4">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500">
-              ATELIER
+              BRAND
             </span>
             <ul className="space-y-2.5 text-xs uppercase tracking-wider text-neutral-400">
               <li><Link href="#manifesto" className="hover:text-white transition-colors">Manifesto</Link></li>
