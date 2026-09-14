@@ -18,7 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const provider = (process.env.NEXT_PUBLIC_COMMERCE_PROVIDER || 'MOCK').toUpperCase();
 
   return (
     <>
@@ -96,11 +95,6 @@ export default function Navbar() {
 
           {/* Right Action Icons & Backend Badge */}
           <div className="flex items-center space-x-5">
-            {/* Commerce Provider Badge */}
-            <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full border border-[#580D1A]/20 bg-[#580D1A]/5 text-[9px] font-mono uppercase tracking-wider text-[#580D1A]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A]" />
-              <span>{provider}</span>
-            </div>
 
             {/* Currency selector */}
             <button className="hidden md:flex items-center space-x-1 text-xs font-mono uppercase tracking-wider text-neutral-500 hover:text-[#580D1A] transition-colors">
@@ -201,7 +195,7 @@ export default function Navbar() {
             </div>
 
           <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
-            <span>BACKEND: {provider}</span>
+            <span>KOLOSSAL ARCHIVE</span>
             <span>CURRENCY: USD</span>
           </div>
         </div>
