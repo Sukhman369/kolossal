@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import HeroFallback from './HeroFallback';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 // Dynamic import with SSR disabled ensures Three.js WebGL only executes on the client
 const Hero3DScene = dynamic(() => import('./Hero3DScene'), {
@@ -29,13 +29,6 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
         {/* Left Column: Brand Statement & Actions */}
         <div className="lg:col-span-6 flex flex-col justify-center space-y-6 md:space-y-8">
-          {/* Drop Badge */}
-          <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full border border-[#580D1A]/20 bg-[#580D1A]/5 w-fit backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-[#580D1A]" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] font-semibold text-[#580D1A]">
-              COLLECTION 001 // DROP NOW LIVE
-            </span>
-          </div>
 
           {/* Heavyweight Hero Headline */}
           <div className="space-y-3">
