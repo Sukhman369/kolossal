@@ -53,9 +53,9 @@ const COLLECTIONS = [
 
 export default function CollectionsPage() {
   return (
-    <div className="pt-32 pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="border-b border-neutral-200/80 pb-12 mb-14">
+      <div className="border-b border-neutral-200/80 pb-8 sm:pb-12 mb-8 sm:mb-14">
         <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] block mb-2 font-semibold">
           COLLECTIONS INDEX
         </span>

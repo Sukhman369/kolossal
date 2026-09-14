@@ -25,10 +25,10 @@ export default function CartDrawer() {
       />
 
       {/* Slide-over panel */}
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
         <div className="w-screen max-w-md bg-[#FAF9F7] border-l border-neutral-200 text-neutral-900 flex flex-col shadow-2xl">
           {/* Drawer Header */}
-          <div className="p-6 border-b border-neutral-200/80 flex items-center justify-between">
+          <div className="p-4 sm:p-6 border-b border-neutral-200/80 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <span className="text-sm uppercase tracking-[0.2em] font-semibold text-neutral-950">
                 BAG ({cart.itemCount})
@@ -68,7 +68,7 @@ export default function CartDrawer() {
           </div>
 
           {/* Line Items List */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-6">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6">
             {cart.items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center space-y-4 text-neutral-400 py-16">
                 <span className="text-3xl font-serif text-[#580D1A]">∅</span>
@@ -151,7 +151,7 @@ export default function CartDrawer() {
 
           {/* Checkout Footer */}
           {cart.items.length > 0 && (
-            <div className="p-6 border-t border-neutral-200 bg-white space-y-4 shadow-lg">
+            <div className="p-4 sm:p-6 border-t border-neutral-200 bg-white space-y-4 shadow-lg">
               <div className="space-y-2">
                 <div className="flex justify-between text-xs text-neutral-600 font-mono">
                   <span>SUBTOTAL</span>

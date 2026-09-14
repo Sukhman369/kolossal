@@ -46,9 +46,9 @@ export default function CheckoutPage() {
 
   if (step === 'complete') {
     return (
-      <div className="pt-36 pb-32 px-6 max-w-3xl mx-auto text-center space-y-8 min-h-screen">
-        <div className="w-20 h-20 rounded-full bg-[#580D1A]/10 border border-[#580D1A]/30 flex items-center justify-center mx-auto text-[#580D1A]">
-          <CheckCircle2 className="w-10 h-10" />
+      <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 max-w-3xl mx-auto text-center space-y-6 sm:space-y-8 min-h-screen">
+        <div className="w-16 sm:w-20 h-16 sm:h-20 rounded-full bg-[#580D1A]/10 border border-[#580D1A]/30 flex items-center justify-center mx-auto text-[#580D1A]">
+          <CheckCircle2 className="w-8 sm:w-10 h-8 sm:h-10" />
         </div>
 
         <div className="space-y-3">
@@ -63,7 +63,7 @@ export default function CheckoutPage() {
           </p>
         </div>
 
-        <div className="p-7 rounded-2xl bg-white border border-neutral-200 shadow-lg text-left space-y-4 max-w-lg mx-auto text-xs font-mono text-neutral-700">
+        <div className="p-5 sm:p-7 rounded-2xl bg-white border border-neutral-200 shadow-lg text-left space-y-4 max-w-lg mx-auto text-xs font-mono text-neutral-700">
           <div className="flex justify-between border-b border-neutral-200 pb-3">
             <span className="text-neutral-500">Destination</span>
             <span className="text-neutral-950 font-medium">{city}, {country}</span>
@@ -101,21 +101,21 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="pt-32 pb-32 px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
       {/* Checkout Minimal Header */}
-      <div className="flex items-center justify-between border-b border-neutral-200/80 pb-6 mb-12">
-        <div className="flex items-center space-x-3">
+      <div className="flex items-center justify-between border-b border-neutral-200/80 pb-4 sm:pb-6 mb-8 sm:mb-12">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <Lock className="w-4 h-4 text-[#580D1A]" />
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 font-medium">
+          <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] sm:tracking-[0.25em] text-neutral-600 font-medium">
             Encrypted Headless Checkout
           </span>
         </div>
-        <Link href="/cart" className="text-xs font-mono uppercase tracking-wider text-[#580D1A] hover:underline underline-offset-4 font-medium transition-colors">
-          Back to Bag
+        <Link href="/" className="text-xs font-mono uppercase tracking-wider text-[#580D1A] hover:underline underline-offset-4 font-medium transition-colors">
+          Back to Store
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
         {/* Left Column: Form Workflow (7 cols) */}
         <div className="lg:col-span-7 space-y-8">
           {/* Step Breadcrumbs */}
@@ -151,7 +151,7 @@ export default function CheckoutPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-950">
                   Delivery Destination
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <input
                     type="text"
                     required
@@ -179,7 +179,7 @@ export default function CheckoutPage() {
                   className="w-full bg-neutral-50 border border-neutral-300 px-4 py-3.5 rounded-xl text-xs font-mono tracking-wider text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A]"
                 />
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <input
                     type="text"
                     required
@@ -304,7 +304,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Right Column: Order Items Summary (5 cols) */}
-        <div className="lg:col-span-5 rounded-2xl border border-neutral-200 bg-white p-7 lg:p-9 space-y-6 shadow-lg">
+        <div className="lg:col-span-5 rounded-2xl border border-neutral-200 bg-white p-5 sm:p-7 lg:p-9 space-y-6 shadow-lg">
           <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-neutral-950 border-b border-neutral-200 pb-4">
             Allocation Summary ({cart.itemCount})
           </h3>

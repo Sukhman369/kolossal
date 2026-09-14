@@ -108,7 +108,7 @@ export default function Hero3DScene() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[560px] md:h-[660px] lg:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+      className="relative w-full h-[380px] sm:h-[480px] md:h-[600px] lg:h-[680px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     >
       {/* Soft ambient aura blending 3D seamlessly into open space */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(88,13,26,0.06)_0%,rgba(250,249,247,0)_68%)] pointer-events-none" />

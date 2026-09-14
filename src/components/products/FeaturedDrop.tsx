@@ -16,9 +16,9 @@ export default function FeaturedDrop({ products }: { products: Product[] }) {
       );
 
   return (
-    <section id="featured-drop" className="py-32 px-6 lg:px-12 max-w-7xl mx-auto bg-[#FAF9F7]">
+    <section id="featured-drop" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto bg-[#FAF9F7]">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-neutral-200/80 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 pb-6 sm:pb-8 border-b border-neutral-200/80 gap-6">
         <div className="space-y-2">
           <div className="text-[11px] font-mono tracking-[0.25em] text-[#580D1A] uppercase font-semibold">
             CURATED CATALOG // DROP 001

@@ -19,36 +19,36 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[95vh] flex flex-col justify-center overflow-hidden border-b border-neutral-200/80 bg-[#FAF9F7] pt-36 pb-24">
+    <section className="relative min-h-[90vh] sm:min-h-[95vh] flex flex-col justify-center overflow-hidden border-b border-neutral-200/80 bg-[#FAF9F7] pt-28 sm:pt-36 pb-16 sm:pb-24">
       {/* Background architectural grid lines */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:4.5rem_4.5rem] pointer-events-none" />
 
       {/* Ambient glowing radial maroon aura */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#580D1A]/[0.05] rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center relative z-10">
         {/* Left Column: Brand Statement & Actions */}
-        <div className="lg:col-span-6 flex flex-col justify-center space-y-6 md:space-y-8">
+        <div className="lg:col-span-6 flex flex-col justify-center space-y-5 sm:space-y-6 md:space-y-8">
 
           {/* Heavyweight Hero Headline */}
-          <div className="space-y-3">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-neutral-950 leading-[0.92]">
+          <div className="space-y-2 sm:space-y-3">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-neutral-950 leading-[0.92]">
               HEAVY<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#580D1A] via-[#851830] to-neutral-900">
                 WEIGHT
               </span><br />
               FORM.
             </h1>
-            <p className="text-neutral-600 text-sm sm:text-base max-w-md font-light tracking-wide pt-2 leading-relaxed">
+            <p className="text-neutral-600 text-xs sm:text-sm md:text-base max-w-md font-light tracking-wide pt-1 sm:pt-2 leading-relaxed">
               Architectural proportions, custom-milled 500 GSM organic cotton, and precision-engineered oversized cuts engineered in Industrial Area, Chandigarh, India.
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
             <button
               onClick={scrollToCollection}
-              className="group relative inline-flex items-center space-x-3 px-8 py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-[#3E0711] hover:shadow-[0_8px_30px_rgba(88,13,26,0.3)] active:scale-95 shadow-md"
+              className="group relative inline-flex items-center justify-center space-x-3 px-7 sm:px-8 py-3.5 sm:py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-[#3E0711] hover:shadow-[0_8px_30px_rgba(88,13,26,0.3)] active:scale-95 shadow-md text-center"
             >
               <span>Explore Drop</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -56,25 +56,25 @@ export default function HeroSection() {
 
             <a
               href="/lookbook"
-              className="inline-flex items-center px-8 py-4 border border-[#580D1A]/30 text-[#580D1A] font-medium text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-[#580D1A]/5 hover:border-[#580D1A] active:scale-95"
+              className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 border border-[#580D1A]/30 text-[#580D1A] font-medium text-xs uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-[#580D1A]/5 hover:border-[#580D1A] active:scale-95 text-center"
             >
               Lookbook
             </a>
           </div>
 
           {/* Quick specs metadata */}
-          <div className="grid grid-cols-3 gap-6 pt-6 border-t border-neutral-200/80 max-w-md">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-5 sm:pt-6 border-t border-neutral-200/80 max-w-md">
             <div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Weight</div>
-              <div className="text-base font-semibold text-[#580D1A] font-mono">500 GSM</div>
+              <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-neutral-500">Weight</div>
+              <div className="text-sm sm:text-base font-semibold text-[#580D1A] font-mono">500 GSM</div>
             </div>
             <div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Edition</div>
-              <div className="text-base font-semibold text-neutral-900 font-mono">100 Pcs</div>
+              <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-neutral-500">Edition</div>
+              <div className="text-sm sm:text-base font-semibold text-neutral-900 font-mono">100 Pcs</div>
             </div>
             <div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Origin</div>
-              <div className="text-base font-semibold text-neutral-900 font-mono">Chandigarh</div>
+              <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-neutral-500">Origin</div>
+              <div className="text-sm sm:text-base font-semibold text-neutral-900 font-mono truncate">Chandigarh</div>
             </div>
           </div>
         </div>

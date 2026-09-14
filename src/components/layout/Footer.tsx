@@ -35,7 +35,7 @@ export default function Footer() {
           </div>
 
           {/* Directory Columns (8 Columns) */}
-          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8 text-xs">
+          <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-xs">
 
             {/* Column 1: Shop / Catalogue */}
             <div>
@@ -171,11 +171,11 @@ export default function Footer() {
 
 
         {/* Bottom Legal & Copyright Bar */}
-        <div className="pt-8 mt-4 border-t border-snoov-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono text-snoov-muted uppercase tracking-wider">
+        <div className="pt-8 mt-4 border-t border-snoov-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono text-snoov-muted uppercase tracking-wider text-center sm:text-left">
           <div>
             © {new Date().getFullYear()} ALL RIGHTS RESERVED.
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-center">
             <Link href="/privacy" className="hover:text-snoov-charcoal transition-colors">
               Privacy Policy
             </Link>

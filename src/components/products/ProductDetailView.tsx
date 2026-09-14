@@ -64,9 +64,9 @@ export default function ProductDetailView({
   ];
 
   return (
-    <div className="pt-32 pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
       {/* Breadcrumbs */}
-      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-10">
+      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-6 sm:mb-10">
         <Link href="/" className="hover:text-[#580D1A] transition-colors">Home</Link>
         <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
         <Link href="/collections" className="hover:text-[#580D1A] transition-colors">Catalog</Link>
@@ -75,17 +75,17 @@ export default function ProductDetailView({
       </nav>
 
       {/* Main PDP Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
         {/* Left Column: Image Gallery (7 cols) */}
-        <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-5">
+        <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4 sm:gap-5">
           {/* Thumbnails */}
           {images.length > 1 && (
-            <div className="flex md:flex-col gap-3.5 overflow-x-auto md:overflow-y-auto max-h-[640px] flex-shrink-0">
+            <div className="flex md:flex-col gap-2.5 sm:gap-3.5 overflow-x-auto md:overflow-y-auto max-h-[640px] flex-shrink-0 pb-2 md:pb-0 overscroll-x-contain">
               {images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImageIndex(idx)}
-                  className={`w-16 h-20 md:w-20 md:h-24 rounded-xl overflow-hidden border transition-all duration-300 flex-shrink-0 relative ${
+                  className={`w-14 h-18 sm:w-16 sm:h-20 md:w-20 md:h-24 rounded-xl overflow-hidden border transition-all duration-300 flex-shrink-0 relative ${
                     selectedImageIndex === idx
                       ? 'border-[#580D1A] ring-2 ring-[#580D1A]/30 shadow-md'
                       : 'border-neutral-200 opacity-60 hover:opacity-100'
@@ -117,7 +117,7 @@ export default function ProductDetailView({
         </div>
 
         {/* Right Column: Sticky Product Purchase Panel (5 cols) */}
-        <div className="lg:col-span-5 space-y-8 sticky top-28">
+        <div className="lg:col-span-5 space-y-6 sm:space-y-8 lg:sticky lg:top-32">
           {/* Title & Price */}
           <div className="space-y-3 border-b border-neutral-200/80 pb-6">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#580D1A] font-semibold">

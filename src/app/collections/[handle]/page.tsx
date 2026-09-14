@@ -89,9 +89,9 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   }
 
   return (
-    <div className="pt-32 pb-32 px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
       {/* Breadcrumbs */}
-      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-10">
+      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-6 sm:mb-10">
         <Link href="/" className="hover:text-[#580D1A] transition-colors">Home</Link>
         <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
         <Link href="/collections" className="hover:text-[#580D1A] transition-colors">Collections</Link>
@@ -100,7 +100,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
       </nav>
 
       {/* Hero Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-200/80 pb-12 mb-14 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-200/80 pb-8 sm:pb-12 mb-8 sm:mb-14 gap-6">
         <div className="space-y-2">
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] font-semibold">
             {info.subtitle}

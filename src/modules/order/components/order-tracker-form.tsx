@@ -109,7 +109,7 @@ export default function OrderTrackerForm() {
               <input
                 type="text"
                 required
-                placeholder="e.g. SNV-84920"
+                placeholder="e.g. KLS-84920"
                 value={orderNumber}
                 onChange={(e) => setOrderNumber(e.target.value)}
                 className="w-full px-4 py-3 bg-snoov-canvas border border-snoov-border rounded-sm text-xs font-mono text-snoov-charcoal placeholder:text-snoov-muted/50 focus:outline-none focus:border-snoov-charcoal transition-colors"

@@ -22,25 +22,25 @@ export default function Navbar() {
   return (
     <>
       {/* Top Announcement Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#580D1A] text-[#FAF9F7] py-2.5 px-4 text-center shadow-sm">
-        <p className="text-[10px] md:text-[11px] font-mono tracking-[0.25em] uppercase font-medium">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#580D1A] text-[#FAF9F7] py-2 px-3 sm:px-4 text-center shadow-sm">
+        <p className="text-[9px] sm:text-[10px] md:text-[11px] font-mono tracking-[0.15em] sm:tracking-[0.25em] uppercase font-medium truncate sm:whitespace-normal">
           COMPLIMENTARY WORLDWIDE EXPRESS OVER $250 &bull; DROP 001 ARCHIVES LIVE
         </p>
       </div>
 
       {/* Main Navigation Header */}
       <header
-        className={`fixed top-9 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
-            ? 'bg-[#FAF9F7]/95 backdrop-blur-md border-b border-neutral-200/80 py-4 shadow-sm'
-            : 'bg-[#FAF9F7]/60 backdrop-blur-xs py-6'
+        className={`fixed top-8 sm:top-9 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+            ? 'bg-[#FAF9F7]/95 backdrop-blur-md border-b border-neutral-200/80 py-3 sm:py-4 shadow-sm'
+            : 'bg-[#FAF9F7]/80 backdrop-blur-sm py-4 sm:py-6'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
           {/* Mobile Menu Trigger */}
           <div className="flex items-center space-x-4 lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-neutral-900 p-1 hover:text-[#580D1A]"
+              className="text-neutral-900 p-1.5 hover:text-[#580D1A] transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -121,7 +121,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#FAF9F7]/98 backdrop-blur-2xl flex flex-col justify-center px-8 space-y-6 lg:hidden pt-20">
+        <div className="fixed inset-0 z-30 bg-[#FAF9F7]/98 backdrop-blur-2xl flex flex-col justify-between px-6 sm:px-8 space-y-8 lg:hidden pt-28 pb-12 overflow-y-auto overscroll-contain">
             <div className="space-y-4">
               <span className="text-[10px] font-mono tracking-widest text-[#580D1A] uppercase font-semibold">
                 01 / CATALOGUE
