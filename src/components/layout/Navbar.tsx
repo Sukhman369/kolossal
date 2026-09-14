@@ -31,11 +31,10 @@ export default function Navbar() {
 
       {/* Main Navigation Header */}
       <header
-        className={`fixed top-9 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-9 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
             ? 'bg-[#FAF9F7]/95 backdrop-blur-md border-b border-neutral-200/80 py-4 shadow-sm'
             : 'bg-[#FAF9F7]/60 backdrop-blur-xs py-6'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
           {/* Mobile Menu Trigger */}
@@ -90,7 +89,7 @@ export default function Navbar() {
                 KOLOSSAL
               </span>
               <span className="text-[8px] font-mono tracking-[0.3em] text-[#580D1A] uppercase font-semibold">
-                HEAVYWEIGHT APPAREL
+                Street Wear
               </span>
             </Link>
           </div>

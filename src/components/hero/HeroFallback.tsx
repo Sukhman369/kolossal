@@ -2,7 +2,7 @@
 
 export default function HeroFallback() {
   return (
-    <div className="relative w-full h-[520px] md:h-[640px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[560px] md:h-[660px] lg:h-[700px] flex items-center justify-center overflow-hidden">
       {/* Ambient background maroon glow */}
       <div className="absolute inset-0 bg-radial-[circle_at_center,rgba(88,13,26,0.06)_0%,transparent_70%]" />
       

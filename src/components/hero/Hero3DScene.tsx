@@ -30,28 +30,28 @@ function ProceduralHeroMesh() {
   });
 
   return (
-    <group position={[0, 0, 0]}>
+    <group position={[0, 0.05, 0]}>
       {/* Central Sculpted Chrome Monolith Emblem */}
       <mesh ref={meshRef} castShadow receiveShadow>
-        <torusKnotGeometry args={[1.1, 0.35, 128, 32, 2, 3]} />
+        <torusKnotGeometry args={[0.88, 0.28, 128, 32, 2, 3]} />
         <MeshDistortMaterial
-          color="#e0e0e0"
-          metalness={0.92}
-          roughness={0.12}
+          color="#f0f0f0"
+          metalness={0.94}
+          roughness={0.1}
           clearcoat={1}
-          clearcoatRoughness={0.1}
-          distort={0.18}
-          speed={1.5}
+          clearcoatRoughness={0.08}
+          distort={0.14}
+          speed={1.4}
         />
       </mesh>
 
       {/* Outer Floating Titanium Orbital Ring */}
       <mesh ref={ringRef}>
-        <torusGeometry args={[2.0, 0.04, 16, 100]} />
+        <torusGeometry args={[1.65, 0.032, 16, 100]} />
         <meshStandardMaterial
-          color="#888888"
+          color="#999999"
           metalness={0.98}
-          roughness={0.2}
+          roughness={0.18}
           wireframe={false}
         />
       </mesh>
@@ -70,7 +70,7 @@ function ExternalGLBModel({ url }: { url: string }) {
     }
   });
 
-  return <primitive ref={modelRef} object={scene} scale={1.8} position={[0, -0.5, 0]} />;
+  return <primitive ref={modelRef} object={scene} scale={1.4} position={[0, -0.3, 0]} />;
 }
 
 export default function Hero3DScene() {
@@ -108,21 +108,24 @@ export default function Hero3DScene() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[520px] md:h-[640px] cursor-grab active:cursor-grabbing select-none"
+      className="relative w-full h-[560px] md:h-[660px] lg:h-[700px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     >
+      {/* Soft ambient aura blending 3D seamlessly into open space */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(88,13,26,0.06)_0%,rgba(250,249,247,0)_68%)] pointer-events-none" />
+
       <Canvas
-        camera={{ position: [0, 0, 5.2], fov: 45 }}
+        camera={{ position: [0, 0, 5.8], fov: 42 }}
         frameloop={isInView ? 'always' : 'never'}
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
         className="w-full h-full"
       >
-        <ambientLight intensity={0.6} />
+        <ambientLight intensity={0.7} />
         <directionalLight position={[6, 8, 5]} intensity={1.8} castShadow />
-        <pointLight position={[-6, -4, -4]} intensity={1.2} color="#781428" />
-        <spotLight position={[0, 5, 2]} intensity={1.5} angle={0.6} penumbra={1} />
+        <pointLight position={[-5, -3, -3]} intensity={1.2} color="#781428" />
+        <spotLight position={[0, 6, 3]} intensity={1.4} angle={0.6} penumbra={1} />
 
         <Suspense fallback={null}>
-          <Float speed={2} rotationIntensity={0.6} floatIntensity={0.8}>
+          <Float speed={1.6} rotationIntensity={0.4} floatIntensity={0.5}>
             {hasCustomModel ? (
               <ExternalGLBModel url="/models/hero-garment.glb" />
             ) : (
@@ -131,12 +134,13 @@ export default function Hero3DScene() {
           </Float>
 
           <Environment preset="city" />
+          {/* Feathered contact shadow with compact scale to prevent any edge clipping */}
           <ContactShadows
-            position={[0, -1.9, 0]}
-            opacity={0.35}
-            scale={8}
-            blur={2.4}
-            far={4}
+            position={[0, -1.45, 0]}
+            opacity={0.28}
+            scale={4.5}
+            blur={2.8}
+            far={3}
             color="#3A0811"
           />
         </Suspense>
@@ -145,13 +149,15 @@ export default function Hero3DScene() {
           enableZoom={false}
           enablePan={false}
           autoRotate={false}
-          minPolarAngle={Math.PI / 3}
-          maxPolarAngle={Math.PI / 1.8}
+          enableDamping={true}
+          dampingFactor={0.05}
+          minPolarAngle={Math.PI / 3.5}
+          maxPolarAngle={Math.PI / 1.65}
         />
       </Canvas>
 
       {/* Floating 3D Interaction Badge */}
-      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#580D1A]/20 shadow-md backdrop-blur-md text-[10px] tracking-[0.2em] uppercase font-mono text-[#580D1A]">
+      <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10 flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#580D1A]/20 shadow-md backdrop-blur-md text-[10px] tracking-[0.2em] uppercase font-mono text-[#580D1A]">
         <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-ping" />
         <span className="font-semibold">3D Scene Active // Drag to Rotate</span>
       </div>
