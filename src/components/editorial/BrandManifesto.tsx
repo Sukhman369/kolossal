@@ -46,7 +46,7 @@ export default function BrandManifesto() {
             <span className="text-xs font-mono text-[#580D1A] font-bold">03 // PROVENANCE</span>
             <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-950">Ethical Craftsmanship</h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-light">
-              Produced in family-run workshops between Okayama, Japan and Veneto, Italy with complete trace-to-farm supply chain verification.
+              Crafted at our dedicated atelier in Industrial Area, Chandigarh, India with complete trace-to-farm supply chain verification.
             </p>
           </div>
         </div>

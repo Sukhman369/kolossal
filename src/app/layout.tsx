@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
-  description: 'Limited edition 500 GSM organic cotton garments engineered in Tokyo and Milan. Brutalist silhouettes, oversized cuts, zero compromise on material integrity.',
+  description: 'Limited edition 500 GSM organic cotton garments engineered in Industrial Area, Chandigarh, India. Brutalist silhouettes, oversized cuts, zero compromise on material integrity.',
   keywords: ['Kolossal', 'Heavyweight Streetwear', '500 GSM Hoodie', 'Luxury Streetwear', 'Architectural Apparel'],
   openGraph: {
     title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
-    description: 'Limited edition 500 GSM organic cotton garments engineered in Tokyo and Milan.',
+    description: 'Limited edition 500 GSM organic cotton garments engineered in Industrial Area, Chandigarh, India.',
     type: 'website',
   },
 };

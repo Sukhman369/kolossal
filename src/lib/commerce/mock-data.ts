@@ -177,7 +177,7 @@ export const MOCK_PRODUCTS: Product[] = [
     handle: 'kolossal-sterling-chain',
     title: 'Brutalist Monogram Signet Chain',
     subtitle: 'Solid 925 Sterling Silver // Oxidized Finish',
-    description: 'Custom industrial curb links interlocked with a heavy sculptural Kolossal lock mechanism. Hand-finished in Milan with micro-hallmarking.',
+    description: 'Custom industrial curb links interlocked with a heavy sculptural Kolossal lock mechanism. Hand-finished in Industrial Area, Chandigarh, India with micro-hallmarking.',
     price: { amount: 290, currencyCode: 'USD' },
     badge: 'HANDCRAFTED',
     category: 'Accessories',

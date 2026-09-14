@@ -20,7 +20,7 @@ export default function Footer() {
                 </span>
               </Link>
               <span className="text-[10px] font-mono tracking-widest text-snoov-green uppercase font-semibold block mt-1">
-                MILAN / TOKYO · EST. 2026
+                INDUSTRIAL AREA, CHANDIGARH, INDIA · EST. 2026
               </span>
               <p className="mt-4 text-xs text-snoov-muted leading-relaxed font-sans max-w-sm">
                 A conscious luxury streetwear brand focused on intentional cuts, tactile organic textiles, and enduring silhouette design.

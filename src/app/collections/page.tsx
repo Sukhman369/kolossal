@@ -45,7 +45,7 @@ const COLLECTIONS = [
     handle: 'accessories',
     title: 'Hardware & Jewelry',
     subtitle: 'Solid 925 Sterling Silver',
-    description: 'Industrial curb chains and oxidized monogram signet rings hand-finished in Milan.',
+    description: 'Industrial curb chains and oxidized monogram signet rings hand-finished in Industrial Area, Chandigarh, India.',
     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1200&auto=format&fit=crop',
     itemCount: '1 Style',
   },

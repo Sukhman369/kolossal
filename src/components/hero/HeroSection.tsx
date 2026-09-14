@@ -47,7 +47,7 @@ export default function HeroSection() {
               FORM.
             </h1>
             <p className="text-neutral-600 text-sm sm:text-base max-w-md font-light tracking-wide pt-2 leading-relaxed">
-              Architectural proportions, custom-milled 500 GSM organic cotton, and precision-tailored oversized cuts engineered between Tokyo and Milan.
+              Architectural proportions, custom-milled 500 GSM organic cotton, and precision-tailored oversized cuts engineered in Industrial Area, Chandigarh, India.
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default function HeroSection() {
             </div>
             <div>
               <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Origin</div>
-              <div className="text-base font-semibold text-neutral-900 font-mono">Tokyo/Milan</div>
+              <div className="text-base font-semibold text-neutral-900 font-mono">Chandigarh</div>
             </div>
           </div>
         </div>
