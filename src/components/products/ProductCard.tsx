@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Product } from '../../lib/commerce/types';
 import { useCart } from '../../context/CartContext';
 import { Plus, Check } from 'lucide-react';
@@ -11,6 +12,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState<string>(product.sizes?.[0] || 'M');
 
   const handleQuickAdd = async (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     const defaultVariant = product.variants[0];
 
@@ -33,7 +35,10 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group relative flex flex-col space-y-4 select-none">
       {/* Product Image Frame */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-900 border border-white/[0.08] transition-all duration-500 group-hover:border-white/25 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
+      <Link
+        href={`/products/${product.handle}`}
+        className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-900 border border-white/[0.08] transition-all duration-500 group-hover:border-white/25 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.8)] block"
+      >
         {/* Badge */}
         {product.badge && (
           <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-black/60 border border-white/15 backdrop-blur-md text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-200">
@@ -69,14 +74,16 @@ export default function ProductCard({ product }: { product: Product }) {
             )}
           </button>
         </div>
-      </div>
+      </Link>
 
       {/* Product Details */}
       <div className="flex flex-col space-y-1.5 px-0.5">
         <div className="flex justify-between items-baseline">
-          <h3 className="text-xs uppercase tracking-[0.18em] font-semibold text-white group-hover:text-neutral-200 transition-colors">
-            {product.title}
-          </h3>
+          <Link href={`/products/${product.handle}`}>
+            <h3 className="text-xs uppercase tracking-[0.18em] font-semibold text-white hover:text-neutral-300 transition-colors">
+              {product.title}
+            </h3>
+          </Link>
           <span className="text-xs font-mono font-medium text-neutral-300">
             ${product.price.amount} {product.price.currencyCode}
           </span>
