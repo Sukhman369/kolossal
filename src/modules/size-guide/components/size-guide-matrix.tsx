@@ -153,7 +153,7 @@ export default function SizeGuideMatrix() {
           <table className="w-full text-left text-xs font-mono border-collapse">
             <thead>
               <tr className="bg-snoov-sand/50 border-b border-snoov-border text-snoov-charcoal uppercase tracking-wider text-[10px]">
-                <th className="py-4 px-4 font-bold">SNOOV Size</th>
+                <th className="py-4 px-4 font-bold">KOLOSSAL Size</th>
                 <th className="py-4 px-4 font-semibold text-snoov-muted">US</th>
                 <th className="py-4 px-4 font-semibold text-snoov-muted">UK</th>
                 <th className="py-4 px-4 font-semibold text-snoov-muted">EU</th>

@@ -3,11 +3,11 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import SizeGuideMatrix from "@modules/size-guide/components/size-guide-matrix"
 
 export const metadata: Metadata = {
-  title: "Size Guide & Fit Matrix | SNOOV",
+  title: "Size Guide & Fit Matrix | KOLOSSAL",
   description:
-    "Explore SNOOV's international size matrix (US, UK, EU, JP). Detailed garment measurements in CM and Inches for heavyweight t-shirts, hoodies, and overshirts.",
+    "Explore KOLOSSAL's international size matrix (US, UK, EU, JP). Detailed garment measurements in CM and Inches for heavyweight t-shirts, hoodies, and overshirts.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/size-guide",
+    canonical: "https://kolossal.com/size-guide",
   },
 }
 
@@ -20,13 +20,13 @@ export default async function SizeGuidePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Size Guide",
-        item: "https://snoovlifestyle.com/size-guide",
+        item: "https://kolossal.com/size-guide",
       },
     ],
   }
@@ -67,7 +67,7 @@ export default async function SizeGuidePage() {
             </h1>
 
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              Every SNOOV piece is tailored with intentional drop-shoulder geometry and heavyweight drape. Use our interactive metric / imperial table below to find your exact silhouette.
+              Every KOLOSSAL piece is tailored with intentional drop-shoulder geometry and heavyweight drape. Use our interactive metric / imperial table below to find your exact silhouette.
             </p>
           </div>
         </div>

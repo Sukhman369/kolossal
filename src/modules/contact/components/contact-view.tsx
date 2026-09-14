@@ -60,7 +60,7 @@ export default function ContactView() {
             
             {/* VIP WhatsApp Hotline */}
             <a
-              href="https://wa.me/919876543210?text=Hi%20SNOOV,%20I'd%20like%20to%20inquire%20about"
+              href="https://wa.me/919876543210?text=Hi%20KOLOSSAL,%20I'd%20like%20to%20inquire%20about"
               target="_blank"
               rel="noreferrer"
               className="group p-5 bg-snoov-sand/40 hover:bg-snoov-sand/80 border border-snoov-border rounded-base flex items-center justify-between transition-all duration-300 block"
@@ -85,7 +85,7 @@ export default function ContactView() {
 
             {/* Direct Email */}
             <a
-              href="mailto:concierge@snoov.com"
+              href="mailto:concierge@kolossal.com"
               className="group p-5 bg-snoov-sand/40 hover:bg-snoov-sand/80 border border-snoov-border rounded-base flex items-center justify-between transition-all duration-300 block"
             >
               <div className="space-y-1">
@@ -93,7 +93,7 @@ export default function ContactView() {
                   EMAIL OUR TEAM
                 </span>
                 <span className="text-xs font-mono text-snoov-green block">
-                  concierge@snoov.com
+                  concierge@kolossal.com
                 </span>
                 <p className="text-xs text-snoov-muted font-sans">
                   Orders, sizing advice, and press inquiries.
@@ -106,7 +106,7 @@ export default function ContactView() {
 
             {/* Community IG */}
             <a
-              href="https://www.instagram.com/snoov.cm/"
+              href="https://www.instagram.com/kolossal.com/"
               target="_blank"
               rel="noreferrer"
               className="group p-5 bg-snoov-sand/40 hover:bg-snoov-sand/80 border border-snoov-border rounded-base flex items-center justify-between transition-all duration-300 block"
@@ -116,7 +116,7 @@ export default function ContactView() {
                   INSTAGRAM COMMUNITY DM
                 </span>
                 <span className="text-xs font-mono text-snoov-green block font-semibold">
-                  @snoov.cm
+                  @kolossal.official
                 </span>
                 <p className="text-xs text-snoov-muted font-sans">
                   Tag us in your fits or pitch creative community projects.
@@ -136,7 +136,7 @@ export default function ContactView() {
             </span>
             
             <div className="space-y-1">
-              <strong className="block text-[11px] uppercase">SNOOV · CHANDIGARH (TRICITY)</strong>
+              <strong className="block text-[11px] uppercase">KOLOSSAL · CHANDIGARH (TRICITY)</strong>
               <span className="text-[11px] text-snoov-muted block">30.7333° N, 76.7794° E</span>
               <span className="text-[11px] text-snoov-muted block">Industrial Area, Chandigarh 160002, India</span>
               <span className="text-[10px] text-snoov-green block pt-1">Direct Same-Day Courier Dispatch Hub</span>

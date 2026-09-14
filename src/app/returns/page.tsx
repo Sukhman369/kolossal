@@ -2,18 +2,18 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Exchange & Replacement Policy | SNOOV",
+  title: "Exchange & Replacement Policy | KOLOSSAL",
   description:
-    "Discover SNOOV's conscious craftsmanship approach and our damaged goods exchange guarantee. Complimentary courier replacement for transit-damaged or flawed pieces.",
+    "Discover KOLOSSAL's conscious craftsmanship approach and our damaged goods exchange guarantee. Complimentary courier replacement for transit-damaged or flawed pieces.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/returns",
+    canonical: "https://kolossal.com/returns",
   },
 }
 
 export default async function ReturnsAndExchangesPage() {
   const reportingWindow = "Within 48 Hours"
   const verificationTime = "24–48 Business Hours"
-  const contactEmail = "concierge@snoov.com"
+  const contactEmail = "concierge@kolossal.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -23,13 +23,13 @@ export default async function ReturnsAndExchangesPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Exchange & Replacement Policy",
-        item: "https://snoovlifestyle.com/returns",
+        item: "https://kolossal.com/returns",
       },
     ],
   }
@@ -40,10 +40,10 @@ export default async function ReturnsAndExchangesPage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is SNOOV's return and exchange policy?",
+        name: "What is KOLOSSAL's return and exchange policy?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Because SNOOV crafts in small, limited-batch capsules to ensure every client receives an untouched, brand-new garment, we do not operate on a conventional return model. Instead, we offer a dedicated damaged-goods exchange guarantee: if your parcel arrives damaged or defective in courier transit, our team will promptly coordinate a complimentary pickup and dispatch a pristine replacement.",
+          text: "Because KOLOSSAL crafts in small, limited-batch capsules to ensure every client receives an untouched, brand-new garment, we do not operate on a conventional return model. Instead, we offer a dedicated damaged-goods exchange guarantee: if your parcel arrives damaged or defective in courier transit, our team will promptly coordinate a complimentary pickup and dispatch a pristine replacement.",
         },
       },
       {
@@ -97,7 +97,7 @@ export default async function ReturnsAndExchangesPage() {
               Exchange & Replacement Policy
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              At SNOOV, every garment is tailored in intentional, small-batch capsules rather than mass-produced inventory. To ensure that every patron receives an untouched, freshly crafted piece and to honor our sustainable craftsmanship model, we focus our exchange policy exclusively on products that arrive damaged or defective in transit. If your piece encounters any issue on its way to you, our brand takes full responsibility and guarantees an immediate, complimentary replacement.
+              At KOLOSSAL, every garment is tailored in intentional, small-batch capsules rather than mass-produced inventory. To ensure that every patron receives an untouched, freshly crafted piece and to honor our sustainable craftsmanship model, we focus our exchange policy exclusively on products that arrive damaged or defective in transit. If your piece encounters any issue on its way to you, our brand takes full responsibility and guarantees an immediate, complimentary replacement.
             </p>
 
             {/* Quick Metrics Bar */}
@@ -204,7 +204,7 @@ export default async function ReturnsAndExchangesPage() {
                   A More Conscious Way of Crafting & Delivering Fashion
                 </h3>
                 <p className="text-xs text-snoov-muted leading-relaxed">
-                  Unlike conventional fashion brands that rely on mass industrial overproduction and price in high inventory returns, SNOOV creates exclusively in disciplined, limited-run capsules. Every garment is constructed from certified heavy organic textiles (380–550 GSM GOTS organic cotton, natural botanical dyes, and European linen).
+                  Unlike conventional fashion brands that rely on mass industrial overproduction and price in high inventory returns, KOLOSSAL creates exclusively in disciplined, limited-run capsules. Every garment is constructed from certified heavy organic textiles (380–550 GSM GOTS organic cotton, natural botanical dyes, and European linen).
                 </p>
                 <p className="text-xs text-snoov-muted leading-relaxed">
                   When your parcel arrives, you can be certain that your piece is brand-new, hand-inspected, and has never been previously circulated, worn, or repeatedly handled. To preserve this level of hygiene, product integrity, and our commitment to zero-deadstock sustainability, we do not operate a general return-for-refund model.
@@ -224,7 +224,7 @@ export default async function ReturnsAndExchangesPage() {
                 Damaged Goods Exchange Guarantee
               </h2>
               <p>
-                Your peace of mind when welcoming a SNOOV piece is sacred to us. In the rare circumstance that your parcel is mishandled by couriers or arrives with an unforeseen flaw:
+                Your peace of mind when welcoming a KOLOSSAL piece is sacred to us. In the rare circumstance that your parcel is mishandled by couriers or arrives with an unforeseen flaw:
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -233,7 +233,7 @@ export default async function ReturnsAndExchangesPage() {
                     ✓ 100% COMPLIMENTARY REPLACEMENT
                   </span>
                   <p className="text-xs text-snoov-muted">
-                    If your item arrives with any transit damage or manufacturing flaw, SNOOV covers all courier pickup and reshipment costs. A pristine, freshly prepared replacement will be dispatched to your doorstep at zero cost to you.
+                    If your item arrives with any transit damage or manufacturing flaw, KOLOSSAL covers all courier pickup and reshipment costs. A pristine, freshly prepared replacement will be dispatched to your doorstep at zero cost to you.
                   </p>
                 </div>
 

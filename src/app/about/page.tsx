@@ -2,11 +2,11 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Our Story — The Orca Instinct & GenZ Collective | SNOOV",
+  title: "Our Story — The Orca Instinct & GenZ Collective | KOLOSSAL",
   description:
-    "Discover the origins of SNOOV. Driven by the instinctual power of the Orca whale and crafted as a conscious streetwear community for the next generation.",
+    "Discover the origins of KOLOSSAL. Driven by the instinctual power of the Orca whale and crafted as a conscious streetwear community for the next generation.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/about",
+    canonical: "https://kolossal.com/about",
   },
 }
 
@@ -19,13 +19,13 @@ export default async function AboutStoryPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Our Story",
-        item: "https://snoovlifestyle.com/about",
+        item: "https://kolossal.com/about",
       },
     ],
   }
@@ -33,9 +33,9 @@ export default async function AboutStoryPage() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "SNOOV",
-    url: "https://snoovlifestyle.com",
-    logo: "https://snoovlifestyle.com/logo.png",
+    name: "KOLOSSAL",
+    url: "https://kolossal.com",
+    logo: "https://kolossal.com/logo.png",
     description:
       "A conscious luxury streetwear community designed for GenZ, inspired by the instinctual strength and monochrome elegance of the Orca whale.",
   }
@@ -80,7 +80,7 @@ export default async function AboutStoryPage() {
             </h1>
 
             <p className="text-base sm:text-xl text-snoov-muted leading-relaxed max-w-3xl font-sans">
-              SNOOV is built for the next generation. We are forging a community and a visual dialect shaped by culture, architectural cuts, and the instinctual stealth and unity of the <strong>Orca whale</strong>.
+              KOLOSSAL is built for the next generation. We are forging a community and a visual dialect shaped by culture, architectural cuts, and the instinctual stealth and unity of the <strong>Orca whale</strong>.
             </p>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default async function AboutStoryPage() {
                 [ EDITORIAL TEXT SPACE: THE FOUNDER & ANIMAL INSPIRATION STORY ]
               </span>
               <p className="text-xs text-snoov-muted italic">
-                *Reserved for your detailed story: The initial spark, why the Orca animal archetype became the cornerstone of SNOOV, and how natural power informs the brand.*
+                *Reserved for your detailed story: The initial spark, why the Orca animal archetype became the cornerstone of KOLOSSAL, and how natural power informs the brand.*
               </p>
             </div>
 
@@ -152,7 +152,7 @@ export default async function AboutStoryPage() {
               More Than Apparel. A Living Pod.
             </h2>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed font-sans">
-              An Orca never hunts alone—its strength is the pod. SNOOV is engineered as an open creative community where our audience co-creates and steers our capsule drops.
+              An Orca never hunts alone—its strength is the pod. KOLOSSAL is engineered as an open creative community where our audience co-creates and steers our capsule drops.
             </p>
 
             {/* Community Story Placeholder */}
@@ -209,7 +209,7 @@ export default async function AboutStoryPage() {
                 JOIN THE POD
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-normal text-snoov-charcoal">
-                Be Part of the SNOOV Community
+                Be Part of the KOLOSSAL Community
               </h3>
               <p className="text-xs text-snoov-muted font-sans max-w-md">
                 Get private access to limited capsule releases, pop-up events, and private seasonal lookbooks.
@@ -218,12 +218,12 @@ export default async function AboutStoryPage() {
 
             <div className="flex flex-wrap items-center gap-3 shrink-0">
               <a
-                href="https://www.instagram.com/snoov.cm/"
+                href="https://www.instagram.com/kolossal.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3.5 bg-snoov-canvas text-snoov-charcoal text-xs font-mono uppercase tracking-wider font-semibold rounded-sm border border-snoov-border hover:border-snoov-charcoal transition-colors"
               >
-                <span>Follow @snoov.cm</span>
+                <span>Follow @kolossal.official</span>
                 <span className="text-[10px]">↗</span>
               </a>
 

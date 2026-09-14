@@ -2,11 +2,11 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Sustainability, Organic Fibers & Traceability | SNOOV",
+  title: "Sustainability, Organic Fibers & Traceability | KOLOSSAL",
   description:
-    "Explore SNOOV's verified sustainable standards. GOTS certified organic cotton, European Flax®, closed-loop non-toxic dyeing, and supply chain traceability.",
+    "Explore KOLOSSAL's verified sustainable standards. GOTS certified organic cotton, European Flax®, closed-loop non-toxic dyeing, and supply chain traceability.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/sustainability",
+    canonical: "https://kolossal.com/sustainability",
   },
 }
 
@@ -19,13 +19,13 @@ export default async function SustainabilityPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Sustainability & Traceability",
-        item: "https://snoovlifestyle.com/sustainability",
+        item: "https://kolossal.com/sustainability",
       },
     ],
   }
@@ -33,13 +33,13 @@ export default async function SustainabilityPage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "SNOOV Conscious Luxury: Organic Textiles & Traceability Standards",
+    headline: "KOLOSSAL Conscious Luxury: Organic Textiles & Traceability Standards",
     description:
-      "A comprehensive audit of SNOOV's sustainable supply chain, GOTS certified organic cotton, European Flax® linen, and circular garment life cycles.",
+      "A comprehensive audit of KOLOSSAL's sustainable supply chain, GOTS certified organic cotton, European Flax® linen, and circular garment life cycles.",
     publisher: {
       "@type": "Organization",
-      name: "SNOOV",
-      logo: "https://snoovlifestyle.com/logo.png",
+      name: "KOLOSSAL",
+      logo: "https://kolossal.com/logo.png",
     },
     dateModified: "2026-08-31",
   }
@@ -141,7 +141,7 @@ export default async function SustainabilityPage() {
                   We maintain public transaction certificates for every cotton bale and textile bolt processed in our production network.
                 </p>
                 <a
-                  href="mailto:sustainability@snoov.com?subject=Certification%20Verification%20Request"
+                  href="mailto:sustainability@kolossal.com?subject=Certification%20Verification%20Request"
                   className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-snoov-charcoal underline decoration-snoov-muted/40 hover:decoration-snoov-charcoal transition-colors pt-2"
                 >
                   <span>Request Certificate Audit</span>
@@ -163,7 +163,7 @@ export default async function SustainabilityPage() {
                 1. The Anti-Fast-Fashion Stance
               </h2>
               <p>
-                The greatest threat to environmental sustainability in fashion is mindless volume. SNOOV does not adhere to rapid 52-week seasonal retail calendars. 
+                The greatest threat to environmental sustainability in fashion is mindless volume. KOLOSSAL does not adhere to rapid 52-week seasonal retail calendars. 
               </p>
               <p>
                 Instead, we craft architectural silhouettes engineered to endure for years. Every capsule drop is produced in disciplined quantities calibrated against real community demand, completely eliminating deadstock landfill waste.
@@ -262,7 +262,7 @@ export default async function SustainabilityPage() {
                 3. Closed-Loop Low-Impact Dyeing
               </h2>
               <p>
-                Textile processing is traditionally the dirtiest phase of garment manufacturing. SNOOV enforces closed-loop wet-processing protocols:
+                Textile processing is traditionally the dirtiest phase of garment manufacturing. KOLOSSAL enforces closed-loop wet-processing protocols:
               </p>
               <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm">
                 <li>
@@ -358,7 +358,7 @@ export default async function SustainabilityPage() {
                 5. Circularity & Lifetime Care Pledge
               </h2>
               <p>
-                A garment&apos;s journey does not end at checkout. SNOOV actively supports the full lifecycle of your pieces:
+                A garment&apos;s journey does not end at checkout. KOLOSSAL actively supports the full lifecycle of your pieces:
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
@@ -379,7 +379,7 @@ export default async function SustainabilityPage() {
                     Circular Buyback Archive (+10%)
                   </strong>
                   <p className="text-snoov-muted">
-                    Return any pre-loved SNOOV piece for recycling or archival curation, and receive 10% in instant bonus store credit toward your next capsule order.
+                    Return any pre-loved KOLOSSAL piece for recycling or archival curation, and receive 10% in instant bonus store credit toward your next capsule order.
                   </p>
                 </div>
               </div>

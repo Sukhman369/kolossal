@@ -2,17 +2,17 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Cookie Policy & Tracking Consent | SNOOV",
+  title: "Cookie Policy & Tracking Consent | KOLOSSAL",
   description:
-    "Review SNOOV's cookie policy. Learn how we handle essential session cookies, privacy-preserving performance telemetry, and browser consent controls.",
+    "Review KOLOSSAL's cookie policy. Learn how we handle essential session cookies, privacy-preserving performance telemetry, and browser consent controls.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/cookie-policy",
+    canonical: "https://kolossal.com/cookie-policy",
   },
 }
 
 export default async function CookiePolicyPage() {
   const lastUpdated = "August 31, 2026"
-  const contactEmail = "privacy@snoov.com"
+  const contactEmail = "privacy@kolossal.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -22,13 +22,13 @@ export default async function CookiePolicyPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Cookie Policy",
-        item: "https://snoovlifestyle.com/cookie-policy",
+        item: "https://kolossal.com/cookie-policy",
       },
     ],
   }
@@ -38,11 +38,11 @@ export default async function CookiePolicyPage() {
     "@type": "WebPage",
     name: "Cookie Policy & Tracking Consent",
     description:
-      "Cookie governance and consent framework for SNOOV.",
+      "Cookie governance and consent framework for KOLOSSAL.",
     publisher: {
       "@type": "Organization",
-      name: "SNOOV",
-      logo: "https://snoovlifestyle.com/logo.png",
+      name: "KOLOSSAL",
+      logo: "https://kolossal.com/logo.png",
     },
     dateModified: "2026-08-31",
   }
@@ -79,7 +79,7 @@ export default async function CookiePolicyPage() {
               Cookie Policy & Tracking Consent
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              At SNOOV, we respect your digital privacy. We do not employ third-party cross-site behavioral ad trackers. This document transparently explains our local storage and essential session policies.
+              At KOLOSSAL, we respect your digital privacy. We do not employ third-party cross-site behavioral ad trackers. This document transparently explains our local storage and essential session policies.
             </p>
 
             {/* Quick Metrics Bar */}
@@ -169,7 +169,7 @@ export default async function CookiePolicyPage() {
                 Cookies and local browser storage are small encrypted files that enable modern web platforms to function reliably and securely.
               </p>
               <p>
-                At SNOOV, these technologies serve practical purposes: remembering which garments you have placed in your shopping bag, preserving your active regional currency, and ensuring secure checkout transactions without unnecessary logins.
+                At KOLOSSAL, these technologies serve practical purposes: remembering which garments you have placed in your shopping bag, preserving your active regional currency, and ensuring secure checkout transactions without unnecessary logins.
               </p>
             </div>
 
@@ -289,7 +289,7 @@ export default async function CookiePolicyPage() {
                 </div>
                 <div>
                   <span className="text-snoov-muted block text-[10px] uppercase">PRIVACY DIRECTORATE</span>
-                  <span>SNOOV — Data Governance Desk</span>
+                  <span>KOLOSSAL — Data Governance Desk</span>
                   <br />
                   <span>Industrial Area, Chandigarh 160002, India</span>
                 </div>

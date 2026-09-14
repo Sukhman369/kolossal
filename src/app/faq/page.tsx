@@ -3,11 +3,11 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import FAQAccordion from "@modules/faq/components/faq-accordion"
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions (FAQ) | SNOOV",
+  title: "Frequently Asked Questions (FAQ) | KOLOSSAL",
   description:
-    "Find instant answers to frequently asked questions about SNOOV capsule drops, free delivery on orders above ₹7,000, Tricity same-day delivery, sizing, and damaged goods exchange guarantee.",
+    "Find instant answers to frequently asked questions about KOLOSSAL capsule drops, free delivery on orders above ₹7,000, Tricity same-day delivery, sizing, and damaged goods exchange guarantee.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/faq",
+    canonical: "https://kolossal.com/faq",
   },
 }
 
@@ -20,13 +20,13 @@ export default async function FAQPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "FAQ",
-        item: "https://snoovlifestyle.com/faq",
+        item: "https://kolossal.com/faq",
       },
     ],
   }
@@ -40,7 +40,7 @@ export default async function FAQPage() {
         name: "How do limited capsule drops work?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "To eliminate overproduction and deadstock waste, SNOOV releases garments in strictly disciplined capsule editions. Once an edition is archived, it is rarely restocked.",
+          text: "To eliminate overproduction and deadstock waste, KOLOSSAL releases garments in strictly disciplined capsule editions. Once an edition is archived, it is rarely restocked.",
         },
       },
       {
@@ -61,7 +61,7 @@ export default async function FAQPage() {
       },
       {
         "@type": "Question",
-        name: "How do SNOOV garments fit?",
+        name: "How do KOLOSSAL garments fit?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Our streetwear is designed with intentional drop-shoulder geometry, wide chest spans, and structured heavyweight drape. We recommend choosing your normal size for our signature relaxed fit.",
@@ -72,12 +72,12 @@ export default async function FAQPage() {
         name: "What is your return and exchange policy?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Because SNOOV crafts in small, limited-batch capsules to ensure every patron receives an untouched, brand-new garment, we do not operate on a conventional return model. Instead, we offer a dedicated damaged-goods exchange guarantee: if your parcel arrives damaged or defective in courier transit, we will promptly coordinate a complimentary pickup and dispatch a pristine replacement.",
+          text: "Because KOLOSSAL crafts in small, limited-batch capsules to ensure every patron receives an untouched, brand-new garment, we do not operate on a conventional return model. Instead, we offer a dedicated damaged-goods exchange guarantee: if your parcel arrives damaged or defective in courier transit, we will promptly coordinate a complimentary pickup and dispatch a pristine replacement.",
         },
       },
       {
         "@type": "Question",
-        name: "What fabrics and certifications does SNOOV use?",
+        name: "What fabrics and certifications does KOLOSSAL use?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "We use 100% GOTS certified organic rain-fed cotton (380–550 GSM), European Flax® certified natural linen, and non-toxic Oeko-Tex Standard 100 botanical dyes.",

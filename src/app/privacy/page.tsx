@@ -2,18 +2,18 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Privacy & Data Protection | SNOOV",
+  title: "Privacy & Data Protection | KOLOSSAL",
   description:
-    "Learn how SNOOV protects your personal data, respects GDPR/CCPA rights, and maintains client privacy across our e-commerce platform and client services.",
+    "Learn how KOLOSSAL protects your personal data, respects GDPR/CCPA rights, and maintains client privacy across our e-commerce platform and client services.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/privacy",
+    canonical: "https://kolossal.com/privacy",
   },
 }
 
 export default async function PrivacyPolicyPage() {
   const lastUpdated = "August 31, 2026"
-  const legalEntity = "SNOOV"
-  const contactEmail = "privacy@snoov.com"
+  const legalEntity = "KOLOSSAL"
+  const contactEmail = "privacy@kolossal.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -23,13 +23,13 @@ export default async function PrivacyPolicyPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Privacy & Data Protection",
-        item: "https://snoovlifestyle.com/privacy",
+        item: "https://kolossal.com/privacy",
       },
     ],
   }
@@ -39,11 +39,11 @@ export default async function PrivacyPolicyPage() {
     "@type": "WebPage",
     name: "Privacy & Data Protection Policy",
     description:
-      "Privacy policy and data governance practices of SNOOV.",
+      "Privacy policy and data governance practices of KOLOSSAL.",
     publisher: {
       "@type": "Organization",
-      name: "SNOOV",
-      logo: "https://snoovlifestyle.com/logo.png",
+      name: "KOLOSSAL",
+      logo: "https://kolossal.com/logo.png",
     },
     dateModified: "2026-08-31",
   }
@@ -80,7 +80,7 @@ export default async function PrivacyPolicyPage() {
               Privacy & Data Protection
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              At SNOOV, we treat your personal data with the same discretion, precision, and care we apply to our garments. This policy transparently outlines how your information is gathered, secured, and respected.
+              At KOLOSSAL, we treat your personal data with the same discretion, precision, and care we apply to our garments. This policy transparently outlines how your information is gathered, secured, and respected.
             </p>
             <div className="flex flex-wrap items-center gap-6 mt-8 pt-6 border-t border-snoov-border/60 text-xs font-mono text-snoov-muted">
               <div>
@@ -172,7 +172,7 @@ export default async function PrivacyPolicyPage() {
                 1. Principles of Data Stewardship
               </h2>
               <p>
-                SNOOV operates on a strict principle of <strong>data minimization</strong>. We only gather and retain information necessary to deliver exceptional streetwear garments, process global commerce transactions securely, and provide personalized client assistance.
+                KOLOSSAL operates on a strict principle of <strong>data minimization</strong>. We only gather and retain information necessary to deliver exceptional streetwear garments, process global commerce transactions securely, and provide personalized client assistance.
               </p>
               <p>
                 We do not sell, rent, monetize, or broker your personal information to third-party data brokers under any circumstances.
@@ -188,7 +188,7 @@ export default async function PrivacyPolicyPage() {
                 2. Information We Collect
               </h2>
               <p>
-                Depending on your interaction with the SNOOV platform and services, we collect information across three primary categories:
+                Depending on your interaction with the KOLOSSAL platform and services, we collect information across three primary categories:
               </p>
               
               <div className="space-y-4 pt-2">
@@ -206,7 +206,7 @@ export default async function PrivacyPolicyPage() {
                     B. Transactional & Payment Security
                   </h3>
                   <p className="text-xs text-snoov-muted">
-                    Payment details are tokenized and processed directly by our PCI-DSS Level 1 certified partners (such as Stripe). SNOOV never stores full credit card numbers or CVV codes on our servers.
+                    Payment details are tokenized and processed directly by our PCI-DSS Level 1 certified partners (such as Stripe). KOLOSSAL never stores full credit card numbers or CVV codes on our servers.
                   </p>
                 </div>
 
@@ -240,7 +240,7 @@ export default async function PrivacyPolicyPage() {
                   <strong className="text-snoov-charcoal">Legitimate Business Interests:</strong> Fraud detection, storefront cybersecurity, enhancing garment fit recommendations, and analyzing site diagnostics.
                 </li>
                 <li>
-                  <strong className="text-snoov-charcoal">Explicit Consent:</strong> Sending the private SNOOV editorial newsletter, lookbook drops, and invitations to private showroom events (revocable at any moment).
+                  <strong className="text-snoov-charcoal">Explicit Consent:</strong> Sending the private KOLOSSAL editorial newsletter, lookbook drops, and invitations to private showroom events (revocable at any moment).
                 </li>
                 <li>
                   <strong className="text-snoov-charcoal">Legal Obligation:</strong> Tax reporting, customs declarations, and audit records mandated by fiscal authorities in France, Portugal, and international delivery destinations.
@@ -343,7 +343,7 @@ export default async function PrivacyPolicyPage() {
                 6. Your Statutory Privacy Rights
               </h2>
               <p>
-                Regardless of your country of residence, SNOOV extends global privacy rights to all clients:
+                Regardless of your country of residence, KOLOSSAL extends global privacy rights to all clients:
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
@@ -406,7 +406,7 @@ export default async function PrivacyPolicyPage() {
                 </div>
                 <div>
                   <span className="text-snoov-muted block text-[10px] uppercase">POSTAL ADDRESS</span>
-                  <span>SNOOV — Data Governance Desk</span>
+                  <span>KOLOSSAL — Data Governance Desk</span>
                   <br />
                   <span>Industrial Area, Chandigarh 160002, India</span>
                 </div>

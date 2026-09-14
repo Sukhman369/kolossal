@@ -41,10 +41,10 @@ export default function OrderTrackerForm() {
       setResult({
         orderId: cleanOrder.startsWith("#") ? cleanOrder : `#${cleanOrder}`,
         status: isTricity ? "Out for Same-Day Hand Delivery" : "In Transit via Express Courier",
-        carrier: isTricity ? "SNOOV Tricity Direct Courier (Chandigarh Hub)" : "Blue Dart Express Air",
+        carrier: isTricity ? "KOLOSSAL Tricity Direct Courier (Chandigarh Hub)" : "Blue Dart Express Air",
         awb: isTricity ? "TRICITY-SAME-DAY-8821" : "BD-8492019482IN",
         trackingUrl: isTricity
-          ? "https://wa.me/919876543210?text=Hi%20SNOOV%20Concierge,%20checking%20my%20Tricity%20order"
+          ? "https://wa.me/919876543210?text=Hi%20KOLOSSAL%20Concierge,%20checking%20my%20Tricity%20order"
           : "https://www.bluedart.com",
         estimatedDelivery: isTricity ? "Today by 7:30 PM IST" : "September 2, 2026",
         steps: [
@@ -91,7 +91,7 @@ export default function OrderTrackerForm() {
             LIVE PARCEL RADAR
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl font-normal text-snoov-charcoal">
-            Track Your SNOOV Parcel
+            Track Your KOLOSSAL Parcel
           </h2>
           <p className="text-xs text-snoov-muted font-sans max-w-md mx-auto">
             Enter your Order ID (from your confirmation email or SMS) and the email address used during checkout.
@@ -260,7 +260,7 @@ export default function OrderTrackerForm() {
             Need to adjust your Chandigarh, Mohali, or Panchkula hand-delivery slot?
           </p>
           <a
-            href="https://wa.me/919876543210?text=Hi%20SNOOV,%20I'd%20like%20to%20adjust%20my%20Tricity%20delivery"
+            href="https://wa.me/919876543210?text=Hi%20KOLOSSAL,%20I'd%20like%20to%20adjust%20my%20Tricity%20delivery"
             target="_blank"
             rel="noreferrer"
             className="text-snoov-green font-mono uppercase text-[11px] font-semibold hover:underline block pt-1"

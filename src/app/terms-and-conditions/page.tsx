@@ -2,18 +2,18 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions of Sale & Service | SNOOV",
+  title: "Terms & Conditions of Sale & Service | KOLOSSAL",
   description:
-    "Review the terms and conditions governing purchases, delivery, damaged item exchanges, intellectual property, and client care at SNOOV.",
+    "Review the terms and conditions governing purchases, delivery, damaged item exchanges, intellectual property, and client care at KOLOSSAL.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/terms-and-conditions",
+    canonical: "https://kolossal.com/terms-and-conditions",
   },
 }
 
 export default async function TermsAndConditionsPage() {
   const lastUpdated = "August 31, 2026"
-  const legalEntity = "SNOOV"
-  const contactEmail = "concierge@snoov.com"
+  const legalEntity = "KOLOSSAL"
+  const contactEmail = "concierge@kolossal.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -23,13 +23,13 @@ export default async function TermsAndConditionsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Terms & Conditions",
-        item: "https://snoovlifestyle.com/terms-and-conditions",
+        item: "https://kolossal.com/terms-and-conditions",
       },
     ],
   }
@@ -39,11 +39,11 @@ export default async function TermsAndConditionsPage() {
     "@type": "WebPage",
     name: "Terms & Conditions of Sale and Service",
     description:
-      "General Terms and Conditions of Sale and Service for SNOOV.",
+      "General Terms and Conditions of Sale and Service for KOLOSSAL.",
     publisher: {
       "@type": "Organization",
-      name: "SNOOV",
-      logo: "https://snoovlifestyle.com/logo.png",
+      name: "KOLOSSAL",
+      logo: "https://kolossal.com/logo.png",
     },
     dateModified: "2026-08-31",
   }
@@ -80,7 +80,7 @@ export default async function TermsAndConditionsPage() {
               Terms & Conditions
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              These General Terms and Conditions govern the purchase of garments, accessories, and digital services offered by SNOOV across our digital storefront.
+              These General Terms and Conditions govern the purchase of garments, accessories, and digital services offered by KOLOSSAL across our digital storefront.
             </p>
             <div className="flex flex-wrap items-center gap-6 mt-8 pt-6 border-t border-snoov-border/60 text-xs font-mono text-snoov-muted">
               <div>
@@ -178,10 +178,10 @@ export default async function TermsAndConditionsPage() {
                 1. Scope of Agreement & Acceptance
               </h2>
               <p>
-                These General Terms and Conditions of Sale and Service (the &quot;Terms&quot;) apply exclusively between <strong>{legalEntity}</strong> (operating under the commercial trade name <strong>SNOOV</strong>, based in Chandigarh, India) and any individual consumer acting in a private capacity (the &quot;Client&quot;).
+                These General Terms and Conditions of Sale and Service (the &quot;Terms&quot;) apply exclusively between <strong>{legalEntity}</strong> (operating under the commercial trade name <strong>KOLOSSAL</strong>, based in Chandigarh, India) and any individual consumer acting in a private capacity (the &quot;Client&quot;).
               </p>
               <p>
-                By placing an order on our storefront (snoovlifestyle.com) or completing a transaction, the Client unreservedly acknowledges and accepts these Terms in full.
+                By placing an order on our storefront (kolossal.com) or completing a transaction, the Client unreservedly acknowledges and accepts these Terms in full.
               </p>
             </div>
 
@@ -194,7 +194,7 @@ export default async function TermsAndConditionsPage() {
                 2. Client Accounts & Fair Purchase Policy
               </h2>
               <p>
-                To preserve equitable access for authentic patrons and collectors during limited-run seasonal releases and capsule drops, SNOOV enforces a strict <strong>Fair Purchase Standard</strong>:
+                To preserve equitable access for authentic patrons and collectors during limited-run seasonal releases and capsule drops, KOLOSSAL enforces a strict <strong>Fair Purchase Standard</strong>:
               </p>
               
               <div className="space-y-3 pt-2">
@@ -203,7 +203,7 @@ export default async function TermsAndConditionsPage() {
                     A. Prohibition of Automated Bots & Scalping
                   </strong>
                   <p>
-                    The use of automated scripts, purchasing bots, multiple disposable identities, or proxy bidding engines is strictly prohibited. SNOOV reserves the unilateral right to cancel suspected bot orders without prior notice.
+                    The use of automated scripts, purchasing bots, multiple disposable identities, or proxy bidding engines is strictly prohibited. KOLOSSAL reserves the unilateral right to cancel suspected bot orders without prior notice.
                   </p>
                 </div>
                 <div className="p-4 bg-snoov-sand/30 border border-snoov-border rounded-base text-xs space-y-1.5">
@@ -230,10 +230,10 @@ export default async function TermsAndConditionsPage() {
               </p>
               <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm">
                 <li>
-                  <strong className="text-snoov-charcoal">Price Modifications:</strong> SNOOV reserves the right to adjust catalogue prices at any time. Orders are strictly billed at the price quoted at checkout completion.
+                  <strong className="text-snoov-charcoal">Price Modifications:</strong> KOLOSSAL reserves the right to adjust catalogue prices at any time. Orders are strictly billed at the price quoted at checkout completion.
                 </li>
                 <li>
-                  <strong className="text-snoov-charcoal">Secure Tokenization:</strong> All payments are secured via 256-bit SSL encryption and processed via Stripe with 3D-Secure authentication. SNOOV does not store credit card credentials.
+                  <strong className="text-snoov-charcoal">Secure Tokenization:</strong> All payments are secured via 256-bit SSL encryption and processed via Stripe with 3D-Secure authentication. KOLOSSAL does not store credit card credentials.
                 </li>
                 <li>
                   <strong className="text-snoov-charcoal">Payment Methods:</strong> We accept Visa, Mastercard, American Express, Apple Pay, Google Pay, and Klarna Pay-in-3 (subject to regional availability).
@@ -254,10 +254,10 @@ export default async function TermsAndConditionsPage() {
               </p>
               <ol className="list-decimal pl-5 space-y-2 text-xs sm:text-sm">
                 <li>The Client verifies bag contents and completes the secure checkout payment.</li>
-                <li>SNOOV issues an automated electronic <strong>Order Confirmation & Receipt</strong> containing the unique order identification number.</li>
+                <li>KOLOSSAL issues an automated electronic <strong>Order Confirmation & Receipt</strong> containing the unique order identification number.</li>
               </ol>
               <p className="text-xs text-snoov-muted">
-                In the rare event that an ordered garment is unavailable due to unexpected textile stock depletion, SNOOV will immediately notify the Client and issue a full refund within 48 hours.
+                In the rare event that an ordered garment is unavailable due to unexpected textile stock depletion, KOLOSSAL will immediately notify the Client and issue a full refund within 48 hours.
               </p>
             </div>
 
@@ -271,7 +271,7 @@ export default async function TermsAndConditionsPage() {
                 5. Delivery, Free Shipping Threshold & Worldwide Expansion
               </h2>
               <p>
-                Garments are dispatched from our fulfillment hub in Chandigarh (Tricity), India. SNOOV provides <strong>complimentary delivery across India on all orders valued at ₹7,000 or above</strong>. For orders below ₹7,000, standard carrier shipping rates apply and are calculated transparently at checkout prior to payment.
+                Garments are dispatched from our fulfillment hub in Chandigarh (Tricity), India. KOLOSSAL provides <strong>complimentary delivery across India on all orders valued at ₹7,000 or above</strong>. For orders below ₹7,000, standard carrier shipping rates apply and are calculated transparently at checkout prior to payment.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 border border-snoov-border rounded-base">
@@ -302,7 +302,7 @@ export default async function TermsAndConditionsPage() {
                 6. Damaged Item Exchange Policy & Quality Assurance
               </h2>
               <p>
-                To honor our conscious, limited-batch production model and ensure that every customer receives an untouched, freshly crafted garment with zero deadstock waste, SNOOV operates on an exchange policy dedicated specifically to <strong>transit-damaged or defective goods</strong>. We do not process general returns, cancellations after dispatch, or refunds for subjective change of mind or personal preference.
+                To honor our conscious, limited-batch production model and ensure that every customer receives an untouched, freshly crafted garment with zero deadstock waste, KOLOSSAL operates on an exchange policy dedicated specifically to <strong>transit-damaged or defective goods</strong>. We do not process general returns, cancellations after dispatch, or refunds for subjective change of mind or personal preference.
               </p>
               <p>
                 However, receiving a flawless piece is our uncompromising promise. In the rare event that an item is delivered with <strong>transit damage, packaging compromise, or a craftsmanship defect</strong>, the Client is entitled to an immediate, 100% complimentary exchange for a pristine replacement.
@@ -315,7 +315,7 @@ export default async function TermsAndConditionsPage() {
                   <li>Transit damage or packaging compromise should be reported to our Concierge within <strong>48 hours</strong> of delivery so our team can prompt courier transit insurance claims and reserve a replacement piece.</li>
                   <li>Notice should include clear photographs or video documentation of the flaw alongside the original courier shipping label and packaging.</li>
                   <li>Garments must remain unworn, unwashed, and retain all original brand tags, labels, and dust bags.</li>
-                  <li>Upon approval, SNOOV arranges complimentary courier pickup and dispatches a replacement with priority shipping. If the edition is archived or sold out, a store credit will be provided.</li>
+                  <li>Upon approval, KOLOSSAL arranges complimentary courier pickup and dispatches a replacement with priority shipping. If the edition is archived or sold out, a store credit will be provided.</li>
                 </ul>
               </div>
               <p className="text-xs">
@@ -335,7 +335,7 @@ export default async function TermsAndConditionsPage() {
                 7. Intellectual Property & Trademarks
               </h2>
               <p>
-                All elements comprising the SNOOV universe—including but not limited to the brand name, logotypes, garment patterns, architectural silhouette cuts, lookbook photography, editorial text, and code—are the exclusive intellectual property of <strong>{legalEntity}</strong>.
+                All elements comprising the KOLOSSAL universe—including but not limited to the brand name, logotypes, garment patterns, architectural silhouette cuts, lookbook photography, editorial text, and code—are the exclusive intellectual property of <strong>{legalEntity}</strong>.
               </p>
               <p>
                 Any unauthorized reproduction, reverse engineering, digital scraping, or commercial exploitation is strictly prohibited and subject to international copyright enforcement.
@@ -351,10 +351,10 @@ export default async function TermsAndConditionsPage() {
                 8. Craftsmanship Conformance & Warranties
               </h2>
               <p>
-                SNOOV garments are engineered from certified organic textiles (GOTS) and European Flax®. Clients benefit from the statutory guarantee of conformity under Articles L. 217-4 et seq. of the French Consumer Code and against hidden defects under Articles 1641 et seq. of the French Civil Code.
+                KOLOSSAL garments are engineered from certified organic textiles (GOTS) and European Flax®. Clients benefit from the statutory guarantee of conformity under Articles L. 217-4 et seq. of the French Consumer Code and against hidden defects under Articles 1641 et seq. of the French Civil Code.
               </p>
               <p>
-                If a garment exhibits a structural tailoring defect or transit damage, SNOOV provides complimentary repairs or an immediate replacement exchange.
+                If a garment exhibits a structural tailoring defect or transit damage, KOLOSSAL provides complimentary repairs or an immediate replacement exchange.
               </p>
             </div>
 
@@ -367,7 +367,7 @@ export default async function TermsAndConditionsPage() {
                 9. Limitation of Liability & Force Majeure
               </h2>
               <p>
-                SNOOV shall not be held liable for failure or delay in fulfilling delivery obligations in cases of Force Majeure (including natural catastrophes, carrier strikes, customs blockades, or global logistics disruptions beyond reasonable control).
+                KOLOSSAL shall not be held liable for failure or delay in fulfilling delivery obligations in cases of Force Majeure (including natural catastrophes, carrier strikes, customs blockades, or global logistics disruptions beyond reasonable control).
               </p>
             </div>
 
@@ -386,7 +386,7 @@ export default async function TermsAndConditionsPage() {
               <div className="p-6 bg-snoov-sand/30 border border-snoov-border rounded-base space-y-3 font-mono text-xs text-snoov-charcoal">
                 <div>
                   <span className="text-snoov-muted block text-[10px] uppercase">HEADQUARTERS & LEGAL DESK</span>
-                  <span>SNOOV</span>
+                  <span>KOLOSSAL</span>
                   <br />
                   <span>Industrial Area, Chandigarh 160002, India</span>
                   <br />

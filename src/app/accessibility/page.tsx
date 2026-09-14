@@ -2,17 +2,17 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement & Inclusivity | SNOOV",
+  title: "Accessibility Statement & Inclusivity | KOLOSSAL",
   description:
-    "Learn about SNOOV's commitment to digital accessibility, WCAG 2.1 Level AA compliance, screen reader support, and assistive concierge services.",
+    "Learn about KOLOSSAL's commitment to digital accessibility, WCAG 2.1 Level AA compliance, screen reader support, and assistive concierge services.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/accessibility",
+    canonical: "https://kolossal.com/accessibility",
   },
 }
 
 export default async function AccessibilityPage() {
   const lastUpdated = "August 31, 2026"
-  const contactEmail = "concierge@snoov.com"
+  const contactEmail = "concierge@kolossal.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -22,13 +22,13 @@ export default async function AccessibilityPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Accessibility Statement",
-        item: "https://snoovlifestyle.com/accessibility",
+        item: "https://kolossal.com/accessibility",
       },
     ],
   }
@@ -38,11 +38,11 @@ export default async function AccessibilityPage() {
     "@type": "WebPage",
     name: "Accessibility Statement & Digital Inclusion",
     description:
-      "Accessibility statement and WCAG 2.1 Level AA conformance standard for SNOOV.",
+      "Accessibility statement and WCAG 2.1 Level AA conformance standard for KOLOSSAL.",
     publisher: {
       "@type": "Organization",
-      name: "SNOOV",
-      logo: "https://snoovlifestyle.com/logo.png",
+      name: "KOLOSSAL",
+      logo: "https://kolossal.com/logo.png",
     },
     dateModified: "2026-08-31",
   }
@@ -79,7 +79,7 @@ export default async function AccessibilityPage() {
               Accessibility Statement
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              At SNOOV, we believe conscious luxury streetwear and architectural design should be accessible to all patrons without barriers. We continuously engineer our digital storefront to adhere to global accessibility standards.
+              At KOLOSSAL, we believe conscious luxury streetwear and architectural design should be accessible to all patrons without barriers. We continuously engineer our digital storefront to adhere to global accessibility standards.
             </p>
 
             {/* Quick Metrics Bar */}
@@ -169,7 +169,7 @@ export default async function AccessibilityPage() {
                 1. Our Inclusivity Philosophy
               </h2>
               <p>
-                At SNOOV, exceptional design is inherently inclusive. We believe that digital beauty, tactile fashion, and thoughtful craftsmanship should be enjoyable by everyone, regardless of physical ability, sensory perception, or assistive device usage.
+                At KOLOSSAL, exceptional design is inherently inclusive. We believe that digital beauty, tactile fashion, and thoughtful craftsmanship should be enjoyable by everyone, regardless of physical ability, sensory perception, or assistive device usage.
               </p>
               <p>
                 We view accessibility not as a static checklist, but as an ongoing architectural discipline embedded in our storefront development lifecycle.
@@ -282,7 +282,7 @@ export default async function AccessibilityPage() {
                 4. Assistive Technology Compatibility
               </h2>
               <p>
-                SNOOV is built on responsive modern web frameworks and tested for compatibility across popular assistive software and browser environments:
+                KOLOSSAL is built on responsive modern web frameworks and tested for compatibility across popular assistive software and browser environments:
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs font-mono">
@@ -314,7 +314,7 @@ export default async function AccessibilityPage() {
                 5. Assisted Ordering & Feedback
               </h2>
               <p>
-                We welcome feedback from patrons and accessibility advocates. If you experience an accessibility barrier on any part of snoovlifestyle.com, or if you would like personalized assistance placing an order, please contact our concierge team:
+                We welcome feedback from patrons and accessibility advocates. If you experience an accessibility barrier on any part of kolossal.com, or if you would like personalized assistance placing an order, please contact our concierge team:
               </p>
 
               <div className="p-6 bg-snoov-sand/30 border border-snoov-border rounded-base space-y-3 font-mono text-xs text-snoov-charcoal">

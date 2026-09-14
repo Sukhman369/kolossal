@@ -17,7 +17,7 @@ const FAQ_DATA: FAQItem[] = [
     category: "orders",
     question: "How do limited capsule drops work?",
     answer:
-      "To eliminate overproduction and deadstock waste, SNOOV releases garments in strictly disciplined capsule editions. Once an edition is archived, it is rarely restocked. Follow @snoov.cm on Instagram or join our community for private drop access.",
+      "To eliminate overproduction and deadstock waste, KOLOSSAL releases garments in strictly disciplined capsule editions. Once an edition is archived, it is rarely restocked. Follow @kolossal.official on Instagram or join our community for private drop access.",
   },
   {
     id: "order-modifications",
@@ -54,14 +54,14 @@ const FAQ_DATA: FAQItem[] = [
     category: "shipping",
     question: "Do you ship internationally, and are customs duties included (DDP)?",
     answer:
-      "Yes, we ship globally via DHL Express and FedEx Priority. For the US, UK, EU, UAE, and Canada, orders are dispatched Delivery Duty Paid (DDP)—all import duties and tariffs are prepaid by SNOOV with zero surprise fees on delivery.",
+      "Yes, we ship globally via DHL Express and FedEx Priority. For the US, UK, EU, UAE, and Canada, orders are dispatched Delivery Duty Paid (DDP)—all import duties and tariffs are prepaid by KOLOSSAL with zero surprise fees on delivery.",
   },
 
   // 03. Sizing & Silhouettes
   {
     id: "fit-silhouette",
     category: "sizing",
-    question: "How do SNOOV garments fit?",
+    question: "How do KOLOSSAL garments fit?",
     answer:
       "Our streetwear is designed with intentional drop-shoulder geometry, wide chest spans, and structured heavyweight drape. We recommend choosing your normal size for our signature relaxed fit, or sizing down one size for a more tailored profile. Consult our interactive Size Guide for metric & imperial measurements.",
   },
@@ -79,28 +79,28 @@ const FAQ_DATA: FAQItem[] = [
     category: "returns",
     question: "What is your return and exchange policy?",
     answer:
-      "To preserve our conscious limited-capsule production and zero-deadstock philosophy, SNOOV garments are final sale and we do not accept standard returns or refunds. However, if your piece arrives damaged or defective in transit, we guarantee an immediate, complimentary exchange.",
+      "To preserve our conscious limited-capsule production and zero-deadstock philosophy, KOLOSSAL garments are final sale and we do not accept standard returns or refunds. However, if your piece arrives damaged or defective in transit, we guarantee an immediate, complimentary exchange.",
   },
   {
     id: "damaged-reporting",
     category: "returns",
     question: "What should I do if my order arrives damaged or defective?",
     answer:
-      "Please inspect your package upon delivery and notify our Concierge within 48 hours at concierge@snoov.com or via WhatsApp with your Order ID and photos of the damaged garment and packaging. Our atelier will arrange a complimentary courier pickup and dispatch a pristine replacement.",
+      "Please inspect your package upon delivery and notify our Concierge within 48 hours at concierge@kolossal.com or via WhatsApp with your Order ID and photos of the damaged garment and packaging. Our atelier will arrange a complimentary courier pickup and dispatch a pristine replacement.",
   },
 
   // 05. Sustainability & Fabric Care
   {
     id: "fabric-credentials",
     category: "sustainability",
-    question: "What fabrics and certifications does SNOOV use?",
+    question: "What fabrics and certifications does KOLOSSAL use?",
     answer:
       "We use 100% GOTS certified organic rain-fed cotton (380–550 GSM), European Flax® certified natural linen, and non-toxic Oeko-Tex Standard 100 botanical dyes with zero harmful chemical runoff.",
   },
   {
     id: "lifetime-repair",
     category: "sustainability",
-    question: "Does SNOOV offer complimentary garment repairs?",
+    question: "Does KOLOSSAL offer complimentary garment repairs?",
     answer:
       "Yes. Every piece is built for years of wear. If a seam relaxes or hardware requires maintenance, our Chandigarh atelier provides complimentary artisan repairs. Visit our Garment Care page to initiate a service.",
   },

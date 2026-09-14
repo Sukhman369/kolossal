@@ -2,11 +2,11 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Lookbook & Editorial Archive | SNOOV",
+  title: "Lookbook & Editorial Archive | KOLOSSAL",
   description:
-    "Explore SNOOV's seasonal lookbooks, campaign editorials, architectural tailoring silhouettes, and high-contrast GenZ streetwear archives.",
+    "Explore KOLOSSAL's seasonal lookbooks, campaign editorials, architectural tailoring silhouettes, and high-contrast GenZ streetwear archives.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/lookbook",
+    canonical: "https://kolossal.com/lookbook",
   },
 }
 
@@ -19,13 +19,13 @@ export default async function LookbookPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Lookbook",
-        item: "https://snoovlifestyle.com/lookbook",
+        item: "https://kolossal.com/lookbook",
       },
     ],
   }
@@ -154,7 +154,7 @@ export default async function LookbookPage() {
               </h2>
             </div>
             <div className="text-xs font-mono text-snoov-muted">
-              6 ARCHIVAL LOOKS · EDITED BY SNOOV
+              6 ARCHIVAL LOOKS · EDITED BY KOLOSSAL
             </div>
           </div>
 
@@ -226,7 +226,7 @@ export default async function LookbookPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs font-mono">
             <div>
               <span className="text-snoov-muted text-[10px] uppercase block mb-1">CREATIVE DIRECTION</span>
-              <span className="text-snoov-charcoal font-semibold">SNOOV Collective</span>
+              <span className="text-snoov-charcoal font-semibold">KOLOSSAL Collective</span>
             </div>
             <div>
               <span className="text-snoov-muted text-[10px] uppercase block mb-1">PHOTOGRAPHY</span>

@@ -3,11 +3,11 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import OrderTrackerForm from "@modules/order/components/order-tracker-form"
 
 export const metadata: Metadata = {
-  title: "Shipment & Order Tracking Radar | SNOOV",
+  title: "Shipment & Order Tracking Radar | KOLOSSAL",
   description:
-    "Track your active SNOOV streetwear order in real time. Live milestone status for Tricity same-day delivery, Blue Dart Express domestic transit, and global DHL shipments.",
+    "Track your active KOLOSSAL streetwear order in real time. Live milestone status for Tricity same-day delivery, Blue Dart Express domestic transit, and global DHL shipments.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/track-order",
+    canonical: "https://kolossal.com/track-order",
   },
 }
 
@@ -20,13 +20,13 @@ export default async function TrackOrderPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Track Order",
-        item: "https://snoovlifestyle.com/track-order",
+        item: "https://kolossal.com/track-order",
       },
     ],
   }

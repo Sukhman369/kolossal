@@ -137,8 +137,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/snoov.cm/" target="_blank" rel="noreferrer" className="hover:text-snoov-green transition-colors flex items-center gap-1.5">
-                    <span>Instagram (@snoov.cm)</span>
+                  <a href="https://www.instagram.com/kolossal.com/" target="_blank" rel="noreferrer" className="hover:text-snoov-green transition-colors flex items-center gap-1.5">
+                    <span>Instagram (@kolossal.official)</span>
                     <span className="text-[10px]">↗</span>
                   </a>
                 </li>
@@ -160,7 +160,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className="pt-2 text-[11px] font-mono text-snoov-charcoal">
-                  concierge@snoov.com
+                  concierge@kolossal.com
                 </li>
               </ul>
             </div>

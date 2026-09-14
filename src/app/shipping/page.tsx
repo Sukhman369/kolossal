@@ -2,16 +2,16 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Shipping, Duties & Delivery | SNOOV",
+  title: "Shipping, Duties & Delivery | KOLOSSAL",
   description:
-    "Explore SNOOV's shipping policy. Free delivery on orders of ₹7,000 and above across India, same-day delivery in Tricity, and worldwide shipping launching soon.",
+    "Explore KOLOSSAL's shipping policy. Free delivery on orders of ₹7,000 and above across India, same-day delivery in Tricity, and worldwide shipping launching soon.",
   alternates: {
-    canonical: "https://snoovlifestyle.com/shipping",
+    canonical: "https://kolossal.com/shipping",
   },
 }
 
 export default async function ShippingAndDutiesPage() {
-  const contactEmail = "concierge@snoov.com"
+  const contactEmail = "concierge@kolossal.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -21,13 +21,13 @@ export default async function ShippingAndDutiesPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://snoovlifestyle.com",
+        item: "https://kolossal.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Shipping & Duties",
-        item: "https://snoovlifestyle.com/shipping",
+        item: "https://kolossal.com/shipping",
       },
     ],
   }
@@ -38,7 +38,7 @@ export default async function ShippingAndDutiesPage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What are SNOOV's shipping charges and free delivery threshold?",
+        name: "What are KOLOSSAL's shipping charges and free delivery threshold?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "We offer complimentary delivery across India on all orders of ₹7,000 and above. For orders below ₹7,000, standard carrier shipping charges apply and are calculated at checkout.",
@@ -49,7 +49,7 @@ export default async function ShippingAndDutiesPage() {
         name: "Do you offer Same-Day delivery in Chandigarh, Mohali, and Panchkula (Tricity)?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes! SNOOV provides complimentary Same-Day White-Glove Courier Delivery across the entire Tricity region (Chandigarh, Mohali, and Panchkula) for orders placed before 2:00 PM IST.",
+          text: "Yes! KOLOSSAL provides complimentary Same-Day White-Glove Courier Delivery across the entire Tricity region (Chandigarh, Mohali, and Panchkula) for orders placed before 2:00 PM IST.",
         },
       },
       {
@@ -95,7 +95,7 @@ export default async function ShippingAndDutiesPage() {
               Shipping, Duties & Fulfillment
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              Carefully packaged at our fulfillment hub, SNOOV delivers with precision. Enjoy <strong>Complimentary Delivery on orders over ₹7,000</strong> across India, exclusive <strong>Same-Day VIP Delivery in Tricity</strong>, with worldwide delivery launching soon.
+              Carefully packaged at our fulfillment hub, KOLOSSAL delivers with precision. Enjoy <strong>Complimentary Delivery on orders over ₹7,000</strong> across India, exclusive <strong>Same-Day VIP Delivery in Tricity</strong>, with worldwide delivery launching soon.
             </p>
 
             {/* Quick Metrics Bar */}
@@ -298,7 +298,7 @@ export default async function ShippingAndDutiesPage() {
                   Worldwide Shipping (Finalizing Soon)
                 </h2>
                 <p className="mt-2">
-                  We are actively finalizing our international logistics integrations to make SNOOV available worldwide soon. Global express courier routes (including DHL Express Worldwide and FedEx International Priority with Delivery Duty Paid options) will be enabled shortly.
+                  We are actively finalizing our international logistics integrations to make KOLOSSAL available worldwide soon. Global express courier routes (including DHL Express Worldwide and FedEx International Priority with Delivery Duty Paid options) will be enabled shortly.
                 </p>
               </div>
 
@@ -341,7 +341,7 @@ export default async function ShippingAndDutiesPage() {
                 Delivery Duty Paid (DDP) Guarantee
               </h2>
               <p>
-                For all our international patrons, SNOOV operates exclusively on a <strong>Delivery Duty Paid (DDP)</strong> framework.
+                For all our international patrons, KOLOSSAL operates exclusively on a <strong>Delivery Duty Paid (DDP)</strong> framework.
               </p>
               
               <div className="p-5 bg-snoov-sand/30 border border-snoov-border rounded-base space-y-3 text-xs">
