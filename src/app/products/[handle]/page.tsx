@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const relatedProducts = allProducts.filter((p) => p.id !== product.id);
 
   return (
-    <div className="w-full bg-[#080808] min-h-screen">
+    <div className="w-full bg-[#FAF9F7] min-h-screen">
       <ProductDetailView
         product={product}
         relatedProducts={relatedProducts}

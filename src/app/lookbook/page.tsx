@@ -83,37 +83,37 @@ const LOOKS = [
 
 export default function LookbookPage() {
   return (
-    <div className="pt-28 pb-24 px-6 lg:px-12 max-w-7xl mx-auto space-y-16">
+    <div className="pt-36 pb-36 px-6 lg:px-12 max-w-7xl mx-auto space-y-28">
       {/* Header */}
-      <div className="border-b border-white/[0.08] pb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="border-b border-neutral-200/80 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-neutral-500">
+          <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-[#580D1A] font-semibold">
             EDITORIAL CAMPAIGN // DROP 001
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-950">
             TOKYO MONOLITH
           </h1>
-          <p className="text-xs sm:text-sm font-light text-neutral-400 max-w-lg leading-relaxed">
+          <p className="text-xs sm:text-sm font-light text-neutral-600 max-w-lg leading-relaxed">
             Photographed between Shinjuku and Aoyama under low-ambient neon. An exploration of heavy drapery against raw concrete geometry.
           </p>
         </div>
 
-        <div className="text-xs font-mono text-neutral-500 uppercase tracking-wider">
+        <div className="text-xs font-mono text-[#580D1A] uppercase tracking-wider font-semibold bg-[#580D1A]/5 px-4 py-2 rounded-full border border-[#580D1A]/20">
           4 CURATED ENSEMBLES &bull; LIMITED RUN
         </div>
       </div>
 
       {/* Editorial Looks Grid */}
-      <div className="space-y-24">
+      <div className="space-y-32">
         {LOOKS.map((look, index) => (
           <div
             key={look.id}
-            className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
+            className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
               index % 2 === 1 ? 'lg:flex-row-reverse' : ''
             }`}
           >
             {/* Image (7 cols) */}
-            <div className={`lg:col-span-7 aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 relative group ${
+            <div className={`lg:col-span-7 aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200/90 relative group shadow-xl ${
               index % 2 === 1 ? 'lg:order-2' : ''
             }`}>
               <img
@@ -121,46 +121,46 @@ export default function LookbookPage() {
                 alt={look.title}
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/15 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-white">
+              <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/95 border border-[#580D1A]/20 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-[#580D1A] font-bold shadow-md">
                 {look.number}
               </div>
             </div>
 
             {/* Look Details (5 cols) */}
             <div className={`lg:col-span-5 space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <div className="space-y-1">
-                <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest">
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-mono text-[#580D1A] uppercase tracking-widest font-semibold">
                   {look.location}
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight text-white">
+                <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight text-neutral-950">
                   {look.title}
                 </h2>
-                <p className="text-xs font-mono text-neutral-400 pt-1">
+                <p className="text-xs font-mono text-neutral-500 pt-1">
                   {look.modelNote}
                 </p>
               </div>
 
               {/* Featured Pieces in this look */}
-              <div className="space-y-3 pt-4 border-t border-white/[0.08]">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+              <div className="space-y-3 pt-6 border-t border-neutral-200">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-semibold">
                   Featured Garments
                 </span>
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {look.products.map((item) => (
                     <Link
                       key={item.handle}
                       href={`/products/${item.handle}`}
-                      className="p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-white/30 flex items-center justify-between group transition-colors"
+                      className="p-4 rounded-xl bg-white border border-neutral-200/90 hover:border-[#580D1A]/40 flex items-center justify-between group transition-all shadow-xs hover:shadow-md"
                     >
                       <div>
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-white group-hover:text-neutral-200">
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-950 group-hover:text-[#580D1A] transition-colors">
                           {item.title}
                         </h4>
-                        <span className="text-[11px] font-mono text-neutral-400">
+                        <span className="text-[11px] font-mono font-semibold text-[#580D1A]">
                           {item.price} USD
                         </span>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-white text-white group-hover:text-black flex items-center justify-center transition-colors">
+                      <div className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-[#580D1A] text-neutral-600 group-hover:text-white flex items-center justify-center transition-colors shadow-xs">
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </div>
                     </Link>

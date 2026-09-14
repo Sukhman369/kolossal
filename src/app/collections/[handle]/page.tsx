@@ -89,34 +89,34 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   }
 
   return (
-    <div className="pt-28 pb-24 px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
+    <div className="pt-32 pb-32 px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
       {/* Breadcrumbs */}
-      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-8">
-        <Link href="/" className="hover:text-white transition-colors">Home</Link>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/collections" className="hover:text-white transition-colors">Collections</Link>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-neutral-300">{info.title}</span>
+      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-10">
+        <Link href="/" className="hover:text-[#580D1A] transition-colors">Home</Link>
+        <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
+        <Link href="/collections" className="hover:text-[#580D1A] transition-colors">Collections</Link>
+        <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
+        <span className="text-neutral-900 font-medium">{info.title}</span>
       </nav>
 
       {/* Hero Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/[0.08] pb-10 mb-12 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-200/80 pb-12 mb-14 gap-6">
         <div className="space-y-2">
-          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500">
+          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] font-semibold">
             {info.subtitle}
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-950">
             {info.title}
           </h1>
-          <p className="text-xs sm:text-sm font-light text-neutral-400 max-w-xl leading-relaxed">
+          <p className="text-xs sm:text-sm font-light text-neutral-600 max-w-xl leading-relaxed">
             {info.description}
           </p>
         </div>
 
         {/* Total styles count and filter indicator */}
-        <div className="flex items-center space-x-4 text-xs font-mono text-neutral-400">
-          <div className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02]">
-            <SlidersHorizontal className="w-3.5 h-3.5" />
+        <div className="flex items-center space-x-4 text-xs font-mono text-neutral-600">
+          <div className="flex items-center space-x-1.5 px-4 py-2 rounded-full border border-[#580D1A]/20 bg-[#580D1A]/5 text-[#580D1A] font-semibold shadow-xs">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#580D1A]" />
             <span>{products.length} {products.length === 1 ? 'Style' : 'Styles'} Available</span>
           </div>
         </div>
@@ -124,13 +124,13 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
       {/* Products Grid */}
       {products.length === 0 ? (
-        <div className="py-24 text-center space-y-4">
+        <div className="py-28 text-center space-y-4">
           <p className="text-sm font-mono uppercase tracking-widest text-neutral-500">
             No styles currently available in this category
           </p>
           <Link
             href="/collections"
-            className="inline-block px-6 py-3 border border-white/20 text-xs font-mono uppercase tracking-widest text-white rounded-full hover:bg-white/10"
+            className="inline-block px-6 py-3 border border-[#580D1A] text-xs font-mono uppercase tracking-widest text-[#580D1A] rounded-full hover:bg-[#580D1A] hover:text-white transition-colors"
           >
             Explore Other Collections
           </Link>

@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}>
-      <body className="min-h-screen flex flex-col bg-[#080808] text-[#f3f3f3] selection:bg-white selection:text-black">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col bg-[#FAF9F7] text-[#111111] selection:bg-[#580D1A] selection:text-white">
         <CartProvider>
           <Navbar />
           <CartDrawer />

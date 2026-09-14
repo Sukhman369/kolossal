@@ -16,14 +16,14 @@ export default function FeaturedDrop({ products }: { products: Product[] }) {
       );
 
   return (
-    <section id="featured-drop" className="py-24 px-6 lg:px-12 max-w-7xl mx-auto bg-[#080808]">
+    <section id="featured-drop" className="py-32 px-6 lg:px-12 max-w-7xl mx-auto bg-[#FAF9F7]">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/[0.08] gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-neutral-200/80 gap-6">
         <div className="space-y-2">
-          <div className="text-[11px] font-mono tracking-[0.25em] text-neutral-500 uppercase">
+          <div className="text-[11px] font-mono tracking-[0.25em] text-[#580D1A] uppercase font-semibold">
             CURATED CATALOG // DROP 001
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-neutral-950">
             ARCHITECTURAL ESSENTIALS
           </h2>
         </div>
@@ -34,10 +34,10 @@ export default function FeaturedDrop({ products }: { products: Product[] }) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-[11px] font-mono uppercase tracking-[0.2em] transition-all duration-300 ${
+              className={`px-4 py-2.5 rounded-full text-[11px] font-mono uppercase tracking-[0.2em] transition-all duration-300 ${
                 activeCategory === cat
-                  ? 'bg-white text-black font-semibold'
-                  : 'bg-white/[0.03] border border-white/10 text-neutral-400 hover:text-white hover:border-white/30'
+                  ? 'bg-[#580D1A] text-white font-semibold shadow-md shadow-[#580D1A]/20'
+                  : 'bg-white border border-neutral-200 text-neutral-600 hover:border-[#580D1A] hover:text-[#580D1A]'
               }`}
             >
               {cat}

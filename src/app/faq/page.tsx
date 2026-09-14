@@ -58,62 +58,62 @@ export default function FAQPage() {
   );
 
   return (
-    <div className="pt-28 pb-24 px-6 lg:px-12 max-w-4xl mx-auto space-y-16">
+    <div className="pt-36 pb-36 px-6 lg:px-12 max-w-4xl mx-auto space-y-16">
       {/* Header */}
-      <div className="border-b border-white/[0.08] pb-8 space-y-3">
-        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500">
+      <div className="border-b border-neutral-200/80 pb-10 space-y-3">
+        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] font-semibold">
           KNOWLEDGE BASE
         </span>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-neutral-950">
           FREQUENTLY ASKED
         </h1>
-        <p className="text-xs sm:text-sm font-light text-neutral-400 max-w-xl leading-relaxed">
+        <p className="text-xs sm:text-sm font-light text-neutral-600 max-w-xl leading-relaxed">
           Detailed explanations regarding our 500 GSM milling protocols, worldwide DDP express shipping, and drop mechanics.
         </p>
       </div>
 
       {/* Search Input */}
       <div className="relative">
-        <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500" />
+        <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400" />
         <input
           type="text"
           placeholder="SEARCH TOPICS (GSM, SHIPPING, RETURNS, SIZING)..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full bg-white/[0.03] border border-white/15 pl-11 pr-4 py-4 rounded-2xl text-xs font-mono tracking-wider text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/40"
+          className="w-full bg-white border border-neutral-300 pl-11 pr-4 py-4 rounded-2xl text-xs font-mono tracking-wider text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] shadow-xs"
         />
       </div>
 
       {/* FAQ Accordion List */}
-      <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+      <div className="divide-y divide-neutral-200 border-y border-neutral-200">
         {filteredFaqs.length === 0 ? (
-          <div className="py-16 text-center text-xs font-mono text-neutral-500 uppercase tracking-widest">
+          <div className="py-20 text-center text-xs font-mono text-neutral-500 uppercase tracking-widest">
             No matching questions found for "{search}"
           </div>
         ) : (
           filteredFaqs.map((faq, index) => (
-            <div key={index} className="py-6">
+            <div key={index} className="py-7">
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex items-center justify-between text-left space-x-4 group"
               >
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                  <span className="text-[10px] font-mono text-[#580D1A] uppercase tracking-widest font-semibold">
                     {faq.category}
                   </span>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-white group-hover:text-neutral-300 transition-colors">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-950 group-hover:text-[#580D1A] transition-colors">
                     {faq.q}
                   </h3>
                 </div>
-                <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 transition-transform duration-300 flex-shrink-0 ${
-                  openIndex === index ? 'rotate-180 text-white bg-white/10' : ''
+                <div className={`w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-500 transition-transform duration-300 flex-shrink-0 ${
+                  openIndex === index ? 'rotate-180 text-[#580D1A] bg-[#580D1A]/10 border-[#580D1A]/30' : ''
                 }`}>
                   <ChevronDown className="w-4 h-4" />
                 </div>
               </button>
 
               {openIndex === index && (
-                <div className="pt-4 text-xs font-light text-neutral-400 leading-relaxed max-w-2xl">
+                <div className="pt-4 text-xs font-light text-neutral-600 leading-relaxed max-w-2xl">
                   {faq.a}
                 </div>
               )}
@@ -123,17 +123,17 @@ export default function FAQPage() {
       </div>
 
       {/* Still need help banner */}
-      <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="p-8 rounded-2xl bg-white border border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
         <div className="flex items-center space-x-4">
-          <HelpCircle className="w-8 h-8 text-neutral-400 flex-shrink-0" />
+          <HelpCircle className="w-8 h-8 text-[#580D1A] flex-shrink-0" />
           <div>
-            <h4 className="text-sm font-semibold uppercase text-white">Have a Specific Inquiry?</h4>
-            <p className="text-xs text-neutral-400 font-mono">Our client concierge team is ready to assist.</p>
+            <h4 className="text-sm font-semibold uppercase text-neutral-950">Have a Specific Inquiry?</h4>
+            <p className="text-xs text-neutral-500 font-mono">Our client concierge team is ready to assist.</p>
           </div>
         </div>
         <a
           href="/contact"
-          className="px-6 py-3 bg-white text-black font-semibold text-xs uppercase tracking-widest rounded-full hover:bg-neutral-200 transition-colors flex-shrink-0"
+          className="px-6 py-3 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-widest rounded-full hover:bg-[#430913] transition-colors flex-shrink-0 shadow-sm"
         >
           Contact Advisory
         </a>

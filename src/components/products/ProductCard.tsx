@@ -37,11 +37,11 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* Product Image Frame */}
       <Link
         href={`/products/${product.handle}`}
-        className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-900 border border-white/[0.08] transition-all duration-500 group-hover:border-white/25 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.8)] block"
+        className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-neutral-100 border border-neutral-200/80 transition-all duration-500 group-hover:border-[#580D1A]/40 group-hover:shadow-[0_12px_35px_rgba(88,13,26,0.08)] block"
       >
         {/* Badge */}
         {product.badge && (
-          <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-black/60 border border-white/15 backdrop-blur-md text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-200">
+          <div className="absolute top-3.5 left-3.5 z-10 px-3 py-1 rounded-full bg-[#580D1A] text-white text-[9px] font-mono uppercase tracking-[0.2em] font-semibold shadow-md">
             {product.badge}
           </div>
         )}
@@ -55,15 +55,15 @@ export default function ProductCard({ product }: { product: Product }) {
         />
 
         {/* Hover Quick Add Overlay */}
-        <div className="absolute inset-x-3 bottom-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+        <div className="absolute inset-x-3.5 bottom-3.5 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
           <button
             onClick={handleQuickAdd}
             disabled={isAdding}
-            className="w-full py-3 px-4 bg-white/95 hover:bg-white text-black text-xs font-semibold uppercase tracking-[0.18em] rounded-lg backdrop-blur-md flex items-center justify-center space-x-2 transition-transform active:scale-95 shadow-xl"
+            className="w-full py-3.5 px-4 bg-[#580D1A] hover:bg-[#3F0712] text-white text-xs font-semibold uppercase tracking-[0.18em] rounded-xl shadow-xl flex items-center justify-center space-x-2 transition-transform active:scale-95"
           >
             {added ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                <Check className="w-3.5 h-3.5 text-white" />
                 <span>Added to Bag</span>
               </>
             ) : (
@@ -77,14 +77,14 @@ export default function ProductCard({ product }: { product: Product }) {
       </Link>
 
       {/* Product Details */}
-      <div className="flex flex-col space-y-1.5 px-0.5">
+      <div className="flex flex-col space-y-1.5 px-1">
         <div className="flex justify-between items-baseline">
           <Link href={`/products/${product.handle}`}>
-            <h3 className="text-xs uppercase tracking-[0.18em] font-semibold text-white hover:text-neutral-300 transition-colors">
+            <h3 className="text-xs uppercase tracking-[0.18em] font-semibold text-neutral-900 group-hover:text-[#580D1A] transition-colors">
               {product.title}
             </h3>
           </Link>
-          <span className="text-xs font-mono font-medium text-neutral-300">
+          <span className="text-xs font-mono font-bold text-[#580D1A]">
             ${product.price.amount} {product.price.currencyCode}
           </span>
         </div>
@@ -96,8 +96,8 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
 
         {/* Available Sizes / Colors Preview */}
-        <div className="flex items-center justify-between pt-1 text-[10px] font-mono text-neutral-500">
-          <div className="flex items-center space-x-2">
+        <div className="flex items-center justify-between pt-1.5 text-[10px] font-mono text-neutral-500">
+          <div className="flex items-center space-x-1.5">
             {product.sizes?.map((size) => (
               <button
                 key={size}
@@ -105,10 +105,10 @@ export default function ProductCard({ product }: { product: Product }) {
                   e.stopPropagation();
                   setSelectedSize(size);
                 }}
-                className={`px-1.5 py-0.5 rounded border transition-colors ${
+                className={`px-2 py-0.5 rounded-md border transition-colors ${
                   selectedSize === size
-                    ? 'border-white text-white bg-white/10'
-                    : 'border-white/10 hover:border-white/30 text-neutral-400'
+                    ? 'border-[#580D1A] text-[#580D1A] bg-[#580D1A]/10 font-bold'
+                    : 'border-neutral-200 hover:border-[#580D1A]/40 text-neutral-600'
                 }`}
               >
                 {size}
@@ -116,7 +116,7 @@ export default function ProductCard({ product }: { product: Product }) {
             ))}
           </div>
 
-          <span>{product.colors?.[0]}</span>
+          <span className="text-neutral-500">{product.colors?.[0]}</span>
         </div>
       </div>
     </div>

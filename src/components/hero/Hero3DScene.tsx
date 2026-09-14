@@ -118,7 +118,7 @@ export default function Hero3DScene() {
       >
         <ambientLight intensity={0.6} />
         <directionalLight position={[6, 8, 5]} intensity={1.8} castShadow />
-        <pointLight position={[-6, -4, -4]} intensity={0.8} color="#9999ff" />
+        <pointLight position={[-6, -4, -4]} intensity={1.2} color="#781428" />
         <spotLight position={[0, 5, 2]} intensity={1.5} angle={0.6} penumbra={1} />
 
         <Suspense fallback={null}>
@@ -133,11 +133,11 @@ export default function Hero3DScene() {
           <Environment preset="city" />
           <ContactShadows
             position={[0, -1.9, 0]}
-            opacity={0.65}
+            opacity={0.35}
             scale={8}
             blur={2.4}
             far={4}
-            color="#000000"
+            color="#3A0811"
           />
         </Suspense>
 
@@ -151,9 +151,9 @@ export default function Hero3DScene() {
       </Canvas>
 
       {/* Floating 3D Interaction Badge */}
-      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md text-[10px] tracking-[0.2em] uppercase font-mono text-white/70">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-        <span>3D Scene Active // Drag to Rotate</span>
+      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#580D1A]/20 shadow-md backdrop-blur-md text-[10px] tracking-[0.2em] uppercase font-mono text-[#580D1A]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-ping" />
+        <span className="font-semibold">3D Scene Active // Drag to Rotate</span>
       </div>
     </div>
   );

@@ -38,78 +38,78 @@ export default function CartPage() {
   };
 
   return (
-    <div className="pt-28 pb-24 px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
+    <div className="pt-32 pb-32 px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
       {/* Breadcrumbs */}
-      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-8">
-        <Link href="/" className="hover:text-white transition-colors">Home</Link>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-neutral-300">Shopping Bag</span>
+      <nav className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-10">
+        <Link href="/" className="hover:text-[#580D1A] transition-colors">Home</Link>
+        <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
+        <span className="text-neutral-900 font-medium">Shopping Bag</span>
       </nav>
 
       {/* Header */}
-      <div className="border-b border-white/[0.08] pb-6 mb-10 flex justify-between items-end">
+      <div className="border-b border-neutral-200/80 pb-6 mb-12 flex justify-between items-end">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500">
+          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] font-semibold">
             YOUR SELECTION
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white mt-1">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-neutral-950 mt-1">
             SHOPPING BAG ({cart.itemCount})
           </h1>
         </div>
         <Link
           href="/collections"
-          className="hidden sm:inline-flex items-center text-xs font-mono uppercase tracking-widest text-neutral-400 hover:text-white transition-colors"
+          className="hidden sm:inline-flex items-center text-xs font-mono uppercase tracking-widest text-[#580D1A] hover:underline underline-offset-4 font-medium transition-colors"
         >
           Continue Shopping →
         </Link>
       </div>
 
       {cart.items.length === 0 ? (
-        <div className="py-24 text-center space-y-6 max-w-md mx-auto">
-          <div className="w-16 h-16 rounded-full border border-white/15 bg-white/[0.02] flex items-center justify-center mx-auto text-2xl text-neutral-400 font-mono">
+        <div className="py-28 text-center space-y-6 max-w-md mx-auto">
+          <div className="w-16 h-16 rounded-full border border-[#580D1A]/20 bg-[#580D1A]/5 flex items-center justify-center mx-auto text-2xl text-[#580D1A] font-serif">
             ∅
           </div>
-          <h2 className="text-xl font-bold uppercase tracking-tight text-white">
+          <h2 className="text-xl font-bold uppercase tracking-tight text-neutral-950">
             Your Bag is Empty
           </h2>
-          <p className="text-xs font-light text-neutral-400 leading-relaxed">
+          <p className="text-xs font-light text-neutral-600 leading-relaxed">
             There are currently no items in your shopping bag. Explore our curated drop of architectural garments.
           </p>
           <Link
             href="/collections"
-            className="inline-block px-8 py-4 bg-white text-black font-semibold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-neutral-200 transition-all active:scale-95"
+            className="inline-block px-8 py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#430913] transition-all shadow-md active:scale-95"
           >
             Explore Drop 001
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Items Table / List (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             {/* Free Shipping Meter Banner */}
-            <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02] space-y-2">
+            <div className="p-5 rounded-2xl border border-neutral-200 bg-white shadow-xs space-y-2.5">
               <div className="flex justify-between items-center text-xs font-mono">
-                <span className="text-neutral-400">
+                <span className="text-neutral-700">
                   {remainingForFreeShipping > 0
                     ? `Add $${remainingForFreeShipping.toFixed(2)} more for complimentary express delivery`
                     : '✓ Complimentary Worldwide Express Delivery Unlocked'}
                 </span>
-                <span className="text-neutral-300 font-bold">{progressPercent}%</span>
+                <span className="text-[#580D1A] font-bold">{progressPercent}%</span>
               </div>
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-neutral-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-white transition-all duration-500 ease-out"
+                  className="h-full bg-[#580D1A] transition-all duration-500 ease-out"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
             </div>
 
             {/* Line items list */}
-            <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+            <div className="divide-y divide-neutral-200/80 border-y border-neutral-200/80">
               {cart.items.map((item) => (
-                <div key={item.id} className="py-6 flex gap-6 items-start">
+                <div key={item.id} className="py-7 flex gap-6 items-start">
                   {/* Thumbnail */}
-                  <div className="w-24 h-32 rounded-xl bg-neutral-900 border border-white/10 overflow-hidden flex-shrink-0 relative">
+                  <div className="w-24 h-32 rounded-xl bg-white border border-neutral-200 overflow-hidden flex-shrink-0 relative shadow-sm">
                     {item.image && (
                       <img
                         src={item.image}
@@ -124,19 +124,19 @@ export default function CartPage() {
                     <div className="space-y-1">
                       <div className="flex justify-between items-start">
                         <Link href={`/products/${item.productId}`}>
-                          <h3 className="text-sm font-semibold uppercase tracking-wider text-white hover:text-neutral-300 transition-colors">
+                          <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-950 hover:text-[#580D1A] transition-colors">
                             {item.title}
                           </h3>
                         </Link>
                         <button
                           onClick={() => removeItem(item.id)}
-                          className="text-neutral-500 hover:text-red-400 transition-colors p-1"
+                          className="text-neutral-400 hover:text-[#580D1A] transition-colors p-1"
                           aria-label="Remove item"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                      <p className="text-xs font-mono text-neutral-400">
+                      <p className="text-xs font-mono text-neutral-500">
                         {item.variantTitle}
                       </p>
                       <p className="text-xs font-mono text-neutral-500 pt-1">
@@ -146,26 +146,26 @@ export default function CartPage() {
 
                     <div className="flex justify-between items-center pt-4">
                       {/* Quantity Modifier */}
-                      <div className="inline-flex items-center border border-white/20 rounded-full bg-white/[0.03]">
+                      <div className="inline-flex items-center border border-neutral-300 rounded-full bg-white shadow-xs">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="p-2 text-neutral-400 hover:text-white transition-colors"
+                          className="p-2 text-neutral-500 hover:text-[#580D1A] transition-colors"
                         >
                           <Minus className="w-3.5 h-3.5" />
                         </button>
-                        <span className="px-3 text-xs font-mono font-semibold text-white">
+                        <span className="px-3 text-xs font-mono font-semibold text-neutral-900">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="p-2 text-neutral-400 hover:text-white transition-colors"
+                          className="p-2 text-neutral-500 hover:text-[#580D1A] transition-colors"
                         >
                           <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
 
                       {/* Total */}
-                      <span className="text-sm font-mono font-bold text-white">
+                      <span className="text-sm font-mono font-bold text-[#580D1A]">
                         ${(item.price.amount * item.quantity).toFixed(2)}
                       </span>
                     </div>
@@ -175,25 +175,25 @@ export default function CartPage() {
             </div>
 
             {/* Service Guarantees */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-mono text-neutral-400">
-              <div className="flex items-center space-x-2.5 p-3 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                <Truck className="w-4 h-4 text-neutral-300" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-mono text-neutral-600">
+              <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                <Truck className="w-4 h-4 text-[#580D1A]" />
                 <span>DHL Express Tracked</span>
               </div>
-              <div className="flex items-center space-x-2.5 p-3 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                <RotateCcw className="w-4 h-4 text-neutral-300" />
-                <span>30-Day Hassle-Free Returns</span>
+              <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                <RotateCcw className="w-4 h-4 text-[#580D1A]" />
+                <span>30-Day Hassle Returns</span>
               </div>
-              <div className="flex items-center space-x-2.5 p-3 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                <ShieldCheck className="w-4 h-4 text-neutral-300" />
+              <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                <ShieldCheck className="w-4 h-4 text-[#580D1A]" />
                 <span>Duties Delivered Paid</span>
               </div>
             </div>
           </div>
 
           {/* Order Summary Sidebar (5 cols) */}
-          <div className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#0c0c0c] p-6 lg:p-8 space-y-6 sticky top-28">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-white border-b border-white/[0.08] pb-4">
+          <div className="lg:col-span-5 rounded-2xl border border-neutral-200 bg-white p-7 lg:p-9 space-y-6 sticky top-28 shadow-lg">
+            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-neutral-950 border-b border-neutral-200 pb-4">
               Order Summary
             </h2>
 
@@ -201,58 +201,58 @@ export default function CartPage() {
             <form onSubmit={handleApplyPromo} className="space-y-2">
               <div className="flex gap-2">
                 <div className="relative flex-1">
-                  <Tag className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+                  <Tag className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
                   <input
                     type="text"
                     placeholder="PROMO CODE (TRY: ARCHIVE10)"
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/15 pl-9 pr-3 py-2.5 rounded-lg text-xs font-mono tracking-wider text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/40"
+                    className="w-full bg-neutral-50 border border-neutral-300 pl-9 pr-3 py-2.5 rounded-xl text-xs font-mono tracking-wider text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A]"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="px-4 py-2.5 border border-white/20 text-xs font-mono uppercase tracking-wider rounded-lg hover:bg-white/10 text-white transition-colors"
+                  className="px-4 py-2.5 border border-[#580D1A] text-xs font-mono uppercase tracking-wider rounded-xl hover:bg-[#580D1A] text-[#580D1A] hover:text-white transition-colors font-medium"
                 >
                   Apply
                 </button>
               </div>
               {discountApplied && (
-                <p className="text-[11px] font-mono text-emerald-400">
+                <p className="text-[11px] font-mono text-[#580D1A] font-semibold">
                   ✓ 10% ARCHIVE DISCOUNT APPLIED (-${discountAmount.toFixed(2)})
                 </p>
               )}
             </form>
 
             {/* Calculations */}
-            <div className="space-y-3 pt-2 text-xs font-mono text-neutral-400 border-t border-white/[0.08]">
+            <div className="space-y-3 pt-2 text-xs font-mono text-neutral-600 border-t border-neutral-200">
               <div className="flex justify-between">
                 <span>Items Subtotal</span>
-                <span className="text-white font-semibold">
+                <span className="text-neutral-900 font-semibold">
                   ${cart.subtotal.amount.toFixed(2)}
                 </span>
               </div>
               {discountApplied && (
-                <div className="flex justify-between text-emerald-400">
+                <div className="flex justify-between text-[#580D1A] font-medium">
                   <span>Archive Discount (10%)</span>
                   <span>-${discountAmount.toFixed(2)}</span>
                 </div>
               )}
               <div className="flex justify-between">
                 <span>Worldwide Shipping</span>
-                <span className="text-white">
+                <span className="text-neutral-900">
                   {remainingForFreeShipping === 0 ? 'COMPLIMENTARY' : '$25.00'}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span>Estimated Import Duties (DDP)</span>
-                <span className="text-neutral-300">INCLUDED</span>
+                <span className="text-neutral-700">INCLUDED</span>
               </div>
 
               {/* Final Total */}
-              <div className="border-t border-white/[0.08] pt-4 flex justify-between text-sm font-bold text-white">
+              <div className="border-t border-neutral-200 pt-4 flex justify-between text-sm font-bold text-neutral-950">
                 <span className="uppercase tracking-wider">Total</span>
-                <span className="text-lg">
+                <span className="text-xl text-[#580D1A]">
                   ${(finalTotal + (remainingForFreeShipping === 0 ? 0 : 25)).toFixed(2)} USD
                 </span>
               </div>
@@ -261,14 +261,14 @@ export default function CartPage() {
             {/* Checkout CTA */}
             <Link
               href="/checkout"
-              className="w-full py-4 bg-white text-black font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-neutral-200 active:scale-98 shadow-[0_0_30px_rgba(255,255,255,0.2)] block text-center"
+              className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg block text-center"
             >
               <span>Proceed to Checkout</span>
               <ArrowRight className="w-4 h-4 inline ml-1" />
             </Link>
 
             <div className="flex items-center justify-center space-x-2 text-[10px] font-mono text-neutral-500 uppercase text-center pt-2">
-              <ShieldCheck className="w-3.5 h-3.5" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#580D1A]" />
               <span>Apple Pay &bull; Google Pay &bull; Credit Cards Accepted</span>
             </div>
           </div>
