@@ -156,11 +156,6 @@ export default function Hero3DScene() {
         />
       </Canvas>
 
-      {/* Floating 3D Interaction Badge */}
-      <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10 flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#580D1A]/20 shadow-md backdrop-blur-md text-[10px] tracking-[0.2em] uppercase font-mono text-[#580D1A]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-ping" />
-        <span className="font-semibold">3D Scene Active // Drag to Rotate</span>
-      </div>
     </div>
   );
 }
