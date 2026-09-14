@@ -128,64 +128,77 @@ export default function Navbar() {
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-30 bg-[#FAF9F7]/98 backdrop-blur-2xl flex flex-col justify-center px-8 space-y-6 lg:hidden pt-20">
-          <nav className="flex flex-col space-y-5 text-lg uppercase tracking-[0.25em] font-semibold text-neutral-900">
-            <Link
-              href="/collections"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400"
-            >
-              Collections
-            </Link>
-            <Link
-              href="/collections/outerwear"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400"
-            >
-              Outerwear
-            </Link>
-            <Link
-              href="/collections/hoodies"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400"
-            >
-              Heavyweights
-            </Link>
-            <Link
-              href="/lookbook"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400"
-            >
-              Lookbook
-            </Link>
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400"
-            >
-              About Brand
-            </Link>
-            <Link
-              href="/size-guide"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400 text-sm font-normal text-neutral-400"
-            >
-              Size Matrix
-            </Link>
-            <Link
-              href="/track-order"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400 text-sm font-normal text-neutral-400"
-            >
-              Track Order
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-neutral-400 text-sm font-normal text-neutral-400"
-            >
-              Concierge
-            </Link>
-          </nav>
+            <div className="space-y-4">
+              <span className="text-[10px] font-mono tracking-widest text-[#580D1A] uppercase font-semibold">
+                01 / CATALOGUE
+              </span>
+              <div className="flex flex-col space-y-2.5 text-sm uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                <Link href="/collections" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  All Collections
+                </Link>
+                <Link href="/collections?filter=new" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  New Arrivals (SS26)
+                </Link>
+                <Link href="/collections/outerwear" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Outerwear & Trench
+                </Link>
+                <Link href="/collections/hoodies" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Fine Knitwear & Hoodies
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <span className="text-[10px] font-mono tracking-widest text-[#580D1A] uppercase font-semibold">
+                02 / CLIENT CARE
+              </span>
+              <div className="flex flex-col space-y-2 text-xs uppercase tracking-[0.18em] font-medium text-neutral-700">
+                <Link href="/size-guide" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Size Guide
+                </Link>
+                <Link href="/shipping" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Shipping & Delivery
+                </Link>
+                <Link href="/returns" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Exchange & Replacement
+                </Link>
+                <Link href="/garment-care" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Garment Care
+                </Link>
+                <Link href="/faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Frequently Asked Questions
+                </Link>
+                <Link href="/track-order" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Track Your Order
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <span className="text-[10px] font-mono tracking-widest text-[#580D1A] uppercase font-semibold">
+                03 / BRAND & LEGAL
+              </span>
+              <div className="flex flex-col space-y-2 text-xs uppercase tracking-[0.18em] font-medium text-neutral-700">
+                <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Our Story
+                </Link>
+                <Link href="/lookbook" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Seasonal Lookbook
+                </Link>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Client Concierge Desk
+                </Link>
+                <Link href="/sustainability" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Sustainability & Audit
+                </Link>
+                <Link href="/privacy" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms-and-conditions" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
+                  Terms & Conditions
+                </Link>
+              </div>
+            </div>
 
           <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
             <span>BACKEND: {provider}</span>

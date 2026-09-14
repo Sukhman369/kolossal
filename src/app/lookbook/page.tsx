@@ -1,176 +1,263 @@
-import React from 'react';
-import Link from 'next/link';
-import { Metadata } from 'next';
-import { ArrowUpRight } from 'lucide-react';
+import { Metadata } from "next"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: 'Campaign Lookbook | KOLOSSAL',
-  description: 'Editorial lookbook for Kolossal Drop 001. Photographed on location in Tokyo and Milan.',
-};
+  title: "Lookbook & Editorial Archive | SNOOV",
+  description:
+    "Explore SNOOV's seasonal lookbooks, campaign editorials, architectural tailoring silhouettes, and high-contrast GenZ streetwear archives.",
+  alternates: {
+    canonical: "https://snoovlifestyle.com/lookbook",
+  },
+}
 
-const LOOKS = [
-  {
-    id: 'look_01',
-    number: 'LOOK 01',
-    title: 'The Monolith Trench & Origami Cargo',
-    location: 'Shinjuku, Tokyo // 03:00 AM',
-    modelNote: 'Model is 186cm wearing Trench (Size 50) and Cargo (Size 32)',
-    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1400&auto=format&fit=crop',
-    products: [
+export default async function LookbookPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
       {
-        title: 'Monolith Tailored Trench Coat',
-        handle: 'monolith-oversized-wool-overcoat',
-        price: '$580',
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://snoovlifestyle.com",
       },
       {
-        title: 'Architectural Pleated Cargo Pant',
-        handle: 'architectural-wide-pleated-cargo',
-        price: '$240',
+        "@type": "ListItem",
+        position: 2,
+        name: "Lookbook",
+        item: "https://snoovlifestyle.com/lookbook",
       },
     ],
-  },
-  {
-    id: 'look_02',
-    number: 'LOOK 02',
-    title: '500 GSM Monolith Hoodie & Silver Link',
-    location: 'Ginza Underground // 05:30 AM',
-    modelNote: 'Model is 182cm wearing Hoodie (Size Large) and Chain (50cm)',
-    image: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=1400&auto=format&fit=crop',
-    products: [
-      {
-        title: 'Monolith Heavyweight Hoodie',
-        handle: 'kolossal-monolith-heavyweight-hoodie',
-        price: '$185',
-      },
-      {
-        title: 'Brutalist Monogram Signet Chain',
-        handle: 'kolossal-sterling-chain',
-        price: '$290',
-      },
-    ],
-  },
-  {
-    id: 'look_03',
-    number: 'LOOK 03',
-    title: 'Tactical Matte Puffer & Pleated Cargo',
-    location: 'Roppongi Crossing // 01:15 AM',
-    modelNote: 'Model is 188cm wearing Matte Puffer (Size Large)',
-    image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=1400&auto=format&fit=crop',
-    products: [
-      {
-        title: 'Tactical Matte Puffer Jacket',
-        handle: 'tactical-down-oversized-puffer',
-        price: '$395',
-      },
-    ],
-  },
-  {
-    id: 'look_04',
-    number: 'LOOK 04',
-    title: 'Sculpted Boxy Drop-Tee & Raw Denim',
-    location: 'Aoyama Concrete Studio // 11:00 AM',
-    modelNote: 'Model is 180cm wearing Sculpted Drop-Tee (Size Medium)',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1400&auto=format&fit=crop',
-    products: [
-      {
-        title: 'Sculpted Boxy Drop-Tee',
-        handle: 'sculpted-monogram-tee',
-        price: '$95',
-      },
-    ],
-  },
-];
+  }
 
-export default function LookbookPage() {
+  const looks = [
+    {
+      id: "LOOK 01",
+      title: "The Orca Trench & Heavyweight Mockneck",
+      season: "SS26 Collection",
+      fabric: "500 GSM Organic French Terry · European Flax®",
+      aspect: "aspect-[3/4]",
+      tag: "OVERSIZED DRAPE",
+    },
+    {
+      id: "LOOK 02",
+      title: "Architectural Drop-Shoulder Hoodie & Relaxed Pant",
+      season: "SS26 Collection",
+      fabric: "480 GSM Heavy Jersey · Mineral Dye Charcoal",
+      aspect: "aspect-[4/5]",
+      tag: "MONOCHROME STEALTH",
+    },
+    {
+      id: "LOOK 03",
+      title: "Structured Boxy Blazer in Raw Unbleached Hemp",
+      season: "SS26 Collection",
+      fabric: "100% Organic Hemp & Linen Blend",
+      aspect: "aspect-[3/4]",
+      tag: "TAILORED RESTRAINT",
+    },
+    {
+      id: "LOOK 04",
+      title: "Tactile Fine-Gauge Knit & Pleated Wide Trouser",
+      season: "SS26 Collection",
+      fabric: "GOTS Certified Organic Merino & Cotton",
+      aspect: "aspect-[4/5]",
+      tag: "MINIMALIST SILHOUETTE",
+    },
+    {
+      id: "LOOK 05",
+      title: "Cropped Heavyweight Blouson & Leather Crossbody",
+      season: "SS26 Collection",
+      fabric: "Vegetable-Tanned Cowhide · Canvas Canvas",
+      aspect: "aspect-[3/4]",
+      tag: "STREET ARCHITECTURE",
+    },
+    {
+      id: "LOOK 06",
+      title: "Monolithic Overshirt & Distressed Raw Denim",
+      season: "SS26 Collection",
+      fabric: "14oz Selvedge Organic Cotton",
+      aspect: "aspect-[4/5]",
+      tag: "ENDURING WEAR",
+    },
+  ]
+
   return (
-    <div className="pt-36 pb-36 px-6 lg:px-12 max-w-7xl mx-auto space-y-28">
-      {/* Header */}
-      <div className="border-b border-neutral-200/80 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div className="space-y-2">
-          <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-[#580D1A] font-semibold">
-            EDITORIAL CAMPAIGN // DROP 001
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-950">
-            TOKYO MONOLITH
-          </h1>
-          <p className="text-xs sm:text-sm font-light text-neutral-600 max-w-lg leading-relaxed">
-            Photographed between Shinjuku and Aoyama under low-ambient neon. An exploration of heavy drapery against raw concrete geometry.
-          </p>
-        </div>
+    <div className="bg-snoov-canvas text-snoov-charcoal min-h-screen">
+      {/* Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
-        <div className="text-xs font-mono text-[#580D1A] uppercase tracking-wider font-semibold bg-[#580D1A]/5 px-4 py-2 rounded-full border border-[#580D1A]/20">
-          4 CURATED ENSEMBLES &bull; LIMITED RUN
-        </div>
-      </div>
+      {/* ── Page Header / Editorial Masthead ── */}
+      <section className="border-b border-snoov-border pt-12 sm:pt-20 pb-12 sm:pb-16">
+        <div className="content-container">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-snoov-muted mb-6">
+            <LocalizedClientLink href="/" className="hover:text-snoov-green transition-colors">
+              Home
+            </LocalizedClientLink>
+            <span>/</span>
+            <span className="text-snoov-charcoal font-semibold">Lookbook</span>
+          </nav>
 
-      {/* Editorial Looks Grid */}
-      <div className="space-y-32">
-        {LOOKS.map((look, index) => (
-          <div
-            key={look.id}
-            className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
-              index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-            }`}
-          >
-            {/* Image (7 cols) */}
-            <div className={`lg:col-span-7 aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200/90 relative group shadow-xl ${
-              index % 2 === 1 ? 'lg:order-2' : ''
-            }`}>
-              <img
-                src={look.image}
-                alt={look.title}
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/95 border border-[#580D1A]/20 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-[#580D1A] font-bold shadow-md">
-                {look.number}
-              </div>
+          <div className="max-w-4xl space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-snoov-charcoal text-snoov-canvas rounded-sm font-semibold">
+                SEASONAL ARCHIVE · SS26
+              </span>
+              <span className="text-[11px] font-mono text-snoov-green font-semibold uppercase tracking-wider">
+                EDITORIAL CAMPAIGN
+              </span>
             </div>
 
-            {/* Look Details (5 cols) */}
-            <div className={`lg:col-span-5 space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <div className="space-y-1.5">
-                <span className="text-[11px] font-mono text-[#580D1A] uppercase tracking-widest font-semibold">
-                  {look.location}
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight text-neutral-950">
-                  {look.title}
-                </h2>
-                <p className="text-xs font-mono text-neutral-500 pt-1">
-                  {look.modelNote}
-                </p>
-              </div>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-light tracking-tight text-snoov-charcoal leading-[1.05]">
+              The Orca Instinct: Lookbook SS26
+            </h1>
 
-              {/* Featured Pieces in this look */}
-              <div className="space-y-3 pt-6 border-t border-neutral-200">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-semibold">
-                  Featured Garments
-                </span>
-                <div className="space-y-3">
-                  {look.products.map((item) => (
-                    <Link
-                      key={item.handle}
-                      href={`/products/${item.handle}`}
-                      className="p-4 rounded-xl bg-white border border-neutral-200/90 hover:border-[#580D1A]/40 flex items-center justify-between group transition-all shadow-xs hover:shadow-md"
-                    >
-                      <div>
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-950 group-hover:text-[#580D1A] transition-colors">
-                          {item.title}
-                        </h4>
-                        <span className="text-[11px] font-mono font-semibold text-[#580D1A]">
-                          {item.price} USD
-                        </span>
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-[#580D1A] text-neutral-600 group-hover:text-white flex items-center justify-center transition-colors shadow-xs">
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
+            <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
+              High contrast, drop-shoulder silhouettes, and tactile organic weights. Sculpted with architectural discipline for the next generation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Featured Campaign Hero Visual Slot ── */}
+      <section className="content-container pt-8 sm:pt-12">
+        <div className="w-full relative aspect-[16/9] sm:aspect-[21/9] bg-snoov-sand/50 border border-snoov-border rounded-base flex flex-col items-center justify-center text-center p-6 sm:p-12 overflow-hidden select-none">
+          <div className="space-y-3 max-w-md">
+            <span className="inline-block px-3 py-1 bg-snoov-charcoal text-snoov-canvas text-[10px] font-mono uppercase tracking-widest rounded-sm font-semibold">
+              FEATURED EDITORIAL COVER
+            </span>
+            <p className="text-xs sm:text-sm font-mono text-snoov-muted uppercase tracking-wider">
+              [ 1920 × 850px · SS26 CAMPAIGN KEY VISUAL ]
+            </p>
+            <p className="text-[11px] text-snoov-muted/80 font-sans italic">
+              Key seasonal visual: Look 01 & Look 02 duo styling in Atlantic ocean mist.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Editorial Looks Gallery Grid ── */}
+      <section className="content-container py-16 sm:py-24">
+        <div className="space-y-12">
+          
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-snoov-border pb-6 gap-4">
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-snoov-green font-semibold block mb-1">
+                01 / CURATED RUNWAY & STREET EDITORIAL
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-serif text-snoov-charcoal font-normal">
+                Silhouette Gallery
+              </h2>
+            </div>
+            <div className="text-xs font-mono text-snoov-muted">
+              6 ARCHIVAL LOOKS · EDITED BY SNOOV
             </div>
           </div>
-        ))}
-      </div>
+
+          {/* Asymmetric Looks Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            {looks.map((look) => (
+              <div key={look.id} className="group space-y-4">
+                
+                {/* Look Image Placeholder */}
+                <div className={`w-full ${look.aspect} bg-snoov-sand/40 border border-snoov-border rounded-base flex flex-col items-center justify-center p-6 text-center transition-all duration-300 group-hover:border-snoov-green/50 group-hover:bg-snoov-sand/60 select-none`}>
+                  <span className="px-2.5 py-1 bg-snoov-canvas text-snoov-charcoal text-[10px] font-mono uppercase tracking-widest rounded-sm border border-snoov-border font-semibold mb-2">
+                    {look.id}
+                  </span>
+                  <span className="text-[11px] font-mono text-snoov-green font-semibold uppercase tracking-wider mb-2">
+                    {look.tag}
+                  </span>
+                  <p className="text-xs font-mono text-snoov-muted uppercase tracking-wider">
+                    [ EDITORIAL IMAGE SLOT · {look.aspect.replace("aspect-[", "").replace("]", "")} ]
+                  </p>
+                </div>
+
+                {/* Look Details & Meta */}
+                <div className="space-y-1.5 pt-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono text-snoov-green uppercase font-semibold">
+                      {look.id} · {look.season}
+                    </span>
+                    <LocalizedClientLink
+                      href="/store"
+                      className="text-[10px] font-mono uppercase text-snoov-charcoal hover:text-snoov-green transition-colors font-semibold flex items-center gap-1"
+                    >
+                      <span>Shop Look</span>
+                      <span>→</span>
+                    </LocalizedClientLink>
+                  </div>
+                  <h3 className="font-serif text-lg font-normal text-snoov-charcoal leading-snug">
+                    {look.title}
+                  </h3>
+                  <p className="text-xs text-snoov-muted font-sans">
+                    {look.fabric}
+                  </p>
+                </div>
+
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Backstage Moodboard & Credits ── */}
+      <section className="content-container pb-20 sm:pb-28">
+        <div className="p-8 sm:p-12 bg-snoov-sand/30 border border-snoov-border rounded-base space-y-8">
+          
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-snoov-border pb-6">
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-snoov-green font-semibold block mb-1">
+                CAMPAIGN CREDITS
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-normal text-snoov-charcoal">
+                SS26 Production Credits
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-snoov-muted">
+              CHANDIGARH / TRICITY
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs font-mono">
+            <div>
+              <span className="text-snoov-muted text-[10px] uppercase block mb-1">CREATIVE DIRECTION</span>
+              <span className="text-snoov-charcoal font-semibold">SNOOV Collective</span>
+            </div>
+            <div>
+              <span className="text-snoov-muted text-[10px] uppercase block mb-1">PHOTOGRAPHY</span>
+              <span className="text-snoov-charcoal font-semibold">Editorial Archive</span>
+            </div>
+            <div>
+              <span className="text-snoov-muted text-[10px] uppercase block mb-1">STYLING & CASTING</span>
+              <span className="text-snoov-charcoal font-semibold">GenZ Community Pod</span>
+            </div>
+            <div>
+              <span className="text-snoov-muted text-[10px] uppercase block mb-1">DESIGN & PRODUCTION</span>
+              <span className="text-snoov-charcoal font-semibold">Chandigarh, India</span>
+            </div>
+          </div>
+
+          {/* Press / Stylist Download CTA */}
+          <div className="pt-6 border-t border-snoov-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-xs text-snoov-muted font-sans max-w-lg">
+              Stylists, editorial publications, and journalists may request full high-resolution TIFF campaign assets and loan samples directly from our press office.
+            </p>
+            <LocalizedClientLink
+              href="/contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-snoov-charcoal text-snoov-canvas text-xs font-mono uppercase tracking-wider font-semibold rounded-sm hover:bg-snoov-green transition-colors shrink-0"
+            >
+              <span>Contact Press Desk</span>
+              <span>→</span>
+            </LocalizedClientLink>
+          </div>
+
+        </div>
+      </section>
     </div>
-  );
+  )
 }

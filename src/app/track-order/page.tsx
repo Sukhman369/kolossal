@@ -1,131 +1,82 @@
-'use client';
+import { Metadata } from "next"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import OrderTrackerForm from "@modules/order/components/order-tracker-form"
 
-import React, { useState } from 'react';
-import { Search, Truck, CheckCircle2, Clock, MapPin, Package, ShieldCheck } from 'lucide-react';
+export const metadata: Metadata = {
+  title: "Shipment & Order Tracking Radar | SNOOV",
+  description:
+    "Track your active SNOOV streetwear order in real time. Live milestone status for Tricity same-day delivery, Blue Dart Express domestic transit, and global DHL shipments.",
+  alternates: {
+    canonical: "https://snoovlifestyle.com/track-order",
+  },
+}
 
-export default function TrackOrderPage() {
-  const [orderQuery, setOrderQuery] = useState('KOL-78921-EXP');
-  const [activeOrder, setActiveOrder] = useState<string | null>('KOL-78921-EXP');
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (orderQuery.trim()) {
-      setActiveOrder(orderQuery.trim().toUpperCase());
-    }
-  };
-
-  const STAGES = [
-    { title: 'Allocation Confirmed', desc: 'Garment reserved & authenticated in Tokyo studio', time: 'Sep 12, 14:20 JST', done: true },
-    { title: 'Archival Packaging', desc: 'Inspected under high-intensity lighting & boxed', time: 'Sep 13, 09:15 JST', done: true },
-    { title: 'In Transit via DHL Express', desc: 'Customs cleared (DDP) & loaded onto international flight', time: 'Sep 14, 02:40 CET', done: true, current: true },
-    { title: 'Out for Final Delivery', desc: 'Scheduled delivery to recipient destination', time: 'Estimated Sep 16', done: false },
-  ];
+export default async function TrackOrderPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://snoovlifestyle.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Track Order",
+        item: "https://snoovlifestyle.com/track-order",
+      },
+    ],
+  }
 
   return (
-    <div className="pt-36 pb-36 px-6 lg:px-12 max-w-4xl mx-auto space-y-16">
-      {/* Header */}
-      <div className="border-b border-neutral-200/80 pb-10 space-y-3">
-        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] font-semibold">
-          LOGISTICS RADAR
-        </span>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-neutral-950">
-          SHIPMENT TRACKING
-        </h1>
-        <p className="text-xs sm:text-sm font-light text-neutral-600 max-w-xl leading-relaxed">
-          Monitor your international DHL Express consignment from our pattern cutting tables to your address.
-        </p>
-      </div>
+    <div className="bg-snoov-canvas text-snoov-charcoal min-h-screen">
+      {/* Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
-      {/* Tracker Search Box */}
-      <form onSubmit={handleSearch} className="flex gap-3">
-        <div className="relative flex-1">
-          <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400" />
-          <input
-            type="text"
-            required
-            placeholder="ENTER ORDER NUMBER (E.G. KOL-78921-EXP)"
-            value={orderQuery}
-            onChange={(e) => setOrderQuery(e.target.value)}
-            className="w-full bg-white border border-neutral-300 pl-11 pr-4 py-4 rounded-2xl text-xs font-mono uppercase tracking-wider text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] shadow-xs"
-          />
-        </div>
-        <button
-          type="submit"
-          className="px-8 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-widest rounded-2xl hover:bg-[#430913] transition-colors shadow-md"
-        >
-          Track
-        </button>
-      </form>
+      {/* ── Page Header / Editorial Masthead ── */}
+      <section className="border-b border-snoov-border pt-12 sm:pt-20 pb-12 sm:pb-16">
+        <div className="content-container">
+          
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-snoov-muted mb-6">
+            <LocalizedClientLink href="/" className="hover:text-snoov-green transition-colors">
+              Home
+            </LocalizedClientLink>
+            <span>/</span>
+            <span className="text-snoov-charcoal font-semibold">Shipment Tracking</span>
+          </nav>
 
-      {/* Active Tracking Result */}
-      {activeOrder && (
-        <div className="space-y-8 rounded-3xl border border-neutral-200 bg-white p-7 sm:p-10 shadow-lg">
-          {/* Header row */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-200 gap-4">
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#580D1A] font-semibold">
-                WAYBILL CONSIGNMENT
+          <div className="max-w-4xl space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-snoov-charcoal text-snoov-canvas rounded-sm font-semibold">
+                CHAIN OF CUSTODY
               </span>
-              <h3 className="text-lg sm:text-xl font-bold font-mono text-neutral-950">
-                {activeOrder}
-              </h3>
+              <span className="text-[11px] font-mono text-snoov-green font-semibold uppercase tracking-wider">
+                REAL-TIME FULFILLMENT RADAR
+              </span>
             </div>
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#580D1A]/10 border border-[#580D1A]/30 text-[#580D1A] text-xs font-mono font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-ping" />
-              <span>ON SCHEDULE &bull; IN TRANSIT</span>
-            </div>
-          </div>
 
-          {/* Shipment Meta Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs font-mono text-neutral-600 border-b border-neutral-200 pb-6">
-            <div>
-              <span className="text-neutral-400 block text-[10px] uppercase">Carrier</span>
-              <span className="text-neutral-950 font-semibold">DHL Express</span>
-            </div>
-            <div>
-              <span className="text-neutral-400 block text-[10px] uppercase">Service</span>
-              <span className="text-neutral-950 font-semibold">DDP Tracked</span>
-            </div>
-            <div>
-              <span className="text-neutral-400 block text-[10px] uppercase">Origin</span>
-              <span className="text-neutral-950 font-semibold">Tokyo / Milan</span>
-            </div>
-            <div>
-              <span className="text-neutral-400 block text-[10px] uppercase">Est. Delivery</span>
-              <span className="text-neutral-950 font-semibold">48 Hours</span>
-            </div>
-          </div>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-light tracking-tight text-snoov-charcoal leading-[1.05]">
+              Track Your Order.
+            </h1>
 
-          {/* Timeline Milestones */}
-          <div className="space-y-8 pt-2">
-            {STAGES.map((stage, idx) => (
-              <div key={idx} className="flex items-start space-x-4 relative">
-                {/* Visual marker */}
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 z-10 shadow-xs ${
-                  stage.done
-                    ? 'bg-[#580D1A] text-white font-bold'
-                    : 'bg-neutral-100 text-neutral-400 border border-neutral-200'
-                }`}>
-                  {stage.done ? <CheckCircle2 className="w-4 h-4" /> : <Clock className="w-4 h-4" />}
-                </div>
-
-                {/* Milestone Details */}
-                <div className="space-y-1">
-                  <div className="flex items-baseline space-x-3">
-                    <h4 className={`text-xs uppercase tracking-wider font-semibold ${stage.done ? 'text-neutral-950' : 'text-neutral-400'}`}>
-                      {stage.title}
-                    </h4>
-                    <span className="text-[10px] font-mono text-neutral-400">{stage.time}</span>
-                  </div>
-                  <p className="text-xs font-light text-neutral-600">
-                    {stage.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
+              Follow your garment&apos;s journey from our Chandigarh fulfillment hub and archival packaging suite directly to your doorstep.
+            </p>
           </div>
         </div>
-      )}
+      </section>
+
+      {/* ── Interactive Order Tracking Radar ── */}
+      <section className="content-container py-12 sm:py-20">
+        <OrderTrackerForm />
+      </section>
     </div>
-  );
+  )
 }

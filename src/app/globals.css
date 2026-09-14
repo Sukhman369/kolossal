@@ -7,6 +7,90 @@
   --maroon-dark: #3a0811;
   --maroon-light: #761426;
   --maroon-tint: #f5ebeb;
+
+  --snoov-primary: #580d1a;
+  --snoov-primary-hover: #3a0811;
+  --snoov-primary-light: #f5ebeb;
+  --snoov-primary-subtle: rgba(88, 13, 26, 0.08);
+  --snoov-canvas: #faf9f7;
+  --snoov-sand: #f5f1e8;
+  --snoov-ecru: #efe9dd;
+  --snoov-cream: #faf8f3;
+  --snoov-border: #eae4d7;
+  --snoov-border-dark: #d8d0bf;
+  --snoov-charcoal: #1a1a1a;
+  --snoov-muted: #66625d;
+  --snoov-light-muted: #8f8a82;
+}
+
+@theme {
+  --color-snoov-green: var(--snoov-primary, #580d1a);
+  --color-snoov-green-hover: var(--snoov-primary-hover, #3a0811);
+  --color-snoov-green-light: var(--snoov-primary-light, #f5ebeb);
+  --color-snoov-green-subtle: var(--snoov-primary-subtle, rgba(88, 13, 26, 0.08));
+  --color-snoov-canvas: var(--snoov-canvas, #faf9f7);
+  --color-snoov-sand: var(--snoov-sand, #f5f1e8);
+  --color-snoov-ecru: var(--snoov-ecru, #efe9dd);
+  --color-snoov-cream: var(--snoov-cream, #faf8f3);
+  --color-snoov-border: var(--snoov-border, #eae4d7);
+  --color-snoov-border-dark: var(--snoov-border-dark, #d8d0bf);
+  --color-snoov-charcoal: var(--snoov-charcoal, #1a1a1a);
+  --color-snoov-muted: var(--snoov-muted, #66625d);
+  --color-snoov-light-muted: var(--snoov-light-muted, #8f8a82);
+
+  --radius-soft: 2px;
+  --radius-base: 4px;
+  --radius-large: 16px;
+}
+
+.content-container {
+  max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .content-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .content-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.editorial-container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .editorial-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .editorial-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.tracking-editorial {
+  letter-spacing: 0.15em;
+}
+
+.tracking-widest-plus {
+  letter-spacing: 0.25em;
 }
 
 body {
