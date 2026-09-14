@@ -76,7 +76,7 @@ export default async function ContactPage() {
           <div className="max-w-4xl space-y-6">
             <div className="flex items-center gap-3">
               <span className="px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-snoov-charcoal text-snoov-canvas rounded-sm font-semibold">
-                TALK TO THE POD
+                CLIENT CONCIERGE DESK
               </span>
               <span className="text-[11px] font-mono text-snoov-green font-semibold uppercase tracking-wider">
                 REAL HUMANS · ZERO CHATBOTS

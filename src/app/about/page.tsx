@@ -2,9 +2,9 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Our Story — The Orca Instinct & GenZ Collective | KOLOSSAL",
+  title: "Our Story — Architectural Craft & GenZ Collective | KOLOSSAL",
   description:
-    "Discover the origins of KOLOSSAL. Driven by the instinctual power of the Orca whale and crafted as a conscious streetwear community for the next generation.",
+    "Discover the origins of KOLOSSAL. Architectural silhouettes, custom 500 GSM organic cotton, and a conscious luxury streetwear community for the next generation.",
   alternates: {
     canonical: "https://kolossal.com/about",
   },
@@ -37,7 +37,7 @@ export default async function AboutStoryPage() {
     url: "https://kolossal.com",
     logo: "https://kolossal.com/logo.png",
     description:
-      "A conscious luxury streetwear community designed for GenZ, inspired by the instinctual strength and monochrome elegance of the Orca whale.",
+      "A conscious luxury streetwear collective designed for GenZ, inspired by brutalist architecture, raw monochrome elegance, and enduring material integrity.",
   }
 
   return (
@@ -68,7 +68,7 @@ export default async function AboutStoryPage() {
           <div className="max-w-4xl space-y-6">
             <div className="flex items-center gap-3">
               <span className="px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-snoov-charcoal text-snoov-canvas rounded-sm font-semibold">
-                THE POD MANIFESTO
+                THE BRAND MANIFESTO
               </span>
               <span className="text-[11px] font-mono text-snoov-green font-semibold uppercase tracking-wider">
                 GENZ STREETWEAR COLLECTIVE
@@ -80,7 +80,7 @@ export default async function AboutStoryPage() {
             </h1>
 
             <p className="text-base sm:text-xl text-snoov-muted leading-relaxed max-w-3xl font-sans">
-              KOLOSSAL is built for the next generation. We are forging a community and a visual dialect shaped by culture, architectural cuts, and the instinctual stealth and unity of the <strong>Orca whale</strong>.
+              KOLOSSAL is built for the next generation. We are forging a community and a visual dialect shaped by culture, architectural cuts, and structural permanence.
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default async function AboutStoryPage() {
               [ 1920 × 820px · WIDE CINEMATIC HERO CAMPAIGN IMAGE ]
             </p>
             <p className="text-[11px] text-snoov-muted/80 font-sans italic">
-              Space reserved for high-res brand visual: Orca monochrome aesthetic / GenZ community campaign banner.
+              Space reserved for high-res brand visual: Architectural monochrome aesthetic / GenZ community campaign banner.
             </p>
           </div>
         </div>
@@ -107,25 +107,25 @@ export default async function AboutStoryPage() {
       <section className="content-container py-16 sm:py-24">
         <div className="max-w-4xl mx-auto space-y-20">
           
-          {/* Chapter 01: The Orca Instinct */}
+          {/* Chapter 01: Architectural Discipline */}
           <div className="space-y-6 border-b border-snoov-border pb-16">
             <span className="text-[11px] font-mono uppercase tracking-widest text-snoov-green font-semibold block">
-              CHAPTER 01 / THE INSTINCT
+              CHAPTER 01 / ARCHITECTURAL DISCIPLINE
             </span>
             <h2 className="text-3xl sm:text-5xl font-serif text-snoov-charcoal font-normal">
-              Drawn from the Apex of the Ocean
+              Monumental Form & Architectural Weight
             </h2>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed font-sans">
-              Nature does not design with ornamentation; it designs with absolute purpose. The Orca whale navigates the open sea with stealth, stark monochrome beauty, and instinctual intelligence.
+              True luxury does not design with superficial ornamentation; it designs with absolute purpose. KOLOSSAL constructs silhouettes with stark monochrome presence, structured heavyweight drape, and architectural discipline.
             </p>
             
             {/* Story Text Placeholder Block */}
             <div className="p-6 bg-snoov-sand/20 border-2 border-dashed border-snoov-border rounded-base space-y-2">
               <span className="text-[10px] font-mono uppercase text-snoov-green font-semibold block tracking-wider">
-                [ EDITORIAL TEXT SPACE: THE FOUNDER & ANIMAL INSPIRATION STORY ]
+                [ EDITORIAL TEXT SPACE: THE FOUNDER & DESIGN PHILOSOPHY STORY ]
               </span>
               <p className="text-xs text-snoov-muted italic">
-                *Reserved for your detailed story: The initial spark, why the Orca animal archetype became the cornerstone of KOLOSSAL, and how natural power informs the brand.*
+                *Reserved for your detailed story: The initial spark, our architectural design philosophy, and how structural permanence informs the brand.*
               </p>
             </div>
 
@@ -135,7 +135,7 @@ export default async function AboutStoryPage() {
                 IMAGE SLOT · SECTION 01
               </span>
               <p className="text-xs font-mono text-snoov-muted uppercase tracking-wider">
-                [ 1200 × 750px · THE APEX INSTINCT / RAW TEXTILE GEOMETRY ]
+                [ 1200 × 750px · RAW TEXTILE GEOMETRY / HEAVYWEIGHT CUTS ]
               </p>
               <p className="text-[11px] text-snoov-muted/80 font-sans italic mt-1">
                 Space reserved for editorial shot: Textile close-up / monochrome shadow silhouette.
@@ -149,10 +149,10 @@ export default async function AboutStoryPage() {
               CHAPTER 02 / THE COLLECTIVE
             </span>
             <h2 className="text-3xl sm:text-5xl font-serif text-snoov-charcoal font-normal">
-              More Than Apparel. A Living Pod.
+              More Than Apparel. A Living Collective.
             </h2>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed font-sans">
-              An Orca never hunts alone—its strength is the pod. KOLOSSAL is engineered as an open creative community where our audience co-creates and steers our capsule drops.
+              Great design is never solitary—its power is the collective. KOLOSSAL is engineered as an open creative community where our audience co-creates and steers our capsule drops.
             </p>
 
             {/* Community Story Placeholder */}
@@ -202,11 +202,11 @@ export default async function AboutStoryPage() {
             </div>
           </div>
 
-          {/* Join The Pod CTA Card */}
+          {/* Join The Collective CTA Card */}
           <div className="p-8 sm:p-12 bg-snoov-sand/50 border border-snoov-border rounded-base flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-widest text-snoov-green font-semibold block">
-                JOIN THE POD
+                JOIN THE COLLECTIVE
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-normal text-snoov-charcoal">
                 Be Part of the KOLOSSAL Community

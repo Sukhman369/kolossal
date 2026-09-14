@@ -33,7 +33,7 @@ export default async function LookbookPage() {
   const looks = [
     {
       id: "LOOK 01",
-      title: "The Orca Trench & Heavyweight Mockneck",
+      title: "The Monolith Trench & Heavyweight Mockneck",
       season: "SS26 Collection",
       fabric: "500 GSM Organic French Terry · European Flax®",
       aspect: "aspect-[3/4]",
@@ -112,7 +112,7 @@ export default async function LookbookPage() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-light tracking-tight text-snoov-charcoal leading-[1.05]">
-              The Orca Instinct: Lookbook SS26
+              Monolith: Lookbook SS26
             </h1>
 
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
@@ -234,7 +234,7 @@ export default async function LookbookPage() {
             </div>
             <div>
               <span className="text-snoov-muted text-[10px] uppercase block mb-1">STYLING & CASTING</span>
-              <span className="text-snoov-charcoal font-semibold">GenZ Community Pod</span>
+              <span className="text-snoov-charcoal font-semibold">GenZ Community Collective</span>
             </div>
             <div>
               <span className="text-snoov-muted text-[10px] uppercase block mb-1">DESIGN & PRODUCTION</span>

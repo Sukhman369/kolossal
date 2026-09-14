@@ -9,7 +9,7 @@ const INQUIRY_TOPICS = [
   { id: "collabs", label: "🔥 Creator, Collab & Community", subject: "GenZ Creator & Collaboration" },
   { id: "press", label: "🏛️ Press, Stylists & Loans", subject: "Editorial & Stylist Request" },
   { id: "repairs", label: "🧵 Garment Seam Repair", subject: "Garment Repair Request" },
-  { id: "vibe", label: "💬 General Vibe / Feedback", subject: "General Pod Message" },
+  { id: "vibe", label: "💬 General Vibe / Feedback", subject: "General Inquiry" },
 ]
 
 export default function ContactView() {
@@ -290,7 +290,7 @@ export default function ContactView() {
                   <span>TRANSMITTING MESSAGE...</span>
                 ) : (
                   <>
-                    <span>SEND TRANSMISSION TO POD</span>
+                    <span>SEND TRANSMISSION TO CONCIERGE</span>
                     <span>→</span>
                   </>
                 )}
