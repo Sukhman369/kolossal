@@ -61,11 +61,11 @@ export default function Footer() {
               CATALOG
             </span>
             <ul className="space-y-2.5 text-xs uppercase tracking-wider text-neutral-400">
-              <li><Link href="#featured-drop" className="hover:text-white transition-colors">Drop 001</Link></li>
-              <li><Link href="#featured-drop" className="hover:text-white transition-colors">Outerwear</Link></li>
-              <li><Link href="#featured-drop" className="hover:text-white transition-colors">Hoodies</Link></li>
-              <li><Link href="#featured-drop" className="hover:text-white transition-colors">Tailored Pants</Link></li>
-              <li><Link href="#featured-drop" className="hover:text-white transition-colors">Accessories</Link></li>
+              <li><Link href="/collections" className="hover:text-white transition-colors">All Archives</Link></li>
+              <li><Link href="/collections/outerwear" className="hover:text-white transition-colors">Outerwear</Link></li>
+              <li><Link href="/collections/hoodies" className="hover:text-white transition-colors">Hoodies</Link></li>
+              <li><Link href="/collections/pants" className="hover:text-white transition-colors">Tailored Pants</Link></li>
+              <li><Link href="/collections/accessories" className="hover:text-white transition-colors">Hardware & Chains</Link></li>
             </ul>
           </div>
 
@@ -75,10 +75,10 @@ export default function Footer() {
               BRAND
             </span>
             <ul className="space-y-2.5 text-xs uppercase tracking-wider text-neutral-400">
-              <li><Link href="#manifesto" className="hover:text-white transition-colors">Manifesto</Link></li>
-              <li><span className="text-neutral-500">Material Guide (500 GSM)</span></li>
-              <li><span className="text-neutral-500">Sizing Architecture</span></li>
-              <li><span className="text-neutral-500">Global Shipping</span></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">Brand Story</Link></li>
+              <li><Link href="/lookbook" className="hover:text-white transition-colors">Campaign Lookbook</Link></li>
+              <li><Link href="/size-guide" className="hover:text-white transition-colors">Size Matrix (500 GSM)</Link></li>
+              <li><Link href="/shipping-returns" className="hover:text-white transition-colors">Worldwide Shipping</Link></li>
             </ul>
           </div>
 
@@ -88,10 +88,10 @@ export default function Footer() {
               CLIENT CARE
             </span>
             <ul className="space-y-2.5 text-xs uppercase tracking-wider text-neutral-400">
-              <li><span className="text-neutral-500">Track Order</span></li>
-              <li><span className="text-neutral-500">Returns & Exchanges</span></li>
-              <li><span className="text-neutral-500">Concierge Desk</span></li>
-              <li><span className="text-neutral-500">Authentication</span></li>
+              <li><Link href="/track-order" className="hover:text-white transition-colors">Track Order</Link></li>
+              <li><Link href="/shipping-returns" className="hover:text-white transition-colors">Returns & Refunds</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Concierge Desk</Link></li>
+              <li><Link href="/faq" className="hover:text-white transition-colors">FAQ Knowledge Base</Link></li>
             </ul>
           </div>
         </div>

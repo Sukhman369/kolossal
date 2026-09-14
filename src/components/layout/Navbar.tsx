@@ -52,28 +52,34 @@ export default function Navbar() {
           {/* Desktop Left Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
-              href="#featured-drop"
+              href="/collections"
               className="text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-white transition-colors"
             >
-              Drop 001
+              Collections
             </Link>
             <Link
-              href="#featured-drop"
+              href="/collections/outerwear"
               className="text-xs uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition-colors"
             >
               Outerwear
             </Link>
             <Link
-              href="#featured-drop"
+              href="/collections/hoodies"
               className="text-xs uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition-colors"
             >
-              Heavyweights
+              Hoodies
             </Link>
             <Link
-              href="#manifesto"
+              href="/lookbook"
               className="text-xs uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition-colors"
             >
-              Manifesto
+              Lookbook
+            </Link>
+            <Link
+              href="/about"
+              className="text-xs uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition-colors"
+            >
+              About
             </Link>
           </nav>
 
@@ -122,39 +128,67 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#080808]/98 backdrop-blur-2xl flex flex-col justify-center px-8 space-y-8 lg:hidden pt-20">
-          <nav className="flex flex-col space-y-6 text-xl uppercase tracking-[0.25em] font-semibold text-white">
+        <div className="fixed inset-0 z-30 bg-[#080808]/98 backdrop-blur-2xl flex flex-col justify-center px-8 space-y-6 lg:hidden pt-20">
+          <nav className="flex flex-col space-y-5 text-lg uppercase tracking-[0.25em] font-semibold text-white">
             <Link
-              href="#featured-drop"
+              href="/collections"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-neutral-400"
             >
-              Drop 001
+              Collections
             </Link>
             <Link
-              href="#featured-drop"
+              href="/collections/outerwear"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-neutral-400"
             >
               Outerwear
             </Link>
             <Link
-              href="#featured-drop"
+              href="/collections/hoodies"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-neutral-400"
             >
               Heavyweights
             </Link>
             <Link
-              href="#manifesto"
+              href="/lookbook"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-neutral-400"
             >
-              Manifesto
+              Lookbook
+            </Link>
+            <Link
+              href="/about"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-neutral-400"
+            >
+              About Brand
+            </Link>
+            <Link
+              href="/size-guide"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-neutral-400 text-sm font-normal text-neutral-400"
+            >
+              Size Matrix
+            </Link>
+            <Link
+              href="/track-order"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-neutral-400 text-sm font-normal text-neutral-400"
+            >
+              Track Order
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-neutral-400 text-sm font-normal text-neutral-400"
+            >
+              Concierge
             </Link>
           </nav>
 
-          <div className="pt-8 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
+          <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
             <span>BACKEND: {provider}</span>
             <span>CURRENCY: USD</span>
           </div>
