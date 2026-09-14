@@ -57,7 +57,7 @@ export default async function SustainabilityPage() {
       />
 
       {/* ── Page Header / Editorial Masthead ── */}
-      <section className="border-b border-snoov-border pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <section className="border-b border-snoov-border pt-36 sm:pt-40 pb-12 sm:pb-16">
         <div className="content-container">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-snoov-muted mb-6">

@@ -53,7 +53,7 @@ export default async function AboutStoryPage() {
       />
 
       {/* ── 01. Editorial Masthead ── */}
-      <section className="border-b border-snoov-border pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <section className="border-b border-snoov-border pt-36 sm:pt-40 pb-12 sm:pb-16">
         <div className="content-container">
           
           {/* Breadcrumbs */}
