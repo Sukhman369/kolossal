@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Collections | KOLOSSAL',
-  description: 'Explore curated architectural apparel collections by Kolossal. Heavyweight organic cottons, tailored outerwear, and sterling silver accessories.',
+  description: 'Explore curated architectural apparel collections by Kolossal. Heavyweight organic cottons, heavyweight outerwear, and sterling silver accessories.',
 };
 
 const COLLECTIONS = [
@@ -27,7 +27,7 @@ const COLLECTIONS = [
   },
   {
     handle: 'pants',
-    title: 'Tailored Pants',
+    title: 'Cargo & Relaxed Pants',
     subtitle: 'Origami Cargo & Gabardine Pleats',
     description: 'Double-pleated waistbands with 3D articulated bellows and adjustable bungee conversion cuffs.',
     image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop',

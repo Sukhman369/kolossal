@@ -230,7 +230,7 @@ export default async function GarmentCarePage() {
                     <span className="text-[10px] font-mono text-snoov-green font-semibold">HERITAGE WEAVE</span>
                   </div>
                   <h3 className="font-serif text-base font-normal text-snoov-charcoal">
-                    Overshirts, Tailored Trousers & Blousons
+                    Overshirts, Relaxed Trousers & Blousons
                   </h3>
                   <ul className="space-y-1 text-xs text-snoov-muted">
                     <li>• Delicate wash cycle with plenty of water.</li>
@@ -354,7 +354,7 @@ export default async function GarmentCarePage() {
                     CONTOURED HANGERS
                   </strong>
                   <p className="text-snoov-muted text-[11px]">
-                    Use wide, contoured wooden hangers for tailored jackets and overcoats to maintain shoulder structure.
+                    Use wide, contoured wooden hangers for heavy jackets and overcoats to maintain shoulder structure.
                   </p>
                 </div>
                 <div className="p-3.5 bg-snoov-sand/20 border border-snoov-border rounded-sm">

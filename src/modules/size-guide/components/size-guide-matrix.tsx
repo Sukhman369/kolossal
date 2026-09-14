@@ -230,7 +230,7 @@ export default function SizeGuideMatrix() {
                 Height: 172 cm (5&apos;8&quot;) · Chest: 86 cm (34&quot;) · Waist: 68 cm (27&quot;)
               </p>
               <span className="text-[10px] text-snoov-charcoal/80 block italic">
-                Fit verdict: Clean wide shoulders with modern tailored torso proportion.
+                Fit verdict: Clean wide shoulders with modern structured torso proportion.
               </span>
             </div>
 

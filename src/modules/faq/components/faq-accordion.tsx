@@ -24,7 +24,7 @@ const FAQ_DATA: FAQItem[] = [
     category: "orders",
     question: "Can I modify or cancel my order after placement?",
     answer:
-      "Because our Chandigarh atelier team begins fulfilling orders promptly, please reach out via our WhatsApp VIP concierge or mail us within 60 minutes of placing your order if you require an address or sizing modification.",
+      "Because our Chandigarh team begins fulfilling orders promptly, please reach out via our WhatsApp VIP concierge or mail us within 60 minutes of placing your order if you require an address or sizing modification.",
   },
   {
     id: "payment-methods",
@@ -63,14 +63,14 @@ const FAQ_DATA: FAQItem[] = [
     category: "sizing",
     question: "How do KOLOSSAL garments fit?",
     answer:
-      "Our streetwear is designed with intentional drop-shoulder geometry, wide chest spans, and structured heavyweight drape. We recommend choosing your normal size for our signature relaxed fit, or sizing down one size for a more tailored profile. Consult our interactive Size Guide for metric & imperial measurements.",
+      "Our streetwear is designed with intentional drop-shoulder geometry, wide chest spans, and structured heavyweight drape. We recommend choosing your normal size for our signature relaxed fit, or sizing down one size for a more streamlined profile. Consult our interactive Size Guide for metric & imperial measurements.",
   },
   {
     id: "custom-sizing",
     category: "sizing",
     question: "Do you offer personal sizing consultations?",
     answer:
-      "Yes. If you have unique proportions or want styling advice, transmit your height, weight, and fit preference to our Chandigarh atelier stylists via WhatsApp or our Contact page.",
+      "Yes. If you have unique proportions or want styling advice, transmit your height, weight, and fit preference to our Chandigarh styling team via WhatsApp or our Contact page.",
   },
 
   // 04. Exchange Policy & Guarantee
@@ -86,7 +86,7 @@ const FAQ_DATA: FAQItem[] = [
     category: "returns",
     question: "What should I do if my order arrives damaged or defective?",
     answer:
-      "Please inspect your package upon delivery and notify our Concierge within 48 hours at concierge@kolossal.com or via WhatsApp with your Order ID and photos of the damaged garment and packaging. Our atelier will arrange a complimentary courier pickup and dispatch a pristine replacement.",
+      "Please inspect your package upon delivery and notify our Concierge within 48 hours at concierge@kolossal.com or via WhatsApp with your Order ID and photos of the damaged garment and packaging. Our team will arrange a complimentary courier pickup and dispatch a pristine replacement.",
   },
 
   // 05. Sustainability & Fabric Care
@@ -102,7 +102,7 @@ const FAQ_DATA: FAQItem[] = [
     category: "sustainability",
     question: "Does KOLOSSAL offer complimentary garment repairs?",
     answer:
-      "Yes. Every piece is built for years of wear. If a seam relaxes or hardware requires maintenance, our Chandigarh atelier provides complimentary artisan repairs. Visit our Garment Care page to initiate a service.",
+      "Yes. Every piece is built for years of wear. If a seam relaxes or hardware requires maintenance, our Chandigarh workshop provides complimentary artisan repairs. Visit our Garment Care page to initiate a service.",
   },
 ]
 
@@ -201,7 +201,7 @@ export default function FAQAccordion() {
               href="/contact"
               className="inline-block mt-2 px-5 py-2.5 bg-snoov-charcoal text-snoov-canvas text-xs font-mono uppercase tracking-wider rounded-sm hover:bg-snoov-green transition-colors"
             >
-              Ask Atelier Concierge →
+              Ask Concierge →
             </LocalizedClientLink>
           </div>
         ) : (
@@ -261,7 +261,7 @@ export default function FAQAccordion() {
             Connect Directly with the Studio
           </h3>
           <p className="text-xs text-snoov-muted font-sans max-w-md">
-            Our Chandigarh team answers all tailoring, sizing, and shipping inquiries directly.
+            Our Chandigarh team answers all fit, sizing, and shipping inquiries directly.
           </p>
         </div>
 

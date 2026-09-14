@@ -13,7 +13,7 @@ const COLLECTION_INFO: Record<string, { title: string; subtitle: string; descrip
   all: {
     title: 'All Styles',
     subtitle: 'Drop 001 Complete Archive',
-    description: 'The full architectural collection: heavyweight hoodies, tailored outerwear, pleated trousers, and sterling silver.',
+    description: 'The full architectural collection: heavyweight hoodies, heavyweight outerwear, pleated trousers, and sterling silver.',
   },
   outerwear: {
     title: 'Outerwear',
@@ -26,7 +26,7 @@ const COLLECTION_INFO: Record<string, { title: string; subtitle: string; descrip
     description: 'Custom milled double-faced organic cotton with structural non-collapsing boxy drape and drop shoulders.',
   },
   pants: {
-    title: 'Tailored Pants',
+    title: 'Cargo & Relaxed Pants',
     subtitle: 'Origami Cargo & Gabardine Pleats',
     description: 'Double-pleated waistbands with 3D articulated bellows and adjustable bungee conversion cuffs.',
   },

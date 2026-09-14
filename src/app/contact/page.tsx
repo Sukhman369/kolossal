@@ -88,7 +88,7 @@ export default async function ContactPage() {
             </h1>
 
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              Have questions regarding sizing, custom tailoring, your active order, or pitching a creative collaboration? Drop us a line below or reach out on our direct VIP lines.
+              Have questions regarding sizing, fit advice, your active order, or pitching a creative collaboration? Drop us a line below or reach out on our direct VIP lines.
             </p>
           </div>
         </div>

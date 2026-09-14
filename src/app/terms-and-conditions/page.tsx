@@ -354,7 +354,7 @@ export default async function TermsAndConditionsPage() {
                 KOLOSSAL garments are engineered from certified organic textiles (GOTS) and European Flax®. Clients benefit from the statutory guarantee of conformity under Articles L. 217-4 et seq. of the French Consumer Code and against hidden defects under Articles 1641 et seq. of the French Civil Code.
               </p>
               <p>
-                If a garment exhibits a structural tailoring defect or transit damage, KOLOSSAL provides complimentary repairs or an immediate replacement exchange.
+                If a garment exhibits a structural manufacturing defect or transit damage, KOLOSSAL provides complimentary repairs or an immediate replacement exchange.
               </p>
             </div>
 

@@ -40,7 +40,7 @@ export default function HeroSection() {
               FORM.
             </h1>
             <p className="text-neutral-600 text-sm sm:text-base max-w-md font-light tracking-wide pt-2 leading-relaxed">
-              Architectural proportions, custom-milled 500 GSM organic cotton, and precision-tailored oversized cuts engineered in Industrial Area, Chandigarh, India.
+              Architectural proportions, custom-milled 500 GSM organic cotton, and precision-engineered oversized cuts engineered in Industrial Area, Chandigarh, India.
             </p>
           </div>
 

@@ -67,7 +67,7 @@ export default async function SizeGuidePage() {
             </h1>
 
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              Every KOLOSSAL piece is tailored with intentional drop-shoulder geometry and heavyweight drape. Use our interactive metric / imperial table below to find your exact silhouette.
+              Every KOLOSSAL piece is engineered with intentional drop-shoulder geometry and heavyweight drape. Use our interactive metric / imperial table below to find your exact silhouette.
             </p>
           </div>
         </div>

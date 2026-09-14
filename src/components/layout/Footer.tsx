@@ -55,7 +55,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/collections/pants" className="hover:text-snoov-green transition-colors">
-                    Tailoring & Blazers
+                    Cargo & Relaxed Pants
                   </Link>
                 </li>
                 <li>

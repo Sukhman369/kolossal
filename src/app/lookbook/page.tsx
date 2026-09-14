@@ -4,7 +4,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 export const metadata: Metadata = {
   title: "Lookbook & Editorial Archive | KOLOSSAL",
   description:
-    "Explore KOLOSSAL's seasonal lookbooks, campaign editorials, architectural tailoring silhouettes, and high-contrast GenZ streetwear archives.",
+    "Explore KOLOSSAL's seasonal lookbooks, campaign editorials, architectural streetwear silhouettes, and high-contrast GenZ streetwear archives.",
   alternates: {
     canonical: "https://kolossal.com/lookbook",
   },
@@ -49,11 +49,11 @@ export default async function LookbookPage() {
     },
     {
       id: "LOOK 03",
-      title: "Structured Boxy Blazer in Raw Unbleached Hemp",
+      title: "Structured Heavyweight Overshirt in Raw Unbleached Hemp",
       season: "SS26 Collection",
       fabric: "100% Organic Hemp & Linen Blend",
       aspect: "aspect-[3/4]",
-      tag: "TAILORED RESTRAINT",
+      tag: "STREETWEAR CUT",
     },
     {
       id: "LOOK 04",

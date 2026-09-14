@@ -144,19 +144,19 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod_05',
     handle: 'monolith-oversized-wool-overcoat',
-    title: 'Monolith Tailored Trench Coat',
+    title: 'Monolith Oversized Trench Coat',
     subtitle: '100% Virgin Wool Melange',
     description: 'Floor-grazing silhouette with strong padded shoulders, concealed horn buttons, exaggerated lapels, and detachable leather utility key ring.',
     price: { amount: 580, currencyCode: 'USD' },
     badge: 'RUNWAY EDITION',
     category: 'Outerwear',
-    tags: ['Outerwear', 'Tailoring', 'Runway'],
+    tags: ['Outerwear', 'Streetwear', 'Runway'],
     colors: ['Obsidian Black'],
     sizes: ['48', '50', '52'],
     images: [
       {
         url: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1200&auto=format&fit=crop',
-        altText: 'Monolith Tailored Trench Coat',
+        altText: 'Monolith Oversized Trench Coat',
       }
     ],
     variants: [

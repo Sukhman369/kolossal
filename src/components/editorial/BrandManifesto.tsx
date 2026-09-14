@@ -35,7 +35,7 @@ export default function BrandManifesto() {
           </div>
 
           <div className="space-y-3 p-8 rounded-3xl bg-[#FAF9F7] border border-neutral-200/80 hover:border-[#580D1A]/40 transition-colors shadow-xs">
-            <span className="text-xs font-mono text-[#580D1A] font-bold">02 // TAILORED OVERSIZE</span>
+            <span className="text-xs font-mono text-[#580D1A] font-bold">02 // ARCHITECTURAL OVERSIZE</span>
             <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-950">Pattern Engineering</h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-light">
               Extreme drop-shoulder ratios paired with mathematically balanced sleeve lengths and cropped hems to elongate the wearer's silhouette.
@@ -46,7 +46,7 @@ export default function BrandManifesto() {
             <span className="text-xs font-mono text-[#580D1A] font-bold">03 // PROVENANCE</span>
             <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-950">Ethical Craftsmanship</h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-light">
-              Crafted at our dedicated atelier in Industrial Area, Chandigarh, India with complete trace-to-farm supply chain verification.
+              Crafted at our workshop in Industrial Area, Chandigarh, India with complete trace-to-farm supply chain verification.
             </p>
           </div>
         </div>

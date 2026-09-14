@@ -97,7 +97,7 @@ export default async function ReturnsAndExchangesPage() {
               Exchange & Replacement Policy
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              At KOLOSSAL, every garment is tailored in intentional, small-batch capsules rather than mass-produced inventory. To ensure that every patron receives an untouched, freshly crafted piece and to honor our sustainable craftsmanship model, we focus our exchange policy exclusively on products that arrive damaged or defective in transit. If your piece encounters any issue on its way to you, our brand takes full responsibility and guarantees an immediate, complimentary replacement.
+              At KOLOSSAL, every garment is crafted in intentional, small-batch capsules rather than mass-produced inventory. To ensure that every patron receives an untouched, freshly crafted piece and to honor our sustainable craftsmanship model, we focus our exchange policy exclusively on products that arrive damaged or defective in transit. If your piece encounters any issue on its way to you, our brand takes full responsibility and guarantees an immediate, complimentary replacement.
             </p>
 
             {/* Quick Metrics Bar */}
@@ -354,7 +354,7 @@ export default async function ReturnsAndExchangesPage() {
                 Pre-Purchase Sizing & Styling Advice
               </h2>
               <p>
-                We want you to feel completely assured of your fit before your piece is tailored and dispatched:
+                We want you to feel completely assured of your fit before your piece is crafted and dispatched:
               </p>
               <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm">
                 <li>

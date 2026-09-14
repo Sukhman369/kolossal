@@ -185,7 +185,7 @@ export default async function AboutStoryPage() {
               CHAPTER 03 / SILHOUETTE & ARCHITECTURE
             </span>
             <h2 className="text-3xl sm:text-5xl font-serif text-snoov-charcoal font-normal">
-              Architectural Oversized Tailoring
+              Architectural Oversized Streetwear
             </h2>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed font-sans">
               Heavyweight organic cotton, drop-shoulder geometry, tactile ribbing, and enduring silhouettes designed to be worn with effortless presence.
