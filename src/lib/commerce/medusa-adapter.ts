@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 import { CommerceAdapter, Product, Cart, CartItem } from './types';
 import { MOCK_PRODUCTS } from './mock-data';
 

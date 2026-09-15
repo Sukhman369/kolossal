@@ -34,7 +34,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem('kolossal_cart');
       if (saved) {
-        setCart(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        queueMicrotask(() => {
+          setCart(parsed);
+        });
       }
     } catch {
       // Ignore localStorage error

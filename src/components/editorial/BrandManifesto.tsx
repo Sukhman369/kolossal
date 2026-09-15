@@ -38,7 +38,7 @@ export default function BrandManifesto() {
             <span className="text-xs font-mono text-[#580D1A] font-bold">02 // ARCHITECTURAL OVERSIZE</span>
             <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-950">Pattern Engineering</h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-light">
-              Extreme drop-shoulder ratios paired with mathematically balanced sleeve lengths and cropped hems to elongate the wearer's silhouette.
+              Extreme drop-shoulder ratios paired with mathematically balanced sleeve lengths and cropped hems to elongate the wearer&apos;s silhouette.
             </p>
           </div>
 

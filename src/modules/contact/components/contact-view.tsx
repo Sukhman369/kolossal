@@ -1,7 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import React, { useState } from "react"
 
 const INQUIRY_TOPICS = [
   { id: "orders", label: "⚡ Order & Sizing Advice", subject: "Order & Sizing Inquiry" },

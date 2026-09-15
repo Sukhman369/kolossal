@@ -4,13 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '../../context/CartContext';
 import {
-  ShieldCheck,
   CheckCircle2,
   Lock,
-  ArrowRight,
   Truck,
   CreditCard,
-  MapPin,
   ChevronRight
 } from 'lucide-react';
 

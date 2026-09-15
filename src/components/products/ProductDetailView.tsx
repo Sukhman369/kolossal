@@ -12,7 +12,6 @@ import {
   Check,
   Truck,
   RotateCcw,
-  ShieldCheck,
   Ruler,
   ChevronDown
 } from 'lucide-react';
@@ -298,7 +297,7 @@ export default function ProductDetailView({
               {openSection === 'fit' && (
                 <div className="pb-5 space-y-2 text-xs text-neutral-600 leading-relaxed font-light">
                   <p>• Engineered with a deliberate wide boxy cut and dropped shoulder seams.</p>
-                  <p>• Model is 6'1" (185cm), 78kg wearing size Large for an oversized drape.</p>
+                  <p>• Model is 6&apos;1&quot; (185cm), 78kg wearing size Large for an oversized drape.</p>
                   <p>• For a closer silhouette, size down one measurement.</p>
                 </div>
               )}

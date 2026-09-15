@@ -73,7 +73,7 @@ export default async function AccessibilityPage() {
 
           <div className="max-w-4xl">
             <span className="inline-block px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase bg-snoov-sand text-snoov-charcoal/90 rounded-sm border border-snoov-border mb-4">
-              Digital Inclusivity · WCAG 2.1 Level AA Target
+              Digital Inclusivity · WCAG 2.1 Level AA Target · Updated {lastUpdated}
             </span>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-light tracking-tight text-snoov-charcoal leading-[1.1] mb-6">
               Accessibility Statement
