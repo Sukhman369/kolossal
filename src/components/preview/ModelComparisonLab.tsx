@@ -7,136 +7,77 @@ import {
   Float,
   Environment,
   ContactShadows,
+  useTexture,
 } from '@react-three/drei';
 import * as THREE from 'three';
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   1. MAMMOTH — Colossal Prehistoric Beast (Sculpted Silhouette & Sweeping Tusks)
+   1. MAMMOTH — Colossal Prehistoric Beast (User Artwork with 3D Lighting & Halo)
    ═══════════════════════════════════════════════════════════════════════════ */
 function ModelMammoth() {
   const groupRef = useRef<THREE.Group>(null);
+  const ringRef = useRef<THREE.Mesh>(null);
+  const texture = useTexture('/images/mammoth.png');
+  const bump = useTexture('/images/mammoth-bump.png');
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (groupRef.current) {
-      groupRef.current.rotation.y = t * 0.35;
-      groupRef.current.position.y = Math.sin(t * 0.5) * 0.04;
+      groupRef.current.rotation.y = Math.sin(t * 0.4) * 0.35;
+      groupRef.current.position.y = Math.sin(t * 0.6) * 0.03;
+    }
+    if (ringRef.current) {
+      ringRef.current.rotation.x = t * 0.3;
+      ringRef.current.rotation.y = -t * 0.2;
     }
   });
 
-  // Curved majestic tusks using 3D Catmull-Rom splines
-  const { leftTuskGeo, rightTuskGeo } = useMemo(() => {
-    const leftPoints = [
-      new THREE.Vector3(-0.25, 0.08, 0.42),
-      new THREE.Vector3(-0.45, -0.05, 0.72),
-      new THREE.Vector3(-0.55, 0.18, 0.95),
-      new THREE.Vector3(-0.35, 0.52, 0.88),
-    ];
-    const rightPoints = [
-      new THREE.Vector3(0.25, 0.08, 0.42),
-      new THREE.Vector3(0.45, -0.05, 0.72),
-      new THREE.Vector3(0.55, 0.18, 0.95),
-      new THREE.Vector3(0.35, 0.52, 0.88),
-    ];
-
-    const leftCurve = new THREE.CatmullRomCurve3(leftPoints);
-    const rightCurve = new THREE.CatmullRomCurve3(rightPoints);
-
-    return {
-      leftTuskGeo: new THREE.TubeGeometry(leftCurve, 32, 0.048, 12, false),
-      rightTuskGeo: new THREE.TubeGeometry(rightCurve, 32, 0.048, 12, false),
-    };
-  }, []);
-
-  // Trunk spline curving down and forward
-  const trunkGeo = useMemo(() => {
-    const trunkPoints = [
-      new THREE.Vector3(0, 0.22, 0.48),
-      new THREE.Vector3(0, -0.15, 0.62),
-      new THREE.Vector3(0, -0.48, 0.58),
-      new THREE.Vector3(0, -0.68, 0.72),
-      new THREE.Vector3(0, -0.62, 0.85),
-    ];
-    return new THREE.TubeGeometry(new THREE.CatmullRomCurve3(trunkPoints), 28, 0.075, 12, false);
-  }, []);
-
   return (
-    <group ref={groupRef} position={[0, 0.05, 0]} scale={1.15}>
-      {/* High Massive Muscular Shoulder Hump */}
-      <mesh position={[0, 0.38, -0.15]} castShadow receiveShadow>
-        <sphereGeometry args={[0.52, 32, 24]} />
-        <meshStandardMaterial color="#1a1818" roughness={0.7} metalness={0.25} />
-      </mesh>
-
-      {/* Rear Flank */}
-      <mesh position={[0, 0.2, -0.62]} castShadow receiveShadow>
-        <sphereGeometry args={[0.44, 28, 20]} />
-        <meshStandardMaterial color="#181616" roughness={0.75} metalness={0.2} />
-      </mesh>
-
-      {/* Broad Cranial Head & Brow */}
-      <mesh position={[0, 0.42, 0.32]} castShadow receiveShadow>
-        <sphereGeometry args={[0.38, 28, 24]} />
-        <meshStandardMaterial color="#201c1c" roughness={0.65} metalness={0.3} />
-      </mesh>
-
-      {/* Massive Sweeping Mammoth Tusks (Polished Antique Ivory & Pale Gold) */}
-      <mesh geometry={leftTuskGeo} castShadow>
-        <meshPhysicalMaterial
-          color="#f4eee2"
-          roughness={0.18}
+    <group ref={groupRef} position={[0, 0.05, 0]}>
+      {/* Front Face: High-Resolution Mammoth with Bump Lighting */}
+      <mesh position={[0, 0.05, 0.03]} castShadow>
+        <planeGeometry args={[2.0, 1.83]} />
+        <meshStandardMaterial
+          map={texture}
+          bumpMap={bump}
+          bumpScale={0.06}
+          transparent={true}
+          roughness={0.55}
           metalness={0.15}
-          clearcoat={0.9}
-          clearcoatRoughness={0.1}
-        />
-      </mesh>
-      <mesh geometry={rightTuskGeo} castShadow>
-        <meshPhysicalMaterial
-          color="#f4eee2"
-          roughness={0.18}
-          metalness={0.15}
-          clearcoat={0.9}
-          clearcoatRoughness={0.1}
         />
       </mesh>
 
-      {/* Curled Trunk */}
-      <mesh geometry={trunkGeo} castShadow receiveShadow>
-        <meshStandardMaterial color="#1a1818" roughness={0.7} metalness={0.2} />
+      {/* Back Face: Mirrored Silhouette for 360 Rotation */}
+      <mesh position={[0, 0.05, -0.03]} rotation={[0, Math.PI, 0]} castShadow>
+        <planeGeometry args={[2.0, 1.83]} />
+        <meshStandardMaterial
+          map={texture}
+          bumpMap={bump}
+          bumpScale={0.06}
+          transparent={true}
+          roughness={0.55}
+          metalness={0.15}
+        />
       </mesh>
 
-      {/* Stylized Mammoth Ears */}
-      <mesh position={[-0.38, 0.36, 0.12]} rotation={[0, -0.4, 0.2]}>
-        <cylinderGeometry args={[0.18, 0.12, 0.03, 16]} />
-        <meshStandardMaterial color="#1c1919" roughness={0.8} />
-      </mesh>
-      <mesh position={[0.38, 0.36, 0.12]} rotation={[0, 0.4, -0.2]}>
-        <cylinderGeometry args={[0.18, 0.12, 0.03, 16]} />
-        <meshStandardMaterial color="#1c1919" roughness={0.8} />
-      </mesh>
-
-      {/* 4 Sturdy Pillar Legs */}
-      <mesh position={[-0.26, -0.32, 0.18]} castShadow>
-        <cylinderGeometry args={[0.12, 0.15, 0.72, 16]} />
-        <meshStandardMaterial color="#171515" roughness={0.8} />
-      </mesh>
-      <mesh position={[0.26, -0.32, 0.18]} castShadow>
-        <cylinderGeometry args={[0.12, 0.15, 0.72, 16]} />
-        <meshStandardMaterial color="#171515" roughness={0.8} />
-      </mesh>
-      <mesh position={[-0.24, -0.36, -0.58]} castShadow>
-        <cylinderGeometry args={[0.11, 0.14, 0.65, 16]} />
-        <meshStandardMaterial color="#171515" roughness={0.8} />
-      </mesh>
-      <mesh position={[0.24, -0.36, -0.58]} castShadow>
-        <cylinderGeometry args={[0.11, 0.14, 0.65, 16]} />
-        <meshStandardMaterial color="#171515" roughness={0.8} />
+      {/* Floating Titanium Orbital Halo Ring */}
+      <mesh ref={ringRef} rotation={[Math.PI / 3, 0, 0]}>
+        <torusGeometry args={[1.22, 0.02, 16, 90]} />
+        <meshStandardMaterial
+          color="#888888"
+          metalness={0.96}
+          roughness={0.14}
+        />
       </mesh>
 
-      {/* Heavyweight Crimson Saddle Accent Ring */}
-      <mesh position={[0, 0.36, -0.2]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.56, 0.024, 16, 64]} />
-        <meshStandardMaterial color="#580D1A" roughness={0.3} metalness={0.8} />
+      {/* Crimson Ambient Aura Ring */}
+      <mesh rotation={[-Math.PI / 4, 0, 0]}>
+        <torusGeometry args={[1.34, 0.016, 16, 90]} />
+        <meshStandardMaterial
+          color="#580D1A"
+          metalness={0.9}
+          roughness={0.2}
+        />
       </mesh>
     </group>
   );
