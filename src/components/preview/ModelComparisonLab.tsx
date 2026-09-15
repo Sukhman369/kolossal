@@ -229,15 +229,15 @@ const MODELS: ModelItem[] = [
 
 export default function ModelComparisonLab() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-b border-neutral-200/80">
-      {/* Pure Minimalist 4-Column Grid: Just the 3D element and its name */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+    <section className="py-24 sm:py-36 px-6 sm:px-10 lg:px-16 max-w-[1500px] mx-auto border-b border-neutral-200/80">
+      {/* Pure Minimalist Grid with expansive spacing and enlarged 3D elements */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 sm:gap-20 lg:gap-24">
         {MODELS.map((model) => (
           <div key={model.id} className="flex flex-col items-center group">
-            {/* Open-space 3D Canvas */}
-            <div className="relative w-full h-[280px] sm:h-[320px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
+            {/* Enlarged Open-space 3D Canvas */}
+            <div className="relative w-full h-[360px] sm:h-[420px] md:h-[450px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
               <Canvas
-                camera={{ position: [0, 0, 4.4], fov: 42 }}
+                camera={{ position: [0, 0, 3.4], fov: 42 }}
                 gl={{ antialias: true, alpha: true }}
                 className="w-full h-full"
               >
@@ -247,16 +247,16 @@ export default function ModelComparisonLab() {
                 <spotLight position={[0, 5, 3]} intensity={1.2} angle={0.6} penumbra={1} />
 
                 <Suspense fallback={null}>
-                  <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.4}>
+                  <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.4} scale={1.18}>
                     {model.renderComponent}
                   </Float>
                   <Environment preset="city" />
                   <ContactShadows
-                    position={[0, -1.3, 0]}
-                    opacity={0.25}
-                    scale={3.6}
-                    blur={2.4}
-                    far={2.5}
+                    position={[0, -1.4, 0]}
+                    opacity={0.28}
+                    scale={4.2}
+                    blur={2.6}
+                    far={2.8}
                     color="#3A0811"
                   />
                 </Suspense>
@@ -270,9 +270,9 @@ export default function ModelComparisonLab() {
               </Canvas>
             </div>
 
-            {/* Clean Element Name Only */}
-            <div className="pt-2 text-center">
-              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-neutral-800 font-semibold transition-colors duration-300 group-hover:text-[#580D1A]">
+            {/* Clean Element Name with refined spacing */}
+            <div className="pt-4 text-center">
+              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-[0.3em] text-neutral-800 font-semibold transition-colors duration-300 group-hover:text-[#580D1A]">
                 {model.name}
               </h3>
             </div>
