@@ -31,19 +31,19 @@ function ModelMonolith() {
   return (
     <group position={[0, 0.05, 0]}>
       <mesh ref={meshRef} castShadow receiveShadow>
-        <torusKnotGeometry args={[0.75, 0.24, 128, 32, 2, 3]} />
+        <torusKnotGeometry args={[0.62, 0.2, 128, 32, 2, 3]} />
         <MeshDistortMaterial
           color="#f5f5f5"
           metalness={0.96}
           roughness={0.08}
           clearcoat={1}
           clearcoatRoughness={0.06}
-          distort={0.14}
+          distort={0.12}
           speed={1.5}
         />
       </mesh>
       <mesh ref={ringRef}>
-        <torusGeometry args={[1.45, 0.025, 16, 100]} />
+        <torusGeometry args={[1.18, 0.02, 16, 100]} />
         <meshStandardMaterial
           color="#888888"
           metalness={0.98}
@@ -78,8 +78,9 @@ function ModelTesseract() {
 
   return (
     <group position={[0, 0.05, 0]}>
+      {/* Outer Wireframe Box */}
       <mesh ref={outerRef}>
-        <boxGeometry args={[1.4, 1.4, 1.4]} />
+        <boxGeometry args={[1.05, 1.05, 1.05]} />
         <meshStandardMaterial
           color="#1a1a1a"
           wireframe={true}
@@ -87,8 +88,9 @@ function ModelTesseract() {
           metalness={0.9}
         />
       </mesh>
+      {/* Inner Solid Beveled Box */}
       <mesh ref={innerRef}>
-        <boxGeometry args={[0.9, 0.9, 0.9]} />
+        <boxGeometry args={[0.68, 0.68, 0.68]} />
         <meshPhysicalMaterial
           color="#333333"
           metalness={0.95}
@@ -96,8 +98,9 @@ function ModelTesseract() {
           clearcoat={1}
         />
       </mesh>
+      {/* Core Maroon Refractive Sphere */}
       <mesh ref={coreRef}>
-        <sphereGeometry args={[0.36, 32, 32]} />
+        <sphereGeometry args={[0.26, 32, 32]} />
         <meshPhysicalMaterial
           color="#580D1A"
           emissive="#30050d"
@@ -124,8 +127,9 @@ function ModelTextileDrape() {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
+      {/* Heavyweight Fabric Twist */}
       <mesh castShadow receiveShadow>
-        <torusKnotGeometry args={[0.82, 0.32, 120, 24, 3, 4]} />
+        <torusKnotGeometry args={[0.58, 0.22, 128, 32, 2, 3]} />
         <meshStandardMaterial
           color="#420812"
           roughness={0.65}
@@ -134,7 +138,7 @@ function ModelTextileDrape() {
         />
       </mesh>
       <mesh>
-        <torusGeometry args={[1.4, 0.04, 16, 80]} />
+        <torusGeometry args={[1.15, 0.025, 16, 80]} />
         <meshStandardMaterial
           color="#1c1c1c"
           roughness={0.3}
@@ -169,8 +173,9 @@ function ModelCyberGeode() {
 
   return (
     <group position={[0, 0.05, 0]}>
+      {/* Central Faceted Geode */}
       <mesh ref={icosaRef} castShadow receiveShadow>
-        <icosahedronGeometry args={[0.78, 0]} />
+        <icosahedronGeometry args={[0.62, 0]} />
         <meshStandardMaterial
           color="#e0e0e0"
           metalness={0.98}
@@ -178,16 +183,18 @@ function ModelCyberGeode() {
           flatShading={true}
         />
       </mesh>
+      {/* Gimbal Ring 1 */}
       <mesh ref={ring1Ref}>
-        <torusGeometry args={[1.35, 0.022, 16, 90]} />
+        <torusGeometry args={[1.08, 0.018, 16, 90]} />
         <meshStandardMaterial
           color="#580D1A"
           metalness={0.9}
           roughness={0.2}
         />
       </mesh>
+      {/* Gimbal Ring 2 */}
       <mesh ref={ring2Ref}>
-        <torusGeometry args={[1.6, 0.022, 16, 90]} />
+        <torusGeometry args={[1.24, 0.018, 16, 90]} />
         <meshStandardMaterial
           color="#777777"
           metalness={0.95}
@@ -229,15 +236,15 @@ const MODELS: ModelItem[] = [
 
 export default function ModelComparisonLab() {
   return (
-    <section className="py-24 sm:py-36 px-6 sm:px-10 lg:px-16 max-w-[1500px] mx-auto border-b border-neutral-200/80">
-      {/* Pure Minimalist Grid with expansive spacing and enlarged 3D elements */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 sm:gap-20 lg:gap-24">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-b border-neutral-200/80">
+      {/* Pure Minimalist Grid with ample breathing room and zero cropping */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
         {MODELS.map((model) => (
           <div key={model.id} className="flex flex-col items-center group">
-            {/* Enlarged Open-space 3D Canvas */}
-            <div className="relative w-full h-[360px] sm:h-[420px] md:h-[450px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
+            {/* 3D Canvas with safe frustum clearance */}
+            <div className="relative w-full h-[320px] sm:h-[360px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
               <Canvas
-                camera={{ position: [0, 0, 3.4], fov: 42 }}
+                camera={{ position: [0, 0, 4.6], fov: 42 }}
                 gl={{ antialias: true, alpha: true }}
                 className="w-full h-full"
               >
@@ -247,16 +254,16 @@ export default function ModelComparisonLab() {
                 <spotLight position={[0, 5, 3]} intensity={1.2} angle={0.6} penumbra={1} />
 
                 <Suspense fallback={null}>
-                  <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.4} scale={1.18}>
+                  <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.4}>
                     {model.renderComponent}
                   </Float>
                   <Environment preset="city" />
                   <ContactShadows
-                    position={[0, -1.4, 0]}
-                    opacity={0.28}
-                    scale={4.2}
-                    blur={2.6}
-                    far={2.8}
+                    position={[0, -1.35, 0]}
+                    opacity={0.25}
+                    scale={3.6}
+                    blur={2.4}
+                    far={2.5}
                     color="#3A0811"
                   />
                 </Suspense>
@@ -270,9 +277,9 @@ export default function ModelComparisonLab() {
               </Canvas>
             </div>
 
-            {/* Clean Element Name with refined spacing */}
-            <div className="pt-4 text-center">
-              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-[0.3em] text-neutral-800 font-semibold transition-colors duration-300 group-hover:text-[#580D1A]">
+            {/* Clean Element Name */}
+            <div className="pt-2 text-center">
+              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-neutral-800 font-semibold transition-colors duration-300 group-hover:text-[#580D1A]">
                 {model.name}
               </h3>
             </div>
