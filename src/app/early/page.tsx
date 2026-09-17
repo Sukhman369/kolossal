@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, Sun, Moon } from 'lucide-react';
 
 interface SubmissionResult {
   name: string;
@@ -11,6 +11,7 @@ interface SubmissionResult {
 }
 
 export default function EarlyAccessPage() {
+  const [isDark, setIsDark] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,6 +20,28 @@ export default function EarlyAccessPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [submittedResult, setSubmittedResult] = useState<SubmissionResult | null>(null);
+
+  // Initialize theme from localStorage so it matches coming-soon
+  useEffect(() => {
+    try {
+      const savedTheme = localStorage.getItem('kolossal_theme');
+      if (savedTheme === 'light') {
+        setIsDark(false);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextMode = !isDark;
+    setIsDark(nextMode);
+    try {
+      localStorage.setItem('kolossal_theme', nextMode ? 'dark' : 'light');
+    } catch {
+      // ignore
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,16 +101,49 @@ export default function EarlyAccessPage() {
   };
 
   return (
-    <div className="relative w-screen min-h-screen h-[100dvh] bg-[#0A0A0A] text-[#FAFAFA] flex flex-col justify-between items-center p-6 sm:p-10 select-none overflow-hidden">
-      
+    <div
+      className={`relative w-screen min-h-screen h-[100dvh] flex flex-col justify-between items-center p-6 sm:p-10 select-none overflow-hidden transition-colors duration-500 ${
+        isDark ? 'bg-[#0A0A0A] text-[#FAFAFA]' : 'bg-[#FAF9F7] text-[#111111]'
+      }`}
+    >
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] h-[650px] sm:h-[850px] bg-[#580D1A]/[0.12] rounded-full blur-[160px] pointer-events-none" />
+      <div
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] h-[650px] sm:h-[850px] rounded-full blur-[160px] pointer-events-none transition-all duration-500 ${
+          isDark ? 'bg-[#580D1A]/[0.12]' : 'bg-[#580D1A]/[0.05]'
+        }`}
+      />
 
-      {/* ── Top Header: Centered Monogram ── */}
-      <header className="relative z-10 w-full flex items-center justify-center max-w-5xl">
-        <div className="text-sm sm:text-base font-black tracking-[0.4em] uppercase text-neutral-200">
+      {/* ── Top Header: Centered Monogram with Theme Toggle ── */}
+      <header className="relative z-10 w-full flex items-center justify-between max-w-5xl">
+        {/* Left balance spacer */}
+        <div className="w-9 h-9" />
+
+        {/* Center Brand Monogram */}
+        <div
+          className={`text-sm sm:text-base font-black tracking-[0.4em] uppercase transition-colors duration-300 ${
+            isDark ? 'text-neutral-200' : 'text-neutral-900'
+          }`}
+        >
           KOLOSSAL
         </div>
+
+        {/* Top-Right Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          aria-label="Toggle Dark and Light mode"
+          title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 border cursor-pointer active:scale-90 ${
+            isDark
+              ? 'bg-white/[0.06] hover:bg-white/[0.12] border-white/15 text-neutral-300 hover:text-white shadow-sm'
+              : 'bg-black/[0.04] hover:bg-black/[0.08] border-black/10 text-neutral-700 hover:text-neutral-950 shadow-sm'
+          }`}
+        >
+          {isDark ? (
+            <Sun className="w-4 h-4 transition-transform duration-300 hover:rotate-45" />
+          ) : (
+            <Moon className="w-4 h-4 transition-transform duration-300 hover:-rotate-12" />
+          )}
+        </button>
       </header>
 
       {/* ── Center Content Area ── */}
@@ -100,17 +156,29 @@ export default function EarlyAccessPage() {
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#e06d84] font-semibold block">
                 PRE-REGISTER
               </span>
-              <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-white">
+              <h1
+                className={`text-3xl sm:text-4xl font-light tracking-tight transition-colors duration-300 ${
+                  isDark ? 'text-white' : 'text-neutral-950'
+                }`}
+              >
                 Priority Allocation
               </h1>
-              <p className="text-xs sm:text-sm font-light text-neutral-400">
+              <p
+                className={`text-xs sm:text-sm font-light transition-colors duration-300 ${
+                  isDark ? 'text-neutral-400' : 'text-neutral-600'
+                }`}
+              >
                 Reserve your numbered piece from the 150-unit physical drop.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-3.5 pt-2">
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
+                <label
+                  className={`block text-[10px] font-mono uppercase tracking-widest mb-1.5 pl-1 transition-colors duration-300 ${
+                    isDark ? 'text-neutral-400' : 'text-neutral-600'
+                  }`}
+                >
                   Your Name <span className="text-[#e06d84]">*</span>
                 </label>
                 <input
@@ -119,13 +187,21 @@ export default function EarlyAccessPage() {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Liam Vance"
                   disabled={isLoading}
-                  className="w-full bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide text-white placeholder:text-neutral-600 focus:outline-none transition-all duration-200 disabled:opacity-50"
+                  className={`w-full border rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide focus:outline-none transition-all duration-200 disabled:opacity-50 ${
+                    isDark
+                      ? 'bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 text-white placeholder:text-neutral-600'
+                      : 'bg-black/[0.03] hover:bg-black/[0.05] focus:bg-black/[0.06] border-black/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 text-neutral-900 placeholder:text-neutral-400'
+                  }`}
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
+                <label
+                  className={`block text-[10px] font-mono uppercase tracking-widest mb-1.5 pl-1 transition-colors duration-300 ${
+                    isDark ? 'text-neutral-400' : 'text-neutral-600'
+                  }`}
+                >
                   Email Address <span className="text-[#e06d84]">*</span>
                 </label>
                 <input
@@ -134,17 +210,31 @@ export default function EarlyAccessPage() {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="e.g. liam@kolossal.in"
                   disabled={isLoading}
-                  className="w-full bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide text-white placeholder:text-neutral-600 focus:outline-none transition-all duration-200 disabled:opacity-50"
+                  className={`w-full border rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide focus:outline-none transition-all duration-200 disabled:opacity-50 ${
+                    isDark
+                      ? 'bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 text-white placeholder:text-neutral-600'
+                      : 'bg-black/[0.03] hover:bg-black/[0.05] focus:bg-black/[0.06] border-black/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 text-neutral-900 placeholder:text-neutral-400'
+                  }`}
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
+                <label
+                  className={`block text-[10px] font-mono uppercase tracking-widest mb-1.5 pl-1 transition-colors duration-300 ${
+                    isDark ? 'text-neutral-400' : 'text-neutral-600'
+                  }`}
+                >
                   Phone Number <span className="text-[#e06d84]">*</span>
                 </label>
                 <div className="flex items-center space-x-2">
-                  <div className="flex items-center justify-center bg-white/[0.04] border border-white/15 rounded-xl px-3.5 py-3 text-xs sm:text-sm font-mono font-medium text-neutral-300 select-none">
+                  <div
+                    className={`flex items-center justify-center border rounded-xl px-3.5 py-3 text-xs sm:text-sm font-mono font-medium select-none transition-colors duration-300 ${
+                      isDark
+                        ? 'bg-white/[0.04] border-white/15 text-neutral-300'
+                        : 'bg-black/[0.03] border-black/15 text-neutral-700'
+                    }`}
+                  >
                     +91
                   </div>
                   <input
@@ -153,7 +243,11 @@ export default function EarlyAccessPage() {
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="98765 43210"
                     disabled={isLoading}
-                    className="flex-1 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide text-white placeholder:text-neutral-600 focus:outline-none transition-all duration-200 disabled:opacity-50"
+                    className={`flex-1 border rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide focus:outline-none transition-all duration-200 disabled:opacity-50 ${
+                      isDark
+                        ? 'bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 text-white placeholder:text-neutral-600'
+                        : 'bg-black/[0.03] hover:bg-black/[0.05] focus:bg-black/[0.06] border-black/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 text-neutral-900 placeholder:text-neutral-400'
+                    }`}
                     required
                   />
                 </div>
@@ -169,10 +263,18 @@ export default function EarlyAccessPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="group relative w-full flex items-center justify-center space-x-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-neutral-100 via-white to-neutral-200 hover:from-white hover:to-neutral-100 text-neutral-950 font-medium text-xs sm:text-sm uppercase tracking-[0.2em] shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] active:scale-98 transition-all duration-200 cursor-pointer disabled:opacity-50"
+                  className={`group relative w-full flex items-center justify-center space-x-2 py-3.5 px-6 rounded-xl font-medium text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer disabled:opacity-50 active:scale-98 ${
+                    isDark
+                      ? 'bg-gradient-to-r from-neutral-100 via-white to-neutral-200 hover:from-white hover:to-neutral-100 text-neutral-950 shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]'
+                      : 'bg-[#580D1A] hover:bg-[#3A0811] text-white shadow-[0_4px_20px_rgba(88,13,26,0.25)] hover:shadow-[0_0_35px_rgba(88,13,26,0.4)]'
+                  }`}
                 >
                   {isLoading ? (
-                    <span className="w-4 h-4 border-2 border-neutral-400 border-t-neutral-950 rounded-full animate-spin" />
+                    <span
+                      className={`w-4 h-4 border-2 rounded-full animate-spin ${
+                        isDark ? 'border-neutral-400 border-t-neutral-950' : 'border-white/40 border-t-white'
+                      }`}
+                    />
                   ) : (
                     <>
                       <span>Submit Reservation</span>
@@ -193,28 +295,50 @@ export default function EarlyAccessPage() {
             </div>
 
             {/* Heading Line with slide-up reveal */}
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white leading-tight">
+            <h2
+              className={`text-3xl sm:text-5xl font-light tracking-tight leading-tight transition-colors duration-300 ${
+                isDark ? 'text-white' : 'text-neutral-950'
+              }`}
+            >
               Allocation Confirmed.
             </h2>
 
             {/* Sub-heading Line */}
-            <p className="text-sm sm:text-base font-light text-neutral-300 max-w-sm mx-auto leading-relaxed">
+            <p
+              className={`text-sm sm:text-base font-light max-w-sm mx-auto leading-relaxed transition-colors duration-300 ${
+                isDark ? 'text-neutral-300' : 'text-neutral-700'
+              }`}
+            >
               Welcome to the inner circle, {submittedResult.name}. Your private access code and sizing window will be dispatched directly to you prior to the public release.
             </p>
 
             {/* Passcode snippet */}
             <div className="pt-3">
-              <div className="inline-flex items-center space-x-3 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono tracking-wider text-neutral-300">
+              <div
+                className={`inline-flex items-center space-x-3 px-5 py-2.5 rounded-full border text-xs font-mono tracking-wider transition-colors duration-300 ${
+                  isDark
+                    ? 'bg-white/[0.05] border-white/10 text-neutral-300'
+                    : 'bg-black/[0.05] border-black/10 text-neutral-800'
+                }`}
+              >
                 <span className="text-neutral-500">QUEUE #{submittedResult.queueNumber}</span>
                 <span className="text-neutral-600">·</span>
-                <span className="text-white font-semibold select-all">{submittedResult.vipCode}</span>
+                <span
+                  className={`font-semibold select-all ${
+                    isDark ? 'text-white' : 'text-neutral-950'
+                  }`}
+                >
+                  {submittedResult.vipCode}
+                </span>
               </div>
             </div>
 
             <div className="pt-6">
               <Link
                 href="/coming-soon"
-                className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition-colors"
+                className={`inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-[0.2em] transition-colors ${
+                  isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-600 hover:text-neutral-950'
+                }`}
               >
                 <span>Return to Monolith</span>
                 <ArrowRight className="w-3.5 h-3.5" />
