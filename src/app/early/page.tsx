@@ -28,8 +28,12 @@ export default function EarlyAccessPage() {
       setErrorMsg('Please enter your full name.');
       return;
     }
-    if (!formData.email.trim() || !formData.email.includes('@')) {
-      setErrorMsg('Please enter a valid email address.');
+    if (!formData.email.trim()) {
+      setErrorMsg('Please enter your email address.');
+      return;
+    }
+    if (!formData.email.includes('@') || !formData.email.includes('.')) {
+      setErrorMsg('Please provide a valid email format.');
       return;
     }
     if (!formData.phone.trim()) {
@@ -101,7 +105,7 @@ export default function EarlyAccessPage() {
             <form onSubmit={handleSubmit} className="space-y-3.5 pt-2">
               <div>
                 <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
-                  Your Name
+                  Your Name <span className="text-[#e06d84]">*</span>
                 </label>
                 <input
                   type="text"
@@ -116,7 +120,7 @@ export default function EarlyAccessPage() {
 
               <div>
                 <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
-                  Email Address
+                  Email Address <span className="text-[#e06d84]">*</span>
                 </label>
                 <input
                   type="email"
@@ -131,7 +135,7 @@ export default function EarlyAccessPage() {
 
               <div>
                 <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
-                  Phone Number
+                  Phone Number <span className="text-[#e06d84]">*</span>
                 </label>
                 <input
                   type="tel"
