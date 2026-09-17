@@ -62,10 +62,8 @@ export default function ComingSoonPage() {
       </main>
 
       {/* ── Minimal Bottom Provenance ── */}
-      <footer className="relative z-10 w-full flex items-center justify-between max-w-5xl text-[10px] sm:text-[11px] font-mono tracking-widest text-neutral-600 uppercase">
-        <span>30.7333° N, 76.7794° E</span>
-        <span className="text-neutral-500">CHANDIGARH, INDIA</span>
-        <span>EDITION OF 150</span>
+      <footer className="relative z-10 w-full flex items-center justify-center max-w-5xl text-[10px] sm:text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
+        <span>CHANDIGARH, INDIA</span>
       </footer>
 
     </div>
