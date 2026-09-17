@@ -23,20 +23,9 @@ export default function ComingSoonPage() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-[#580D1A]/[0.12] rounded-full blur-[140px] pointer-events-none" />
 
       {/* ── Top Bar: Minimal Monogram ── */}
-      <header className="relative z-10 w-full flex items-center justify-between max-w-5xl">
-        <div className="flex items-center space-x-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#851830] animate-pulse" />
-          <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.3em] uppercase text-neutral-400">
-            DROP 002 · PRE-RELEASE
-          </span>
-        </div>
-
+      <header className="relative z-10 w-full flex items-center justify-center max-w-5xl">
         <div className="text-sm sm:text-base font-black tracking-[0.4em] uppercase text-neutral-200">
           KOLOSSAL
-        </div>
-
-        <div className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-neutral-500 hidden sm:block">
-          500 GSM · CHANDIGARH
         </div>
       </header>
 
