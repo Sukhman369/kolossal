@@ -94,7 +94,7 @@ export default function ComingSoonPage() {
 
   return (
     <div className="relative w-screen min-h-screen h-[100dvh] bg-[#0A0A0A] text-[#FAFAFA] flex flex-col justify-between items-center p-6 sm:p-10 select-none overflow-hidden">
-      
+
       {/* Subtle deep ambient glow behind 3D element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-[#580D1A]/[0.12] rounded-full blur-[140px] pointer-events-none" />
 
@@ -118,7 +118,7 @@ export default function ComingSoonPage() {
 
       {/* ── Center Stage: 3D Monolith Model ── */}
       <main className="relative z-10 w-full max-w-4xl flex-1 flex flex-col items-center justify-center -my-2 sm:my-0">
-        
+
         {/* The 3D Scene */}
         <div className="w-full h-[280px] sm:h-[380px] md:h-[440px] lg:h-[480px] flex items-center justify-center">
           <ComingSoon3DScene />
@@ -127,7 +127,7 @@ export default function ComingSoonPage() {
         {/* Minimal Editorial Content */}
         <div className="text-center space-y-3 max-w-md px-4 mt-1 sm:mt-3">
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-light tracking-tight text-white leading-tight">
-            Heavyweight Form.
+            Pre Launch Form
           </h1>
           <p className="text-xs sm:text-sm font-light text-neutral-400 leading-relaxed">
             Custom-milled 500 GSM organic cotton in architectural proportions. Strictly 150 individually numbered garments.
@@ -177,7 +177,7 @@ export default function ComingSoonPage() {
                 <Check className="w-3.5 h-3.5" />
                 <span>Allocation Reserved · Queue #{ticket.queueNumber}</span>
               </div>
-              
+
               <div className="flex items-center space-x-3 pt-1">
                 <code className="text-xs sm:text-sm font-mono tracking-wider text-neutral-300 select-all">
                   {ticket.vipCode}
