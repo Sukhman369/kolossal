@@ -119,3 +119,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #580d1a;
 }
+
+/* Hide Next.js dev indicators / bottom-left badges */
+nextjs-portal,
+[data-nextjs-dev-indicator],
+[data-nextjs-toast],
+#nextjs-dev-indicator {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
