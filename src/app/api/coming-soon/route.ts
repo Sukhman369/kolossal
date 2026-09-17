@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
+import { syncSubscriberToShopify } from '@/lib/commerce/shopify-customers';
 
 interface SubscriberRecord {
   email: string;
@@ -75,6 +76,13 @@ export async function POST(req: NextRequest) {
 
     subscribers.push(newRecord);
     await saveSubscribers(subscribers);
+
+    // Synchronize to Shopify Customers database if configured
+    await syncSubscriberToShopify({
+      email: trimmedEmail,
+      vipCode,
+      queueNumber,
+    });
 
     return NextResponse.json({
       success: true,
