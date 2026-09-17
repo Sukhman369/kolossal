@@ -72,7 +72,13 @@ function ExternalGLBModel({ url }: { url: string }) {
   return <primitive ref={modelRef} object={scene} scale={1.4} position={[0, -0.3, 0]} />;
 }
 
-export default function ComingSoon3DScene({ className }: { className?: string }) {
+export default function ComingSoon3DScene({
+  className,
+  isDark = true,
+}: {
+  className?: string;
+  isDark?: boolean;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(true);
   const [hasCustomModel, setHasCustomModel] = useState(false);
@@ -108,7 +114,13 @@ export default function ComingSoon3DScene({ className }: { className?: string })
       className={className || "relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none"}
     >
       {/* Deep atmospheric maroon radial halo */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,13,26,0.18)_0%,rgba(10,10,10,0)_68%)] pointer-events-none" />
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
+          isDark
+            ? 'bg-[radial-gradient(circle_at_center,rgba(88,13,26,0.18)_0%,rgba(10,10,10,0)_68%)] opacity-100'
+            : 'bg-[radial-gradient(circle_at_center,rgba(88,13,26,0.07)_0%,rgba(250,249,247,0)_68%)] opacity-80'
+        }`}
+      />
 
       <Canvas
         camera={{ position: [0, 0, 5.4], fov: 40 }}
@@ -116,8 +128,8 @@ export default function ComingSoon3DScene({ className }: { className?: string })
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
         className="w-full h-full"
       >
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[6, 8, 5]} intensity={2.2} castShadow />
+        <ambientLight intensity={isDark ? 0.8 : 0.9} />
+        <directionalLight position={[6, 8, 5]} intensity={isDark ? 2.2 : 2.0} castShadow />
         <pointLight position={[-5, -3, -3]} intensity={1.8} color="#851830" />
         <spotLight position={[0, 6, 3]} intensity={1.6} angle={0.6} penumbra={1} />
 
@@ -133,11 +145,11 @@ export default function ComingSoon3DScene({ className }: { className?: string })
           <Environment preset="city" />
           <ContactShadows
             position={[0, -1.45, 0]}
-            opacity={0.35}
+            opacity={isDark ? 0.35 : 0.28}
             scale={4.8}
             blur={2.5}
             far={3}
-            color="#2a050c"
+            color={isDark ? "#2a050c" : "#3A0811"}
           />
         </Suspense>
 
