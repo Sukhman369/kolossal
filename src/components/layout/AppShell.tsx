@@ -8,7 +8,7 @@ import Footer from './Footer';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isStandalone = pathname === '/coming-soon';
+  const isStandalone = pathname === '/coming-soon' || pathname === '/early';
 
   if (isStandalone) {
     return <main className="w-full min-h-screen">{children}</main>;
