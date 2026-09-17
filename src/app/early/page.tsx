@@ -88,10 +88,10 @@ export default function EarlyAccessPage() {
           <div className="w-full space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#e06d84] font-semibold block">
-                PRIORITY ALLOCATION
+                PRE-REGISTER
               </span>
               <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-white">
-                Pre-Register
+                Priority Allocation
               </h1>
               <p className="text-xs sm:text-sm font-light text-neutral-400">
                 Reserve your numbered piece from the 150-unit physical drop.
