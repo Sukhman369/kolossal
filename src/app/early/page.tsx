@@ -181,10 +181,6 @@ export default function EarlyAccessPage() {
                   )}
                 </button>
               </div>
-
-              <p className="text-[10px] font-mono text-neutral-500 text-center pt-2">
-                Private SMS & email confirmation sent upon submission.
-              </p>
             </form>
           </div>
         ) : (
