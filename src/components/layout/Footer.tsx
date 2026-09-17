@@ -49,6 +49,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/coming-soon" className="hover:text-snoov-green transition-colors text-snoov-green font-medium flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-pulse" />
+                    <span>Drop 02 (Coming Soon)</span>
+                  </Link>
+                </li>
+                <li>
                   <Link href="/collections?filter=new" className="hover:text-snoov-green transition-colors text-snoov-green font-medium">
                     New Arrivals (SS26)
                   </Link>

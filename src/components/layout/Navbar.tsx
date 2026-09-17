@@ -79,6 +79,13 @@ export default function Navbar() {
             >
               About
             </Link>
+            <Link
+              href="/coming-soon"
+              className="inline-flex items-center space-x-1.5 text-xs uppercase tracking-[0.2em] font-semibold text-[#580D1A] hover:text-[#3a0811] transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-pulse" />
+              <span>Coming Soon</span>
+            </Link>
           </nav>
 
           {/* Center Brand Monogram / Logo */}
@@ -129,6 +136,10 @@ export default function Navbar() {
               <div className="flex flex-col space-y-2.5 text-sm uppercase tracking-[0.2em] font-semibold text-neutral-900">
                 <Link href="/collections" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
                   All Collections
+                </Link>
+                <Link href="/coming-soon" onClick={() => setMobileMenuOpen(false)} className="text-[#580D1A] font-semibold flex items-center gap-1.5 hover:text-[#3a0811]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-pulse" />
+                  <span>Drop 02 (Coming Soon)</span>
                 </Link>
                 <Link href="/collections?filter=new" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#580D1A]">
                   New Arrivals (SS26)
