@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, Sparkles } from 'lucide-react';
 
 interface SubmissionResult {
   name: string;
@@ -73,22 +73,10 @@ export default function EarlyAccessPage() {
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] h-[650px] sm:h-[850px] bg-[#580D1A]/[0.12] rounded-full blur-[160px] pointer-events-none" />
 
-      {/* ── Top Header ── */}
-      <header className="relative z-10 w-full flex items-center justify-between max-w-5xl">
-        <Link
-          href="/coming-soon"
-          className="group flex items-center space-x-1.5 text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-neutral-400 hover:text-white transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
-          <span>BACK</span>
-        </Link>
-
+      {/* ── Top Header: Centered Monogram ── */}
+      <header className="relative z-10 w-full flex items-center justify-center max-w-5xl">
         <div className="text-sm sm:text-base font-black tracking-[0.4em] uppercase text-neutral-200">
           KOLOSSAL
-        </div>
-
-        <div className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-neutral-500">
-          DROP 002
         </div>
       </header>
 
