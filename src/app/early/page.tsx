@@ -43,11 +43,17 @@ export default function EarlyAccessPage() {
 
     setIsLoading(true);
 
+    const rawPhone = formData.phone.trim();
+    const formattedPhone = rawPhone.startsWith('+') ? rawPhone : `+91 ${rawPhone}`;
+
     try {
       const res = await fetch('/api/early', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          phone: formattedPhone,
+        }),
       });
 
       const data = await res.json();
@@ -137,15 +143,20 @@ export default function EarlyAccessPage() {
                 <label className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-1.5 pl-1">
                   Phone Number <span className="text-[#e06d84]">*</span>
                 </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="e.g. +91 98765 43210"
-                  disabled={isLoading}
-                  className="w-full bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide text-white placeholder:text-neutral-600 focus:outline-none transition-all duration-200 disabled:opacity-50"
-                  required
-                />
+                <div className="flex items-center space-x-2">
+                  <div className="flex items-center justify-center bg-white/[0.04] border border-white/15 rounded-xl px-3.5 py-3 text-xs sm:text-sm font-mono font-medium text-neutral-300 select-none">
+                    +91
+                  </div>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="98765 43210"
+                    disabled={isLoading}
+                    className="flex-1 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] border border-white/15 focus:border-[#851830] focus:ring-1 focus:ring-[#851830]/30 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide text-white placeholder:text-neutral-600 focus:outline-none transition-all duration-200 disabled:opacity-50"
+                    required
+                  />
+                </div>
               </div>
 
               {errorMsg && (
