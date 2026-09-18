@@ -3,8 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import { ShoppingBag, Menu, X, Globe, ChevronDown, Check } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+
+const NavBrand3DIntro = dynamic(() => import('./NavBrand3DIntro'), { ssr: false });
 
 const CURRENCIES = ['USD', 'EUR', 'GBP', 'INR'] as const;
 type Currency = (typeof CURRENCIES)[number];
@@ -17,6 +20,39 @@ export default function Navbar() {
   const [currency, setCurrency] = useState<Currency>('USD');
   const [currencyOpen, setCurrencyOpen] = useState(false);
   const currencyRef = useRef<HTMLDivElement>(null);
+
+  // 3D K Letter Intro Animation States
+  const [isPlaying3DIntro, setIsPlaying3DIntro] = useState(false);
+  const [isDocked, setIsDocked] = useState(false);
+  const [isJustDocked, setIsJustDocked] = useState(false);
+
+  // Trigger 3D intro when visiting or refreshing the homepage
+  useEffect(() => {
+    if (pathname === '/') {
+      setIsPlaying3DIntro(true);
+      setIsDocked(false);
+    } else {
+      setIsPlaying3DIntro(false);
+      setIsDocked(true);
+    }
+  }, [pathname]);
+
+  const handleIntroComplete = () => {
+    setIsPlaying3DIntro(false);
+    setIsDocked(true);
+    setIsJustDocked(true);
+    setTimeout(() => setIsJustDocked(false), 900);
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      // Re-trigger 3D animation on demand
+      setIsPlaying3DIntro(false);
+      setIsDocked(false);
+      setTimeout(() => setIsPlaying3DIntro(true), 50);
+    }
+  };
 
   // Scroll detection
   useEffect(() => {
@@ -145,9 +181,28 @@ export default function Navbar() {
               CENTER COLUMN: Brand Monogram & Sub-Title (Absolute Perfection Centering)
              ========================================================================= */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center pointer-events-auto select-none">
-            <Link href="/" className="group flex flex-col items-center py-1">
+            <Link
+              href="/"
+              onClick={handleLogoClick}
+              className="group flex flex-col items-center py-1 focus:outline-none"
+              title="KOLOSSAL Street Wear"
+            >
               <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.38em] sm:tracking-[0.44em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.48em] pl-[0.38em] sm:pl-[0.44em]">
-                KOLOSSAL
+                <span
+                  id="nav-brand-k"
+                  className={`inline-block transition-all duration-300 ${
+                    !isDocked && isPlaying3DIntro
+                      ? 'opacity-0 scale-90'
+                      : 'opacity-100 scale-100'
+                  } ${
+                    isJustDocked
+                      ? 'text-[#580D1A] scale-110 drop-shadow-[0_0_12px_rgba(88,13,26,0.6)]'
+                      : ''
+                  }`}
+                >
+                  K
+                </span>
+                OLOSSAL
               </span>
               <span className="text-[7.5px] sm:text-[8.5px] font-mono tracking-[0.34em] text-[#580D1A] uppercase font-semibold pl-[0.34em] mt-0.5">
                 Street Wear
@@ -380,6 +435,9 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* 3D Animated 'K' Intro Canvas Sequence */}
+      {isPlaying3DIntro && <NavBrand3DIntro onComplete={handleIntroComplete} />}
     </>
   );
 }
