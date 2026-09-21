@@ -157,11 +157,10 @@ export default function Navbar() {
 
       {/* Main Navigation Header */}
       <header
-        className={`fixed top-8 sm:top-9 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#FAF9F7]/95 backdrop-blur-md border-b border-neutral-200/80 shadow-xs py-2 sm:py-2.5'
-            : 'bg-[#FAF9F7]/85 backdrop-blur-sm border-b border-neutral-200/40 py-3 sm:py-3.5'
-        }`}
+        className={`fixed top-8 sm:top-9 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+          ? 'bg-[#FAF9F7]/95 backdrop-blur-md border-b border-neutral-200/80 shadow-xs py-2 sm:py-2.5'
+          : 'bg-[#FAF9F7]/85 backdrop-blur-sm border-b border-neutral-200/40 py-3 sm:py-3.5'
+          }`}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between h-14 sm:h-16">
           {/* =========================================================================
@@ -182,11 +181,10 @@ export default function Navbar() {
             <nav className="hidden lg:flex items-center space-x-7 xl:space-x-9">
               <Link
                 href="/collections"
-                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${
-                  isActive('/collections')
-                    ? 'text-[#580D1A] font-semibold'
-                    : 'text-neutral-600 hover:text-[#580D1A]'
-                }`}
+                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${isActive('/collections')
+                  ? 'text-[#580D1A] font-semibold'
+                  : 'text-neutral-600 hover:text-[#580D1A]'
+                  }`}
               >
                 Collections
                 {isActive('/collections') && (
@@ -195,11 +193,10 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/lookbook"
-                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${
-                  isActive('/lookbook')
-                    ? 'text-[#580D1A] font-semibold'
-                    : 'text-neutral-600 hover:text-[#580D1A]'
-                }`}
+                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${isActive('/lookbook')
+                  ? 'text-[#580D1A] font-semibold'
+                  : 'text-neutral-600 hover:text-[#580D1A]'
+                  }`}
               >
                 Lookbook
                 {isActive('/lookbook') && (
@@ -229,15 +226,13 @@ export default function Navbar() {
               <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.38em] sm:tracking-[0.44em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.48em] pl-[0.38em] sm:pl-[0.44em] inline-flex items-baseline">
                 <span
                   id="nav-brand-k"
-                  className={`inline-block transition-all duration-300 ${
-                    !isDocked
-                      ? 'opacity-0 pointer-events-none select-none'
-                      : 'opacity-100'
-                  } ${
-                    isJustDocked
+                  className={`inline-block transition-all duration-300 ${!isDocked
+                    ? 'opacity-0 pointer-events-none select-none'
+                    : 'opacity-100'
+                    } ${isJustDocked
                       ? 'text-[#580D1A] scale-110 drop-shadow-[0_0_12px_rgba(88,13,26,0.6)]'
                       : 'scale-100'
-                  }`}
+                    }`}
                 >
                   K
                 </span>
@@ -245,20 +240,29 @@ export default function Navbar() {
                   className="inline-flex overflow-hidden align-baseline"
                   aria-hidden="true"
                 >
-                  {REST_LETTERS.map((char, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-block transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                      style={{
-                        opacity: isRestRevealed ? 1 : 0,
-                        transform: isRestRevealed ? 'translateX(0)' : 'translateX(-18px)',
-                        filter: isRestRevealed ? 'blur(0px)' : 'blur(4px)',
-                        transitionDelay: !isFullySettled && isRestRevealed ? `${idx * 45}ms` : '0ms',
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
+                  {REST_LETTERS.map((char, idx) => {
+                    // Experimental: mirror the second 'S' (idx 4) for high-fashion typographic branding
+                    const isMirroredS = idx === 6;
+                    return (
+                      <span
+                        key={idx}
+                        className="inline-block transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                        style={{
+                          opacity: isRestRevealed ? 1 : 0,
+                          transform: isRestRevealed ? 'translateX(0)' : 'translateX(-18px)',
+                          filter: isRestRevealed ? 'blur(0px)' : 'blur(4px)',
+                          transitionDelay: !isFullySettled && isRestRevealed ? `${idx * 45}ms` : '0ms',
+                        }}
+                      >
+                        <span
+                          className="inline-block"
+                          style={isMirroredS ? { transform: 'scaleX(-1)' } : undefined}
+                        >
+                          {char}
+                        </span>
+                      </span>
+                    );
+                  })}
                 </span>
                 <span className="sr-only">OLOSSAL</span>
               </span>
@@ -284,11 +288,10 @@ export default function Navbar() {
             <nav className="hidden lg:flex items-center space-x-7 xl:space-x-9">
               <Link
                 href="/about"
-                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${
-                  isActive('/about')
-                    ? 'text-[#580D1A] font-semibold'
-                    : 'text-neutral-600 hover:text-[#580D1A]'
-                }`}
+                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${isActive('/about')
+                  ? 'text-[#580D1A] font-semibold'
+                  : 'text-neutral-600 hover:text-[#580D1A]'
+                  }`}
               >
                 About
                 {isActive('/about') && (
@@ -297,11 +300,10 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/contact"
-                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${
-                  isActive('/contact')
-                    ? 'text-[#580D1A] font-semibold'
-                    : 'text-neutral-600 hover:text-[#580D1A]'
-                }`}
+                className={`text-[11px] uppercase tracking-[0.22em] font-medium transition-colors duration-200 relative py-1 ${isActive('/contact')
+                  ? 'text-[#580D1A] font-semibold'
+                  : 'text-neutral-600 hover:text-[#580D1A]'
+                  }`}
               >
                 Contact
                 {isActive('/contact') && (
@@ -339,11 +341,10 @@ export default function Navbar() {
                           setCurrency(curr);
                           setCurrencyOpen(false);
                         }}
-                        className={`w-full px-3 py-1.5 text-xs font-mono uppercase flex items-center justify-between transition-colors ${
-                          currency === curr
-                            ? 'bg-[#580D1A]/10 text-[#580D1A] font-bold'
-                            : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950'
-                        }`}
+                        className={`w-full px-3 py-1.5 text-xs font-mono uppercase flex items-center justify-between transition-colors ${currency === curr
+                          ? 'bg-[#580D1A]/10 text-[#580D1A] font-bold'
+                          : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950'
+                          }`}
                       >
                         <span>{curr}</span>
                         {currency === curr && <Check className="w-3 h-3 text-[#580D1A]" />}
@@ -484,11 +485,10 @@ export default function Navbar() {
                     key={curr}
                     type="button"
                     onClick={() => setCurrency(curr)}
-                    className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors ${
-                      currency === curr
-                        ? 'bg-[#580D1A] text-white'
-                        : 'bg-neutral-200/60 text-neutral-700 hover:bg-neutral-200'
-                    }`}
+                    className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors ${currency === curr
+                      ? 'bg-[#580D1A] text-white'
+                      : 'bg-neutral-200/60 text-neutral-700 hover:bg-neutral-200'
+                      }`}
                   >
                     {curr}
                   </button>
