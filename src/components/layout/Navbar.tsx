@@ -12,8 +12,11 @@ const NavBrand3DIntro = dynamic(() => import('./NavBrand3DIntro'), { ssr: false 
 const CURRENCIES = ['USD', 'EUR', 'GBP', 'INR'] as const;
 type Currency = (typeof CURRENCIES)[number];
 
+const REST_LETTERS = ['O', 'L', 'O', 'S', 'S', 'A', 'L'] as const;
+
 export default function Navbar() {
   const pathname = usePathname();
+  const isHome = pathname === '/';
   const { cart, openCart } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,34 +26,70 @@ export default function Navbar() {
 
   // 3D K Letter Intro Animation States
   const [isPlaying3DIntro, setIsPlaying3DIntro] = useState(false);
-  const [isDocked, setIsDocked] = useState(false);
+  const [isDocked, setIsDocked] = useState(!isHome);
   const [isJustDocked, setIsJustDocked] = useState(false);
+  const [isRestRevealed, setIsRestRevealed] = useState(!isHome);
+  const [isFullySettled, setIsFullySettled] = useState(!isHome);
+  const introTimersRef = useRef<NodeJS.Timeout[]>([]);
+
+  const clearIntroTimers = () => {
+    introTimersRef.current.forEach((t) => clearTimeout(t));
+    introTimersRef.current = [];
+  };
 
   // Trigger 3D intro when visiting or refreshing the homepage
   useEffect(() => {
+    clearIntroTimers();
     if (pathname === '/') {
       setIsPlaying3DIntro(true);
       setIsDocked(false);
+      setIsRestRevealed(false);
+      setIsFullySettled(false);
     } else {
       setIsPlaying3DIntro(false);
       setIsDocked(true);
+      setIsRestRevealed(true);
+      setIsFullySettled(true);
     }
+    return () => clearIntroTimers();
   }, [pathname]);
 
   const handleIntroComplete = () => {
+    clearIntroTimers();
     setIsPlaying3DIntro(false);
     setIsDocked(true);
     setIsJustDocked(true);
-    setTimeout(() => setIsJustDocked(false), 900);
+
+    // Trigger smooth slide reveal of 'OLOSSAL' right as K arrives and docks
+    const t1 = setTimeout(() => {
+      setIsRestRevealed(true);
+    }, 40);
+
+    // Settle full wordmark into place; clear transition delays so hover effects respond instantly
+    const t2 = setTimeout(() => {
+      setIsFullySettled(true);
+    }, 850);
+
+    // Glow pulse on K settles back
+    const t3 = setTimeout(() => {
+      setIsJustDocked(false);
+    }, 900);
+
+    introTimersRef.current.push(t1, t2, t3);
   };
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (pathname === '/') {
       e.preventDefault();
+      clearIntroTimers();
       // Re-trigger 3D animation on demand
       setIsPlaying3DIntro(false);
       setIsDocked(false);
-      setTimeout(() => setIsPlaying3DIntro(true), 50);
+      setIsJustDocked(false);
+      setIsRestRevealed(false);
+      setIsFullySettled(false);
+      const t = setTimeout(() => setIsPlaying3DIntro(true), 50);
+      introTimersRef.current.push(t);
     }
   };
 
@@ -187,24 +226,51 @@ export default function Navbar() {
               className="group flex flex-col items-center py-1 focus:outline-none"
               title="KOLOSSAL Street Wear"
             >
-              <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.38em] sm:tracking-[0.44em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.48em] pl-[0.38em] sm:pl-[0.44em]">
+              <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.38em] sm:tracking-[0.44em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.48em] pl-[0.38em] sm:pl-[0.44em] inline-flex items-baseline">
                 <span
                   id="nav-brand-k"
                   className={`inline-block transition-all duration-300 ${
-                    !isDocked && isPlaying3DIntro
-                      ? 'opacity-0 scale-90'
-                      : 'opacity-100 scale-100'
+                    !isDocked
+                      ? 'opacity-0 pointer-events-none select-none'
+                      : 'opacity-100'
                   } ${
                     isJustDocked
                       ? 'text-[#580D1A] scale-110 drop-shadow-[0_0_12px_rgba(88,13,26,0.6)]'
-                      : ''
+                      : 'scale-100'
                   }`}
                 >
                   K
                 </span>
-                OLOSSAL
+                <span
+                  className="inline-flex overflow-hidden align-baseline"
+                  aria-hidden="true"
+                >
+                  {REST_LETTERS.map((char, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      style={{
+                        opacity: isRestRevealed ? 1 : 0,
+                        transform: isRestRevealed ? 'translateX(0)' : 'translateX(-18px)',
+                        filter: isRestRevealed ? 'blur(0px)' : 'blur(4px)',
+                        transitionDelay: !isFullySettled && isRestRevealed ? `${idx * 45}ms` : '0ms',
+                      }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </span>
+                <span className="sr-only">OLOSSAL</span>
               </span>
-              <span className="text-[7.5px] sm:text-[8.5px] font-mono tracking-[0.34em] text-[#580D1A] uppercase font-semibold pl-[0.34em] mt-0.5">
+              <span
+                className="text-[7.5px] sm:text-[8.5px] font-mono tracking-[0.34em] text-[#580D1A] uppercase font-semibold pl-[0.34em] mt-0.5 transition-all duration-500 ease-out"
+                style={{
+                  opacity: isRestRevealed ? 1 : 0,
+                  transform: isRestRevealed ? 'translateY(0)' : 'translateY(6px)',
+                  filter: isRestRevealed ? 'blur(0px)' : 'blur(2px)',
+                  transitionDelay: !isFullySettled && isRestRevealed ? '260ms' : '0ms',
+                }}
+              >
                 Street Wear
               </span>
             </Link>
