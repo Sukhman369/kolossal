@@ -44,8 +44,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Full legal name is required.' }, { status: 400 });
     }
 
-    if (email && typeof email === 'string' && email.trim() && !email.includes('@')) {
-      return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
+    if (!email || typeof email !== 'string' || !email.includes('@')) {
+      return NextResponse.json({ error: 'A valid email address is required.' }, { status: 400 });
+    }
+
+    if (!phone || typeof phone !== 'string' || !phone.trim()) {
+      return NextResponse.json({ error: 'WhatsApp number is required.' }, { status: 400 });
     }
 
     if (
