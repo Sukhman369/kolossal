@@ -406,19 +406,24 @@ export default function CreatorsPage() {
 
             {/* 2. Shipping Address & Seeding Size */}
             <div className="space-y-4 pt-6 border-t border-neutral-200/80">
-              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
-                2. Garment Seeding Destination
-              </h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                  2. Garment Seeding Destination
+                </h3>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#580D1A] bg-[#580D1A]/10 px-2.5 py-0.5 rounded-full font-semibold">
+                  Domestic Seeding (India Only)
+                </span>
+              </div>
 
               <div>
                 <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                  Street Address & Apartment / Suite <span className="text-[#580D1A]">*</span>
+                  Flat, House No., Building, Street & Area <span className="text-[#580D1A]">*</span>
                 </label>
                 <input
                   type="text"
                   required
                   name="street"
-                  placeholder="e.g. 742 Evergreen Terrace, Apt 4B"
+                  placeholder="e.g. Flat 402, Signature Towers, 12th Main Road, Indiranagar"
                   value={formData.street}
                   onChange={handleInputChange}
                   className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
@@ -434,7 +439,7 @@ export default function CreatorsPage() {
                     type="text"
                     required
                     name="city"
-                    placeholder="New York"
+                    placeholder="e.g. Bengaluru"
                     value={formData.city}
                     onChange={handleInputChange}
                     className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
@@ -443,27 +448,62 @@ export default function CreatorsPage() {
 
                 <div>
                   <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                    State / Region
+                    State / UT <span className="text-[#580D1A]">*</span>
                   </label>
-                  <input
-                    type="text"
+                  <select
+                    required
                     name="state"
-                    placeholder="NY"
                     value={formData.state}
                     onChange={handleInputChange}
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
-                  />
+                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-900 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
+                  >
+                    <option value="">Select State / UT</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Delhi">Delhi (NCR)</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                  </select>
                 </div>
 
                 <div>
                   <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                    Postal / ZIP Code <span className="text-[#580D1A]">*</span>
+                    PIN Code <span className="text-[#580D1A]">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     name="postalCode"
-                    placeholder="10001"
+                    maxLength={6}
+                    placeholder="e.g. 560038"
                     value={formData.postalCode}
                     onChange={handleInputChange}
                     className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
@@ -474,26 +514,14 @@ export default function CreatorsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                    Country / Territory <span className="text-[#580D1A]">*</span>
+                    Country <span className="text-[#580D1A]">*</span>
                   </label>
-                  <select
-                    name="country"
-                    value={formData.country}
-                    onChange={handleInputChange}
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-900 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
-                  >
-                    <option value="India">India</option>
-                    <option value="United States">United States</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Germany">Germany</option>
-                    <option value="France">France</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Japan">Japan</option>
-                    <option value="United Arab Emirates">United Arab Emirates</option>
-                    <option value="Other">Other Global Destination</option>
-                  </select>
+                  <div className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-800 flex items-center justify-between">
+                    <span className="font-semibold text-neutral-900">India</span>
+                    <span className="text-[10px] font-mono text-[#580D1A] bg-[#580D1A]/10 px-2 py-0.5 rounded font-semibold uppercase">
+                      Domestic Seeding Only
+                    </span>
+                  </div>
                 </div>
 
                 <div>
