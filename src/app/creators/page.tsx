@@ -568,16 +568,12 @@ export default function CreatorsPage() {
                 <span>04 // Social Media & Audience Reach</span>
               </h3>
 
-              {/* Instagram (Compulsory) */}
+              {/* Instagram */}
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-800 mb-1.5 font-semibold flex items-center justify-between">
-                  <span className="flex items-center space-x-1.5">
-                    <InstagramIcon className="w-3.5 h-3.5 text-[#580D1A]" />
-                    <span>Instagram Profile Link or @Handle</span>
-                  </span>
-                  <span className="text-[#580D1A] text-[9px] bg-[#580D1A]/10 px-2 py-0.5 rounded font-mono font-bold">
-                    COMPULSORY
-                  </span>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium flex items-center space-x-1.5">
+                  <InstagramIcon className="w-3.5 h-3.5 text-[#580D1A]" />
+                  <span>Instagram Profile Link or @Handle</span>
+                  <span className="text-[#580D1A]">*</span>
                 </label>
                 <input
                   type="text"
@@ -586,7 +582,7 @@ export default function CreatorsPage() {
                   placeholder="@yourhandle or instagram.com/yourhandle"
                   value={formData.instagram}
                   onChange={handleInputChange}
-                  className="w-full bg-neutral-50 border border-[#580D1A]/40 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all shadow-xs"
+                  className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
                 />
               </div>
 
