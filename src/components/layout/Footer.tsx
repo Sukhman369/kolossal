@@ -143,6 +143,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/creators" className="hover:text-snoov-green transition-colors font-medium text-[#580D1A] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A] animate-pulse" />
+                    <span>Creator & Affiliate Circle</span>
+                  </Link>
+                </li>
+                <li>
                   <a href="https://www.instagram.com/kolossal.com/" target="_blank" rel="noreferrer" className="hover:text-snoov-green transition-colors flex items-center gap-1.5">
                     <span>Instagram (@kolossal.official)</span>
                     <span className="text-[10px]">↗</span>

@@ -437,6 +437,14 @@ export default function Navbar() {
                   Our Story & Manifesto
                 </Link>
                 <Link
+                  href="/creators"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`hover:text-[#580D1A] transition-colors flex items-center gap-1.5 ${isActive('/creators') ? 'text-[#580D1A] font-semibold' : ''}`}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A]" />
+                  <span>Creator & Affiliate Circle</span>
+                </Link>
+                <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className={`hover:text-[#580D1A] transition-colors ${isActive('/contact') ? 'text-[#580D1A]' : ''}`}
