@@ -127,7 +127,6 @@ export async function POST(req: NextRequest) {
       socials: {
         instagram: socials.instagram.trim(),
         youtube: socials.youtube?.trim() || undefined,
-        tiktok: socials.tiktok?.trim() || undefined,
         facebook: socials.facebook?.trim() || undefined,
         linkedin: socials.linkedin?.trim() || undefined,
       },

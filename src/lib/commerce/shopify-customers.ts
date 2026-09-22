@@ -89,7 +89,6 @@ export interface CreatorApplicationParams {
   socials: {
     instagram: string;
     youtube?: string;
-    tiktok?: string;
     facebook?: string;
     linkedin?: string;
   };
@@ -127,7 +126,6 @@ export async function syncCreatorApplicationToShopify(
     `SOCIAL CHANNELS:`,
     `• Instagram: ${params.socials.instagram}`,
     params.socials.youtube ? `• YouTube: ${params.socials.youtube}` : null,
-    params.socials.tiktok ? `• TikTok: ${params.socials.tiktok}` : null,
     params.socials.facebook ? `• Facebook: ${params.socials.facebook}` : null,
     params.socials.linkedin ? `• LinkedIn: ${params.socials.linkedin}` : null,
     params.portfolioUrl ? `• Portfolio: ${params.portfolioUrl}` : null,

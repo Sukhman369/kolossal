@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
-  Share2,
   Lock,
   ChevronRight,
 } from 'lucide-react';
@@ -65,7 +64,6 @@ interface FormState {
   customCode: string;
   instagram: string;
   youtube: string;
-  tiktok: string;
   facebook: string;
   linkedin: string;
   portfolioUrl: string;
@@ -85,7 +83,6 @@ const INITIAL_FORM: FormState = {
   customCode: '',
   instagram: '',
   youtube: '',
-  tiktok: '',
   facebook: '',
   linkedin: '',
   portfolioUrl: '',
@@ -139,7 +136,6 @@ export default function CreatorsPage() {
         socials: {
           instagram: formData.instagram,
           youtube: formData.youtube || undefined,
-          tiktok: formData.tiktok || undefined,
           facebook: formData.facebook || undefined,
           linkedin: formData.linkedin || undefined,
         },
@@ -594,16 +590,13 @@ export default function CreatorsPage() {
                 />
               </div>
 
-              {/* Optional Socials Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Optional Socials Grid (YouTube, Facebook, LinkedIn) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* YouTube */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center justify-between">
-                    <span className="flex items-center space-x-1.5">
-                      <YoutubeIcon className="w-3.5 h-3.5 text-neutral-500" />
-                      <span>YouTube Channel</span>
-                    </span>
-                    <span className="text-neutral-400 text-[9px] font-mono">OPTIONAL</span>
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center space-x-1.5">
+                    <YoutubeIcon className="w-3.5 h-3.5 text-neutral-500" />
+                    <span>YouTube</span>
                   </label>
                   <input
                     type="text"
@@ -615,33 +608,11 @@ export default function CreatorsPage() {
                   />
                 </div>
 
-                {/* TikTok */}
-                <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center justify-between">
-                    <span className="flex items-center space-x-1.5">
-                      <Share2 className="w-3.5 h-3.5 text-neutral-500" />
-                      <span>TikTok Handle</span>
-                    </span>
-                    <span className="text-neutral-400 text-[9px] font-mono">OPTIONAL</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="tiktok"
-                    placeholder="@yourhandle or tiktok.com/@yourhandle"
-                    value={formData.tiktok}
-                    onChange={handleInputChange}
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
-                  />
-                </div>
-
                 {/* Facebook */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center justify-between">
-                    <span className="flex items-center space-x-1.5">
-                      <FacebookIcon className="w-3.5 h-3.5 text-neutral-500" />
-                      <span>Facebook Page</span>
-                    </span>
-                    <span className="text-neutral-400 text-[9px] font-mono">OPTIONAL</span>
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center space-x-1.5">
+                    <FacebookIcon className="w-3.5 h-3.5 text-neutral-500" />
+                    <span>Facebook</span>
                   </label>
                   <input
                     type="text"
@@ -655,12 +626,9 @@ export default function CreatorsPage() {
 
                 {/* LinkedIn */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center justify-between">
-                    <span className="flex items-center space-x-1.5">
-                      <LinkedinIcon className="w-3.5 h-3.5 text-neutral-500" />
-                      <span>LinkedIn Profile</span>
-                    </span>
-                    <span className="text-neutral-400 text-[9px] font-mono">OPTIONAL</span>
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center space-x-1.5">
+                    <LinkedinIcon className="w-3.5 h-3.5 text-neutral-500" />
+                    <span>LinkedIn</span>
                   </label>
                   <input
                     type="text"
@@ -675,9 +643,8 @@ export default function CreatorsPage() {
 
               {/* Portfolio / Media Kit */}
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center justify-between">
-                  <span>Portfolio / Media Kit URL</span>
-                  <span className="text-neutral-400 text-[9px] font-mono">OPTIONAL</span>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium">
+                  Portfolio / Media Kit URL
                 </label>
                 <input
                   type="url"
@@ -691,9 +658,8 @@ export default function CreatorsPage() {
 
               {/* Note / Bio */}
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium flex items-center justify-between">
-                  <span>Styling Vision or Note to Curators</span>
-                  <span className="text-neutral-400 text-[9px] font-mono">OPTIONAL</span>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-600 mb-1.5 font-medium">
+                  Styling Vision or Note to Curators
                 </label>
                 <textarea
                   name="note"
