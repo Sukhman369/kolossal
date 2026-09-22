@@ -78,7 +78,7 @@ const INITIAL_FORM: FormState = {
   city: '',
   state: '',
   postalCode: '',
-  country: 'United States',
+  country: 'India',
   seedingSize: 'L',
   customCode: '',
   instagram: '',
@@ -362,7 +362,7 @@ export default function CreatorsPage() {
                     type="text"
                     required
                     name="name"
-                    placeholder="e.g. Marcus Vance"
+                    placeholder="e.g. Aryan Sharma"
                     value={formData.name}
                     onChange={handleInputChange}
                     className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans tracking-wide text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
@@ -377,7 +377,7 @@ export default function CreatorsPage() {
                     type="email"
                     required
                     name="email"
-                    placeholder="e.g. marcus@agency.com"
+                    placeholder="e.g. aryan.sharma@gmail.com"
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
@@ -393,13 +393,13 @@ export default function CreatorsPage() {
                   type="tel"
                   required
                   name="phone"
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+91 98765 43210"
                   value={formData.phone}
                   onChange={handleInputChange}
                   className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
                 />
                 <span className="text-[10px] font-mono text-neutral-400 mt-1 block">
-                  Used by courier services (DHL Express) for direct package dispatch notifications.
+                  Used by courier partners (Delhivery / Blue Dart) for direct shipment notifications.
                 </span>
               </div>
             </div>
@@ -482,6 +482,7 @@ export default function CreatorsPage() {
                     onChange={handleInputChange}
                     className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans text-neutral-900 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
                   >
+                    <option value="India">India</option>
                     <option value="United States">United States</option>
                     <option value="United Kingdom">United Kingdom</option>
                     <option value="Canada">Canada</option>
@@ -489,7 +490,6 @@ export default function CreatorsPage() {
                     <option value="Germany">Germany</option>
                     <option value="France">France</option>
                     <option value="Italy">Italy</option>
-                    <option value="India">India</option>
                     <option value="Japan">Japan</option>
                     <option value="United Arab Emirates">United Arab Emirates</option>
                     <option value="Other">Other Global Destination</option>
