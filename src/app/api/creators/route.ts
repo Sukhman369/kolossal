@@ -41,15 +41,11 @@ export async function POST(req: NextRequest) {
 
     // Required Field Validations
     if (!name || typeof name !== 'string' || !name.trim()) {
-      return NextResponse.json({ error: 'Full legal/creator name is required.' }, { status: 400 });
+      return NextResponse.json({ error: 'Full legal name is required.' }, { status: 400 });
     }
 
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
-      return NextResponse.json({ error: 'A valid email address is required.' }, { status: 400 });
-    }
-
-    if (!phone || typeof phone !== 'string' || !phone.trim()) {
-      return NextResponse.json({ error: 'Contact phone/WhatsApp number is required.' }, { status: 400 });
+    if (email && typeof email === 'string' && email.trim() && !email.includes('@')) {
+      return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
     }
 
     if (
@@ -94,10 +90,15 @@ export async function POST(req: NextRequest) {
     }
 
     const applications = await getApplications();
-    const cleanEmail = email.trim().toLowerCase();
+    const cleanEmail = email && typeof email === 'string' && email.trim() ? email.trim().toLowerCase() : undefined;
+    const cleanInstagram = socials.instagram.trim().toLowerCase();
 
-    // Check for existing application with same email
-    const existing = applications.find((app) => app.email === cleanEmail);
+    // Check for existing application with same email or instagram handle
+    const existing = applications.find(
+      (app) =>
+        (cleanEmail && app.email === cleanEmail) ||
+        (app.socials?.instagram && app.socials.instagram.toLowerCase() === cleanInstagram)
+    );
     if (existing) {
       return NextResponse.json({
         success: true,
@@ -114,7 +115,7 @@ export async function POST(req: NextRequest) {
     const record: CreatorApplicationParams = {
       name: name.trim(),
       email: cleanEmail,
-      phone: phone.trim(),
+      phone: phone && typeof phone === 'string' && phone.trim() ? phone.trim() : undefined,
       address: {
         street: address.street.trim(),
         city: address.city.trim(),

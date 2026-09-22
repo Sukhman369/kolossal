@@ -121,9 +121,9 @@ export default function CreatorsPage() {
 
     try {
       const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
+        name: formData.name.trim(),
+        email: formData.email?.trim() || undefined,
+        phone: formData.phone?.trim() || undefined,
         address: {
           street: formData.street,
           city: formData.city,
@@ -353,54 +353,19 @@ export default function CreatorsPage() {
                 1. Creator Identity & Contact
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                    Full Legal / Creator Name <span className="text-[#580D1A]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    name="name"
-                    placeholder="e.g. Marcus Vance"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans tracking-wide text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                    Email Address <span className="text-[#580D1A]">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    name="email"
-                    placeholder="e.g. marcus@agency.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
-                  />
-                </div>
-              </div>
-
               <div>
                 <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
-                  Contact Phone / WhatsApp <span className="text-[#580D1A]">*</span>
+                  Full Legal Name <span className="text-[#580D1A]">*</span>
                 </label>
                 <input
-                  type="tel"
+                  type="text"
                   required
-                  name="phone"
-                  placeholder="+1 (555) 000-0000"
-                  value={formData.phone}
+                  name="name"
+                  placeholder="e.g. Marcus Vance"
+                  value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
+                  className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-xs font-sans tracking-wide text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
                 />
-                <span className="text-[10px] font-mono text-neutral-400 mt-1 block">
-                  Used by courier services (DHL Express) for direct package dispatch notifications.
-                </span>
               </div>
             </div>
 
