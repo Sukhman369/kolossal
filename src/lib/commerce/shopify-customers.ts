@@ -75,8 +75,8 @@ export async function syncSubscriberToShopify({
 
 export interface CreatorApplicationParams {
   name: string;
-  email: string;
-  phone: string;
+  email?: string;
+  phone?: string;
   address: {
     street: string;
     city: string;
@@ -117,11 +117,24 @@ export async function syncCreatorApplicationToShopify(
   const firstName = nameParts[0] || 'Creator';
   const lastName = nameParts.slice(1).join(' ') || 'Applicant';
 
+  const cleanInstagram = (params.socials.instagram || '')
+    .replace(/^https?:\/\/(www\.)?instagram\.com\//i, '')
+    .replace(/[^a-zA-Z0-9._]/g, '')
+    .toLowerCase();
+
+  const emailToUse =
+    params.email?.trim().toLowerCase() ||
+    `creator.${cleanInstagram || params.applicationId.toLowerCase()}@affiliate.kolossal.vip`;
+
+  const phoneToUse = params.phone?.trim() || undefined;
+
   const noteLines = [
     `=== KOLOSSAL CREATOR AFFILIATE APPLICATION ===`,
     `Application Ref: ${params.applicationId}`,
     `Requested Custom Code: ${params.customCode.trim().toUpperCase()}`,
     `Seeding Garment Size: ${params.seedingSize || 'Not specified'}`,
+    params.email ? `• Contact Email: ${params.email}` : null,
+    params.phone ? `• Contact Phone: ${params.phone}` : null,
     ``,
     `SOCIAL CHANNELS:`,
     `• Instagram: ${params.socials.instagram}`,
@@ -150,8 +163,8 @@ export async function syncCreatorApplicationToShopify(
         customer: {
           first_name: firstName,
           last_name: lastName,
-          email: params.email.trim().toLowerCase(),
-          phone: params.phone.trim() || undefined,
+          email: emailToUse,
+          phone: phoneToUse,
           tags: 'Creator Affiliate, Affiliate Applicant, Drop 001 Affiliate',
           note: noteLines,
           verified_email: true,
@@ -168,7 +181,7 @@ export async function syncCreatorApplicationToShopify(
               province: params.address.state || undefined,
               zip: params.address.postalCode,
               country: params.address.country,
-              phone: params.phone.trim() || undefined,
+              phone: phoneToUse,
             },
           ],
         },

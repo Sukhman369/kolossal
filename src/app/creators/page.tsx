@@ -349,9 +349,8 @@ export default function CreatorsPage() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* 1. Identity & Contact */}
             <div className="space-y-4">
-              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900 flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A]" />
-                <span>01 // Creator Identity & Contact</span>
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                1. Creator Identity & Contact
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -407,9 +406,8 @@ export default function CreatorsPage() {
 
             {/* 2. Shipping Address & Seeding Size */}
             <div className="space-y-4 pt-6 border-t border-neutral-200/80">
-              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900 flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A]" />
-                <span>02 // Garment Seeding Destination</span>
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                2. Garment Seeding Destination
               </h3>
 
               <div>
@@ -527,9 +525,8 @@ export default function CreatorsPage() {
 
             {/* 3. Custom Coupon Code */}
             <div className="space-y-4 pt-6 border-t border-neutral-200/80">
-              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900 flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A]" />
-                <span>03 // Custom Community Coupon Code</span>
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                3. Custom Community Coupon Code
               </h3>
 
               <div>
@@ -563,9 +560,8 @@ export default function CreatorsPage() {
 
             {/* 4. Social Media Channels */}
             <div className="space-y-4 pt-6 border-t border-neutral-200/80">
-              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900 flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#580D1A]" />
-                <span>04 // Social Media & Audience Reach</span>
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                4. Social Media & Audience Reach
               </h3>
 
               {/* Instagram */}
