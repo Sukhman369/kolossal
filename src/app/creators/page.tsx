@@ -104,10 +104,13 @@ export default function CreatorsPage() {
   ) => {
     const { name, value } = e.target;
     if (name === 'customCode') {
-      // Auto-uppercase and sanitize
+      // Auto-uppercase and sanitize to 12 digits/alphabets only
       setFormData((prev) => ({
         ...prev,
-        customCode: value.toUpperCase().replace(/[^A-Z0-9_-]/g, ''),
+        customCode: value
+          .toUpperCase()
+          .replace(/[^A-Z0-9]/g, '')
+          .slice(0, 12),
       }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -561,8 +564,8 @@ export default function CreatorsPage() {
                     type="text"
                     required
                     name="customCode"
-                    maxLength={20}
-                    placeholder="e.g. MARCUS10 or ARCHIVE_VANCE"
+                    maxLength={12}
+                    placeholder="e.g. ARYAN10 or KABIR15"
                     value={formData.customCode}
                     onChange={handleInputChange}
                     className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm font-mono tracking-widest uppercase text-[#580D1A] font-bold placeholder:text-neutral-400 placeholder:font-normal focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all"
@@ -576,7 +579,7 @@ export default function CreatorsPage() {
                     </span>{' '}
                     for 10%–15% privilege.
                   </span>
-                  <span>{formData.customCode.length}/20</span>
+                  <span>{formData.customCode.length}/12</span>
                 </div>
               </div>
             </div>

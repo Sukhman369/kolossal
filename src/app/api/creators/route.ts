@@ -80,15 +80,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Sanitize custom code: alphanumeric, uppercase, no spaces
+    // Sanitize custom code: digits/alphabets only, uppercase, max 12 chars
     const sanitizedCode = customCode
       .trim()
       .toUpperCase()
-      .replace(/[^A-Z0-9_-]/g, '');
+      .replace(/[^A-Z0-9]/g, '')
+      .slice(0, 12);
 
-    if (sanitizedCode.length < 3 || sanitizedCode.length > 20) {
+    if (sanitizedCode.length < 3 || sanitizedCode.length > 12) {
       return NextResponse.json(
-        { error: 'Custom code must be between 3 and 20 alphanumeric characters (e.g. MARCUS10).' },
+        { error: 'Custom code must be between 3 and 12 digits/alphabets (e.g. ARYAN10).' },
         { status: 400 }
       );
     }
