@@ -406,14 +406,9 @@ export default function CreatorsPage() {
 
             {/* 2. Shipping Address & Seeding Size */}
             <div className="space-y-4 pt-6 border-t border-neutral-200/80">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
-                  2. Garment Seeding Destination
-                </h3>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[#580D1A] bg-[#580D1A]/10 px-2.5 py-0.5 rounded-full font-semibold">
-                  Domestic Seeding (India Only)
-                </span>
-              </div>
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] font-semibold text-neutral-900">
+                2. Garment Seeding Destination
+              </h3>
 
               <div>
                 <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-700 mb-1.5 font-medium">
