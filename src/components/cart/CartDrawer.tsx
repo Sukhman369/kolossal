@@ -168,7 +168,7 @@ export default function CartDrawer() {
               </div>
 
               <a
-                href="/checkout"
+                href={cart.checkoutUrl || "/checkout"}
                 onClick={closeCart}
                 className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg"
               >
