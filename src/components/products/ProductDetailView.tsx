@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Product } from '../../lib/commerce/types';
+import { Product, formatPrice } from '../../lib/commerce';
 import { useCart } from '../../context/CartContext';
 import ProductCard from './ProductCard';
 import {
@@ -132,11 +132,11 @@ export default function ProductDetailView({
             )}
             <div className="flex items-baseline space-x-3 pt-2">
               <span className="text-2xl font-mono font-bold text-[#580D1A]">
-                ${product.price.amount} {product.price.currencyCode}
+                {formatPrice(product.price.amount, product.price.currencyCode)}
               </span>
               {product.compareAtPrice && (
                 <span className="text-sm font-mono line-through text-neutral-400">
-                  ${product.compareAtPrice.amount}
+                  {formatPrice(product.compareAtPrice.amount, product.compareAtPrice.currencyCode || product.price.currencyCode)}
                 </span>
               )}
             </div>
@@ -238,7 +238,7 @@ export default function ProductDetailView({
                   </>
                 ) : (
                   <>
-                    <span>Add to Bag &bull; ${(product.price.amount * quantity).toFixed(2)}</span>
+                    <span>Add to Bag &bull; {formatPrice(product.price.amount * quantity, product.price.currencyCode)}</span>
                   </>
                 )}
               </button>

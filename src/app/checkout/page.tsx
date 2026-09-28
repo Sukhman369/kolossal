@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../lib/commerce';
 import {
   CheckCircle2,
   Lock,
@@ -21,11 +22,12 @@ export default function CheckoutPage() {
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
-  const [country, setCountry] = useState('United States');
+  const [country, setCountry] = useState('India');
   const [postalCode, setPostalCode] = useState('');
   const [orderNumber, setOrderNumber] = useState('');
 
-  const shippingCost = cart.subtotal.amount >= 250 ? 0 : 25;
+  const freeShippingThreshold = cart.subtotal.currencyCode === 'INR' ? 2999 : 250;
+  const shippingCost = cart.subtotal.amount >= freeShippingThreshold ? 0 : (cart.subtotal.currencyCode === 'INR' ? 199 : 25);
   const totalAmount = cart.subtotal.amount + shippingCost;
 
   const handleProceedToPayment = (e: React.FormEvent) => {
@@ -75,7 +77,7 @@ export default function CheckoutPage() {
           </div>
           <div className="flex justify-between font-bold pt-1 text-sm text-[#580D1A]">
             <span>Total Paid</span>
-            <span>${totalAmount.toFixed(2)} USD</span>
+            <span>{formatPrice(totalAmount, cart.subtotal.currencyCode)}</span>
           </div>
         </div>
 
@@ -200,10 +202,10 @@ export default function CheckoutPage() {
                   onChange={(e) => setCountry(e.target.value)}
                   className="w-full bg-white border border-neutral-300 px-4 py-3.5 rounded-xl text-xs font-mono tracking-wider text-neutral-900 focus:outline-none focus:border-[#580D1A]"
                 >
+                  <option value="India">India (INR ₹)</option>
                   <option value="United States">United States (USD)</option>
                   <option value="United Kingdom">United Kingdom (GBP)</option>
                   <option value="European Union">European Union (EUR)</option>
-                  <option value="Japan">Japan (JPY)</option>
                   <option value="Canada">Canada (CAD)</option>
                   <option value="Australia">Australia (AUD)</option>
                 </select>
@@ -293,7 +295,7 @@ export default function CheckoutPage() {
                   onClick={handleCompleteOrder}
                   className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#430913] transition-colors shadow-lg shadow-[#580D1A]/25"
                 >
-                  Pay ${totalAmount.toFixed(2)} USD & Reserve Drop
+                  Pay {formatPrice(totalAmount, cart.subtotal.currencyCode)} & Reserve Drop
                 </button>
               </div>
             </div>
@@ -325,7 +327,7 @@ export default function CheckoutPage() {
                   </div>
                 </div>
                 <span className="text-xs font-mono font-semibold text-[#580D1A]">
-                  ${(item.price.amount * item.quantity).toFixed(2)}
+                  {formatPrice(item.price.amount * item.quantity, item.price.currencyCode)}
                 </span>
               </div>
             ))}
@@ -334,19 +336,19 @@ export default function CheckoutPage() {
           <div className="border-t border-neutral-200 pt-4 space-y-2 text-xs font-mono text-neutral-600">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="text-neutral-900">${cart.subtotal.amount.toFixed(2)}</span>
+              <span className="text-neutral-900">{formatPrice(cart.subtotal.amount, cart.subtotal.currencyCode)}</span>
             </div>
             <div className="flex justify-between">
-              <span>DHL Express Delivery</span>
-              <span className="text-neutral-900">{shippingCost === 0 ? 'FREE' : '$25.00'}</span>
+              <span>Express Delivery</span>
+              <span className="text-neutral-900">{shippingCost === 0 ? 'FREE' : formatPrice(shippingCost, cart.subtotal.currencyCode)}</span>
             </div>
             <div className="flex justify-between">
-              <span>Import Duties & Customs</span>
-              <span className="text-neutral-700">DDP INCLUDED</span>
+              <span>GST & Taxes</span>
+              <span className="text-neutral-700">INCLUDED</span>
             </div>
             <div className="border-t border-neutral-200 pt-3 flex justify-between text-sm font-bold text-neutral-950">
               <span>Total Amount</span>
-              <span className="text-xl text-[#580D1A]">${totalAmount.toFixed(2)} USD</span>
+              <span className="text-xl text-[#580D1A]">{formatPrice(totalAmount, cart.subtotal.currencyCode)}</span>
             </div>
           </div>
         </div>

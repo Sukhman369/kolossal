@@ -4,7 +4,7 @@ import { MOCK_PRODUCTS } from './mock-data';
 let memoryCart: Cart = {
   id: 'cart_mock_default',
   items: [],
-  subtotal: { amount: 0, currencyCode: 'USD' },
+  subtotal: { amount: 0, currencyCode: 'INR' },
   itemCount: 0,
   checkoutUrl: 'https://checkout.kolossal.com/mock-session'
 };
@@ -17,7 +17,7 @@ function recalculateCart(cart: Cart): Cart {
     itemCount,
     subtotal: {
       amount: subtotalAmount,
-      currencyCode: cart.items[0]?.price.currencyCode || 'USD'
+      currencyCode: cart.items[0]?.price.currencyCode || 'INR'
     }
   };
 }

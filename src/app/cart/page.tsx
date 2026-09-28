@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../lib/commerce';
 import {
   Trash2,
   Plus,
@@ -20,12 +21,13 @@ export default function CartPage() {
   const [promoCode, setPromoCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
 
-  const freeShippingThreshold = 250;
+  const freeShippingThreshold = cart.subtotal.currencyCode === 'INR' ? 2999 : 250;
   const progressPercent = Math.min(
     100,
     Math.round((cart.subtotal.amount / freeShippingThreshold) * 100)
   );
   const remainingForFreeShipping = Math.max(0, freeShippingThreshold - cart.subtotal.amount);
+  const shippingFee = remainingForFreeShipping === 0 ? 0 : (cart.subtotal.currencyCode === 'INR' ? 199 : 25);
 
   const discountAmount = discountApplied ? Math.round(cart.subtotal.amount * 0.1) : 0;
   const finalTotal = Math.max(0, cart.subtotal.amount - discountAmount);
@@ -91,8 +93,8 @@ export default function CartPage() {
               <div className="flex justify-between items-center text-xs font-mono">
                 <span className="text-neutral-700">
                   {remainingForFreeShipping > 0
-                    ? `Add $${remainingForFreeShipping.toFixed(2)} more for complimentary express delivery`
-                    : '✓ Complimentary Worldwide Express Delivery Unlocked'}
+                    ? `Add ${formatPrice(remainingForFreeShipping, cart.subtotal.currencyCode)} more for complimentary express delivery`
+                    : '✓ Complimentary Express Delivery Unlocked'}
                 </span>
                 <span className="text-[#580D1A] font-bold">{progressPercent}%</span>
               </div>
@@ -166,7 +168,7 @@ export default function CartPage() {
 
                       {/* Total */}
                       <span className="text-sm font-mono font-bold text-[#580D1A]">
-                        ${(item.price.amount * item.quantity).toFixed(2)}
+                        {formatPrice(item.price.amount * item.quantity, item.price.currencyCode)}
                       </span>
                     </div>
                   </div>
@@ -219,7 +221,7 @@ export default function CartPage() {
               </div>
               {discountApplied && (
                 <p className="text-[11px] font-mono text-[#580D1A] font-semibold">
-                  ✓ 10% ARCHIVE DISCOUNT APPLIED (-${discountAmount.toFixed(2)})
+                  ✓ 10% ARCHIVE DISCOUNT APPLIED (-{formatPrice(discountAmount, cart.subtotal.currencyCode)})
                 </p>
               )}
             </form>
@@ -229,23 +231,23 @@ export default function CartPage() {
               <div className="flex justify-between">
                 <span>Items Subtotal</span>
                 <span className="text-neutral-900 font-semibold">
-                  ${cart.subtotal.amount.toFixed(2)}
+                  {formatPrice(cart.subtotal.amount, cart.subtotal.currencyCode)}
                 </span>
               </div>
               {discountApplied && (
                 <div className="flex justify-between text-[#580D1A] font-medium">
                   <span>Archive Discount (10%)</span>
-                  <span>-${discountAmount.toFixed(2)}</span>
+                  <span>-{formatPrice(discountAmount, cart.subtotal.currencyCode)}</span>
                 </div>
               )}
               <div className="flex justify-between">
-                <span>Worldwide Shipping</span>
+                <span>Shipping</span>
                 <span className="text-neutral-900">
-                  {remainingForFreeShipping === 0 ? 'COMPLIMENTARY' : '$25.00'}
+                  {remainingForFreeShipping === 0 ? 'COMPLIMENTARY' : formatPrice(shippingFee, cart.subtotal.currencyCode)}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>Estimated Import Duties (DDP)</span>
+                <span>GST / Taxes</span>
                 <span className="text-neutral-700">INCLUDED</span>
               </div>
 
@@ -253,7 +255,7 @@ export default function CartPage() {
               <div className="border-t border-neutral-200 pt-4 flex justify-between text-sm font-bold text-neutral-950">
                 <span className="uppercase tracking-wider">Total</span>
                 <span className="text-xl text-[#580D1A]">
-                  ${(finalTotal + (remainingForFreeShipping === 0 ? 0 : 25)).toFixed(2)} USD
+                  {formatPrice(finalTotal + shippingFee, cart.subtotal.currencyCode)}
                 </span>
               </div>
             </div>

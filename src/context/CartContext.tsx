@@ -18,7 +18,7 @@ interface CartContextType {
 const initialCart: Cart = {
   id: 'cart_local',
   items: [],
-  subtotal: { amount: 0, currencyCode: 'USD' },
+  subtotal: { amount: 0, currencyCode: 'INR' },
   itemCount: 0,
 };
 

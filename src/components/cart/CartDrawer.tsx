@@ -3,13 +3,14 @@
 import React from 'react';
 import { X, Plus, Minus, Trash2, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../lib/commerce';
 
 export default function CartDrawer() {
   const { cart, isOpen, closeCart, updateQuantity, removeItem } = useCart();
 
   if (!isOpen) return null;
 
-  const freeShippingThreshold = 250;
+  const freeShippingThreshold = cart.subtotal.currencyCode === 'INR' ? 2999 : 250;
   const progressPercent = Math.min(
     100,
     Math.round((cart.subtotal.amount / freeShippingThreshold) * 100)
@@ -49,7 +50,7 @@ export default function CartDrawer() {
                 <>
                   ADD{' '}
                   <span className="text-[#580D1A] font-bold">
-                    ${remainingForFreeShipping.toFixed(2)}
+                    {formatPrice(remainingForFreeShipping, cart.subtotal.currencyCode)}
                   </span>{' '}
                   MORE FOR COMPLIMENTARY EXPRESS SHIPPING
                 </>
@@ -140,7 +141,7 @@ export default function CartDrawer() {
 
                       {/* Total Line Price */}
                       <span className="text-xs font-mono font-semibold text-[#580D1A]">
-                        ${(item.price.amount * item.quantity).toFixed(2)}
+                        {formatPrice(item.price.amount * item.quantity, item.price.currencyCode)}
                       </span>
                     </div>
                   </div>
@@ -156,7 +157,7 @@ export default function CartDrawer() {
                 <div className="flex justify-between text-xs text-neutral-600 font-mono">
                   <span>SUBTOTAL</span>
                   <span className="text-neutral-950 font-semibold">
-                    ${cart.subtotal.amount.toFixed(2)} {cart.subtotal.currencyCode}
+                    {formatPrice(cart.subtotal.amount, cart.subtotal.currencyCode)}
                   </span>
                 </div>
                 <div className="flex justify-between text-[11px] text-neutral-500 font-mono">

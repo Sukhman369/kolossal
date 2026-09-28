@@ -5,6 +5,7 @@ import { MedusaCommerceAdapter } from './medusa-adapter';
 
 export * from './types';
 export * from './mock-data';
+export * from './utils';
 
 export function getCommerceAdapter(): CommerceAdapter {
   const provider = (process.env.NEXT_PUBLIC_COMMERCE_PROVIDER || 'mock').toLowerCase();

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Product } from '../../lib/commerce/types';
+import { Product, formatPrice } from '../../lib/commerce';
 import { useCart } from '../../context/CartContext';
 import { Plus, Check } from 'lucide-react';
 
@@ -69,7 +69,7 @@ export default function ProductCard({ product }: { product: Product }) {
             ) : (
               <>
                 <Plus className="w-3.5 h-3.5" />
-                <span>Quick Add &bull; ${product.price.amount}</span>
+                <span>Quick Add &bull; {formatPrice(product.price.amount, product.price.currencyCode)}</span>
               </>
             )}
           </button>
@@ -85,7 +85,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </h3>
           </Link>
           <span className="text-xs font-mono font-bold text-[#580D1A]">
-            ${product.price.amount} {product.price.currencyCode}
+            {formatPrice(product.price.amount, product.price.currencyCode)}
           </span>
         </div>
 

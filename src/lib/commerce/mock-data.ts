@@ -7,8 +7,8 @@ export const MOCK_PRODUCTS: Product[] = [
     title: 'Monolith Heavyweight Hoodie',
     subtitle: '500 GSM Double-Faced French Terry',
     description: 'Constructed from custom-milled 500 GSM organic cotton with architectural boxy drape, dropped shoulders, seamless cuffs, and subtle debossed tonal branding at the nape.',
-    price: { amount: 185, currencyCode: 'USD' },
-    compareAtPrice: { amount: 220, currencyCode: 'USD' },
+    price: { amount: 5490, currencyCode: 'INR' },
+    compareAtPrice: { amount: 6490, currencyCode: 'INR' },
     badge: 'HEAVYWEIGHT 500GSM',
     category: 'Hoodies',
     tags: ['Drop 001', 'Core', 'Oversized'],
@@ -29,7 +29,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_01_m',
         title: 'Obsidian Black / M',
         availableForSale: true,
-        price: { amount: 185, currencyCode: 'USD' },
+        price: { amount: 5490, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Obsidian Black' },
           { name: 'Size', value: 'M' }
@@ -39,7 +39,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_01_l',
         title: 'Obsidian Black / L',
         availableForSale: true,
-        price: { amount: 185, currencyCode: 'USD' },
+        price: { amount: 5490, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Obsidian Black' },
           { name: 'Size', value: 'L' }
@@ -53,7 +53,7 @@ export const MOCK_PRODUCTS: Product[] = [
     title: 'Tactical Matte Puffer Jacket',
     subtitle: '90/10 White Goose Down // Waterproof Shell',
     description: 'High-volume silhouette featuring a magnetic storm flap closure, concealed zip utility harness pockets, and matte ripstop Japanese nylon with water-repellent finish.',
-    price: { amount: 395, currencyCode: 'USD' },
+    price: { amount: 12990, currencyCode: 'INR' },
     badge: 'LIMITED 150 PCS',
     category: 'Outerwear',
     tags: ['Drop 001', 'Outerwear', 'Insulated'],
@@ -70,7 +70,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_02_m',
         title: 'Matte Pitch / M',
         availableForSale: true,
-        price: { amount: 395, currencyCode: 'USD' },
+        price: { amount: 12990, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Matte Pitch' },
           { name: 'Size', value: 'M' }
@@ -84,8 +84,8 @@ export const MOCK_PRODUCTS: Product[] = [
     title: 'Architectural Pleated Cargo Pant',
     subtitle: 'Italian Technical Gabardine',
     description: 'Double-pleated front with 3D origami cargo bellows, adjustable bungee hems for switching between wide straight-leg and stacked taper, finished with custom gunmetal hardware.',
-    price: { amount: 240, currencyCode: 'USD' },
-    compareAtPrice: { amount: 275, currencyCode: 'USD' },
+    price: { amount: 6990, currencyCode: 'INR' },
+    compareAtPrice: { amount: 7990, currencyCode: 'INR' },
     badge: 'NEW ARRIVAL',
     category: 'Pants',
     tags: ['Bottoms', 'Technical', 'Wide Cut'],
@@ -102,7 +102,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_03_32',
         title: 'Charcoal Ash / 32',
         availableForSale: true,
-        price: { amount: 240, currencyCode: 'USD' },
+        price: { amount: 6990, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Charcoal Ash' },
           { name: 'Size', value: '32' }
@@ -116,7 +116,7 @@ export const MOCK_PRODUCTS: Product[] = [
     title: 'Sculpted Boxy Drop-Tee',
     subtitle: '300 GSM Combed Ring-Spun Cotton',
     description: 'Extreme drop-shoulder cut engineered with reinforced high-density rib collar that retains its shape over continuous wear. Thick, structured drape without stiffness.',
-    price: { amount: 95, currencyCode: 'USD' },
+    price: { amount: 2990, currencyCode: 'INR' },
     badge: 'RESTOCKED',
     category: 'Tees',
     tags: ['Drop 001', 'Core', 'Essentials'],
@@ -133,7 +133,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_04_m',
         title: 'Chalk White / M',
         availableForSale: true,
-        price: { amount: 95, currencyCode: 'USD' },
+        price: { amount: 2990, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Chalk White' },
           { name: 'Size', value: 'M' }
@@ -147,7 +147,7 @@ export const MOCK_PRODUCTS: Product[] = [
     title: 'Monolith Oversized Trench Coat',
     subtitle: '100% Virgin Wool Melange',
     description: 'Floor-grazing silhouette with strong padded shoulders, concealed horn buttons, exaggerated lapels, and detachable leather utility key ring.',
-    price: { amount: 580, currencyCode: 'USD' },
+    price: { amount: 18990, currencyCode: 'INR' },
     badge: 'RUNWAY EDITION',
     category: 'Outerwear',
     tags: ['Outerwear', 'Streetwear', 'Runway'],
@@ -164,7 +164,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_05_50',
         title: 'Obsidian Black / 50',
         availableForSale: true,
-        price: { amount: 580, currencyCode: 'USD' },
+        price: { amount: 18990, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Obsidian Black' },
           { name: 'Size', value: '50' }
@@ -178,7 +178,7 @@ export const MOCK_PRODUCTS: Product[] = [
     title: 'Brutalist Monogram Signet Chain',
     subtitle: 'Solid 925 Sterling Silver // Oxidized Finish',
     description: 'Custom industrial curb links interlocked with a heavy sculptural Kolossal lock mechanism. Hand-finished in Industrial Area, Chandigarh, India with micro-hallmarking.',
-    price: { amount: 290, currencyCode: 'USD' },
+    price: { amount: 7990, currencyCode: 'INR' },
     badge: 'HANDCRAFTED',
     category: 'Accessories',
     tags: ['Jewelry', 'Sterling Silver', 'Accessories'],
@@ -195,7 +195,7 @@ export const MOCK_PRODUCTS: Product[] = [
         id: 'var_06_50',
         title: 'Oxidized Silver / 50cm',
         availableForSale: true,
-        price: { amount: 290, currencyCode: 'USD' },
+        price: { amount: 7990, currencyCode: 'INR' },
         selectedOptions: [
           { name: 'Color', value: 'Oxidized Silver' },
           { name: 'Size', value: '50cm' }

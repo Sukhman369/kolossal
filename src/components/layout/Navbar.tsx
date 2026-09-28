@@ -4,13 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { ShoppingBag, Menu, X, Globe, ChevronDown, Check } from 'lucide-react';
+import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
 const NavBrand3DIntro = dynamic(() => import('./NavBrand3DIntro'), { ssr: false });
-
-const CURRENCIES = ['USD', 'EUR', 'GBP', 'INR'] as const;
-type Currency = (typeof CURRENCIES)[number];
 
 const REST_LETTERS = ['O', 'L', 'O', 'S', 'S', 'A', 'L'] as const;
 
@@ -20,9 +17,6 @@ export default function Navbar() {
   const { cart, openCart } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currency, setCurrency] = useState<Currency>('USD');
-  const [currencyOpen, setCurrencyOpen] = useState(false);
-  const currencyRef = useRef<HTMLDivElement>(null);
 
   // 3D K Letter Intro Animation States
   const [isPlaying3DIntro, setIsPlaying3DIntro] = useState(false);
@@ -105,7 +99,6 @@ export default function Navbar() {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setCurrencyOpen(false);
   }, [pathname]);
 
   // Handle escape key and body scroll lock
@@ -113,7 +106,6 @@ export default function Navbar() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
-        setCurrencyOpen(false);
       }
     };
 
@@ -129,17 +121,6 @@ export default function Navbar() {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [mobileMenuOpen]);
-
-  // Click outside listener for currency dropdown
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (currencyRef.current && !currencyRef.current.contains(e.target as Node)) {
-        setCurrencyOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -310,49 +291,8 @@ export default function Navbar() {
               </Link>
             </nav>
 
-            {/* Actions: Currency selector + Cart Trigger */}
+            {/* Actions: Cart Trigger */}
             <div className="flex items-center space-x-4 sm:space-x-5">
-              {/* Currency Selector Popover */}
-              <div className="relative" ref={currencyRef}>
-                <button
-                  type="button"
-                  onClick={() => setCurrencyOpen(!currencyOpen)}
-                  className="hidden sm:inline-flex items-center space-x-1.5 text-xs font-mono uppercase tracking-wider text-neutral-600 hover:text-[#580D1A] transition-colors py-1.5 px-2 rounded-sm hover:bg-neutral-100/60"
-                  aria-label={`Currency selected: ${currency}`}
-                  aria-expanded={currencyOpen}
-                >
-                  <Globe className="w-3.5 h-3.5" />
-                  <span className="font-semibold">{currency}</span>
-                  <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${currencyOpen ? 'rotate-180' : ''}`} />
-                </button>
-
-                {currencyOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-32 bg-[#FAF9F7] border border-neutral-200 rounded shadow-xl py-1 z-50 animate-in fade-in zoom-in-95 duration-150">
-                    <div className="px-3 py-1 text-[9px] font-mono tracking-widest text-neutral-400 uppercase border-b border-neutral-100 mb-1">
-                      Select Currency
-                    </div>
-                    {CURRENCIES.map((curr) => (
-                      <button
-                        key={curr}
-                        type="button"
-                        onClick={() => {
-                          setCurrency(curr);
-                          setCurrencyOpen(false);
-                        }}
-                        className={`w-full px-3 py-1.5 text-xs font-mono uppercase flex items-center justify-between transition-colors ${
-                          currency === curr
-                            ? 'bg-[#580D1A]/10 text-[#580D1A] font-bold'
-                            : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950'
-                        }`}
-                      >
-                        <span>{curr}</span>
-                        {currency === curr && <Check className="w-3 h-3 text-[#580D1A]" />}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
               {/* Shopping Bag Trigger */}
               <button
                 type="button"
@@ -482,27 +422,11 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Bottom Mobile Footer with Currency Switcher */}
-          <div className="pt-6 border-t border-neutral-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-neutral-500">
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-wider text-neutral-400">CURRENCY:</span>
-              <div className="flex items-center space-x-1.5">
-                {CURRENCIES.map((curr) => (
-                  <button
-                    key={curr}
-                    type="button"
-                    onClick={() => setCurrency(curr)}
-                    className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors ${
-                      currency === curr
-                        ? 'bg-[#580D1A] text-white'
-                        : 'bg-neutral-200/60 text-neutral-700 hover:bg-neutral-200'
-                    }`}
-                  >
-                    {curr}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Bottom Mobile Footer */}
+          <div className="pt-6 border-t border-neutral-200/80 flex items-center justify-between text-xs font-mono text-neutral-500">
+            <span className="text-[10px] tracking-wider uppercase text-neutral-400">
+              India // INR (₹)
+            </span>
             <span className="text-[10px] tracking-wider uppercase text-neutral-400">
               &copy; {new Date().getFullYear()} KOLOSSAL ARCHIVE
             </span>
