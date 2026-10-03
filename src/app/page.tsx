@@ -1,4 +1,4 @@
-import HeroSection from '../components/hero/HeroSection';
+import HeroBannerPlaceholder from '../components/hero/HeroBannerPlaceholder';
 import FeaturedDrop from '../components/products/FeaturedDrop';
 import BrandManifesto from '../components/editorial/BrandManifesto';
 import { commerce } from '../lib/commerce';
@@ -8,8 +8,8 @@ export default async function HomePage() {
 
   return (
     <div className="w-full">
-      {/* 3D Hero Banner: Exclusively on the homepage */}
-      <HeroSection />
+      {/* Hero Banner Slider — Awaiting final artwork from graphic designer */}
+      <HeroBannerPlaceholder />
 
       {/* Curated Drop Catalog Grid */}
       <FeaturedDrop products={products} />
