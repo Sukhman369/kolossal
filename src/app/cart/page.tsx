@@ -260,14 +260,24 @@ export default function CartPage() {
               </div>
             </div>
 
-            {/* Checkout CTA */}
-            <Link
-              href="/checkout"
-              className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg block text-center"
-            >
-              <span>Proceed to Checkout</span>
-              <ArrowRight className="w-4 h-4 inline ml-1" />
-            </Link>
+            {/* Checkout CTA — redirects to Shopify native checkout (with Razorpay) when available */}
+            {cart.checkoutUrl ? (
+              <a
+                href={cart.checkoutUrl}
+                className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg text-center"
+              >
+                <span>Proceed to Checkout</span>
+                <ArrowRight className="w-4 h-4 inline ml-1" />
+              </a>
+            ) : (
+              <Link
+                href="/checkout"
+                className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg block text-center"
+              >
+                <span>Proceed to Checkout</span>
+                <ArrowRight className="w-4 h-4 inline ml-1" />
+              </Link>
+            )}
 
             <div className="flex items-center justify-center space-x-2 text-[10px] font-mono text-neutral-500 uppercase text-center pt-2">
               <ShieldCheck className="w-3.5 h-3.5 text-[#580D1A]" />

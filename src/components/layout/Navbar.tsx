@@ -207,7 +207,7 @@ export default function Navbar() {
               className="group flex flex-col items-center py-1 focus:outline-none"
               title="KOLOSSAL Street Wear"
             >
-              <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.38em] sm:tracking-[0.44em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.48em] pl-[0.38em] sm:pl-[0.44em] inline-flex items-baseline">
+              <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.28em] pl-[0.18em] sm:pl-[0.22em] inline-flex items-baseline">
                 <span
                   id="nav-brand-k"
                   className={`inline-block transition-all duration-300 ${
