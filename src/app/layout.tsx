@@ -14,13 +14,44 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
+  metadataBase: new URL('https://www.thekolossal.com'),
+  title: {
+    default: 'KOLOSSAL | Architectural Heavyweight Streetwear',
+    template: '%s | KOLOSSAL',
+  },
   description: 'Limited edition 500 GSM organic cotton garments engineered in Industrial Area, Chandigarh, India. Brutalist silhouettes, oversized cuts, zero compromise on material integrity.',
-  keywords: ['Kolossal', 'Heavyweight Streetwear', '500 GSM Hoodie', 'Luxury Streetwear', 'Architectural Apparel'],
+  keywords: ['Kolossal', 'Heavyweight Streetwear', '500 GSM Hoodie', 'Luxury Streetwear India', 'Architectural Apparel', 'Chandigarh Streetwear', 'Organic Cotton Hoodie'],
+  authors: [{ name: 'KOLOSSAL', url: 'https://www.thekolossal.com' }],
+  creator: 'KOLOSSAL',
+  publisher: 'KOLOSSAL',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
     description: 'Limited edition 500 GSM organic cotton garments engineered in Industrial Area, Chandigarh, India.',
+    url: 'https://www.thekolossal.com',
+    siteName: 'KOLOSSAL',
     type: 'website',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
+    description: 'Limited edition 500 GSM organic cotton garments engineered in Chandigarh, India.',
+    site: '@kolossal',
+    creator: '@kolossal',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
 };
 
