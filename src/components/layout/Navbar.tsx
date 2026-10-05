@@ -243,17 +243,7 @@ export default function Navbar() {
                 </span>
                 <span className="sr-only">OLOSSAL</span>
               </span>
-              <span
-                className="text-[7.5px] sm:text-[8.5px] font-mono tracking-[0.34em] text-[#580D1A] uppercase font-semibold pl-[0.34em] mt-0.5 transition-all duration-500 ease-out"
-                style={{
-                  opacity: isRestRevealed ? 1 : 0,
-                  transform: isRestRevealed ? 'translateY(0)' : 'translateY(6px)',
-                  filter: isRestRevealed ? 'blur(0px)' : 'blur(2px)',
-                  transitionDelay: !isFullySettled && isRestRevealed ? '260ms' : '0ms',
-                }}
-              >
-                Street Wear
-              </span>
+
             </Link>
           </div>
 
