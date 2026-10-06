@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { CartProvider } from '../context/CartContext';
 
@@ -64,6 +65,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-293KFEF59C"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-293KFEF59C', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col bg-[#FAF9F7] text-[#111111] selection:bg-[#580D1A] selection:text-white">
         <CartProvider>
           <AppShell>{children}</AppShell>
