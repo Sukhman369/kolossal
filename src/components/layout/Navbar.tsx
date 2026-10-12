@@ -9,7 +9,7 @@ import { useCart } from '../../context/CartContext';
 
 const NavBrand3DIntro = dynamic(() => import('./NavBrand3DIntro'), { ssr: false });
 
-const REST_LETTERS = ['O', 'L', 'O', 'S', 'S', 'A', 'L'] as const;
+const REST_LETTERS = ['E', 'Y', 'O', 'N', 'D', ' ', 'H', 'U', 'M', 'A', 'N', 'S'] as const;
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // 3D K Letter Intro Animation States
+  // 3D B Letter Intro Animation States
   const [isPlaying3DIntro, setIsPlaying3DIntro] = useState(false);
   const [isDocked, setIsDocked] = useState(!isHome);
   const [isJustDocked, setIsJustDocked] = useState(false);
@@ -54,7 +54,7 @@ export default function Navbar() {
     setIsDocked(true);
     setIsJustDocked(true);
 
-    // Trigger smooth slide reveal of 'OLOSSAL' right as K arrives and docks
+    // Trigger smooth slide reveal of 'EYOND HUMANS' right as B arrives and docks
     const t1 = setTimeout(() => {
       setIsRestRevealed(true);
     }, 40);
@@ -64,7 +64,7 @@ export default function Navbar() {
       setIsFullySettled(true);
     }, 850);
 
-    // Glow pulse on K settles back
+    // Glow pulse on B settles back
     const t3 = setTimeout(() => {
       setIsJustDocked(false);
     }, 900);
@@ -205,11 +205,11 @@ export default function Navbar() {
               href="/"
               onClick={handleLogoClick}
               className="group flex flex-col items-center py-1 focus:outline-none"
-              title="KOLOSSAL Street Wear"
+              title="BEYOND HUMANS"
             >
-              <span className="text-xl sm:text-2xl md:text-[26px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.28em] pl-[0.18em] sm:pl-[0.22em] inline-flex items-baseline">
+              <span className="text-base sm:text-xl md:text-[22px] font-black uppercase tracking-[0.16em] sm:tracking-[0.20em] text-neutral-950 transition-all duration-300 group-hover:text-[#580D1A] group-hover:tracking-[0.24em] pl-[0.16em] sm:pl-[0.20em] inline-flex items-baseline whitespace-nowrap">
                 <span
-                  id="nav-brand-k"
+                  id="nav-brand-b"
                   className={`inline-block transition-all duration-300 ${
                     !isDocked
                       ? 'opacity-0 pointer-events-none select-none'
@@ -220,7 +220,7 @@ export default function Navbar() {
                       : 'scale-100'
                   }`}
                 >
-                  K
+                  B
                 </span>
                 <span
                   className="inline-flex overflow-hidden align-baseline"
@@ -234,16 +234,15 @@ export default function Navbar() {
                         opacity: isRestRevealed ? 1 : 0,
                         transform: isRestRevealed ? 'translateX(0)' : 'translateX(-18px)',
                         filter: isRestRevealed ? 'blur(0px)' : 'blur(4px)',
-                        transitionDelay: !isFullySettled && isRestRevealed ? `${idx * 45}ms` : '0ms',
+                        transitionDelay: !isFullySettled && isRestRevealed ? `${idx * 30}ms` : '0ms',
                       }}
                     >
-                      {char}
+                      {char === ' ' ? '\u00A0' : char}
                     </span>
                   ))}
                 </span>
-                <span className="sr-only">OLOSSAL</span>
+                <span className="sr-only">EYOND HUMANS</span>
               </span>
-
             </Link>
           </div>
 
@@ -418,13 +417,13 @@ export default function Navbar() {
               India // INR (₹)
             </span>
             <span className="text-[10px] tracking-wider uppercase text-neutral-400">
-              &copy; {new Date().getFullYear()} KOLOSSAL ARCHIVE
+              &copy; {new Date().getFullYear()} BEYOND HUMANS ARCHIVE
             </span>
           </div>
         </div>
       )}
 
-      {/* 3D Animated 'K' Intro Canvas Sequence */}
+      {/* 3D Animated 'B' Intro Canvas Sequence */}
       {isPlaying3DIntro && <NavBrand3DIntro onComplete={handleIntroComplete} />}
     </>
   );

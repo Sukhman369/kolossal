@@ -7,24 +7,37 @@ interface NavBrand3DIntroProps {
   onComplete: () => void;
 }
 
-// Procedurally generate a bold, architectural brutalist 'K' shape
-function createKShape(): THREE.Shape {
+// Procedurally generate a bold, architectural brutalist 'B' shape
+function createBShape(): THREE.Shape {
   const shape = new THREE.Shape();
-  // Dimensions for high-fashion heavy sans-serif 'K'
-  // Height: -0.72 to +0.72 (height ~1.44), Width: ~1.28
+  // Outer boundary of brutalist 'B'
   shape.moveTo(-0.55, -0.7);
   shape.lineTo(-0.55, 0.7);
-  shape.lineTo(-0.22, 0.7);
-  shape.lineTo(-0.22, 0.12);
-  shape.lineTo(0.32, 0.7);
-  shape.lineTo(0.68, 0.7);
-  shape.lineTo(0.04, -0.02);
-  shape.lineTo(0.68, -0.7);
-  shape.lineTo(0.32, -0.7);
-  shape.lineTo(-0.12, -0.2);
-  shape.lineTo(-0.22, -0.36);
-  shape.lineTo(-0.22, -0.7);
+  shape.lineTo(0.15, 0.7);
+  shape.bezierCurveTo(0.56, 0.7, 0.56, 0.06, 0.12, 0.06);
+  shape.lineTo(0.08, 0.06);
+  shape.bezierCurveTo(0.58, 0.06, 0.58, -0.7, 0.15, -0.7);
+  shape.lineTo(-0.55, -0.7);
   shape.closePath();
+
+  // Top counter (hole)
+  const topHole = new THREE.Path();
+  topHole.moveTo(-0.22, 0.18);
+  topHole.lineTo(-0.22, 0.48);
+  topHole.lineTo(0.10, 0.48);
+  topHole.quadraticCurveTo(0.28, 0.33, 0.10, 0.18);
+  topHole.closePath();
+  shape.holes.push(topHole);
+
+  // Bottom counter (hole)
+  const bottomHole = new THREE.Path();
+  bottomHole.moveTo(-0.22, -0.48);
+  bottomHole.lineTo(-0.22, -0.10);
+  bottomHole.lineTo(0.12, -0.10);
+  bottomHole.quadraticCurveTo(0.32, -0.29, 0.12, -0.48);
+  bottomHole.closePath();
+  shape.holes.push(bottomHole);
+
   return shape;
 }
 
@@ -83,7 +96,7 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
     keyLight.position.set(5, 6, 6);
     scene.add(keyLight);
 
-    // Rim light (Kolossal signature deep burgundy accent)
+    // Rim light (Beyond Humans signature deep burgundy accent)
     const rimLight = new THREE.DirectionalLight(0x851830, 3.5);
     rimLight.position.set(-6, -2, -3);
     scene.add(rimLight);
@@ -93,8 +106,8 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
     fillLight.position.set(0, 0, 4);
     scene.add(fillLight);
 
-    // 4. 3D 'K' Geometry & Luxury Titanium Obsidian Material
-    const shape = createKShape();
+    // 4. 3D 'B' Geometry & Luxury Titanium Obsidian Material
+    const shape = createBShape();
     const geometry = new THREE.ExtrudeGeometry(shape, {
       depth: 0.28,
       bevelEnabled: true,
@@ -113,8 +126,8 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
       reflectivity: 0.95,
     });
 
-    const kMesh = new THREE.Mesh(geometry, material);
-    scene.add(kMesh);
+    const bMesh = new THREE.Mesh(geometry, material);
+    scene.add(bMesh);
 
     // 5. Dimension / coordinate helpers
     const getVisibleSizeAtZ0 = () => {
@@ -132,7 +145,7 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
 
     // Calculate target navbar position
     const getTargetWorldTransform = () => {
-      const targetEl = document.getElementById('nav-brand-k');
+      const targetEl = document.getElementById('nav-brand-b');
       const { vHeight } = getVisibleSizeAtZ0();
 
       if (!targetEl) {
@@ -191,11 +204,11 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
         // --- PHASE 0: SCALE IN AT CENTER ---
         const progress = elapsed / DURATION_ENTER;
         const easedScale = easeOutBack(progress) * BASE_CENTER_SCALE;
-        kMesh.scale.set(easedScale, easedScale, easedScale);
-        kMesh.position.set(0, 0, 0);
+        bMesh.scale.set(easedScale, easedScale, easedScale);
+        bMesh.position.set(0, 0, 0);
         // Initial gentle tilt to capture specular reflections
-        kMesh.rotation.y = progress * 0.4;
-        kMesh.rotation.x = Math.sin(progress * Math.PI) * 0.15;
+        bMesh.rotation.y = progress * 0.4;
+        bMesh.rotation.x = Math.sin(progress * Math.PI) * 0.15;
       } else if (elapsed < DURATION_ENTER + DURATION_SPIN) {
         // --- PHASE 1: FULL 360-DEGREE ROTATION IN CENTER ---
         const spinElapsed = elapsed - DURATION_ENTER;
@@ -203,15 +216,15 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
         const easedSpin = easeInOutCubic(spinProgress);
 
         // One complete 360° rotation (from 0.4 to 0.4 + 2*PI)
-        kMesh.rotation.y = 0.4 + easedSpin * (Math.PI * 2);
+        bMesh.rotation.y = 0.4 + easedSpin * (Math.PI * 2);
         // Subtle floating pitch & roll
-        kMesh.rotation.x = Math.sin(spinProgress * Math.PI * 2) * 0.12;
-        kMesh.rotation.z = Math.sin(spinProgress * Math.PI) * 0.05;
+        bMesh.rotation.x = Math.sin(spinProgress * Math.PI * 2) * 0.12;
+        bMesh.rotation.z = Math.sin(spinProgress * Math.PI) * 0.05;
 
         // Subtle gentle breathing scale
         const breathe = BASE_CENTER_SCALE + Math.sin(spinProgress * Math.PI) * 0.08;
-        kMesh.scale.set(breathe, breathe, breathe);
-        kMesh.position.set(0, 0, 0);
+        bMesh.scale.set(breathe, breathe, breathe);
+        bMesh.position.set(0, 0, 0);
       } else if (elapsed < TOTAL_DURATION) {
         // --- PHASE 2: TRAVEL DIRECTLY TO NAVBAR ---
         const travelElapsed = elapsed - (DURATION_ENTER + DURATION_SPIN);
@@ -221,19 +234,19 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
         const { targetWx, targetWy, targetScale } = getTargetWorldTransform();
 
         // Interpolate position from (0,0) to target
-        kMesh.position.x = THREE.MathUtils.lerp(0, targetWx, easedTravel);
-        kMesh.position.y = THREE.MathUtils.lerp(0, targetWy, easedTravel);
-        kMesh.position.z = THREE.MathUtils.lerp(0, 0, easedTravel);
+        bMesh.position.x = THREE.MathUtils.lerp(0, targetWx, easedTravel);
+        bMesh.position.y = THREE.MathUtils.lerp(0, targetWy, easedTravel);
+        bMesh.position.z = THREE.MathUtils.lerp(0, 0, easedTravel);
 
         // Interpolate scale down to exact navbar text size
         const currentScale = THREE.MathUtils.lerp(BASE_CENTER_SCALE, targetScale, easedTravel);
-        kMesh.scale.set(currentScale, currentScale, currentScale);
+        bMesh.scale.set(currentScale, currentScale, currentScale);
 
         // Settle rotation cleanly to 0 (flat forward)
         const remainingY = 0.4 + Math.PI * 2;
-        kMesh.rotation.y = THREE.MathUtils.lerp(remainingY, Math.PI * 2, easedTravel);
-        kMesh.rotation.x = THREE.MathUtils.lerp(kMesh.rotation.x, 0, easedTravel);
-        kMesh.rotation.z = THREE.MathUtils.lerp(kMesh.rotation.z, 0, easedTravel);
+        bMesh.rotation.y = THREE.MathUtils.lerp(remainingY, Math.PI * 2, easedTravel);
+        bMesh.rotation.x = THREE.MathUtils.lerp(bMesh.rotation.x, 0, easedTravel);
+        bMesh.rotation.z = THREE.MathUtils.lerp(bMesh.rotation.z, 0, easedTravel);
 
         // Fade background ambient glow
         setAmbientOpacity(1 - travelProgress);
@@ -241,9 +254,9 @@ export default function NavBrand3DIntro({ onComplete }: NavBrand3DIntroProps) {
         // --- PHASE 3: ARRIVAL & DOCK ---
         // Final frame placement
         const { targetWx, targetWy, targetScale } = getTargetWorldTransform();
-        kMesh.position.set(targetWx, targetWy, 0);
-        kMesh.scale.set(targetScale, targetScale, targetScale);
-        kMesh.rotation.set(0, 0, 0);
+        bMesh.position.set(targetWx, targetWy, 0);
+        bMesh.scale.set(targetScale, targetScale, targetScale);
+        bMesh.rotation.set(0, 0, 0);
         renderer.render(scene, camera);
 
         // Trigger parent state transition & cleanup
