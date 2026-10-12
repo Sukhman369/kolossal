@@ -2,16 +2,16 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Exchange & Replacement Policy | KOLOSSAL",
+  title: "Exchange & Replacement Policy | BEYOND HUMANS",
   description:
-    "Discover KOLOSSAL's conscious craftsmanship approach and our damaged goods exchange guarantee. Complimentary courier replacement for transit-damaged or flawed pieces.",
+    "Discover BEYOND HUMANS's conscious craftsmanship approach and our damaged goods exchange guarantee. Complimentary courier replacement for transit-damaged or flawed pieces.",
   alternates: {
-    canonical: "https://kolossal.com/returns",
+    canonical: "https://beyondhumans.com/returns",
   },
 }
 
 export default async function ReturnsAndExchangesPage() {
-  const contactEmail = "concierge@kolossal.com"
+  const contactEmail = "concierge@beyondhumans.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -21,13 +21,13 @@ export default async function ReturnsAndExchangesPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://kolossal.com",
+        item: "https://beyondhumans.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Exchange & Replacement Policy",
-        item: "https://kolossal.com/returns",
+        item: "https://beyondhumans.com/returns",
       },
     ],
   }
@@ -38,10 +38,10 @@ export default async function ReturnsAndExchangesPage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is Kolossal's return and exchange policy?",
+        name: "What is Beyond Humans's return and exchange policy?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "At Kolossal, we pay close attention to every detail, with every stitch crafted to meet our standards of quality and perfection. We do not offer returns. However, if you have received a damaged or defective product, we will arrange an exchange.",
+          text: "At Beyond Humans, we pay close attention to every detail, with every stitch crafted to meet our standards of quality and perfection. We do not offer returns. However, if you have received a damaged or defective product, we will arrange an exchange.",
         },
       },
       {
@@ -87,7 +87,7 @@ export default async function ReturnsAndExchangesPage() {
               Returns &amp; Exchange Policy
             </h1>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              At Kolossal, we pay close attention to every detail, with every stitch crafted to meet our standards of quality and perfection. If you have received a damaged or defective product, we sincerely apologize for the inconvenience — please contact us to discuss and initiate an exchange.
+              At Beyond Humans, we pay close attention to every detail, with every stitch crafted to meet our standards of quality and perfection. If you have received a damaged or defective product, we sincerely apologize for the inconvenience — please contact us to discuss and initiate an exchange.
             </p>
 
             {/* Quick Info Bar */}
@@ -178,7 +178,7 @@ export default async function ReturnsAndExchangesPage() {
                   Quality &amp; Craftsmanship
                 </h2>
                 <p className="mt-2">
-                  At Kolossal, we pay close attention to every detail, with every stitch crafted to meet our standards of quality and perfection.
+                  At Beyond Humans, we pay close attention to every detail, with every stitch crafted to meet our standards of quality and perfection.
                 </p>
               </div>
 
@@ -286,7 +286,7 @@ export default async function ReturnsAndExchangesPage() {
               </div>
 
               <p className="text-sm text-snoov-muted pt-4">
-                Thank you for choosing Kolossal.
+                Thank you for choosing Beyond Humans.
               </p>
             </div>
 

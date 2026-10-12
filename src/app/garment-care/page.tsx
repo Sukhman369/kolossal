@@ -2,16 +2,16 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Garment Care & Fabric Longevity Guide | KOLOSSAL",
+  title: "Garment Care & Fabric Longevity Guide | BEYOND HUMANS",
   description:
-    "Master the care of KOLOSSAL garments. Complete washing protocols, flat-drying methods, textile preservation, and complimentary repair guidelines.",
+    "Master the care of BEYOND HUMANS garments. Complete washing protocols, flat-drying methods, textile preservation, and complimentary repair guidelines.",
   alternates: {
-    canonical: "https://kolossal.com/garment-care",
+    canonical: "https://beyondhumans.com/garment-care",
   },
 }
 
 export default async function GarmentCarePage() {
-  const contactEmail = "concierge@kolossal.com"
+  const contactEmail = "concierge@beyondhumans.com"
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -21,13 +21,13 @@ export default async function GarmentCarePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://kolossal.com",
+        item: "https://beyondhumans.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Garment Care",
-        item: "https://kolossal.com/garment-care",
+        item: "https://beyondhumans.com/garment-care",
       },
     ],
   }
@@ -35,7 +35,7 @@ export default async function GarmentCarePage() {
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Care for Heavyweight Organic KOLOSSAL Garments",
+    name: "How to Care for Heavyweight Organic BEYOND HUMANS Garments",
     description:
       "Official care instructions for washing, drying, ironing, and preserving certified organic cotton, European Flax®, and streetwear silhouettes.",
     step: [
@@ -377,7 +377,7 @@ export default async function GarmentCarePage() {
                 5. Complimentary Repair Service
               </h2>
               <p>
-                We stand behind the engineering of every KOLOSSAL silhouette. If a seam loosens, a button falls off, or hardware fails through normal wear, send it to our Chandigarh workshop for a complimentary repair.
+                We stand behind the engineering of every BEYOND HUMANS silhouette. If a seam loosens, a button falls off, or hardware fails through normal wear, send it to our Chandigarh workshop for a complimentary repair.
               </p>
               
               <div className="p-6 bg-snoov-sand/30 border border-snoov-border rounded-base space-y-2 font-mono text-xs text-snoov-charcoal">
