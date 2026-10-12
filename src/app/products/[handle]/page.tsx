@@ -15,15 +15,15 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: 'Product Not Found | KOLOSSAL',
+      title: 'Product Not Found | BEYOND HUMANS',
     };
   }
 
   return {
-    title: `${product.title} | KOLOSSAL`,
+    title: `${product.title} | BEYOND HUMANS`,
     description: product.description,
     openGraph: {
-      title: `${product.title} | KOLOSSAL`,
+      title: `${product.title} | BEYOND HUMANS`,
       description: product.description,
       images: product.images[0]?.url ? [{ url: product.images[0].url }] : [],
     },

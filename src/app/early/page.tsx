@@ -24,7 +24,7 @@ export default function EarlyAccessPage() {
   // Initialize theme from localStorage so it matches coming-soon
   useEffect(() => {
     try {
-      const savedTheme = localStorage.getItem('kolossal_theme');
+      const savedTheme = localStorage.getItem('beyond_humans_theme');
       if (savedTheme === 'light') {
         setIsDark(false);
       }
@@ -37,7 +37,7 @@ export default function EarlyAccessPage() {
     const nextMode = !isDark;
     setIsDark(nextMode);
     try {
-      localStorage.setItem('kolossal_theme', nextMode ? 'dark' : 'light');
+      localStorage.setItem('beyond_humans_theme', nextMode ? 'dark' : 'light');
     } catch {
       // ignore
     }
@@ -124,7 +124,7 @@ export default function EarlyAccessPage() {
             isDark ? 'text-neutral-200' : 'text-neutral-900'
           }`}
         >
-          KOLOSSAL
+          BEYOND HUMANS
         </div>
 
         {/* Top-Right Theme Toggle */}
@@ -208,7 +208,7 @@ export default function EarlyAccessPage() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="e.g. liam@kolossal.in"
+                  placeholder="e.g. liam@beyondhumans.in"
                   disabled={isLoading}
                   className={`w-full border rounded-xl px-4 py-3 text-xs sm:text-sm font-sans tracking-wide focus:outline-none transition-all duration-200 disabled:opacity-50 ${
                     isDark

@@ -50,12 +50,12 @@ export async function generateMetadata({
 
   if (!info) {
     return {
-      title: 'Collection Not Found | KOLOSSAL',
+      title: 'Collection Not Found | BEYOND HUMANS',
     };
   }
 
   return {
-    title: `${info.title} | KOLOSSAL`,
+    title: `${info.title} | BEYOND HUMANS`,
     description: info.description,
   };
 }

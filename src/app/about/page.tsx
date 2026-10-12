@@ -2,11 +2,11 @@ import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
-  title: "Our Story — Architectural Craft & GenZ Collective | KOLOSSAL",
+  title: "Our Story — Architectural Craft & GenZ Collective | BEYOND HUMANS",
   description:
-    "Discover the origins of KOLOSSAL. Architectural silhouettes, custom 500 GSM organic cotton, and a conscious luxury streetwear community for the next generation.",
+    "Discover the origins of BEYOND HUMANS. Architectural silhouettes, custom 500 GSM organic cotton, and a conscious luxury streetwear community for the next generation.",
   alternates: {
-    canonical: "https://kolossal.com/about",
+    canonical: "https://beyondhumans.com/about",
   },
 }
 
@@ -19,13 +19,13 @@ export default async function AboutStoryPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://kolossal.com",
+        item: "https://beyondhumans.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Our Story",
-        item: "https://kolossal.com/about",
+        item: "https://beyondhumans.com/about",
       },
     ],
   }
@@ -33,9 +33,9 @@ export default async function AboutStoryPage() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "KOLOSSAL",
-    url: "https://kolossal.com",
-    logo: "https://kolossal.com/logo.png",
+    name: "BEYOND HUMANS",
+    url: "https://beyondhumans.com",
+    logo: "https://beyondhumans.com/logo.png",
     description:
       "A conscious luxury streetwear collective designed for GenZ, inspired by brutalist architecture, raw monochrome elegance, and enduring material integrity.",
   }
@@ -80,7 +80,7 @@ export default async function AboutStoryPage() {
             </h1>
 
             <p className="text-base sm:text-xl text-snoov-muted leading-relaxed max-w-3xl font-sans">
-              KOLOSSAL is built for the next generation. We are forging a community and a visual dialect shaped by culture, architectural cuts, and structural permanence.
+              BEYOND HUMANS is built for the next generation. We are forging a community and a visual dialect shaped by culture, architectural cuts, and structural permanence.
             </p>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default async function AboutStoryPage() {
               Monumental Form & Architectural Weight
             </h2>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed font-sans">
-              True luxury does not design with superficial ornamentation; it designs with absolute purpose. KOLOSSAL constructs silhouettes with stark monochrome presence, structured heavyweight drape, and architectural discipline.
+              True luxury does not design with superficial ornamentation; it designs with absolute purpose. BEYOND HUMANS constructs silhouettes with stark monochrome presence, structured heavyweight drape, and architectural discipline.
             </p>
             
             {/* Story Text Placeholder Block */}
@@ -152,7 +152,7 @@ export default async function AboutStoryPage() {
               More Than Apparel. A Living Collective.
             </h2>
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed font-sans">
-              Great design is never solitary—its power is the collective. KOLOSSAL is engineered as an open creative community where our audience co-creates and steers our capsule drops.
+              Great design is never solitary—its power is the collective. BEYOND HUMANS is engineered as an open creative community where our audience co-creates and steers our capsule drops.
             </p>
 
             {/* Community Story Placeholder */}
@@ -209,7 +209,7 @@ export default async function AboutStoryPage() {
                 JOIN THE COLLECTIVE
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-normal text-snoov-charcoal">
-                Be Part of the KOLOSSAL Community
+                Be Part of the BEYOND HUMANS Community
               </h3>
               <p className="text-xs text-snoov-muted font-sans max-w-md">
                 Get private access to limited capsule releases, pop-up events, and private seasonal lookbooks.
@@ -218,12 +218,12 @@ export default async function AboutStoryPage() {
 
             <div className="flex flex-wrap items-center gap-3 shrink-0">
               <a
-                href="https://www.instagram.com/kolossal.com/"
+                href="https://www.instagram.com/beyondhumans.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3.5 bg-snoov-canvas text-snoov-charcoal text-xs font-mono uppercase tracking-wider font-semibold rounded-sm border border-snoov-border hover:border-snoov-charcoal transition-colors"
               >
-                <span>Follow @kolossal.official</span>
+                <span>Follow @beyondhumans.official</span>
                 <span className="text-[10px]">↗</span>
               </a>
 

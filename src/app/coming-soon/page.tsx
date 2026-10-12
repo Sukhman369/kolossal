@@ -21,7 +21,7 @@ export default function ComingSoonPage() {
   // Initialize theme from localStorage
   useEffect(() => {
     try {
-      const savedTheme = localStorage.getItem('kolossal_theme');
+      const savedTheme = localStorage.getItem('beyond_humans_theme');
       if (savedTheme === 'light') {
         setIsDark(false);
       }
@@ -34,7 +34,7 @@ export default function ComingSoonPage() {
     const nextMode = !isDark;
     setIsDark(nextMode);
     try {
-      localStorage.setItem('kolossal_theme', nextMode ? 'dark' : 'light');
+      localStorage.setItem('beyond_humans_theme', nextMode ? 'dark' : 'light');
     } catch {
       // ignore
     }
@@ -64,7 +64,7 @@ export default function ComingSoonPage() {
             isDark ? 'text-neutral-200' : 'text-neutral-900'
           }`}
         >
-          KOLOSSAL
+          BEYOND HUMANS
         </div>
 
         {/* Top-Right Theme Toggle */}

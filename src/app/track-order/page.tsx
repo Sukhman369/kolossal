@@ -3,11 +3,11 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import OrderTrackerForm from "@modules/order/components/order-tracker-form"
 
 export const metadata: Metadata = {
-  title: "Shipment & Order Tracking Radar | KOLOSSAL",
+  title: "Shipment & Order Tracking Radar | BEYOND HUMANS",
   description:
-    "Track your active KOLOSSAL streetwear order in real time. Live milestone status for Tricity same-day delivery, Blue Dart Express domestic transit, and global DHL shipments.",
+    "Track your active BEYOND HUMANS streetwear order in real time. Live milestone status for Tricity same-day delivery, Blue Dart Express domestic transit, and global DHL shipments.",
   alternates: {
-    canonical: "https://kolossal.com/track-order",
+    canonical: "https://beyondhumans.com/track-order",
   },
 }
 
@@ -20,13 +20,13 @@ export default async function TrackOrderPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://kolossal.com",
+        item: "https://beyondhumans.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Track Order",
-        item: "https://kolossal.com/track-order",
+        item: "https://beyondhumans.com/track-order",
       },
     ],
   }

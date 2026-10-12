@@ -186,7 +186,7 @@ export default function CreatorsPage() {
       <div className="border-b border-neutral-200/80 pb-10 sm:pb-16 mb-12 sm:mb-16">
         <div className="flex items-center space-x-2 text-[#580D1A] font-mono text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#580D1A]" />
-          <span>KOLOSSAL ARCHIVAL CIRCLE &bull; CREATOR FELLOWSHIP</span>
+          <span>BEYOND HUMANS ARCHIVAL CIRCLE &bull; CREATOR FELLOWSHIP</span>
         </div>
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-neutral-950 leading-[0.94] max-w-4xl">
           JOIN THE SYNDICATE.
@@ -682,7 +682,7 @@ export default function CreatorsPage() {
                 <textarea
                   name="note"
                   rows={3}
-                  placeholder="Tell us about your creative focus, upcoming projects, or how you intend to present Kolossal garments..."
+                  placeholder="Tell us about your creative focus, upcoming projects, or how you intend to present Beyond Humans garments..."
                   value={formData.note}
                   onChange={handleInputChange}
                   className="w-full bg-neutral-50 border border-neutral-300 rounded-xl p-4 text-xs font-sans text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#580D1A] focus:bg-white transition-all resize-none"

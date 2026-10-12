@@ -3,11 +3,11 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import ContactView from "@modules/contact/components/contact-view"
 
 export const metadata: Metadata = {
-  title: "Client Concierge, VIP Lines & Direct Inquiries | KOLOSSAL",
+  title: "Client Concierge, VIP Lines & Direct Inquiries | BEYOND HUMANS",
   description:
-    "Direct contact with the KOLOSSAL team. Instant VIP WhatsApp hotline, Tricity same-day support, press loans, and creator collaboration requests.",
+    "Direct contact with the BEYOND HUMANS team. Instant VIP WhatsApp hotline, Tricity same-day support, press loans, and creator collaboration requests.",
   alternates: {
-    canonical: "https://kolossal.com/contact",
+    canonical: "https://beyondhumans.com/contact",
   },
 }
 
@@ -20,13 +20,13 @@ export default async function ContactPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://kolossal.com",
+        item: "https://beyondhumans.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Client Concierge",
-        item: "https://kolossal.com/contact",
+        item: "https://beyondhumans.com/contact",
       },
     ],
   }
@@ -34,14 +34,14 @@ export default async function ContactPage() {
   const contactPointSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "KOLOSSAL",
-    url: "https://kolossal.com",
+    name: "BEYOND HUMANS",
+    url: "https://beyondhumans.com",
     contactPoint: [
       {
         "@type": "ContactPoint",
         telephone: "+91-98765-43210",
         contactType: "customer support",
-        email: "concierge@kolossal.com",
+        email: "concierge@beyondhumans.com",
         areaServed: ["IN", "FR", "US", "GB", "AE"],
         availableLanguage: ["English", "French", "Hindi", "Punjabi"],
       },

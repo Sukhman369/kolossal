@@ -3,11 +3,11 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import SizeGuideMatrix from "@modules/size-guide/components/size-guide-matrix"
 
 export const metadata: Metadata = {
-  title: "Size Guide & Fit Matrix | KOLOSSAL",
+  title: "Size Guide & Fit Matrix | BEYOND HUMANS",
   description:
-    "Explore KOLOSSAL's international size matrix (US, UK, EU, JP). Detailed garment measurements in CM and Inches for heavyweight t-shirts, hoodies, and overshirts.",
+    "Explore BEYOND HUMANS's international size matrix (US, UK, EU, JP). Detailed garment measurements in CM and Inches for heavyweight t-shirts, hoodies, and overshirts.",
   alternates: {
-    canonical: "https://kolossal.com/size-guide",
+    canonical: "https://beyondhumans.com/size-guide",
   },
 }
 
@@ -20,13 +20,13 @@ export default async function SizeGuidePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://kolossal.com",
+        item: "https://beyondhumans.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Size Guide",
-        item: "https://kolossal.com/size-guide",
+        item: "https://beyondhumans.com/size-guide",
       },
     ],
   }
@@ -67,7 +67,7 @@ export default async function SizeGuidePage() {
             </h1>
 
             <p className="text-sm sm:text-base text-snoov-muted leading-relaxed max-w-2xl font-sans">
-              Every KOLOSSAL piece is engineered with intentional drop-shoulder geometry and heavyweight drape. Use our interactive metric / imperial table below to find your exact silhouette.
+              Every BEYOND HUMANS piece is engineered with intentional drop-shoulder geometry and heavyweight drape. Use our interactive metric / imperial table below to find your exact silhouette.
             </p>
           </div>
         </div>

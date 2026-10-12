@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Collections | KOLOSSAL',
-  description: 'Explore curated architectural apparel collections by Kolossal. Heavyweight organic cottons, heavyweight outerwear, and sterling silver accessories.',
+  title: 'Collections | BEYOND HUMANS',
+  description: 'Explore curated architectural apparel collections by Beyond Humans. Heavyweight organic cottons, heavyweight outerwear, and sterling silver accessories.',
 };
 
 const COLLECTIONS = [
