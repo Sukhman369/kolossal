@@ -32,7 +32,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Initialize cart on client
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('kolossal_cart');
+      const saved = localStorage.getItem('beyond_humans_cart');
       if (saved) {
         const parsed = JSON.parse(saved);
         queueMicrotask(() => {
@@ -47,7 +47,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const saveCart = (updatedCart: Cart) => {
     setCart(updatedCart);
     try {
-      localStorage.setItem('kolossal_cart', JSON.stringify(updatedCart));
+      localStorage.setItem('beyond_humans_cart', JSON.stringify(updatedCart));
     } catch {
       // Ignore
     }

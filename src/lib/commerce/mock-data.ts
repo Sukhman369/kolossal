@@ -3,7 +3,7 @@ import { Product } from './types';
 export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'prod_01',
-    handle: 'kolossal-monolith-heavyweight-hoodie',
+    handle: 'beyond-humans-monolith-heavyweight-hoodie',
     title: 'Monolith Heavyweight Hoodie',
     subtitle: '500 GSM Double-Faced French Terry',
     description: 'Constructed from custom-milled 500 GSM organic cotton with architectural boxy drape, dropped shoulders, seamless cuffs, and subtle debossed tonal branding at the nape.',
@@ -174,10 +174,10 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'prod_06',
-    handle: 'kolossal-sterling-chain',
+    handle: 'beyond-humans-sterling-chain',
     title: 'Brutalist Monogram Signet Chain',
     subtitle: 'Solid 925 Sterling Silver // Oxidized Finish',
-    description: 'Custom industrial curb links interlocked with a heavy sculptural Kolossal lock mechanism. Hand-finished in Industrial Area, Chandigarh, India with micro-hallmarking.',
+    description: 'Custom industrial curb links interlocked with a heavy sculptural Beyond Humans lock mechanism. Hand-finished in Industrial Area, Chandigarh, India with micro-hallmarking.',
     price: { amount: 7990, currencyCode: 'INR' },
     badge: 'HANDCRAFTED',
     category: 'Accessories',

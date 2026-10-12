@@ -6,7 +6,7 @@ let memoryCart: Cart = {
   items: [],
   subtotal: { amount: 0, currencyCode: 'INR' },
   itemCount: 0,
-  checkoutUrl: 'https://checkout.kolossal.com/mock-session'
+  checkoutUrl: 'https://checkout.beyondhumans.com/mock-session'
 };
 
 function recalculateCart(cart: Cart): Cart {

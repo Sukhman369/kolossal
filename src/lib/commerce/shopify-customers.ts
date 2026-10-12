@@ -124,12 +124,12 @@ export async function syncCreatorApplicationToShopify(
 
   const emailToUse =
     params.email?.trim().toLowerCase() ||
-    `creator.${cleanInstagram || params.applicationId.toLowerCase()}@affiliate.kolossal.vip`;
+    `creator.${cleanInstagram || params.applicationId.toLowerCase()}@affiliate.beyondhumans.vip`;
 
   const phoneToUse = params.phone?.trim() || undefined;
 
   const noteLines = [
-    `=== KOLOSSAL CREATOR AFFILIATE APPLICATION ===`,
+    `=== BEYOND HUMANS CREATOR AFFILIATE APPLICATION ===`,
     `Application Ref: ${params.applicationId}`,
     `Requested Custom Code: ${params.customCode.trim().toUpperCase()}`,
     `Seeding Garment Size: ${params.seedingSize || 'Not specified'}`,
