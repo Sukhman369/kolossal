@@ -16,7 +16,7 @@ export default function BrandManifesto() {
           </div>
           <div className="lg:col-span-8 space-y-4 sm:space-y-6 text-neutral-600 font-light text-sm sm:text-base md:text-lg leading-relaxed">
             <p>
-              Kolossal is an independent architectural clothing label founded on the refusal of ephemeral fast-fashion cycles. We view garments as habitable structures—engineered with extreme GSM densities, brutalist silhouettes, and Japanese ripstop textiles designed to age gracefully over decades.
+              Beyond Humans is an independent architectural clothing label founded on the refusal of ephemeral fast-fashion cycles. We view garments as habitable structures—engineered with extreme GSM densities, brutalist silhouettes, and Japanese ripstop textiles designed to age gracefully over decades.
             </p>
             <p className="text-xs sm:text-sm text-[#580D1A] font-mono tracking-wide font-medium">
               Milled in limited small-batch runs. No seasonal markdowns. Every piece is numbered.

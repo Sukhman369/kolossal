@@ -16,7 +16,7 @@ export default function Footer() {
             <div>
               <Link href="/" className="inline-block">
                 <span className="text-2xl sm:text-3xl font-black uppercase tracking-[0.3em] text-snoov-charcoal block">
-                  KOLOSSAL
+                  BEYOND HUMANS
                 </span>
               </Link>
               <span className="text-[10px] font-mono tracking-widest text-snoov-green uppercase font-semibold block mt-1">
@@ -149,8 +149,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/kolossal.com/" target="_blank" rel="noreferrer" className="hover:text-snoov-green transition-colors flex items-center gap-1.5">
-                    <span>Instagram (@kolossal.official)</span>
+                  <a href="https://www.instagram.com/beyondhumans.official/" target="_blank" rel="noreferrer" className="hover:text-snoov-green transition-colors flex items-center gap-1.5">
+                    <span>Instagram (@beyondhumans.official)</span>
                     <span className="text-[10px]">↗</span>
                   </a>
                 </li>
@@ -172,7 +172,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className="pt-2 text-[11px] font-mono text-snoov-charcoal">
-                  concierge@kolossal.com
+                  concierge@beyondhumans.com
                 </li>
               </ul>
             </div>

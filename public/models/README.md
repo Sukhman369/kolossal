@@ -1,4 +1,4 @@
-# 3D Models Directory for Kolossal
+# 3D Models Directory for Beyond Humans
 
 Drop your 3D `.glb` or `.gltf` model here as:
 `hero-garment.glb`

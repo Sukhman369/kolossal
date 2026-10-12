@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.beyondhumans.com';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -9,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/cart', '/checkout', '/early'],
       },
     ],
-    sitemap: 'https://www.thekolossal.com/sitemap.xml',
-    host: 'https://www.thekolossal.com',
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   };
 }

@@ -12,7 +12,7 @@ import {
 } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Procedural high-fashion 3D geometry rendered as the Kolossal chrome emblem
+// Procedural high-fashion 3D geometry rendered as the Beyond Humans chrome emblem
 function ProceduralEmblemMesh() {
   const meshRef = useRef<THREE.Mesh>(null);
   const ringRef = useRef<THREE.Mesh>(null);

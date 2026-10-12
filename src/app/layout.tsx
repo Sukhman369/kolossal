@@ -15,33 +15,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.thekolossal.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.beyondhumans.com'),
   title: {
-    default: 'KOLOSSAL | Architectural Heavyweight Streetwear',
-    template: '%s | KOLOSSAL',
+    default: 'BEYOND HUMANS | Architectural Heavyweight Streetwear',
+    template: '%s | BEYOND HUMANS',
   },
   description: 'Limited edition 500 GSM organic cotton garments engineered in Industrial Area, Chandigarh, India. Brutalist silhouettes, oversized cuts, zero compromise on material integrity.',
-  keywords: ['Kolossal', 'Heavyweight Streetwear', '500 GSM Hoodie', 'Luxury Streetwear India', 'Architectural Apparel', 'Chandigarh Streetwear', 'Organic Cotton Hoodie'],
-  authors: [{ name: 'KOLOSSAL', url: 'https://www.thekolossal.com' }],
-  creator: 'KOLOSSAL',
-  publisher: 'KOLOSSAL',
+  keywords: ['Beyond Humans', 'Heavyweight Streetwear', '500 GSM Hoodie', 'Luxury Streetwear India', 'Architectural Apparel', 'Chandigarh Streetwear', 'Organic Cotton Hoodie'],
+  authors: [{ name: 'BEYOND HUMANS', url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.beyondhumans.com' }],
+  creator: 'BEYOND HUMANS',
+  publisher: 'BEYOND HUMANS',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
+    title: 'BEYOND HUMANS | Architectural Heavyweight Streetwear',
     description: 'Limited edition 500 GSM organic cotton garments engineered in Industrial Area, Chandigarh, India.',
-    url: 'https://www.thekolossal.com',
-    siteName: 'KOLOSSAL',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.beyondhumans.com',
+    siteName: 'BEYOND HUMANS',
     type: 'website',
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KOLOSSAL | Architectural Heavyweight Streetwear',
+    title: 'BEYOND HUMANS | Architectural Heavyweight Streetwear',
     description: 'Limited edition 500 GSM organic cotton garments engineered in Chandigarh, India.',
-    site: '@kolossal',
-    creator: '@kolossal',
+    site: '@beyondhumans',
+    creator: '@beyondhumans',
   },
   robots: {
     index: true,
