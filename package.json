@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "backend:dev": "npm run dev --prefix backend",
+    "dev:all": "concurrently -n \"STOREFRONT,MEDUSA-ADMIN\" -c \"magenta,blue\" \"next dev\" \"npm run dev --prefix backend\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -25,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.6",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "tailwindcss": "^4",
