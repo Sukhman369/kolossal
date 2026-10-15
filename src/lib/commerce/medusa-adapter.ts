@@ -1,119 +1,223 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommerceAdapter, Product, Cart, CartItem } from './types';
 import { MOCK_PRODUCTS } from './mock-data';
+import { medusaSdk } from './medusa-client';
 
 export class MedusaCommerceAdapter implements CommerceAdapter {
-  private baseUrl: string;
   private publishableApiKey: string;
 
   constructor() {
-    this.baseUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000';
     this.publishableApiKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '';
   }
 
-  private async fetchStore(endpoint: string, options: RequestInit = {}) {
-    if (!this.publishableApiKey) {
-      return null;
-    }
+  private mapMedusaProduct(p: any): Product {
+    const firstVariant = p.variants?.[0];
+    const rawPrice = firstVariant?.calculated_price?.calculated_amount ?? firstVariant?.prices?.[0]?.amount ?? 5490;
+    const currency = (firstVariant?.calculated_price?.currency_code || firstVariant?.prices?.[0]?.currency_code || 'INR').toUpperCase();
 
-    const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
-      'x-publishable-api-key': this.publishableApiKey,
+    return {
+      id: p.id,
+      handle: p.handle,
+      title: p.title,
+      subtitle: p.subtitle || p.collection?.title,
+      description: p.description || '',
+      price: {
+        amount: rawPrice,
+        currencyCode: currency,
+      },
+      category: p.collection?.title || (p.categories?.[0]?.name) || 'Streetwear',
+      tags: (p.tags || []).map((t: any) => t.value || t),
+      badge: (p.metadata?.badge as string) || undefined,
+      model3dUrl: (p.metadata?.model_3d_url as string) || undefined,
+      images: (p.images || []).map((img: any) => ({
+        url: img.url,
+        altText: p.title,
+      })),
+      variants: (p.variants || []).map((v: any) => ({
+        id: v.id,
+        title: v.title,
+        availableForSale: !v.inventory_quantity || v.inventory_quantity > 0,
+        price: {
+          amount: v.calculated_price?.calculated_amount ?? v.prices?.[0]?.amount ?? rawPrice,
+          currencyCode: currency,
+        },
+        selectedOptions: (v.options || []).map((opt: any) => ({
+          name: opt.title || 'Option',
+          value: opt.value || '',
+        })),
+      })),
+      colors: p.metadata?.colors as string[] | undefined,
+      sizes: p.metadata?.sizes as string[] | undefined,
     };
-
-    const res = await fetch(`${this.baseUrl}/store${endpoint}`, {
-      ...options,
-      headers: { ...headers, ...(options.headers as Record<string, string>) },
-    });
-
-    if (!res.ok) {
-      throw new Error(`Medusa API error: ${res.statusText}`);
-    }
-
-    return res.json();
   }
 
-  async getProducts(options?: { limit?: number }): Promise<Product[]> {
+  private mapMedusaCart(cart: any): Cart {
+    const currencyCode = (cart.currency_code || 'INR').toUpperCase();
+    const items: CartItem[] = (cart.items || []).map((item: any) => {
+      const unitPrice = item.unit_price ?? item.unit_total ?? item.price ?? 0;
+      return {
+        id: item.id,
+        productId: item.product_id || item.variant?.product_id || '',
+        variantId: item.variant_id || item.variant?.id || '',
+        title: item.title || item.product_title || 'Item',
+        variantTitle: item.variant_title || item.variant?.title || 'Standard',
+        quantity: item.quantity,
+        price: {
+          amount: unitPrice,
+          currencyCode,
+        },
+        image: item.thumbnail || item.variant?.product?.thumbnail,
+        size: item.metadata?.size || item.variant?.title,
+        color: item.metadata?.color,
+      };
+    });
+
+    const subtotalAmount = cart.subtotal ?? cart.item_subtotal ?? items.reduce((sum, it) => sum + it.price.amount * it.quantity, 0);
+    const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+    return {
+      id: cart.id,
+      items,
+      subtotal: {
+        amount: subtotalAmount,
+        currencyCode,
+      },
+      itemCount,
+      checkoutUrl: '/checkout',
+    };
+  }
+
+  async getProducts(options?: { limit?: number; collection?: string }): Promise<Product[]> {
     if (!this.publishableApiKey) {
-      return MOCK_PRODUCTS.slice(0, options?.limit || 10);
+      return MOCK_PRODUCTS.slice(0, options?.limit || 12);
     }
 
     try {
-      const data = await this.fetchStore(`/products?limit=${options?.limit || 20}`);
-      if (!data?.products) return MOCK_PRODUCTS;
-
-      return data.products.map((p: any): Product => {
-        const firstVariant = p.variants?.[0];
-        const rawPrice = firstVariant?.calculated_price?.calculated_amount || 150;
-        const currency = firstVariant?.calculated_price?.currency_code?.toUpperCase() || 'USD';
-
-        return {
-          id: p.id,
-          handle: p.handle,
-          title: p.title,
-          subtitle: p.subtitle,
-          description: p.description || '',
-          price: {
-            amount: rawPrice,
-            currencyCode: currency,
-          },
-          category: p.collection?.title || 'Collection',
-          tags: (p.tags || []).map((t: any) => t.value),
-          badge: p.metadata?.badge as string | undefined,
-          model3dUrl: p.metadata?.model_3d_url as string | undefined,
-          images: (p.images || []).map((img: any) => ({
-            url: img.url,
-            altText: p.title,
-          })),
-          variants: (p.variants || []).map((v: any) => ({
-            id: v.id,
-            title: v.title,
-            availableForSale: !v.inventory_quantity || v.inventory_quantity > 0,
-            price: {
-              amount: v.calculated_price?.calculated_amount || rawPrice,
-              currencyCode: currency,
-            },
-            selectedOptions: (v.options || []).map((opt: any) => ({
-              name: opt.title || 'Option',
-              value: opt.value || '',
-            })),
-          })),
-        };
+      const response = await medusaSdk.store.product.list({
+        limit: options?.limit || 20,
+        fields: '*variants,*variants.calculated_price,*images,*categories,*collection',
       });
+
+      if (!response?.products || response.products.length === 0) {
+        return MOCK_PRODUCTS.slice(0, options?.limit || 12);
+      }
+
+      return response.products.map((p: any) => this.mapMedusaProduct(p));
     } catch {
-      return MOCK_PRODUCTS;
+      return MOCK_PRODUCTS.slice(0, options?.limit || 12);
     }
   }
 
   async getProductByHandle(handle: string): Promise<Product | null> {
-    const products = await this.getProducts();
-    return products.find(p => p.handle === handle) || null;
+    if (!this.publishableApiKey) {
+      const products = await this.getProducts();
+      return products.find((p) => p.handle === handle) || null;
+    }
+
+    try {
+      const response = await medusaSdk.store.product.list({
+        handle,
+        fields: '*variants,*variants.calculated_price,*images,*categories,*collection',
+      });
+
+      if (response?.products && response.products.length > 0) {
+        return this.mapMedusaProduct(response.products[0]);
+      }
+
+      return null;
+    } catch {
+      const products = await this.getProducts();
+      return products.find((p) => p.handle === handle) || null;
+    }
   }
 
   async createCart(): Promise<Cart> {
+    try {
+      if (this.publishableApiKey) {
+        const { cart } = await medusaSdk.store.cart.create({});
+        if (cart) {
+          return this.mapMedusaCart(cart);
+        }
+      }
+    } catch {
+      // Fallback to local memory cart if Medusa server is offline
+    }
+
     return {
-      id: 'medusa_cart_temp',
+      id: 'medusa_cart_local_' + Math.random().toString(36).substring(7),
       items: [],
-      subtotal: { amount: 0, currencyCode: 'USD' },
+      subtotal: { amount: 0, currencyCode: 'INR' },
       itemCount: 0,
-      checkoutUrl: `${this.baseUrl}/checkout`,
+      checkoutUrl: '/checkout',
     };
   }
 
-  async addToCart(_cartId: string, item: Omit<CartItem, 'id'>): Promise<Cart> {
+  async addToCart(cartId: string, item: Omit<CartItem, 'id'>): Promise<Cart> {
+    try {
+      if (this.publishableApiKey && cartId && !cartId.startsWith('medusa_cart_local_')) {
+        const { cart } = await medusaSdk.store.cart.createLineItem(cartId, {
+          variant_id: item.variantId,
+          quantity: item.quantity,
+          metadata: {
+            size: item.size,
+            color: item.color,
+          },
+        });
+        if (cart) {
+          return this.mapMedusaCart(cart);
+        }
+      }
+    } catch {
+      // Fallback
+    }
+
+    // Local fallback
+    const newItem: CartItem = {
+      ...item,
+      id: 'medusa_item_' + Math.random().toString(36).substring(7),
+    };
     return {
-      id: 'medusa_cart_temp',
-      items: [{ ...item, id: 'medusa_temp_item' }],
-      subtotal: { amount: item.price.amount * item.quantity, currencyCode: item.price.currencyCode },
+      id: cartId || 'medusa_cart_local_' + Math.random().toString(36).substring(7),
+      items: [newItem],
+      subtotal: {
+        amount: item.price.amount * item.quantity,
+        currencyCode: item.price.currencyCode,
+      },
       itemCount: item.quantity,
+      checkoutUrl: '/checkout',
     };
   }
 
-  async removeFromCart(_cartId: string, _lineItemId: string): Promise<Cart> {
+  async removeFromCart(cartId: string, lineItemId: string): Promise<Cart> {
+    try {
+      if (this.publishableApiKey && cartId && !cartId.startsWith('medusa_cart_local_')) {
+        const response = await medusaSdk.store.cart.deleteLineItem(cartId, lineItemId);
+        const parentCart = (response as any)?.parent || response;
+        if (parentCart) {
+          return this.mapMedusaCart(parentCart);
+        }
+      }
+    } catch {
+      // Fallback
+    }
+
     return this.createCart();
   }
 
-  async updateCartItemQuantity(_cartId: string, _lineItemId: string, _quantity: number): Promise<Cart> {
+  async updateCartItemQuantity(cartId: string, lineItemId: string, quantity: number): Promise<Cart> {
+    try {
+      if (this.publishableApiKey && cartId && !cartId.startsWith('medusa_cart_local_')) {
+        const { cart } = await medusaSdk.store.cart.updateLineItem(cartId, lineItemId, {
+          quantity,
+        });
+        if (cart) {
+          return this.mapMedusaCart(cart);
+        }
+      }
+    } catch {
+      // Fallback
+    }
+
     return this.createCart();
   }
 }
