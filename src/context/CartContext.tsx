@@ -12,6 +12,7 @@ interface CartContextType {
   addItem: (item: Omit<CartItem, 'id'>) => Promise<void>;
   removeItem: (lineItemId: string) => Promise<void>;
   updateQuantity: (lineItemId: string, quantity: number) => Promise<void>;
+  clearCart: () => void;
   isAdding: boolean;
 }
 
@@ -77,6 +78,22 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     saveCart(updated);
   };
 
+  const clearCart = () => {
+    const emptyCart: Cart = {
+      id: 'medusa_cart_local_' + Math.random().toString(36).substring(7),
+      items: [],
+      subtotal: { amount: 0, currencyCode: cart.subtotal.currencyCode || 'INR' },
+      itemCount: 0,
+      checkoutUrl: '/checkout',
+    };
+    setCart(emptyCart);
+    try {
+      localStorage.removeItem('beyond_humans_cart');
+    } catch {
+      // Ignore
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -87,6 +104,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         addItem,
         removeItem,
         updateQuantity,
+        clearCart,
         isAdding,
       }}
     >
