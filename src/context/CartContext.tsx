@@ -36,6 +36,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const saved = localStorage.getItem('beyond_humans_cart');
       if (saved) {
         const parsed = JSON.parse(saved);
+        const provider = (process.env.NEXT_PUBLIC_COMMERCE_PROVIDER || 'medusa').toLowerCase();
+        if (provider !== 'shopify' || parsed.checkoutUrl?.includes('kolossal') || parsed.checkoutUrl?.includes('myshopify')) {
+          parsed.checkoutUrl = '/checkout';
+        }
+        if (provider === 'medusa' && parsed.id && !parsed.id.startsWith('medusa_') && !parsed.id.startsWith('cart_')) {
+          parsed.id = 'medusa_cart_local_' + Math.random().toString(36).substring(7);
+        }
         queueMicrotask(() => {
           setCart(parsed);
         });

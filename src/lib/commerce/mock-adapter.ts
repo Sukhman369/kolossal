@@ -6,7 +6,7 @@ let memoryCart: Cart = {
   items: [],
   subtotal: { amount: 0, currencyCode: 'INR' },
   itemCount: 0,
-  checkoutUrl: 'https://checkout.beyondhumans.com/mock-session'
+  checkoutUrl: '/checkout'
 };
 
 function recalculateCart(cart: Cart): Cart {

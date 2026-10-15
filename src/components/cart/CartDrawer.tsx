@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { X, Plus, Minus, Trash2, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { formatPrice } from '../../lib/commerce';
@@ -168,14 +169,25 @@ export default function CartDrawer() {
                 </div>
               </div>
 
-              <a
-                href={cart.checkoutUrl || "/checkout"}
-                onClick={closeCart}
-                className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg"
-              >
-                <span>Proceed to Checkout</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
+              {cart.checkoutUrl && cart.checkoutUrl.startsWith('http') && process.env.NEXT_PUBLIC_COMMERCE_PROVIDER === 'shopify' ? (
+                <a
+                  href={cart.checkoutUrl}
+                  onClick={closeCart}
+                  className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg"
+                >
+                  <span>Proceed to Checkout</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              ) : (
+                <Link
+                  href="/checkout"
+                  onClick={closeCart}
+                  className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg"
+                >
+                  <span>Proceed to Checkout</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
 
               <div className="flex items-center justify-center space-x-2 text-[10px] font-mono text-neutral-500 uppercase pt-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#580D1A]" />

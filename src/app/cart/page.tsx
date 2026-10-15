@@ -260,8 +260,8 @@ export default function CartPage() {
               </div>
             </div>
 
-            {/* Checkout CTA — redirects to Shopify native checkout (with Razorpay) when available */}
-            {cart.checkoutUrl ? (
+            {/* Checkout CTA — redirects to internal /checkout (or Shopify when explicitly in shopify mode) */}
+            {cart.checkoutUrl && cart.checkoutUrl.startsWith('http') && process.env.NEXT_PUBLIC_COMMERCE_PROVIDER === 'shopify' ? (
               <a
                 href={cart.checkoutUrl}
                 className="w-full py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full flex items-center justify-center space-x-2 transition-all hover:bg-[#430913] active:scale-98 shadow-md hover:shadow-lg text-center"
