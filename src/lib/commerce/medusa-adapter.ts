@@ -5,9 +5,24 @@ import { medusaSdk } from './medusa-client';
 
 export class MedusaCommerceAdapter implements CommerceAdapter {
   private publishableApiKey: string;
+  private defaultRegionId: string | undefined = undefined;
 
   constructor() {
-    this.publishableApiKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '';
+    this.publishableApiKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || 'pk_d1d4eb809e191e41c5af08410e2e8b11214cdf8876e907fe3db4ed1cbd58c5d0';
+  }
+
+  private async getRegionId(): Promise<string | undefined> {
+    if (this.defaultRegionId) return this.defaultRegionId;
+    try {
+      const { regions } = await medusaSdk.store.region.list({ limit: 1 });
+      if (regions && regions.length > 0) {
+        this.defaultRegionId = regions[0].id;
+        return this.defaultRegionId;
+      }
+    } catch {
+      // Fallback if region retrieval fails
+    }
+    return undefined;
   }
 
   private mapMedusaProduct(p: any): Product {
@@ -93,10 +108,19 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
     }
 
     try {
-      const response = await medusaSdk.store.product.list({
+      const region_id = await this.getRegionId();
+      const queryParams: any = {
         limit: options?.limit || 20,
-        fields: '*variants,*variants.calculated_price,*images,*categories,*collection',
-      });
+      };
+
+      if (region_id) {
+        queryParams.region_id = region_id;
+        queryParams.fields = '*variants,*variants.calculated_price,*images,*categories,*collection';
+      } else {
+        queryParams.fields = '*variants,*images,*categories,*collection';
+      }
+
+      const response = await medusaSdk.store.product.list(queryParams);
 
       if (!response?.products || response.products.length === 0) {
         return MOCK_PRODUCTS.slice(0, options?.limit || 12);
@@ -115,10 +139,19 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
     }
 
     try {
-      const response = await medusaSdk.store.product.list({
+      const region_id = await this.getRegionId();
+      const queryParams: any = {
         handle,
-        fields: '*variants,*variants.calculated_price,*images,*categories,*collection',
-      });
+      };
+
+      if (region_id) {
+        queryParams.region_id = region_id;
+        queryParams.fields = '*variants,*variants.calculated_price,*images,*categories,*collection';
+      } else {
+        queryParams.fields = '*variants,*images,*categories,*collection';
+      }
+
+      const response = await medusaSdk.store.product.list(queryParams);
 
       if (response?.products && response.products.length > 0) {
         return this.mapMedusaProduct(response.products[0]);
@@ -134,7 +167,8 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
   async createCart(): Promise<Cart> {
     try {
       if (this.publishableApiKey) {
-        const { cart } = await medusaSdk.store.cart.create({});
+        const region_id = await this.getRegionId();
+        const { cart } = await medusaSdk.store.cart.create(region_id ? { region_id } : {});
         if (cart) {
           return this.mapMedusaCart(cart);
         }
