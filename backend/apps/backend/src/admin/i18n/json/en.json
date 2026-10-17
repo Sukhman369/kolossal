@@ -1,0 +1,22 @@
+{
+  "login": {
+    "title": "BEYOND HUMANS",
+    "hint": "ARCHITECTURAL ARCHIVE · COMMAND CENTER",
+    "forgotPassword": "Lost credentials? - <0>Reset clearance</0>"
+  },
+  "actions": {
+    "continueWithEmail": "AUTHENTICATE & ENTER"
+  },
+  "fields": {
+    "email": "OPERATIVE EMAIL",
+    "password": "SECURITY KEY"
+  },
+  "resetPassword": {
+    "title": "RESET CLEARANCE",
+    "hint": "Enter operative email for dispatch instructions"
+  },
+  "invite": {
+    "title": "BEYOND HUMANS ARCHIVE",
+    "hint": "Initialize operative credentials below"
+  }
+}
