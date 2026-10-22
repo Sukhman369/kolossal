@@ -30,24 +30,41 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
     const rawPrice = firstVariant?.calculated_price?.calculated_amount ?? firstVariant?.prices?.[0]?.amount ?? 5490;
     const currency = (firstVariant?.calculated_price?.currency_code || firstVariant?.prices?.[0]?.currency_code || 'INR').toUpperCase();
 
+    // Dynamically derive sizes and colors from Medusa product options & variants
+    const sizeOption = (p.options || []).find((o: any) => o.title?.toLowerCase() === 'size');
+    const colorOption = (p.options || []).find((o: any) => o.title?.toLowerCase() === 'color');
+    const derivedSizes = (sizeOption?.values?.map((v: any) => v.value) || 
+      Array.from(new Set(p.variants?.flatMap((v: any) => v.options?.filter((o: any) => o.title?.toLowerCase() === 'size').map((o: any) => o.value)) || []))) as string[];
+    const derivedColors = (colorOption?.values?.map((v: any) => v.value) || 
+      Array.from(new Set(p.variants?.flatMap((v: any) => v.options?.filter((o: any) => o.title?.toLowerCase() === 'color').map((o: any) => o.value)) || []))) as string[];
+
+    const finalSizes = (p.metadata?.sizes as string[]) || (derivedSizes.length > 0 ? derivedSizes : ['S', 'M', 'L', 'XL']);
+    const finalColors = (p.metadata?.colors as string[]) || (derivedColors.length > 0 ? derivedColors : undefined);
+
+    const images = (p.images && p.images.length > 0)
+      ? p.images.map((img: any) => ({
+          url: img.url,
+          altText: p.title,
+        }))
+      : p.thumbnail
+      ? [{ url: p.thumbnail, altText: p.title }]
+      : [{ url: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop', altText: p.title }];
+
     return {
       id: p.id,
       handle: p.handle,
       title: p.title,
-      subtitle: p.subtitle || p.collection?.title,
+      subtitle: p.subtitle || p.collection?.title || (p.categories?.[0]?.name),
       description: p.description || '',
       price: {
         amount: rawPrice,
         currencyCode: currency,
       },
-      category: p.collection?.title || (p.categories?.[0]?.name) || 'Streetwear',
+      category: p.collection?.title || (p.categories?.[0]?.name) || p.type?.value || 'Streetwear',
       tags: (p.tags || []).map((t: any) => t.value || t),
       badge: (p.metadata?.badge as string) || undefined,
       model3dUrl: (p.metadata?.model_3d_url as string) || undefined,
-      images: (p.images || []).map((img: any) => ({
-        url: img.url,
-        altText: p.title,
-      })),
+      images,
       variants: (p.variants || []).map((v: any) => ({
         id: v.id,
         title: v.title,
@@ -61,8 +78,8 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
           value: opt.value || '',
         })),
       })),
-      colors: p.metadata?.colors as string[] | undefined,
-      sizes: p.metadata?.sizes as string[] | undefined,
+      colors: finalColors,
+      sizes: finalSizes,
     };
   }
 
@@ -104,20 +121,20 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
 
   async getProducts(options?: { limit?: number; collection?: string }): Promise<Product[]> {
     if (!this.publishableApiKey) {
-      return MOCK_PRODUCTS.slice(0, options?.limit || 12);
+      return MOCK_PRODUCTS.slice(0, options?.limit || 100);
     }
 
     try {
       const region_id = await this.getRegionId();
       const queryParams: any = {
-        limit: options?.limit || 20,
+        limit: options?.limit || 100,
       };
 
       if (region_id) {
         queryParams.region_id = region_id;
-        queryParams.fields = '*variants,*variants.calculated_price,*images,*categories,*collection';
+        queryParams.fields = '*variants,*variants.calculated_price,*images,*categories,*collection,*options,*options.values';
       } else {
-        queryParams.fields = '*variants,*images,*categories,*collection';
+        queryParams.fields = '*variants,*images,*categories,*collection,*options,*options.values';
       }
 
       const response = await medusaSdk.store.product.list(queryParams);

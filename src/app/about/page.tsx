@@ -228,7 +228,7 @@ export default async function AboutStoryPage() {
               </a>
 
               <LocalizedClientLink
-                href="/store"
+                href="/collections"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-snoov-charcoal text-snoov-canvas text-xs font-mono uppercase tracking-wider font-semibold rounded-sm hover:bg-snoov-green transition-colors"
               >
                 <span>Explore Collection</span>

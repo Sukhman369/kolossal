@@ -183,7 +183,7 @@ export default async function LookbookPage() {
                       {look.id} · {look.season}
                     </span>
                     <LocalizedClientLink
-                      href="/store"
+                      href="/collections"
                       className="text-[10px] font-mono uppercase text-snoov-charcoal hover:text-snoov-green transition-colors font-semibold flex items-center gap-1"
                     >
                       <span>Shop Look</span>

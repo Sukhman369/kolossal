@@ -20,12 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/store`,
-      lastModified: now,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
       url: `${BASE_URL}/lookbook`,
       lastModified: now,
       changeFrequency: 'weekly',

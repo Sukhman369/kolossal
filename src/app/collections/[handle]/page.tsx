@@ -42,15 +42,41 @@ const COLLECTION_INFO: Record<string, { title: string; subtitle: string; descrip
   },
 };
 
+function resolveCollectionInfo(handle: string, allProducts: Product[]) {
+  const cleanHandle = handle.toLowerCase();
+  if (COLLECTION_INFO[cleanHandle]) {
+    return COLLECTION_INFO[cleanHandle];
+  }
+
+  const matching = allProducts.filter(
+    (p) =>
+      p.category.toLowerCase().replace(/[\s_]+/g, '-') === cleanHandle ||
+      p.category.toLowerCase() === cleanHandle ||
+      p.tags.some((t) => t.toLowerCase().replace(/[\s_]+/g, '-') === cleanHandle)
+  );
+
+  if (matching.length > 0) {
+    const categoryName = matching[0].category;
+    return {
+      title: categoryName,
+      subtitle: `${categoryName.toUpperCase()} ARCHIVE`,
+      description: `Architectural ${categoryName.toLowerCase()} garments engineered with premium textiles by Beyond Humans.`,
+    };
+  }
+
+  return null;
+}
+
 export async function generateMetadata({
   params,
 }: CollectionPageProps): Promise<Metadata> {
   const { handle } = await params;
-  const info = COLLECTION_INFO[handle.toLowerCase()];
+  const allProducts = await commerce.getProducts({ limit: 100 });
+  const info = resolveCollectionInfo(handle, allProducts);
 
   if (!info) {
     return {
-      title: 'Collection Not Found | BEYOND HUMANS',
+      title: 'Collection | BEYOND HUMANS',
     };
   }
 
@@ -63,29 +89,23 @@ export async function generateMetadata({
 export default async function CollectionPage({ params }: CollectionPageProps) {
   const { handle } = await params;
   const cleanHandle = handle.toLowerCase();
-  const info = COLLECTION_INFO[cleanHandle];
+  const allProducts = await commerce.getProducts({ limit: 100 });
+  const info = resolveCollectionInfo(cleanHandle, allProducts);
 
   if (!info) {
     notFound();
   }
 
-  const allProducts = await commerce.getProducts();
-  
   let products: Product[];
   if (cleanHandle === 'all') {
     products = allProducts;
-  } else if (cleanHandle === 'outerwear') {
-    products = allProducts.filter(p => p.category.toLowerCase() === 'outerwear');
-  } else if (cleanHandle === 'hoodies') {
-    products = allProducts.filter(p => p.category.toLowerCase() === 'hoodies');
-  } else if (cleanHandle === 'pants') {
-    products = allProducts.filter(p => p.category.toLowerCase() === 'pants');
-  } else if (cleanHandle === 'tees') {
-    products = allProducts.filter(p => p.category.toLowerCase() === 'tees');
-  } else if (cleanHandle === 'accessories') {
-    products = allProducts.filter(p => p.category.toLowerCase() === 'accessories');
   } else {
-    products = allProducts.filter(p => p.category.toLowerCase() === cleanHandle);
+    products = allProducts.filter(
+      (p) =>
+        p.category.toLowerCase().replace(/[\s_]+/g, '-') === cleanHandle ||
+        p.category.toLowerCase() === cleanHandle ||
+        p.tags.some((t) => t.toLowerCase().replace(/[\s_]+/g, '-') === cleanHandle)
+    );
   }
 
   return (

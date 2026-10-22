@@ -1,14 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, SlidersHorizontal, Sparkles } from 'lucide-react';
+import { commerce } from '../../lib/commerce';
+import ProductCard from '../../components/products/ProductCard';
 
 export const metadata: Metadata = {
   title: 'Collections | BEYOND HUMANS',
-  description: 'Explore curated architectural apparel collections by Beyond Humans. Heavyweight organic cottons, heavyweight outerwear, and sterling silver accessories.',
+  description: 'Explore all architectural apparel collections by Beyond Humans. Double-faced French terry hoodies, technical outerwear, relaxed trousers, and sterling silver jewelry.',
 };
 
-const COLLECTIONS = [
+const CURATED_STORIES = [
   {
     handle: 'outerwear',
     title: 'Outerwear',
@@ -51,67 +53,162 @@ const COLLECTIONS = [
   },
 ];
 
-export default function CollectionsPage() {
+export default async function CollectionsPage() {
+  const products = await commerce.getProducts({ limit: 100 });
+
+  // Dynamically extract categories present in current Medusa products
+  const categoryCounts: Record<string, number> = {};
+  products.forEach((p) => {
+    const cat = p.category || 'Apparel';
+    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+  });
+
+  const categories = Object.keys(categoryCounts);
+
   return (
-    <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto min-h-screen">
       {/* Header */}
-      <div className="border-b border-neutral-200/80 pb-8 sm:pb-12 mb-8 sm:mb-14">
-        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] block mb-2 font-semibold">
-          COLLECTIONS INDEX
-        </span>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-950">
-          THE ARCHIVES
-        </h1>
-        <p className="text-sm font-light text-neutral-600 max-w-xl mt-3 leading-relaxed">
-          Architectural garments segmented by silhouette and textile weight. Small-batch milled with zero seasonal obsolescence.
-        </p>
-      </div>
+      <div className="border-b border-neutral-200/80 pb-8 sm:pb-12 mb-8 sm:mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#580D1A] block font-semibold">
+              BEYOND HUMANS ARCHIVES
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-950">
+              ALL COLLECTIONS
+            </h1>
+            <p className="text-xs sm:text-sm font-light text-neutral-600 max-w-xl leading-relaxed">
+              Every garment and artifact engineered by Beyond Humans. Designed with architectural proportions, 
+              custom-milled textiles, and zero seasonal obsolescence.
+            </p>
+          </div>
 
-      {/* Collections Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-        {COLLECTIONS.map((col) => (
+          {/* Stats Badge */}
+          <div className="flex items-center space-x-3 text-xs font-mono">
+            <div className="flex items-center space-x-2 px-4 py-2.5 rounded-full border border-[#580D1A]/20 bg-[#580D1A]/5 text-[#580D1A] font-semibold shadow-xs">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#580D1A]" />
+              <span>{products.length} Total Pieces Live</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Dynamic Category Navigation Pills */}
+        <div className="mt-8 pt-6 border-t border-neutral-100 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           <Link
-            key={col.handle}
-            href={`/collections/${col.handle}`}
-            className="group relative flex flex-col space-y-4 rounded-2xl overflow-hidden bg-white border border-neutral-200/90 hover:border-[#580D1A]/40 transition-all duration-500 hover:shadow-xl shadow-xs"
+            href="/collections"
+            className="px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-[#580D1A] text-white font-semibold whitespace-nowrap shadow-xs"
           >
-            {/* Image Aspect */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-100">
-              <img
-                src={col.image}
-                alt={col.title}
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              
-              {/* Item Count Pill */}
-              <div className="absolute top-4 right-4 px-3.5 py-1 rounded-full bg-white/95 border border-[#580D1A]/20 backdrop-blur-md text-[10px] font-mono text-[#580D1A] font-semibold shadow-sm">
-                {col.itemCount}
-              </div>
-
-              {/* Title & Arrow in Overlay */}
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 block mb-1">
-                    {col.subtitle}
-                  </span>
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-white">
-                    {col.title}
-                  </h3>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-white/20 group-hover:bg-[#580D1A] text-white flex items-center justify-center transition-colors duration-300 backdrop-blur-md shadow-md">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-            </div>
-
-            {/* Description footer */}
-            <div className="p-6 pt-2 text-xs font-light text-neutral-600 leading-relaxed">
-              {col.description}
-            </div>
+            All Pieces ({products.length})
           </Link>
-        ))}
+          {categories.map((cat) => {
+            const handle = cat.toLowerCase().replace(/[\s_]+/g, '-');
+            return (
+              <Link
+                key={cat}
+                href={`/collections/${handle}`}
+                className="px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-white border border-neutral-200 text-neutral-700 hover:border-[#580D1A]/40 hover:text-[#580D1A] font-medium transition-colors whitespace-nowrap"
+              >
+                {cat} ({categoryCounts[cat]})
+              </Link>
+            );
+          })}
+        </div>
       </div>
+
+      {/* Main Live Products Grid */}
+      <section className="mb-20 sm:mb-28">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block mb-1">
+              CURRENT ALLOCATION
+            </span>
+            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900">
+              The Catalog
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-neutral-500">
+            Live Medusa Catalog
+          </span>
+        </div>
+
+        {products.length === 0 ? (
+          <div className="py-24 text-center space-y-4 rounded-2xl border border-dashed border-neutral-300">
+            <p className="text-sm font-mono uppercase tracking-widest text-neutral-500">
+              No products found in the catalog yet.
+            </p>
+            <p className="text-xs font-mono text-neutral-400">
+              Add products in the Medusa Admin panel to display them here automatically.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Curated Silhouette Stories */}
+      <section className="border-t border-neutral-200/80 pt-16 sm:pt-20">
+        <div className="mb-10 space-y-2">
+          <div className="flex items-center space-x-2 text-[10px] font-mono uppercase tracking-widest text-[#580D1A] font-semibold">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>CURATED SILHOUETTE DROPS</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950">
+            Explore By Series
+          </h2>
+          <p className="text-xs sm:text-sm font-light text-neutral-500 max-w-xl">
+            Deep-dive into specific textile developments, fit philosophies, and design narratives.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {CURATED_STORIES.map((col) => (
+            <Link
+              key={col.handle}
+              href={`/collections/${col.handle}`}
+              className="group relative flex flex-col space-y-4 rounded-2xl overflow-hidden bg-white border border-neutral-200/90 hover:border-[#580D1A]/40 transition-all duration-500 hover:shadow-xl shadow-xs"
+            >
+              {/* Image Aspect */}
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-100">
+                <img
+                  src={col.image}
+                  alt={col.title}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                
+                {/* Item Count Pill */}
+                <div className="absolute top-4 right-4 px-3.5 py-1 rounded-full bg-white/95 border border-[#580D1A]/20 backdrop-blur-md text-[10px] font-mono text-[#580D1A] font-semibold shadow-sm">
+                  {col.itemCount}
+                </div>
+
+                {/* Title & Arrow in Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 block mb-1">
+                      {col.subtitle}
+                    </span>
+                    <h3 className="text-xl font-bold uppercase tracking-tight text-white">
+                      {col.title}
+                    </h3>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-white/20 group-hover:bg-[#580D1A] text-white flex items-center justify-center transition-colors duration-300 backdrop-blur-md shadow-md">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Description footer */}
+              <div className="p-6 pt-2 text-xs font-light text-neutral-600 leading-relaxed">
+                {col.description}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
