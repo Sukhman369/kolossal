@@ -51,12 +51,12 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
 
   return (
     <div className="w-full space-y-8 sm:space-y-10">
-      {/* Sleek Dark-Themed Search Bar Container */}
+      {/* White-Fill Luxury Search Bar Matching Site */}
       <div className="w-full">
-        <div className="relative group rounded-2xl bg-neutral-950 p-2 sm:p-2.5 border border-neutral-800/80 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-all duration-300 focus-within:border-[#580D1A] focus-within:ring-4 focus-within:ring-[#580D1A]/15">
+        <div className="relative group rounded-2xl bg-white p-2 sm:p-2.5 border border-neutral-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-neutral-300 focus-within:border-[#580D1A] focus-within:ring-4 focus-within:ring-[#580D1A]/10">
           <div className="flex items-center gap-3 px-3 py-1.5 sm:px-4 sm:py-2">
             {/* Search Icon */}
-            <div className="w-9 h-9 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-[#580D1A] flex-shrink-0 group-focus-within:text-[#9b1d31] group-focus-within:border-[#580D1A]/40 transition-colors">
+            <div className="w-9 h-9 rounded-xl bg-[#580D1A]/5 border border-[#580D1A]/15 flex items-center justify-center text-[#580D1A] flex-shrink-0 group-focus-within:bg-[#580D1A]/10 group-focus-within:border-[#580D1A]/30 transition-colors">
               <Search className="w-4 h-4" />
             </div>
 
@@ -68,7 +68,7 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Search the archive by silhouette, textile, or drop... (e.g., Hoodie, 500 GSM, Down, Obsidian)"
-              className="w-full bg-transparent text-white placeholder-neutral-500 text-xs sm:text-sm font-mono tracking-wide focus:outline-none focus:ring-0 selection:bg-[#580D1A] selection:text-white"
+              className="w-full bg-transparent text-neutral-950 placeholder-neutral-400 text-xs sm:text-sm font-mono tracking-wide focus:outline-none focus:ring-0 selection:bg-[#580D1A] selection:text-white"
             />
 
             {/* Clear Button / Counter */}
@@ -77,14 +77,14 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="px-2.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white text-[11px] font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors border border-neutral-800"
+                  className="px-2.5 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-950 text-[11px] font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors border border-neutral-200"
                   aria-label="Clear search"
                 >
                   <span>Clear</span>
                   <X className="w-3.5 h-3.5 text-[#580D1A]" />
                 </button>
               ) : (
-                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-neutral-900/80 border border-neutral-800 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
+                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-neutral-50 border border-neutral-200/80 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
                   <span>ESC to clear</span>
                 </div>
               )}
