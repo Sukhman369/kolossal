@@ -91,28 +91,6 @@ export default async function CollectionsPage() {
             </div>
           </div>
         </div>
-
-        {/* Dynamic Category Navigation Pills */}
-        <div className="mt-8 pt-6 border-t border-neutral-100 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          <Link
-            href="/collections"
-            className="px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-[#580D1A] text-white font-semibold whitespace-nowrap shadow-xs"
-          >
-            All Pieces ({products.length})
-          </Link>
-          {categories.map((cat) => {
-            const handle = cat.toLowerCase().replace(/[\s_]+/g, '-');
-            return (
-              <Link
-                key={cat}
-                href={`/collections/${handle}`}
-                className="px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider bg-white border border-neutral-200 text-neutral-700 hover:border-[#580D1A]/40 hover:text-[#580D1A] font-medium transition-colors whitespace-nowrap"
-              >
-                {cat} ({categoryCounts[cat]})
-              </Link>
-            );
-          })}
-        </div>
       </div>
 
       {/* Main Live Products Grid with Real-Time Search Bar */}
