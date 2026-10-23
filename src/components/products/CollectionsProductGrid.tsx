@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useMemo, useRef } from 'react';
-import { Search, X, SlidersHorizontal, ArrowUpDown, Check, RotateCcw } from 'lucide-react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { Search, X, SlidersHorizontal, ArrowUpDown, RotateCcw, Check } from 'lucide-react';
 import { Product } from '../../lib/commerce';
 import ProductCard from './ProductCard';
 
@@ -16,7 +16,31 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSize, setSelectedSize] = useState<string>('all');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Close drawer on ESC key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isDrawerOpen) {
+        setIsDrawerOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isDrawerOpen]);
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isDrawerOpen]);
 
   // Extract all dynamic categories and their piece counts
   const categoryStats = useMemo(() => {
@@ -36,7 +60,6 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
     initialProducts.forEach((p) => {
       (p.sizes || []).forEach((s) => sizeSet.add(s));
     });
-    // Natural apparel sort if standard
     const standardOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', 'OS'];
     return Array.from(sizeSet).sort((a, b) => {
       const idxA = standardOrder.indexOf(a.toUpperCase());
@@ -52,19 +75,15 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
   const filteredProducts = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
-    // 1. Filter
     const results = initialProducts.filter((p) => {
-      // Category match
       if (selectedCategory !== 'all' && (p.category || 'Apparel').toLowerCase() !== selectedCategory.toLowerCase()) {
         return false;
       }
 
-      // Size match
       if (selectedSize !== 'all' && !(p.sizes || []).some((s) => s.toLowerCase() === selectedSize.toLowerCase())) {
         return false;
       }
 
-      // Search match
       if (query) {
         const titleMatch = p.title?.toLowerCase().includes(query);
         const subtitleMatch = p.subtitle?.toLowerCase().includes(query);
@@ -82,22 +101,16 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
       return true;
     });
 
-    // 2. Sort
     return results.sort((a, b) => {
-      if (sortBy === 'price-asc') {
-        return a.price.amount - b.price.amount;
-      }
-      if (sortBy === 'price-desc') {
-        return b.price.amount - a.price.amount;
-      }
-      if (sortBy === 'name-asc') {
-        return a.title.localeCompare(b.title);
-      }
-      return 0; // featured/default order
+      if (sortBy === 'price-asc') return a.price.amount - b.price.amount;
+      if (sortBy === 'price-desc') return b.price.amount - a.price.amount;
+      if (sortBy === 'name-asc') return a.title.localeCompare(b.title);
+      return 0;
     });
   }, [initialProducts, searchQuery, selectedCategory, selectedSize, sortBy]);
 
-  const hasActiveFilters = searchQuery !== '' || selectedCategory !== 'all' || selectedSize !== 'all' || sortBy !== 'featured';
+  const activeFilterCount = (selectedCategory !== 'all' ? 1 : 0) + (selectedSize !== 'all' ? 1 : 0);
+  const hasActiveFilters = searchQuery !== '' || activeFilterCount > 0 || sortBy !== 'featured';
 
   const handleClearAll = () => {
     setSearchQuery('');
@@ -112,24 +125,16 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
     inputRef.current?.focus();
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Escape') {
-      handleClearSearch();
-    }
-  };
-
   return (
-    <div className="w-full space-y-8 sm:space-y-10">
-      {/* Control Console (Search Bar + Category Pills + Sorting + Size Strip) */}
-      <div className="w-full space-y-5 bg-white p-5 sm:p-7 rounded-3xl border border-neutral-200/90 shadow-[0_4px_25px_rgba(0,0,0,0.03)]">
-        
-        {/* Top Row: Search Input + Sort Dropdown */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3.5">
-          {/* Real-Time Search Bar */}
-          <div className="relative flex-1 group rounded-2xl bg-neutral-50/80 p-1.5 sm:p-2 border border-neutral-200/90 shadow-2xs transition-all duration-300 hover:border-neutral-300 focus-within:border-[#580D1A] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#580D1A]/10">
+    <div className="w-full space-y-8">
+      {/* 1. Ultra-Compact Top Toolbar (Search Bar + Sort + Slide-out Filter Button) */}
+      <div className="w-full space-y-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          {/* Minimalist White Search Bar */}
+          <div className="relative flex-1 group rounded-2xl bg-white p-1.5 sm:p-2 border border-neutral-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all duration-300 hover:border-neutral-300 focus-within:border-[#580D1A] focus-within:ring-4 focus-within:ring-[#580D1A]/10">
             <div className="flex items-center gap-3 px-3 py-1">
-              <div className="w-8 h-8 rounded-xl bg-[#580D1A]/5 border border-[#580D1A]/15 flex items-center justify-center text-[#580D1A] flex-shrink-0 group-focus-within:bg-[#580D1A]/10 group-focus-within:border-[#580D1A]/30 transition-colors">
-                <Search className="w-4 h-4" />
+              <div className="w-7 h-7 rounded-lg bg-[#580D1A]/5 border border-[#580D1A]/15 flex items-center justify-center text-[#580D1A] flex-shrink-0 group-focus-within:bg-[#580D1A]/10 transition-colors">
+                <Search className="w-3.5 h-3.5" />
               </div>
 
               <input
@@ -137,8 +142,7 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Search by silhouette, textile, color, or drop... (e.g. Hoodie, 500 GSM, Down, Obsidian)"
+                placeholder="Search archive... (e.g. Hoodie, 500 GSM, Down, Obsidian)"
                 className="w-full bg-transparent text-neutral-950 placeholder-neutral-400 text-xs sm:text-sm font-mono tracking-wide focus:outline-none focus:ring-0 selection:bg-[#580D1A] selection:text-white"
               />
 
@@ -146,7 +150,7 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
                 <button
                   type="button"
                   onClick={handleClearSearch}
-                  className="px-2 py-1 rounded-md bg-neutral-200/70 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-950 text-[10px] font-mono uppercase tracking-wider flex items-center gap-1 transition-colors flex-shrink-0"
+                  className="px-2 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-700 text-[10px] font-mono uppercase tracking-wider flex items-center gap-1 transition-colors flex-shrink-0"
                   aria-label="Clear search"
                 >
                   <span>Clear</span>
@@ -156,140 +160,60 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
             </div>
           </div>
 
-          {/* Sort Selector Dropdown */}
-          <div className="flex items-center gap-2 self-end md:self-auto flex-shrink-0">
-            <div className="relative flex items-center">
+          {/* Right Controls: Sort Dropdown + Filter Drawer Toggle Button */}
+          <div className="flex items-center gap-2.5 flex-shrink-0">
+            {/* Sort Dropdown */}
+            <div className="relative flex items-center flex-1 sm:flex-initial">
               <div className="absolute left-3 text-neutral-400 pointer-events-none">
                 <ArrowUpDown className="w-3.5 h-3.5" />
               </div>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="appearance-none bg-neutral-50/80 hover:bg-white border border-neutral-200/90 hover:border-neutral-300 focus:border-[#580D1A] focus:ring-4 focus:ring-[#580D1A]/10 rounded-2xl pl-9 pr-9 py-2.5 sm:py-3 text-xs font-mono tracking-wider uppercase text-neutral-800 font-medium cursor-pointer transition-all shadow-2xs outline-none"
+                className="w-full sm:w-auto appearance-none bg-white hover:bg-neutral-50/80 border border-neutral-200/90 hover:border-neutral-300 focus:border-[#580D1A] focus:ring-4 focus:ring-[#580D1A]/10 rounded-2xl pl-9 pr-8 py-2.5 sm:py-3 text-xs font-mono tracking-wider uppercase text-neutral-800 font-medium cursor-pointer transition-all shadow-2xs outline-none"
               >
-                <option value="featured">Sort: Featured Drops</option>
+                <option value="featured">Sort: Featured</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
                 <option value="name-asc">Alphabetical: A–Z</option>
               </select>
-              <div className="absolute right-3.5 text-neutral-400 pointer-events-none text-[10px]">
+              <div className="absolute right-3 text-neutral-400 pointer-events-none text-[9px]">
                 ▼
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Category Pills Strip */}
-        <div className="space-y-2 pt-2 border-t border-neutral-100">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 font-semibold">
-              Category Allocation
-            </span>
-            {selectedCategory !== 'all' && (
-              <button
-                type="button"
-                onClick={() => setSelectedCategory('all')}
-                className="text-[10px] font-mono uppercase tracking-wider text-[#580D1A] hover:underline font-semibold"
-              >
-                Reset Category
-              </button>
-            )}
-          </div>
-
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+            {/* Filter Drawer Toggle Button */}
             <button
               type="button"
-              onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap shadow-2xs ${
-                selectedCategory === 'all'
-                  ? 'bg-[#580D1A] text-white font-semibold shadow-xs'
-                  : 'bg-white border border-neutral-200/90 text-neutral-600 hover:border-neutral-300 hover:text-neutral-900 font-medium'
+              onClick={() => setIsDrawerOpen(true)}
+              className={`inline-flex items-center gap-2 px-4 py-2.5 sm:py-3 rounded-2xl text-xs font-mono uppercase tracking-wider font-semibold transition-all shadow-2xs border ${
+                activeFilterCount > 0
+                  ? 'bg-[#580D1A] text-white border-[#580D1A] shadow-xs'
+                  : 'bg-white hover:bg-neutral-50/80 text-neutral-800 border-neutral-200/90 hover:border-neutral-300'
               }`}
+              aria-label="Open filter drawer"
             >
-              All Pieces ({initialProducts.length})
+              <SlidersHorizontal className="w-3.5 h-3.5" />
+              <span>Filters</span>
+              {activeFilterCount > 0 && (
+                <span className="w-4 h-4 rounded-full bg-white text-[#580D1A] text-[10px] font-bold flex items-center justify-center">
+                  {activeFilterCount}
+                </span>
+              )}
             </button>
-            {allCategories.map((cat) => {
-              const isSelected = selectedCategory.toLowerCase() === cat.toLowerCase();
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(isSelected ? 'all' : cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap shadow-2xs ${
-                    isSelected
-                      ? 'bg-[#580D1A] text-white font-semibold shadow-xs'
-                      : 'bg-white border border-neutral-200/90 text-neutral-600 hover:border-neutral-300 hover:text-neutral-900 font-medium'
-                  }`}
-                >
-                  {cat} ({categoryStats[cat]})
-                </button>
-              );
-            })}
           </div>
         </div>
 
-        {/* Size Filter Pills (if available) */}
-        {allSizes.length > 0 && (
-          <div className="space-y-2 pt-2 border-t border-neutral-100">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 font-semibold">
-                Filter by Size
-              </span>
-              {selectedSize !== 'all' && (
-                <button
-                  type="button"
-                  onClick={() => setSelectedSize('all')}
-                  className="text-[10px] font-mono uppercase tracking-wider text-[#580D1A] hover:underline font-semibold"
-                >
-                  Clear Size
-                </button>
-              )}
-            </div>
-
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-              <button
-                type="button"
-                onClick={() => setSelectedSize('all')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider transition-all shadow-2xs ${
-                  selectedSize === 'all'
-                    ? 'bg-neutral-950 text-white font-semibold'
-                    : 'bg-white border border-neutral-200/90 text-neutral-600 hover:border-neutral-300 hover:text-neutral-950'
-                }`}
-              >
-                All Sizes
-              </button>
-              {allSizes.map((size) => {
-                const isSelected = selectedSize.toLowerCase() === size.toLowerCase();
-                return (
-                  <button
-                    key={size}
-                    type="button"
-                    onClick={() => setSelectedSize(isSelected ? 'all' : size)}
-                    className={`min-w-[40px] px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider transition-all text-center shadow-2xs ${
-                      isSelected
-                        ? 'bg-[#580D1A] text-white font-semibold shadow-xs'
-                        : 'bg-white border border-neutral-200/90 text-neutral-600 hover:border-neutral-300 hover:text-neutral-950'
-                    }`}
-                  >
-                    {size}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Status Bar / Active Filters Row */}
-        <div className="flex flex-wrap items-center justify-between pt-3 border-t border-neutral-100 gap-3 text-xs font-mono">
+        {/* Discreet Active Filter Chips & Counter (Only appears when active) */}
+        <div className="flex flex-wrap items-center justify-between px-1 gap-2 text-xs font-mono">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-neutral-500">
-              Showing <span className="font-semibold text-neutral-950">{filteredProducts.length}</span> of {initialProducts.length} garments
+              Showing <span className="font-semibold text-neutral-950">{filteredProducts.length}</span> of {initialProducts.length} pieces
             </span>
 
-            {/* Active Pills */}
             {selectedCategory !== 'all' && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#580D1A]/10 text-[#580D1A] text-[11px] font-semibold border border-[#580D1A]/20">
-                <span>{selectedCategory}</span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#580D1A]/10 text-[#580D1A] text-[11px] font-semibold border border-[#580D1A]/20">
+                <span>Category: {selectedCategory}</span>
                 <button type="button" onClick={() => setSelectedCategory('all')} aria-label="Remove category filter">
                   <X className="w-3 h-3 hover:text-black" />
                 </button>
@@ -297,7 +221,7 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
             )}
 
             {selectedSize !== 'all' && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#580D1A]/10 text-[#580D1A] text-[11px] font-semibold border border-[#580D1A]/20">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#580D1A]/10 text-[#580D1A] text-[11px] font-semibold border border-[#580D1A]/20">
                 <span>Size: {selectedSize}</span>
                 <button type="button" onClick={() => setSelectedSize('all')} aria-label="Remove size filter">
                   <X className="w-3 h-3 hover:text-black" />
@@ -306,7 +230,7 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
             )}
 
             {searchQuery && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-800 text-[11px] font-semibold border border-neutral-200">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-[11px] font-semibold border border-neutral-200">
                 <span>&ldquo;{searchQuery}&rdquo;</span>
                 <button type="button" onClick={handleClearSearch} aria-label="Remove search query">
                   <X className="w-3 h-3 text-[#580D1A]" />
@@ -315,21 +239,179 @@ export default function CollectionsProductGrid({ initialProducts }: CollectionsP
             )}
           </div>
 
-          {/* Reset All Button */}
           {hasActiveFilters && (
             <button
               type="button"
               onClick={handleClearAll}
-              className="inline-flex items-center gap-1.5 text-xs text-[#580D1A] hover:text-[#3f0812] font-semibold transition-colors"
+              className="inline-flex items-center gap-1 text-[11px] text-[#580D1A] hover:underline font-semibold"
             >
               <RotateCcw className="w-3 h-3" />
-              <span>Reset All Filters</span>
+              <span>Reset Filters</span>
             </button>
           )}
         </div>
       </div>
 
-      {/* Grid of Filtered Products */}
+      {/* 2. Slide-out Filter Drawer (Overlay + Drawer Sheet) */}
+      {isDrawerOpen && (
+        <div className="fixed inset-0 z-50">
+          {/* Backdrop Blur */}
+          <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+            onClick={() => setIsDrawerOpen(false)}
+          />
+
+          {/* Side Drawer Panel */}
+          <div className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col z-50 animate-in slide-in-from-right duration-300">
+            {/* Drawer Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200/80">
+              <div className="flex items-center gap-2">
+                <SlidersHorizontal className="w-4 h-4 text-[#580D1A]" />
+                <h3 className="text-sm font-black uppercase tracking-[0.2em] text-neutral-950 font-mono">
+                  FILTER ARCHIVE
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsDrawerOpen(false)}
+                className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-700 transition-colors"
+                aria-label="Close filters"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Drawer Scrollable Content */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-8 scrollbar-none">
+              {/* Category Filter Section */}
+              <div className="space-y-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-400 font-bold">
+                    Categories
+                  </span>
+                  {selectedCategory !== 'all' && (
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCategory('all')}
+                      className="text-[10px] font-mono uppercase tracking-wider text-[#580D1A] hover:underline font-semibold"
+                    >
+                      Reset
+                    </button>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCategory('all')}
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-xs font-mono uppercase tracking-wider transition-all border ${
+                      selectedCategory === 'all'
+                        ? 'bg-[#580D1A] text-white border-[#580D1A] font-semibold shadow-xs'
+                        : 'bg-neutral-50/70 hover:bg-neutral-100 border-neutral-200/80 text-neutral-700 font-medium'
+                    }`}
+                  >
+                    <span>All Silhouettes</span>
+                    <span className="text-[11px] opacity-80">{initialProducts.length}</span>
+                  </button>
+
+                  {allCategories.map((cat) => {
+                    const isSelected = selectedCategory.toLowerCase() === cat.toLowerCase();
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        onClick={() => setSelectedCategory(isSelected ? 'all' : cat)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-xl text-xs font-mono uppercase tracking-wider transition-all border ${
+                          isSelected
+                            ? 'bg-[#580D1A] text-white border-[#580D1A] font-semibold shadow-xs'
+                            : 'bg-neutral-50/70 hover:bg-neutral-100 border-neutral-200/80 text-neutral-700 font-medium'
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          {isSelected && <Check className="w-3.5 h-3.5" />}
+                          <span>{cat}</span>
+                        </span>
+                        <span className="text-[11px] opacity-80">{categoryStats[cat]}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Size Filter Section */}
+              {allSizes.length > 0 && (
+                <div className="space-y-3.5 pt-6 border-t border-neutral-100">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-400 font-bold">
+                      Available Sizes
+                    </span>
+                    {selectedSize !== 'all' && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedSize('all')}
+                        className="text-[10px] font-mono uppercase tracking-wider text-[#580D1A] hover:underline font-semibold"
+                      >
+                        Reset
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-4 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedSize('all')}
+                      className={`col-span-4 px-3 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-all border ${
+                        selectedSize === 'all'
+                          ? 'bg-neutral-950 text-white border-neutral-950 font-semibold'
+                          : 'bg-neutral-50/70 hover:bg-neutral-100 border-neutral-200/80 text-neutral-700 font-medium'
+                      }`}
+                    >
+                      All Sizes
+                    </button>
+                    {allSizes.map((size) => {
+                      const isSelected = selectedSize.toLowerCase() === size.toLowerCase();
+                      return (
+                        <button
+                          key={size}
+                          type="button"
+                          onClick={() => setSelectedSize(isSelected ? 'all' : size)}
+                          className={`h-11 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all border flex items-center justify-center ${
+                            isSelected
+                              ? 'bg-[#580D1A] text-white border-[#580D1A] shadow-xs'
+                              : 'bg-neutral-50/70 hover:bg-neutral-100 border-neutral-200/80 text-neutral-700'
+                          }`}
+                        >
+                          {size}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Drawer Footer */}
+            <div className="p-6 border-t border-neutral-200/80 bg-neutral-50 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={handleClearAll}
+                className="w-1/3 py-3.5 rounded-full border border-neutral-300 text-xs font-mono uppercase tracking-wider text-neutral-700 font-semibold hover:bg-white transition-colors text-center"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsDrawerOpen(false)}
+                className="w-2/3 py-3.5 rounded-full bg-[#580D1A] hover:bg-[#430913] text-white text-xs font-mono uppercase tracking-wider font-semibold transition-colors shadow-md text-center"
+              >
+                View {filteredProducts.length} {filteredProducts.length === 1 ? 'Piece' : 'Pieces'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 3. Product Catalog Grid */}
       {filteredProducts.length === 0 ? (
         <div className="py-24 px-6 text-center space-y-4 rounded-3xl bg-white border border-dashed border-neutral-300 shadow-xs max-w-2xl mx-auto my-8">
           <div className="w-12 h-12 rounded-full bg-[#580D1A]/10 text-[#580D1A] flex items-center justify-center mx-auto">
