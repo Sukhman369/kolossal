@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { ArrowUpRight, SlidersHorizontal, Sparkles } from 'lucide-react';
 import { commerce } from '../../lib/commerce';
-import ProductCard from '../../components/products/ProductCard';
+import CollectionsProductGrid from '../../components/products/CollectionsProductGrid';
 
 export const metadata: Metadata = {
   title: 'Collections | BEYOND HUMANS',
@@ -115,11 +115,11 @@ export default async function CollectionsPage() {
         </div>
       </div>
 
-      {/* Main Live Products Grid */}
+      {/* Main Live Products Grid with Real-Time Search Bar */}
       <section className="mb-20 sm:mb-28">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#580D1A] block mb-1 font-semibold">
               CURRENT ALLOCATION
             </span>
             <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900">
@@ -131,22 +131,7 @@ export default async function CollectionsPage() {
           </span>
         </div>
 
-        {products.length === 0 ? (
-          <div className="py-24 text-center space-y-4 rounded-2xl border border-dashed border-neutral-300">
-            <p className="text-sm font-mono uppercase tracking-widest text-neutral-500">
-              No products found in the catalog yet.
-            </p>
-            <p className="text-xs font-mono text-neutral-400">
-              Add products in the Medusa Admin panel to display them here automatically.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
+        <CollectionsProductGrid initialProducts={products} />
       </section>
 
       {/* Curated Silhouette Stories */}
