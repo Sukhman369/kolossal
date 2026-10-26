@@ -182,7 +182,7 @@ const LoginBranding = () => {
         <div className="mt-1 flex items-center justify-center gap-2">
           <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#580D1A]/40" />
           <span className="text-[10px] font-semibold uppercase tracking-[0.20em] text-[#580D1A]">
-            ARCHITECTURAL ARCHIVE
+            CHANDIGARH ATELIER · INDIA
           </span>
           <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#580D1A]/40" />
         </div>
@@ -192,7 +192,7 @@ const LoginBranding = () => {
           <span className="h-1.5 w-1.5 rounded-full bg-[#580D1A] animate-ping" />
           <span className="h-1.5 w-1.5 rounded-full bg-[#580D1A] absolute" />
           <span className="text-[9px] font-mono font-semibold tracking-[0.14em] text-[#580D1A] uppercase pl-1">
-            CONTROL CENTER // LEVEL 0
+            CONTROL CENTER // INDIA (INR ₹)
           </span>
         </div>
       </div>
