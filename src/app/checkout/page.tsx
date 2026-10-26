@@ -12,7 +12,8 @@ import {
   CreditCard,
   ChevronRight,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  FileText
 } from 'lucide-react';
 
 const COUNTRY_CODE_MAP: Record<string, string> = {
@@ -37,6 +38,7 @@ export default function CheckoutPage() {
   const [country, setCountry] = useState('India');
   const [postalCode, setPostalCode] = useState('');
   const [orderNumber, setOrderNumber] = useState('');
+  const [medusaOrderId, setMedusaOrderId] = useState<string | null>(null);
 
   // Status & Progress State
   const [isUpdatingCart, setIsUpdatingCart] = useState(false);
@@ -106,6 +108,7 @@ export default function CheckoutPage() {
             ? `BH-MEDUSA-${(result.order as { display_id?: number }).display_id}` 
             : result.order.id;
           setOrderNumber(confirmedId);
+          setMedusaOrderId(result.order.id);
           clearCart();
           setStep('complete');
           setIsCompletingOrder(false);
@@ -186,19 +189,34 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <div className="pt-4 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/track-order"
-            className="px-8 py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#430913] transition-colors shadow-md"
-          >
-            Track Shipment Status
-          </Link>
-          <Link
-            href="/"
-            className="px-8 py-4 border border-[#580D1A] text-[#580D1A] font-medium text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#580D1A] hover:text-white transition-colors"
-          >
-            Return to Storefront
-          </Link>
+        <div className="pt-4 flex flex-col items-center space-y-4">
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/track-order"
+              className="px-8 py-4 bg-[#580D1A] text-white font-semibold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#430913] transition-colors shadow-md"
+            >
+              Track Shipment Status
+            </Link>
+            <Link
+              href="/"
+              className="px-8 py-4 border border-[#580D1A] text-[#580D1A] font-medium text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#580D1A] hover:text-white transition-colors"
+            >
+              Return to Storefront
+            </Link>
+          </div>
+
+          {/* Tax Invoice Download Action */}
+          <div className="pt-1">
+            <a
+              href={`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'}/store/orders/${medusaOrderId || orderNumber}/invoice`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-mono uppercase tracking-wider font-semibold transition-all border border-neutral-300 shadow-xs"
+            >
+              <FileText className="w-4 h-4 text-[#580D1A]" />
+              <span>Download GST Tax Invoice (PDF)</span>
+            </a>
+          </div>
         </div>
       </div>
     );

@@ -197,8 +197,8 @@ export default function OrderTrackerForm() {
               </div>
             </div>
 
-            {/* Live Carrier Button */}
-            <div className="pt-2">
+            {/* Live Carrier & Tax Invoice Actions */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-snoov-border/60 mt-4 pt-4">
               <a
                 href={result.trackingUrl}
                 target="_blank"
@@ -207,6 +207,18 @@ export default function OrderTrackerForm() {
               >
                 <span>Open Live GPS Courier Tracking Page</span>
                 <span>↗</span>
+              </a>
+
+              <a
+                href={`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'}/store/orders/${result.orderId.replace('#', '')}/invoice`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-snoov-sand/80 hover:bg-snoov-sand text-xs font-mono uppercase tracking-wider text-snoov-charcoal font-semibold border border-snoov-border transition-colors shadow-xs"
+              >
+                <svg className="w-3.5 h-3.5 text-[#580D1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Download Tax Invoice (PDF)</span>
               </a>
             </div>
           </div>
