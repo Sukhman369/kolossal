@@ -5,9 +5,9 @@ import { defineWidgetConfig } from "@medusajs/admin-sdk"
 const DynamicLogin3DScene = lazy(() => import("../components/login-3d-scene"))
 
 /**
- * Beyond Humans Luxury Streetwear Admin Login Customization
+ * Beyond Humans Luxury Architectural Admin Login Customization
  * Injected into zone: "login.before"
- * Includes real-time 3D Chrome Torus Knot + Orbital Rings
+ * Light, museum-grade aesthetic with signature burgundy accents
  */
 const LoginBranding = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -23,16 +23,16 @@ const LoginBranding = () => {
       styleTag = document.createElement("style")
       styleTag.id = styleId
       styleTag.innerHTML = `
-        /* Beyond Humans Ambient Architectural Atmosphere */
+        /* Beyond Humans Light Architectural Atmosphere */
         body:has(#bh-admin-login-root) {
-          background-color: #060608 !important;
+          background-color: #FAF9F7 !important;
           background-image: 
-            radial-gradient(circle at 50% 40%, rgba(88, 13, 26, 0.35) 0%, rgba(14, 14, 18, 0.94) 52%, #050507 100%),
-            linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+            radial-gradient(circle at 50% 35%, rgba(88, 13, 26, 0.05) 0%, rgba(250, 249, 247, 0.4) 45%, #FAF9F7 100%),
+            linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px) !important;
           background-size: 100% 100%, 36px 36px, 36px 36px !important;
           background-attachment: fixed !important;
-          color: #faf9f7 !important;
+          color: #171717 !important;
           min-height: 100vh !important;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
         }
@@ -50,85 +50,76 @@ const LoginBranding = () => {
           display: none !important;
         }
 
-        /* Central Architectural Slate Card */
+        /* Central Architectural Card - Light Museum Grade */
         body:has(#bh-admin-login-root) .m-4.flex.w-full {
-          max-width: 400px !important;
-          background: rgba(13, 13, 17, 0.90) !important;
-          backdrop-filter: blur(28px) saturate(180%) !important;
-          -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-          border: 1px solid rgba(88, 13, 26, 0.45) !important;
-          border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
-          border-radius: 14px !important;
-          padding: 24px 28px 28px 28px !important;
+          max-width: 420px !important;
+          background: #FFFFFF !important;
+          border: 1px solid rgba(0, 0, 0, 0.08) !important;
+          border-top: 3px solid #580d1a !important;
+          border-radius: 18px !important;
+          padding: 26px 30px 30px 30px !important;
           box-shadow: 
-            0 30px 80px -15px rgba(0, 0, 0, 0.95),
-            0 0 60px -10px rgba(88, 13, 26, 0.35),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+            0 20px 60px -15px rgba(0, 0, 0, 0.08),
+            0 4px 16px -4px rgba(88, 13, 26, 0.06),
+            0 1px 3px rgba(0, 0, 0, 0.03) !important;
           position: relative !important;
           margin: 1.5rem !important;
         }
 
-        /* Top Corner Architectural Accents */
-        body:has(#bh-admin-login-root) .m-4.flex.w-full::before {
-          content: "";
-          position: absolute;
-          top: -1px;
-          left: 24px;
-          right: 24px;
-          height: 1px;
-          background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+        /* Form Labels */
+        body:has(#bh-admin-login-root) label {
+          color: #171717 !important;
+          font-weight: 600 !important;
+          font-size: 12px !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.06em !important;
+          font-family: monospace, -apple-system, sans-serif !important;
         }
 
-        /* Input fields - Luxury dark slate */
+        /* Input fields - Crisp off-white with wine-red focus ring */
         body:has(#bh-admin-login-root) input {
-          background-color: rgba(6, 6, 9, 0.85) !important;
-          border: 1px solid rgba(255, 255, 255, 0.12) !important;
-          border-radius: 6px !important;
-          color: #faf9f7 !important;
+          background-color: #FAFAFA !important;
+          border: 1.5px solid #E5E5E5 !important;
+          border-radius: 8px !important;
+          color: #171717 !important;
           font-size: 13px !important;
-          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          transition: all 0.2s ease !important;
         }
 
         body:has(#bh-admin-login-root) input::placeholder {
-          color: #716e69 !important;
+          color: #9CA3AF !important;
           text-transform: uppercase !important;
           font-size: 11px !important;
-          letter-spacing: 0.08em !important;
+          letter-spacing: 0.06em !important;
         }
 
         body:has(#bh-admin-login-root) input:focus {
           border-color: #580d1a !important;
-          box-shadow: 0 0 0 2px rgba(88, 13, 26, 0.45), 0 0 16px rgba(88, 13, 26, 0.25) !important;
-          background-color: rgba(10, 10, 14, 0.95) !important;
+          background-color: #FFFFFF !important;
+          box-shadow: 0 0 0 3px rgba(88, 13, 26, 0.12) !important;
         }
 
-        /* Submit Button - Beyond Humans Deep Burgundy with Metallic Highlight */
+        /* Submit Button - Beyond Humans Deep Burgundy with High Contrast */
         body:has(#bh-admin-login-root) button[type="submit"] {
           background: linear-gradient(135deg, #580d1a 0%, #3a0811 100%) !important;
-          border: 1px solid rgba(255, 255, 255, 0.22) !important;
-          border-radius: 6px !important;
+          border: none !important;
+          border-radius: 8px !important;
           color: #ffffff !important;
           font-weight: 700 !important;
           text-transform: uppercase !important;
-          letter-spacing: 0.18em !important;
+          letter-spacing: 0.16em !important;
           font-size: 11px !important;
-          padding-top: 10px !important;
-          padding-bottom: 10px !important;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-          box-shadow: 
-            0 4px 20px rgba(88, 13, 26, 0.5),
-            0 1px 3px rgba(0, 0, 0, 0.8),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+          padding-top: 11px !important;
+          padding-bottom: 11px !important;
+          transition: all 0.25s ease !important;
+          box-shadow: 0 4px 14px rgba(88, 13, 26, 0.35) !important;
           cursor: pointer !important;
         }
 
         body:has(#bh-admin-login-root) button[type="submit"]:hover {
-          background: linear-gradient(135deg, #761426 0%, #580d1a 100%) !important;
-          transform: translateY(-1.5px) !important;
-          box-shadow: 
-            0 8px 30px rgba(118, 20, 38, 0.65),
-            0 2px 5px rgba(0, 0, 0, 0.9),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+          background: linear-gradient(135deg, #6d1121 0%, #430913 100%) !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 6px 20px rgba(88, 13, 26, 0.45) !important;
         }
 
         body:has(#bh-admin-login-root) button[type="submit"]:active {
@@ -137,7 +128,7 @@ const LoginBranding = () => {
 
         /* Forgot password text */
         body:has(#bh-admin-login-root) .txt-small {
-          color: #8a8680 !important;
+          color: #6B7280 !important;
           font-size: 11px !important;
           letter-spacing: 0.04em !important;
           margin-top: 18px !important;
@@ -145,7 +136,7 @@ const LoginBranding = () => {
         }
 
         body:has(#bh-admin-login-root) a[href="/reset-password"] {
-          color: #c94056 !important;
+          color: #580D1A !important;
           font-weight: 600 !important;
           letter-spacing: 0.06em !important;
           text-transform: uppercase !important;
@@ -153,8 +144,8 @@ const LoginBranding = () => {
         }
 
         body:has(#bh-admin-login-root) a[href="/reset-password"]:hover {
-          color: #ff6b84 !important;
-          text-shadow: 0 0 10px rgba(201, 64, 86, 0.6) !important;
+          color: #3a0811 !important;
+          text-decoration: underline !important;
         }
       `
       document.head.appendChild(styleTag)
@@ -172,7 +163,7 @@ const LoginBranding = () => {
           <Suspense
             fallback={
               <div className="h-[175px] w-full flex items-center justify-center">
-                <div className="h-14 w-14 rounded-full border border-[#580D1A]/50 bg-[#16161c] animate-pulse" />
+                <div className="h-14 w-14 rounded-full border border-[#580D1A]/30 bg-neutral-100 animate-pulse" />
               </div>
             }
           >
@@ -182,25 +173,25 @@ const LoginBranding = () => {
           <div className="h-[175px] w-full" />
         )}
 
-        {/* Brand Name with Architectural Tracking */}
-        <h1 className="text-lg font-black uppercase tracking-[0.24em] text-[#faf9f7] pl-[0.24em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] mt-1">
+        {/* Brand Name with Architectural Tracking - Deep Black */}
+        <h1 className="text-xl font-black uppercase tracking-[0.24em] text-neutral-950 pl-[0.24em] mt-1">
           BEYOND HUMANS
         </h1>
 
-        {/* Architectural Subtitle & Discipline */}
+        {/* Architectural Subtitle & Discipline - Wine Red */}
         <div className="mt-1 flex items-center justify-center gap-2">
-          <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#580D1A]" />
-          <span className="text-[10px] font-semibold uppercase tracking-[0.20em] text-[#a8a49d]">
+          <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#580D1A]/40" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.20em] text-[#580D1A]">
             ARCHITECTURAL ARCHIVE
           </span>
-          <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#580D1A]" />
+          <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#580D1A]/40" />
         </div>
 
-        {/* Security Classification Badge */}
-        <div className="mt-2 mb-4 inline-flex items-center gap-1.5 rounded-full border border-[#580D1A]/40 bg-[#580D1A]/15 px-3 py-0.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#ff3355] animate-ping" />
-          <span className="h-1.5 w-1.5 rounded-full bg-[#ff3355] absolute" />
-          <span className="text-[9px] font-mono font-medium tracking-[0.14em] text-[#f5ebeb] uppercase pl-1">
+        {/* Security Classification Badge - Light Theme Pill */}
+        <div className="mt-2.5 mb-4 inline-flex items-center gap-1.5 rounded-full border border-[#580D1A]/20 bg-[#580D1A]/5 px-3 py-0.5 shadow-2xs">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#580D1A] animate-ping" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#580D1A] absolute" />
+          <span className="text-[9px] font-mono font-semibold tracking-[0.14em] text-[#580D1A] uppercase pl-1">
             CONTROL CENTER // LEVEL 0
           </span>
         </div>
