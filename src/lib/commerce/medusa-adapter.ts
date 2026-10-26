@@ -205,21 +205,29 @@ export class MedusaCommerceAdapter implements CommerceAdapter {
 
   async addToCart(cartId: string, item: Omit<CartItem, 'id'>): Promise<Cart> {
     try {
-      if (this.publishableApiKey && cartId && !cartId.startsWith('medusa_cart_local_')) {
-        const { cart } = await medusaSdk.store.cart.createLineItem(cartId, {
-          variant_id: item.variantId,
-          quantity: item.quantity,
-          metadata: {
-            size: item.size,
-            color: item.color,
-          },
-        });
-        if (cart) {
-          return this.mapMedusaCart(cart);
+      if (this.publishableApiKey) {
+        let activeCartId = cartId;
+        if (!activeCartId || activeCartId === 'cart_local' || activeCartId.startsWith('medusa_cart_local_') || !activeCartId.startsWith('cart_01')) {
+          const created = await this.createCart();
+          activeCartId = created.id;
+        }
+
+        if (activeCartId && activeCartId.startsWith('cart_01')) {
+          const { cart } = await medusaSdk.store.cart.createLineItem(activeCartId, {
+            variant_id: item.variantId,
+            quantity: item.quantity,
+            metadata: {
+              size: item.size,
+              color: item.color,
+            },
+          });
+          if (cart) {
+            return this.mapMedusaCart(cart);
+          }
         }
       }
-    } catch {
-      // Fallback
+    } catch (err) {
+      console.warn('[Medusa Adapter] addToCart fallback:', err);
     }
 
     // Local fallback

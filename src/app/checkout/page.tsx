@@ -39,6 +39,7 @@ export default function CheckoutPage() {
   const [postalCode, setPostalCode] = useState('');
   const [orderNumber, setOrderNumber] = useState('');
   const [medusaOrderId, setMedusaOrderId] = useState<string | null>(null);
+  const [medusaCartId, setMedusaCartId] = useState<string | null>(null);
 
   // Status & Progress State
   const [isUpdatingCart, setIsUpdatingCart] = useState(false);
@@ -57,37 +58,87 @@ export default function CheckoutPage() {
     setIsUpdatingCart(true);
 
     try {
-      const isMedusaCart = cart.id && !cart.id.startsWith('medusa_cart_local_') && !cart.id.startsWith('cart_local');
-      if (isMedusaCart) {
-        const countryCode = COUNTRY_CODE_MAP[country] || 'in';
-        await medusaSdk.store.cart.update(cart.id, {
-          email,
-          shipping_address: {
-            first_name: firstName,
-            last_name: lastName || undefined,
-            address_1: address,
-            city,
-            postal_code: postalCode,
-            country_code: countryCode,
-          },
-        });
+      let activeCartId = medusaCartId || cart.id;
+      const isPlaceholder = !activeCartId || activeCartId.startsWith('medusa_cart_local_') || activeCartId.startsWith('cart_local') || !activeCartId.startsWith('cart_01');
 
-        // Attempt to attach the first available shipping method if configured
-        try {
-          const { shipping_options } = await medusaSdk.store.fulfillment.listCartOptions({ cart_id: cart.id });
-          if (shipping_options && shipping_options.length > 0) {
-            await medusaSdk.store.cart.addShippingMethod(cart.id, {
-              option_id: shipping_options[0].id,
-            });
+      // If cart is currently a local placeholder, create and populate a real Medusa cart
+      if (isPlaceholder) {
+        const { regions } = await medusaSdk.store.region.list({ limit: 1 });
+        const regionId = regions?.[0]?.id;
+        const { cart: newCart } = await medusaSdk.store.cart.create(regionId ? { region_id: regionId } : {});
+        activeCartId = newCart.id;
+
+        // Fetch products in Medusa catalog to resolve real variant IDs
+        const { products } = await medusaSdk.store.product.list({ limit: 50 });
+        const fallbackVariantId = products?.[0]?.variants?.[0]?.id;
+
+        for (const item of cart.items) {
+          let vId = item.variantId;
+          const isValidVariant = vId && vId.startsWith('variant_01');
+          if (!isValidVariant) {
+            const match = products?.find((p: any) => 
+              p.title?.toLowerCase().includes(item.title.toLowerCase()) || 
+              item.title.toLowerCase().includes(p.title?.toLowerCase())
+            );
+            vId = match?.variants?.[0]?.id || fallbackVariantId;
           }
-        } catch {
-          // Non-blocking fallback for shipping method query
+          if (vId) {
+            try {
+              await medusaSdk.store.cart.createLineItem(activeCartId, {
+                variant_id: vId,
+                quantity: item.quantity,
+                metadata: {
+                  size: item.size,
+                  color: item.color,
+                  title: item.title,
+                },
+              });
+            } catch (lineErr) {
+              console.warn('Could not add item to Medusa cart:', lineErr);
+            }
+          }
         }
       }
+
+      setMedusaCartId(activeCartId);
+
+      // Update email, shipping address, and billing address on Medusa cart
+      const countryCode = COUNTRY_CODE_MAP[country] || 'in';
+      await medusaSdk.store.cart.update(activeCartId, {
+        email,
+        shipping_address: {
+          first_name: firstName,
+          last_name: lastName || undefined,
+          address_1: address,
+          city,
+          postal_code: postalCode,
+          country_code: countryCode,
+        },
+        billing_address: {
+          first_name: firstName,
+          last_name: lastName || undefined,
+          address_1: address,
+          city,
+          postal_code: postalCode,
+          country_code: countryCode,
+        },
+      });
+
+      // Attach first available shipping option
+      try {
+        const { shipping_options } = await medusaSdk.store.fulfillment.listCartOptions({ cart_id: activeCartId });
+        if (shipping_options && shipping_options.length > 0) {
+          await medusaSdk.store.cart.addShippingMethod(activeCartId, {
+            option_id: shipping_options[0].id,
+          });
+        }
+      } catch (shipErr) {
+        console.warn('Shipping option query notice:', shipErr);
+      }
+
       setStep('payment');
     } catch (err: unknown) {
-      console.warn('Medusa cart update fallback:', err);
-      // Fallback gracefully to allow smooth checkout review
+      console.warn('Medusa cart setup notice:', err);
       setStep('payment');
     } finally {
       setIsUpdatingCart(false);
@@ -98,15 +149,26 @@ export default function CheckoutPage() {
     setIsCompletingOrder(true);
     setStatusMessage(null);
 
-    const isMedusaCart = cart.id && !cart.id.startsWith('medusa_cart_local_') && !cart.id.startsWith('cart_local');
-    
-    if (isMedusaCart) {
+    const activeCartId = medusaCartId || cart.id;
+    const isRealMedusaCart = activeCartId && activeCartId.startsWith('cart_01');
+
+    if (isRealMedusaCart) {
       try {
-        const result = await medusaSdk.store.cart.complete(cart.id);
+        // 1. Authorize payment session in Medusa v2
+        try {
+          await medusaSdk.store.payment.initiatePaymentSession(
+            { id: activeCartId } as any,
+            { provider_id: 'pp_system_default' }
+          );
+        } catch (payErr) {
+          console.warn('Payment session initiation notice:', payErr);
+        }
+
+        // 2. Complete order in Medusa
+        const result = await medusaSdk.store.cart.complete(activeCartId);
         if (result.type === 'order' && result.order) {
-          const confirmedId = (result.order as { display_id?: number; id: string }).display_id 
-            ? `BH-MEDUSA-${(result.order as { display_id?: number }).display_id}` 
-            : result.order.id;
+          const displayId = (result.order as any).display_id;
+          const confirmedId = displayId ? `BH-MEDUSA-${displayId}` : result.order.id;
           setOrderNumber(confirmedId);
           setMedusaOrderId(result.order.id);
           clearCart();
@@ -114,10 +176,10 @@ export default function CheckoutPage() {
           setIsCompletingOrder(false);
           return;
         } else if (result.type === 'cart' && (result as { error?: unknown }).error) {
-          console.warn('Medusa cart complete returned error:', (result as { error?: unknown }).error);
+          console.warn('Medusa complete returned error:', (result as { error?: unknown }).error);
         }
       } catch (err: unknown) {
-        console.warn('Medusa completion fallback:', err);
+        console.error('Medusa completion error:', err);
       }
     }
 

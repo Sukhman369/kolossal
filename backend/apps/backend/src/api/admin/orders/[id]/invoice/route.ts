@@ -7,6 +7,10 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
 
   try {
     const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);
+    const cleanId = id.replace(/^#/, "").replace(/^BH-MEDUSA-/, "").trim();
+    const isNumeric = /^\d+$/.test(cleanId);
+    const filterCondition = isNumeric ? { display_id: Number(cleanId) } : { id: cleanId };
+
     const { data } = await query.graph({
       entity: "order",
       fields: [
@@ -27,11 +31,11 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
         "payment_collections.*",
         "payment_collections.payments.*",
       ],
-      filters: { id },
+      filters: filterCondition as any,
     });
 
     if (!data || data.length === 0) {
-      if (id === "sample" || id === "preview" || id.startsWith("BH-")) {
+      if (id === "sample" || id === "preview") {
         const sampleInvoice = getSampleInvoiceData(id);
         const pdfBuffer = await generateInvoicePdfBuffer(sampleInvoice);
         res.setHeader("Content-Type", "application/pdf");
@@ -42,7 +46,7 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
         res.setHeader("Content-Length", pdfBuffer.length);
         return res.end(pdfBuffer);
       }
-      return res.status(404).json({ message: `Order with id ${id} not found.` });
+      return res.status(404).json({ message: `Order #${id} not found.` });
     }
 
     const order = data[0] as Record<string, any>;
