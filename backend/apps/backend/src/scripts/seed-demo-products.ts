@@ -280,7 +280,7 @@ export default async function seedDemoProducts({ container }: ExecArgs) {
     const chosenTags = pickSome(allTags, 3)
     const chosenCategories = pickSome(categories, 2)
     const thumbnail = pick(IMAGES)
-    const basePrice = 10 + Math.floor(random() * 90)
+    const basePrice = 1990 + Math.floor(random() * 70) * 100
 
     products.push({
       title,
