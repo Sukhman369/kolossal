@@ -1,7 +1,7 @@
 {
   "login": {
     "title": "BEYOND HUMANS",
-    "hint": "ARCHITECTURAL ARCHIVE · COMMAND CENTER",
+    "hint": "ARCHITECTURAL ARCHIVE · COMMAND CENTER (INDIA)",
     "forgotPassword": "Lost credentials? - <0>Reset clearance</0>"
   },
   "actions": {
@@ -9,7 +9,28 @@
   },
   "fields": {
     "email": "OPERATIVE EMAIL",
-    "password": "SECURITY KEY"
+    "password": "SECURITY KEY",
+    "postalCode": "PIN Code (6 Digits)",
+    "province": "State / Union Territory",
+    "state": "State / UT",
+    "city": "City / District",
+    "address": "Flat, House No., Building, Street",
+    "address1": "Flat, House No., Building, Street",
+    "address2": "Area, Sector, Locality, Landmark",
+    "phone": "Mobile Number (+91)",
+    "company": "Trade / Entity Name (GSTIN)",
+    "tax": "GST (Goods & Services Tax)",
+    "taxInclusivePricing": "MRP (Inclusive of All Taxes / GST)",
+    "currency": "Currency (INR ₹)",
+    "country": "Country (India)",
+    "selectCountry": "Select Country (India)",
+    "hsCode": "HSN / SAC Code",
+    "countryOfOrigin": "Country of Origin (India)",
+    "totalExclTax": "Subtotal Excl. GST",
+    "price": "Price (INR ₹)",
+    "unitPrice": "Unit Price (INR ₹)",
+    "serviceZone": "Domestic Service Zone (Pan-India)",
+    "shippingMethod": "Domestic Shipping Partner (Delhivery / Blue Dart)"
   },
   "resetPassword": {
     "title": "RESET CLEARANCE",
@@ -18,5 +39,36 @@
   "invite": {
     "title": "BEYOND HUMANS ARCHIVE",
     "hint": "Initialize operative credentials below"
+  },
+  "taxes": {
+    "taxRate": {
+      "sectionTitle": "GST Slabs & Rates",
+      "createTaxRate": "Create GST Rate",
+      "createTaxRateHint": "Define applicable GST rate (e.g. 5%, 12%, 18%, 28%) for India."
+    }
+  },
+  "taxRegions": {
+    "domain": "GST Jurisdictions",
+    "list": {
+      "hint": "Manage Indian GST tax jurisdictions and applicable state / central GST rates."
+    },
+    "create": {
+      "header": "Create GST Region",
+      "hint": "Define GST rates for domestic supply in India."
+    },
+    "fields": {
+      "taxRate": "GST Rate (%)",
+      "taxCode": "GST Code (e.g. GST_18)",
+      "defaultTaxRate": {
+        "label": "Default GST Rate (18% Standard)",
+        "tooltip": "The standard GST rate applicable across India for apparel and luxury goods."
+      }
+    }
+  },
+  "regions": {
+    "domain": "Regions & Currencies",
+    "list": {
+      "hint": "Indian domestic commerce configured with INR (₹) and pan-India shipping."
+    }
   }
 }
