@@ -2,7 +2,7 @@ import { useEffect, useState, lazy, Suspense } from "react"
 import { defineWidgetConfig } from "@medusajs/admin-sdk"
 
 // Dynamic import with client-only execution (WebGL requires the browser)
-const DynamicLogin3DScene = lazy(() => import("./login-3d-scene"))
+const DynamicLogin3DScene = lazy(() => import("../components/login-3d-scene"))
 
 /**
  * Beyond Humans Luxury Streetwear Admin Login Customization

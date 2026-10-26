@@ -9,7 +9,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
  * - Supports hot-swapping with /models/hero-garment.glb
  * - Guarded by IntersectionObserver to stop render loop when off-screen (saves GPU)
  */
-export default function Login3DScene() {
+const Login3DScene = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -147,7 +147,6 @@ export default function Login3DScene() {
               url,
               (gltf) => {
                 if (isDisposed) return
-                // Hide procedural mesh and show custom GLTF
                 torusKnotMesh.visible = false
                 titaniumRingMesh.visible = false
                 burgundyRingMesh.visible = false
@@ -257,3 +256,5 @@ export default function Login3DScene() {
     </div>
   )
 }
+
+export default Login3DScene
