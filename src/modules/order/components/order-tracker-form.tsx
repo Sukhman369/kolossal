@@ -210,7 +210,7 @@ export default function OrderTrackerForm() {
               </a>
 
               <a
-                href={`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'}/store/orders/${result.orderId.replace('#', '')}/invoice`}
+                href={`/api/orders/${result.orderId.replace('#', '')}/invoice`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-snoov-sand/80 hover:bg-snoov-sand text-xs font-mono uppercase tracking-wider text-snoov-charcoal font-semibold border border-snoov-border transition-colors shadow-xs"

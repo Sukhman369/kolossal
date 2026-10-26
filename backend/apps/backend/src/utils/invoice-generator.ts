@@ -303,8 +303,65 @@ export async function generateInvoicePdfBuffer(order: InvoiceOrderData): Promise
     doc.text('VERIFIED & CERTIFIED', 400, footerTop + 10, { align: 'right', width: 155 });
 
     doc.font('Helvetica').fontSize(7).fillColor('#999999');
-    doc.text(`Generated on ${new Date().toUTCString()}`, 400, footerTop + 20, { align: 'right', width: 155 });
-
     doc.end();
   });
 }
+
+export function getSampleInvoiceData(id: string = 'sample'): InvoiceOrderData {
+  return {
+    id,
+    displayId: 1042,
+    createdAt: new Date(),
+    currencyCode: 'INR',
+    paymentStatus: 'paid',
+    paymentMethod: 'UPI / Razorpay Direct (DDP Tracked)',
+    customer: {
+      firstName: 'Aarav',
+      lastName: 'Sharma',
+      email: 'aarav.sharma@beyondhumans.in',
+      phone: '+91 98765 43210',
+    },
+    shippingAddress: {
+      address1: 'Penthouse 4B, Sector 8-C',
+      address2: 'Madhya Marg',
+      city: 'Chandigarh',
+      province: 'Chandigarh',
+      postalCode: '160018',
+      countryCode: 'IN',
+    },
+    billingAddress: {
+      address1: 'Penthouse 4B, Sector 8-C',
+      address2: 'Madhya Marg',
+      city: 'Chandigarh',
+      province: 'Chandigarh',
+      postalCode: '160018',
+      countryCode: 'IN',
+    },
+    items: [
+      {
+        title: 'Heavyweight Boxy Architectural Hoodie',
+        variantTitle: 'Pitch Black / XL',
+        sku: 'BH-HD-001-BLK-XL',
+        hsnCode: '6110',
+        quantity: 1,
+        unitPrice: 5999.0,
+        total: 5999.0,
+      },
+      {
+        title: 'Acid Washed Brutalist Drop Tee',
+        variantTitle: 'Vintage Charcoal / L',
+        sku: 'BH-TEE-003-CHR-L',
+        hsnCode: '6109',
+        quantity: 2,
+        unitPrice: 2499.0,
+        total: 4998.0,
+      },
+    ],
+    subtotal: 10997.0,
+    shippingTotal: 0.0,
+    taxTotal: 1319.64,
+    discountTotal: 0.0,
+    total: 10997.0,
+  };
+}
+

@@ -1,6 +1,6 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http";
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
-import { generateInvoicePdfBuffer, InvoiceOrderData } from "../../../../../utils/invoice-generator";
+import { generateInvoicePdfBuffer, getSampleInvoiceData, InvoiceOrderData } from "../../../../../utils/invoice-generator";
 
 export async function GET(req: MedusaRequest, res: MedusaResponse) {
   const { id } = req.params;
@@ -31,6 +31,17 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
     });
 
     if (!data || data.length === 0) {
+      if (id === "sample" || id === "preview" || id.startsWith("BH-")) {
+        const sampleInvoice = getSampleInvoiceData(id);
+        const pdfBuffer = await generateInvoicePdfBuffer(sampleInvoice);
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader(
+          "Content-Disposition",
+          `attachment; filename="BeyondHumans-TaxInvoice-${sampleInvoice.displayId}.pdf"`
+        );
+        res.setHeader("Content-Length", pdfBuffer.length);
+        return res.end(pdfBuffer);
+      }
       return res.status(404).json({ message: `Order with id ${id} not found.` });
     }
 

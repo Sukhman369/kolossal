@@ -208,7 +208,7 @@ export default function CheckoutPage() {
           {/* Tax Invoice Download Action */}
           <div className="pt-1">
             <a
-              href={`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'}/store/orders/${medusaOrderId || orderNumber}/invoice`}
+              href={`/api/orders/${medusaOrderId || orderNumber}/invoice`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-mono uppercase tracking-wider font-semibold transition-all border border-neutral-300 shadow-xs"
